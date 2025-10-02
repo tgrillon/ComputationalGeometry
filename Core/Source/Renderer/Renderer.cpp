@@ -1,13 +1,13 @@
-#include "Renderer.h"
+#include "Core/Renderer/Renderer.h"
 
-#include "GLUtils.h"
+#include "Core/Renderer/GLUtils.h"
 
 #include <iostream>
-#include <print>
 
 #include "stb_image.h"
 
-namespace Renderer {
+namespace Renderer
+{
 
 	Texture CreateTexture(int width, int height)
 	{
@@ -28,11 +28,11 @@ namespace Renderer {
 		return result;
 	}
 
-	Texture LoadTexture(const std::filesystem::path& path)
+	Texture LoadTexture(const std::filesystem::path &path)
 	{
 		int width, height, channels;
 		std::string filepath = path.string();
-		unsigned char* data = stbi_load(filepath.c_str(), &width, &height, &channels, 0);
+		unsigned char *data = stbi_load(filepath.c_str(), &width, &height, &channels, 0);
 
 		if (!data)
 		{
@@ -40,9 +40,9 @@ namespace Renderer {
 			return {};
 		}
 
-		GLenum format = channels == 4 ? GL_RGBA :
-			channels == 3 ? GL_RGB :
-			channels == 1 ? GL_RED : 0;
+		GLenum format = channels == 4 ? GL_RGBA : channels == 3 ? GL_RGB
+											  : channels == 1	? GL_RED
+																: 0;
 
 		Texture result;
 		result.Width = width;
@@ -81,7 +81,7 @@ namespace Renderer {
 		return result;
 	}
 
-	bool AttachTextureToFramebuffer(Framebuffer& framebuffer, const Texture texture)
+	bool AttachTextureToFramebuffer(Framebuffer &framebuffer, const Texture texture)
 	{
 		glNamedFramebufferTexture(framebuffer.Handle, GL_COLOR_ATTACHMENT0, texture.Handle, 0);
 
@@ -101,8 +101,8 @@ namespace Renderer {
 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); // swapchain
 
 		glBlitFramebuffer(0, 0, framebuffer.ColorAttachment.Width, framebuffer.ColorAttachment.Height, // Source rect
-			0, 0, framebuffer.ColorAttachment.Width, framebuffer.ColorAttachment.Height,               // Destination rect
-			GL_COLOR_BUFFER_BIT, GL_NEAREST);
+						  0, 0, framebuffer.ColorAttachment.Width, framebuffer.ColorAttachment.Height, // Destination rect
+						  GL_COLOR_BUFFER_BIT, GL_NEAREST);
 	}
 
 }

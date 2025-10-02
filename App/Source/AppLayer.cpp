@@ -1,15 +1,19 @@
 #include "AppLayer.h"
 
 #include "Core/Application.h"
-
+#include "Core/PrintHelpers.h"
 #include "Core/Renderer/Renderer.h"
 #include "Core/Renderer/Shader.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
 #include <glm/glm.hpp>
 
 AppLayer::AppLayer()
 {
 	// Create shaders
+	PrintHelpers::print("Current path : {}", std::filesystem::current_path().c_str());
 	m_Shader = Renderer::CreateGraphicsShader("Shaders/Vertex.glsl", "Shaders/Fragment.glsl");
 
 	// Create geometry
@@ -23,9 +27,9 @@ AppLayer::AppLayer()
 	};
 
 	Vertex vertices[] = {
-		{ {-1.0f, -1.0f }, { 0.0f, 0.0f } },  // Bottom-left
-		{ { 3.0f, -1.0f }, { 2.0f, 0.0f } },  // Bottom-right
-		{ {-1.0f,  3.0f }, { 0.0f, 2.0f } }   // Top-left
+		{ { -1.0f, -1.0f }, { 0.0f, 0.0f } }, // Bottom-left
+		{ { 3.0f, -1.0f }, { 2.0f, 0.0f } }, // Bottom-right
+		{ { -1.0f, 3.0f }, { 0.0f, 2.0f } } // Top-left
 	};
 
 	glNamedBufferData(m_VertexBuffer, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -55,11 +59,17 @@ AppLayer::~AppLayer()
 }
 
 void AppLayer::OnUpdate(float ts)
-{
-}
+{}
 
 void AppLayer::OnRender()
 {
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplGlfw_NewFrame();
+	ImGui::NewFrame();
+
+	// TODO : Custom ImGui code here
+	ImGui::ShowDemoWindow();
+
 	glUseProgram(m_Shader);
 
 	// Uniforms
@@ -74,4 +84,7 @@ void AppLayer::OnRender()
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glBindVertexArray(m_VertexArray);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
+
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

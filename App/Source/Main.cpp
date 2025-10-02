@@ -1,6 +1,5 @@
-#include "Core/Application.h"
-
 #include "AppLayer.h"
+#include "Core/Application.h"
 
 int main()
 {

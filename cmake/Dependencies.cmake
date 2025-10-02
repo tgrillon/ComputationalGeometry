@@ -55,3 +55,47 @@ if (NOT glm_FOUND)
     endif()
 endif()
 set_target_properties(glm PROPERTIES FOLDER "Dependencies")
+
+# ImGui
+FetchContent_Declare(
+    imgui
+    DOWNLOAD_EXTRACT_TIMESTAMP OFF
+    GIT_REPOSITORY https://github.com/ocornut/imgui.git
+    # GIT_TAG v1.91.5  
+    GIT_TAG docking
+)
+
+FetchContent_GetProperties(imgui)
+if(NOT imgui_POPULATED)
+    set(FETCHCONTENT_QUIET NO)
+    FetchContent_Populate(imgui)
+    
+    # Generate imgui target
+    add_library(imgui STATIC
+        ${imgui_SOURCE_DIR}/imgui.cpp
+        ${imgui_SOURCE_DIR}/imgui_demo.cpp
+        ${imgui_SOURCE_DIR}/imgui_draw.cpp
+        ${imgui_SOURCE_DIR}/imgui_tables.cpp
+        ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+        # Backend GLFW + OpenGL3
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+    )
+    
+    target_include_directories(imgui PUBLIC 
+        ${imgui_SOURCE_DIR}
+        ${imgui_SOURCE_DIR}/backends
+    )
+    
+    # Link with GLFW
+    target_link_libraries(imgui PUBLIC glfw)
+
+    # Add X11 on Linux
+    if(UNIX AND NOT APPLE)
+        find_package(X11 REQUIRED)
+        target_link_libraries(imgui PRIVATE ${X11_LIBRARIES})
+    endif()
+    
+endif()
+
+set_target_properties(imgui PROPERTIES FOLDER "Dependencies")

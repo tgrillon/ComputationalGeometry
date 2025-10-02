@@ -1,13 +1,15 @@
-#include "Shader.h"
+#include "Core/Renderer/Shader.h"
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 #include <glad/gl.h>
 
-namespace Renderer {
+namespace Renderer
+{
 
-	static std::string ReadTextFile(const std::filesystem::path& path)
+	static std::string ReadTextFile(const std::filesystem::path &path)
 	{
 		std::ifstream file(path);
 
@@ -22,13 +24,13 @@ namespace Renderer {
 		return contentStream.str();
 	}
 
-	uint32_t CreateComputeShader(const std::filesystem::path& path)
+	uint32_t CreateComputeShader(const std::filesystem::path &path)
 	{
 		std::string shaderSource = ReadTextFile(path);
 
 		GLuint shaderHandle = glCreateShader(GL_COMPUTE_SHADER);
 
-		const GLchar* source = (const GLchar*)shaderSource.c_str();
+		const GLchar *source = (const GLchar *)shaderSource.c_str();
 		glShaderSource(shaderHandle, 1, &source, 0);
 
 		glCompileShader(shaderHandle);
@@ -54,7 +56,7 @@ namespace Renderer {
 		glLinkProgram(program);
 
 		GLint isLinked = 0;
-		glGetProgramiv(program, GL_LINK_STATUS, (int*)&isLinked);
+		glGetProgramiv(program, GL_LINK_STATUS, (int *)&isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
@@ -75,7 +77,7 @@ namespace Renderer {
 		return program;
 	}
 
-	uint32_t ReloadComputeShader(uint32_t shaderHandle, const std::filesystem::path& path)
+	uint32_t ReloadComputeShader(uint32_t shaderHandle, const std::filesystem::path &path)
 	{
 		uint32_t newShaderHandle = CreateComputeShader(path);
 
@@ -87,7 +89,7 @@ namespace Renderer {
 		return newShaderHandle;
 	}
 
-	uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath)
+	uint32_t CreateGraphicsShader(const std::filesystem::path &vertexPath, const std::filesystem::path &fragmentPath)
 	{
 		std::string vertexShaderSource = ReadTextFile(vertexPath);
 		std::string fragmentShaderSource = ReadTextFile(fragmentPath);
@@ -96,7 +98,7 @@ namespace Renderer {
 
 		GLuint vertexShaderHandle = glCreateShader(GL_VERTEX_SHADER);
 
-		const GLchar* source = (const GLchar*)vertexShaderSource.c_str();
+		const GLchar *source = (const GLchar *)vertexShaderSource.c_str();
 		glShaderSource(vertexShaderHandle, 1, &source, 0);
 
 		glCompileShader(vertexShaderHandle);
@@ -121,7 +123,7 @@ namespace Renderer {
 
 		GLuint fragmentShaderHandle = glCreateShader(GL_FRAGMENT_SHADER);
 
-		source = (const GLchar*)fragmentShaderSource.c_str();
+		source = (const GLchar *)fragmentShaderSource.c_str();
 		glShaderSource(fragmentShaderHandle, 1, &source, 0);
 
 		glCompileShader(fragmentShaderHandle);
@@ -150,7 +152,7 @@ namespace Renderer {
 		glLinkProgram(program);
 
 		GLint isLinked = 0;
-		glGetProgramiv(program, GL_LINK_STATUS, (int*)&isLinked);
+		glGetProgramiv(program, GL_LINK_STATUS, (int *)&isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
@@ -173,7 +175,7 @@ namespace Renderer {
 		return program;
 	}
 
-	uint32_t ReloadGraphicsShader(uint32_t shaderHandle, const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath)
+	uint32_t ReloadGraphicsShader(uint32_t shaderHandle, const std::filesystem::path &vertexPath, const std::filesystem::path &fragmentPath)
 	{
 		uint32_t newShaderHandle = CreateGraphicsShader(vertexPath, fragmentPath);
 

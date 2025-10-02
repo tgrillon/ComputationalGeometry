@@ -2,7 +2,6 @@
 build/
 
 # Visual Studio files and folder
-.vs/
 **.sln
 **.vcxproj
 **.vcxproj.filters
@@ -11,3 +10,16 @@ build/
 **.nsight-gfxproj
 **.DotSettings
 **.user
+
+**/CMakeCache.txt
+**/install_manifest.txt
+
+**/CTestTestfile.cmake
+**/CPackConfig.cmake
+**/cmake_install.cmake
+
+**/CMakeUserPresets.json
+**/compile_commands.json
+
+.vscode/
+.idea/
