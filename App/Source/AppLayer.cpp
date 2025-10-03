@@ -48,6 +48,12 @@ AppLayer::AppLayer()
 	// Link attribute locations to binding index 0
 	glVertexArrayAttribBinding(m_VertexArray, 0, 0);
 	glVertexArrayAttribBinding(m_VertexArray, 1, 0);
+
+	// Print various OpenGL informations to stdout
+	std::cout << glGetString(GL_VENDOR) << ": " << glGetString(GL_RENDERER) << '\n';
+	std::cout << "GLFW\t " << glfwGetVersionString() << '\n';
+	std::cout << "OpenGL\t " << glGetString(GL_VERSION) << '\n';
+	std::cout << "GLSL\t " << glGetString(GL_SHADING_LANGUAGE_VERSION) << "\n\n";
 }
 
 AppLayer::~AppLayer()
@@ -56,6 +62,15 @@ AppLayer::~AppLayer()
 	glDeleteBuffers(1, &m_VertexBuffer);
 
 	glDeleteProgram(m_Shader);
+
+	static Renderer::Texture renderTexture;
+	static Renderer::Framebuffer renderFramebuffer;
+
+	if(renderTexture.Handle != 0)
+	{
+		glDeleteTextures(1, &renderTexture.Handle);
+		glDeleteFramebuffers(1, &renderFramebuffer.Handle);
+	}
 }
 
 void AppLayer::OnUpdate(float ts)
@@ -63,28 +78,59 @@ void AppLayer::OnUpdate(float ts)
 
 void AppLayer::OnRender()
 {
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
+	// ImGui stuff
 	ImGui::NewFrame();
+	ImGui::DockSpaceOverViewport();
+	ImGui::Begin("My Application");
 
-	// TODO : Custom ImGui code here
-	ImGui::ShowDemoWindow();
+	const float windowWidth = ImGui::GetContentRegionAvail().x;
+	const float windowHeight = ImGui::GetContentRegionAvail().y;
+
+	static Renderer::Texture renderTexture;
+	static Renderer::Framebuffer renderFramebuffer;
+
+	if(renderTexture.Width != windowWidth || renderTexture.Height != windowHeight)
+	{
+		// Clean up old resources
+		if(renderTexture.Handle != 0)
+		{
+			glDeleteTextures(1, &renderTexture.Handle);
+			glDeleteFramebuffers(1, &renderFramebuffer.Handle);
+		}
+
+		// Create new texture and framebuffer
+		renderTexture = Renderer::CreateTexture(windowWidth, windowHeight);
+		renderFramebuffer = Renderer::CreateFramebufferWithTexture(renderTexture);
+	}
+
+	ImVec2 pos = ImGui::GetCursorScreenPos();
+
+	ImGui::GetWindowDrawList()->AddImage(
+		(void*)static_cast<uintptr_t>(renderTexture.Handle),
+		ImVec2(pos.x, pos.y),
+		ImVec2(pos.x + windowWidth, pos.y + windowHeight),
+		ImVec2(0, 1),
+		ImVec2(1, 0));
+
+	ImGui::End();
+	ImGui::Render();
+
+	// Drawing stuff
+	glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer.Handle);
+	glViewport(0, 0, static_cast<GLsizei>(windowWidth), static_cast<GLsizei>(windowHeight));
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	double relativeCursorX = 0.0;
+	double relativeCursorY = 0.0;
+	glfwGetCursorPos(Core::Application::Get().GetWindow(), &relativeCursorX, &relativeCursorY);
 
 	glUseProgram(m_Shader);
-
-	// Uniforms
 	glUniform1f(0, Core::Application::GetTime());
-
-	glm::vec2 framebufferSize = Core::Application::Get().GetFramebufferSize();
-	glUniform2f(1, framebufferSize.x, framebufferSize.y);
-
-	glViewport(0, 0, static_cast<GLsizei>(framebufferSize.x), static_cast<GLsizei>(framebufferSize.y));
+	glUniform2f(1, windowWidth, windowHeight);
 
 	// Render
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glBindVertexArray(m_VertexArray);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }

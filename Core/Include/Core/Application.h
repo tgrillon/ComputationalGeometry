@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Layer.h"
-#include "Window.h"
+#include "Core/Layer.h"
+#include "Core/Window.h"
 
 #include <glm/glm.hpp>
 
@@ -36,6 +36,7 @@ public:
 	}
 
 	glm::vec2 GetFramebufferSize() const;
+	GLFWwindow* GetWindow() const;
 
 	static Application& Get();
 	static float GetTime();
