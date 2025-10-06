@@ -25,3 +25,5 @@ add_compile_definitions(
 target_link_libraries(Core glfw glad glm imgui)
 
 target_include_directories(Core PUBLIC "Include" "vendor/stb")
+
+Format(Core .)

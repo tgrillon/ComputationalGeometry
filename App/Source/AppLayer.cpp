@@ -13,7 +13,6 @@
 AppLayer::AppLayer()
 {
 	// Create shaders
-	PrintHelpers::print("Current path : {}", std::filesystem::current_path().c_str());
 	m_Shader = Renderer::CreateGraphicsShader("Shaders/Vertex.glsl", "Shaders/Fragment.glsl");
 
 	// Create geometry
@@ -79,8 +78,6 @@ void AppLayer::OnUpdate(float ts)
 void AppLayer::OnRender()
 {
 	// ImGui stuff
-	ImGui::NewFrame();
-	ImGui::DockSpaceOverViewport();
 	ImGui::Begin("My Application");
 
 	const float windowWidth = ImGui::GetContentRegionAvail().x;
@@ -113,7 +110,6 @@ void AppLayer::OnRender()
 		ImVec2(1, 0));
 
 	ImGui::End();
-	ImGui::Render();
 
 	// Drawing stuff
 	glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer.Handle);

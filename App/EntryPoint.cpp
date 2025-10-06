@@ -1,11 +1,11 @@
 
 namespace Application
 {
-int Run();
+int Run(int argc, char** argv);
 }
 
-int main()
+int main(int argc, char** argv)
 {
-	Application::Run();
+	Application::Run(argc, argv);
 	return 0;
 }

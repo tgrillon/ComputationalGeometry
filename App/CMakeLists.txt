@@ -40,3 +40,4 @@ add_custom_command(TARGET App POST_BUILD
     "${CMAKE_SOURCE_DIR}/App/Shaders" 
     $<TARGET_FILE_DIR:App>/Shaders)
  
+Format(AppStaticLib .)

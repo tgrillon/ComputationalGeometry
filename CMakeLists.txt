@@ -23,6 +23,7 @@ include(ConfigPresets)
 include(Coverage)
 include(Format)
 include(CppCheck)
+include(Memcheck)
 include(Doxygen)
 
 # Projects

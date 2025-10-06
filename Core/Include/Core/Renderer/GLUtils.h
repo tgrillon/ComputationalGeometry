@@ -2,12 +2,13 @@
 
 #include <glad/gl.h>
 
-namespace Renderer::Utils {
+namespace Renderer::Utils
+{
 
-	const char* GLDebugSourceToString(GLenum source);
-	const char* GLDebugTypeToString(GLenum type);
-	const char* GLDebugSeverityToString(GLenum severity);
+const char* GLDebugSourceToString(GLenum source);
+const char* GLDebugTypeToString(GLenum type);
+const char* GLDebugSeverityToString(GLenum severity);
 
-	void InitOpenGLDebugMessageCallback();
+void InitOpenGLDebugMessageCallback();
 
-}
+} // namespace Renderer::Utils

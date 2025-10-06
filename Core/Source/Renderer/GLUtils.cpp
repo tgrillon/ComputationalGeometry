@@ -1,13 +1,14 @@
 #include "Core/Renderer/GLUtils.h"
+
 #include "Core/PrintHelpers.h"
 
 namespace Renderer::Utils
 {
 
-	const char *GLDebugSourceToString(GLenum source)
+const char* GLDebugSourceToString(GLenum source)
+{
+	switch(source)
 	{
-		switch (source)
-		{
 		case GL_DEBUG_SOURCE_API:
 			return "API";
 		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
@@ -21,13 +22,13 @@ namespace Renderer::Utils
 		case GL_DEBUG_SOURCE_OTHER:
 		default:
 			return "UNKNOWN";
-		}
 	}
+}
 
-	const char *GLDebugTypeToString(GLenum type)
+const char* GLDebugTypeToString(GLenum type)
+{
+	switch(type)
 	{
-		switch (type)
-		{
 		case GL_DEBUG_TYPE_ERROR:
 			return "ERROR";
 		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
@@ -44,13 +45,13 @@ namespace Renderer::Utils
 			return "MARKER";
 		default:
 			return "UNKNOWN";
-		}
 	}
+}
 
-	const char *GLDebugSeverityToString(GLenum severity)
+const char* GLDebugSeverityToString(GLenum severity)
+{
+	switch(severity)
 	{
-		switch (severity)
-		{
 		case GL_DEBUG_SEVERITY_HIGH:
 			return "HIGH";
 		case GL_DEBUG_SEVERITY_MEDIUM:
@@ -61,31 +62,26 @@ namespace Renderer::Utils
 			return "NOTIFICATION";
 		default:
 			return "UNKNOWN";
-		}
 	}
-
-	static void GLDebugCallback(GLenum source,
-								GLenum type,
-								GLuint id,
-								GLenum severity,
-								GLsizei length,
-								const GLchar *message,
-								const void *userParam)
-	{
-		// TODO: Custom filters
-		if (severity != GL_DEBUG_SEVERITY_MEDIUM && severity != GL_DEBUG_SEVERITY_HIGH)
-			return;
-
-		const char *sourceStr = Utils::GLDebugSourceToString(source);
-		const char *typeStr = Utils::GLDebugTypeToString(type);
-		const char *severityStr = Utils::GLDebugSeverityToString(severity);
-
-		PrintHelpers::print("[OpenGL] [{} - {} ({})]: [{}] {}", severityStr, typeStr, id, sourceStr, message);
-	}
-
-	void InitOpenGLDebugMessageCallback()
-	{
-		glDebugMessageCallback(GLDebugCallback, nullptr);
-	}
-
 }
+
+static void GLDebugCallback(
+	GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
+{
+	// TODO: Custom filters
+	if(severity != GL_DEBUG_SEVERITY_MEDIUM && severity != GL_DEBUG_SEVERITY_HIGH)
+		return;
+
+	const char* sourceStr = Utils::GLDebugSourceToString(source);
+	const char* typeStr = Utils::GLDebugTypeToString(type);
+	const char* severityStr = Utils::GLDebugSeverityToString(severity);
+
+	PrintHelpers::print("[OpenGL] [{} - {} ({})]: [{}] {}", severityStr, typeStr, id, sourceStr, message);
+}
+
+void InitOpenGLDebugMessageCallback()
+{
+	glDebugMessageCallback(GLDebugCallback, nullptr);
+}
+
+} // namespace Renderer::Utils
