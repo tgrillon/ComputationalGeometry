@@ -11,6 +11,8 @@ add_library(AppStaticLib STATIC ${SOURCES})
 
 target_sources(AppStaticLib PRIVATE ${SOURCES})
 
+InstrumentForCoverage(AppStaticLib)
+
 # Match VS filters to directory structure on disk
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${SOURCES})
 
@@ -40,4 +42,8 @@ add_custom_command(TARGET App POST_BUILD
     "${CMAKE_SOURCE_DIR}/App/Shaders" 
     $<TARGET_FILE_DIR:App>/Shaders)
  
+CleanCoverage(AppStaticLib)
+    
 Format(AppStaticLib .)
+
+Doxygen(AppDocs App docs)
