@@ -6,38 +6,44 @@
 namespace PrintHelpers
 {
 template<typename... Args>
-void print(std::format_string<Args...> fmt, Args&&... args)
+void Print(std::format_string<Args...> fmt, Args&&... args)
 {
 	std::cout << std::format(fmt, std::forward<Args>(args)...) << '\n';
 }
 
 template<typename... Args>
-void message(Args&&... args)
+void PrintErr(std::format_string<Args...> fmt, Args&&... args)
+{
+	std::cerr << std::format(fmt, std::forward<Args>(args)...) << '\n';
+}
+
+template<typename... Args>
+void Message(Args&&... args)
 {
 	print("-- [STATUS] {} --", std::forward<Args>(args)...);
 }
 
 template<typename... Args>
-void status(Args&&... args)
+void Status(Args&&... args)
 {
-	print("-- [STATUS] {} --", std::forward<Args>(args)...);
+	Print("-- [STATUS] {} --", std::forward<Args>(args)...);
 }
 
 template<typename... Args>
-void info(Args&&... args)
+void Info(Args&&... args)
 {
-	print("## [INFO]   {} ##", std::forward<Args>(args)...);
+	Print("## [INFO]   {} ##", std::forward<Args>(args)...);
 }
 
 template<typename... Args>
-void debug(Args&&... args)
+void Debug(Args&&... args)
 {
-	print("## [DEBUG]  {} ##", std::forward<Args>(args)...);
+	Print("## [DEBUG]  {} ##", std::forward<Args>(args)...);
 }
 
 template<typename... Args>
-void error(Args&&... args)
+void Error(Args&&... args)
 {
-	print("!! [ERROR]  {} !!", std::forward<Args>(args)...);
+	PrintErr("!! [ERROR]  {} !!", std::forward<Args>(args)...);
 }
 } // namespace PrintHelpers
