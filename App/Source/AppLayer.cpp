@@ -13,7 +13,7 @@
 AppLayer::AppLayer()
 {
 	// Create shaders
-	m_Shader = Renderer::CreateGraphicsShader("Shaders/Vertex.glsl", "Shaders/Fragment.glsl");
+	m_Shader = Renderer::CreateGraphicsShader("Data/Shaders/Vertex.glsl", "Data/Shaders/Fragment.glsl");
 
 	// Create geometry
 	glCreateVertexArrays(1, &m_VertexArray);

@@ -5,6 +5,8 @@
 set(SOURCES
     Source/RunApp.cpp
     Source/AppLayer.cpp
+    Source/Mesh.cpp
+    Source/MeshLoader.cpp
 )
 
 add_library(AppStaticLib STATIC ${SOURCES})

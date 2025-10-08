@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_type: [Debug, Release]
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential lcov doxygen graphviz
+        sudo apt-get install -y \
+                                libwayland-dev \
+                                libwayland-client0 \
+                                libwayland-cursor0 \
+                                libwayland-egl1 \
+                                wayland-protocols \
+                                libxkbcommon-dev \
+                                libegl1-mesa-dev \
+                                libxrandr-dev \
+                                libxinerama-dev \
+                                libxcursor-dev \
+                                libxi-dev
+
+    - name: Configure CMake
+      run: |
+        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C ${{matrix.build_type}} --output-on-failure
+
+    # Coverage analysis (only in Debug build)
+    - name: Generate coverage
+      if: matrix.build_type == 'Debug'
+      working-directory: ${{github.workspace}}/build
+      run: |
+        make coverage-AppUnitTests
+        
+    - name: Upload coverage reports to Codecov
+      if: matrix.build_type == 'Debug'
+      uses: codecov/codecov-action@v3
+      with:
+        directory: ${{github.workspace}}/build/coverage-AppUnitTests
+        fail_ci_if_error: true
+
+    # Documentation generation (only in Release build)
+    - name: Generate documentation
+      if: matrix.build_type == 'Release'
+      working-directory: ${{github.workspace}}/build
+      run: make AppDocs
+
+    - name: Deploy documentation
+      if: matrix.build_type == 'Release' && github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{github.workspace}}/build/docs
