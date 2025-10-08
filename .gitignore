@@ -1,0 +1,25 @@
+# CMake directory
+build/
+
+# Visual Studio files and folder
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
+**.nsight-gfxproj
+**.DotSettings
+**.user
+
+**/CMakeCache.txt
+**/install_manifest.txt
+
+**/CTestTestfile.cmake
+**/CPackConfig.cmake
+**/cmake_install.cmake
+
+**/CMakeUserPresets.json
+**/compile_commands.json
+
+.vscode/
+.idea/
