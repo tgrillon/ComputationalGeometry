@@ -76,7 +76,7 @@ static void GLDebugCallback(
 	const char* typeStr = Utils::GLDebugTypeToString(type);
 	const char* severityStr = Utils::GLDebugSeverityToString(severity);
 
-	PrintHelpers::print("[OpenGL] [{} - {} ({})]: [{}] {}", severityStr, typeStr, id, sourceStr, message);
+	PrintHelpers::Debug("[OpenGL] [{} - {} ({})]: [{}] {}", severityStr, typeStr, id, sourceStr, message);
 }
 
 void InitOpenGLDebugMessageCallback()

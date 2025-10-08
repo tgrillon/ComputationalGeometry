@@ -36,11 +36,11 @@ add_subdirectory(Test)
 add_executable(App EntryPoint.cpp)
 target_link_libraries(App PRIVATE AppStaticLib)
 
-# Copy shader files into build tree 
+# Copy Data files into build tree 
 add_custom_command(TARGET App POST_BUILD 
     COMMAND ${CMAKE_COMMAND} -E copy_directory 
-    "${CMAKE_SOURCE_DIR}/App/Shaders" 
-    $<TARGET_FILE_DIR:App>/Shaders)
+    "${CMAKE_SOURCE_DIR}/App/Data" 
+    $<TARGET_FILE_DIR:App>/Data)
  
 CleanCoverage(AppStaticLib)
     
