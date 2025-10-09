@@ -7,6 +7,7 @@ set(SOURCES
     Source/AppLayer.cpp
     Source/Mesh.cpp
     Source/MeshLoader.cpp
+    Source/PrimitiveProxy.cpp
 )
 
 add_library(AppStaticLib STATIC ${SOURCES})
