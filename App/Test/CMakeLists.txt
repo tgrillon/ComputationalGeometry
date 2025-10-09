@@ -2,6 +2,8 @@
 #   Unit Tests
 #
 
+include(Testing)
+
 set(SOURCES
     Source/MeshLoader_utest.cpp
 )
