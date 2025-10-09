@@ -51,4 +51,4 @@ add_custom_command(TARGET App POST_BUILD
     "${CMAKE_SOURCE_DIR}/App/Data" 
     $<TARGET_FILE_DIR:App>/Data)
 
-Doxygen(AppDocs App docs)
+Doxygen(AppDocs App)
