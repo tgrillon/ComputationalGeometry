@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Application/MeshPrimitive.h"
+#include "Application/Primitive.h"
 
 #include <bitset>
 #include <stdexcept>
@@ -40,16 +40,16 @@ public:
 	~VertexPair() = default;
 
 	/// @brief Get the index of the minimum vertex.
-	inline uint32_t GetMinVertexIndex() const { return m_MinVertex->Index; }
+	uint32_t GetMinVertexIndex() const { return m_MinVertex->Index; }
 
 	/// @brief Get the index of the maximum vertex.
-	inline uint32_t GetMaxVertexIndex() const { return m_MaxVertex->Index; }
+	uint32_t GetMaxVertexIndex() const { return m_MaxVertex->Index; }
 
 	/// @brief Get the minimum vertex.
-	inline const Vertex* GetMinVertex() const { return m_MinVertex; }
+	const Vertex* GetMinVertex() const { return m_MinVertex; }
 
 	/// @brief Get the maximum vertex.
-	inline const Vertex* GetMaxVertex() const { return m_MaxVertex; }
+	const Vertex* GetMaxVertex() const { return m_MaxVertex; }
 
 private:
 	/// @brief Pointer to the minimum vertex (the one with the smallest index).

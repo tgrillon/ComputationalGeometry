@@ -1,5 +1,10 @@
 #include "Application/Mesh.h"
 
+#include "Application/PrimitiveProxy.h"
+
+using namespace BaseType;
+using namespace Data::Primitive;
+
 namespace Data::Surface
 {
 Mesh::Mesh(const Mesh& other)
@@ -8,9 +13,32 @@ Mesh::Mesh(const Mesh& other)
 	m_Faces.reserve(other.m_Faces.size()); // Pre-allocate space
 
 	for(const auto& vertex : other.m_Vertices)
-		m_Vertices.emplace_back(std::make_unique<Primitive::Vertex>(*vertex));
+		m_Vertices.emplace_back(vertex);
 	for(const auto& face : other.m_Faces)
-		m_Faces.emplace_back(std::make_unique<Primitive::Triangle>(*face));
+		m_Faces.emplace_back(face);
 }
 
+VertexProxy Mesh::GetVertex(const IndexType index)
+{
+	assert(index < GetVertexCount() && "[Mesh::GetVertex] Index out of bound");
+	return VertexProxy(*this, m_Vertices[index]);
+}
+
+FaceProxy Mesh::GetFace(const IndexType index)
+{
+	assert(index < GetFaceCount() && "[Mesh::GetFace] Index out of bound");
+	return FaceProxy(*this, m_Faces[index]);
+}
+
+const Vertex& Mesh::GetVertexData(const IndexType index) const
+{
+	assert(index < GetVertexCount() && "[Mesh::GetVertexData] Index out of bound");
+	return m_Vertices[index];
+}
+
+const Face& Mesh::GetFaceData(const IndexType index) const
+{
+	assert(index < GetFaceCount() && "[Mesh::GetFaceData] Index out of bound");
+	return m_Faces[index];
+}
 } // namespace Data::Surface

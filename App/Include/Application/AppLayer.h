@@ -4,6 +4,8 @@
 
 #include <stdint.h>
 
+namespace Application
+{
 class AppLayer : public Core::Layer
 {
 public:
@@ -18,3 +20,4 @@ private:
 	uint32_t m_VertexArray = 0;
 	uint32_t m_VertexBuffer = 0;
 };
+} // namespace Application

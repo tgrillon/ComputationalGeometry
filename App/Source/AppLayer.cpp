@@ -10,6 +10,8 @@
 
 #include <glm/glm.hpp>
 
+namespace Application
+{
 AppLayer::AppLayer()
 {
 	// Create shaders
@@ -130,3 +132,4 @@ void AppLayer::OnRender()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
+} // namespace Application
