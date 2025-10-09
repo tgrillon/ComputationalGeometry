@@ -2,15 +2,15 @@ function(AddCoverage target)
   find_program(LCOV_PATH lcov REQUIRED)
   find_program(GENHTML_PATH genhtml REQUIRED)
   add_custom_target(coverage-${target}
-    COMMAND ${LCOV_PATH} -d . --zerocounters
+    COMMAND ${LCOV_PATH} -d ${CMAKE_BINARY_DIR} --zerocounters
     COMMAND $<TARGET_FILE:${target}>
-    COMMAND ${LCOV_PATH} -d . --capture -o coverage.info
+    COMMAND ${LCOV_PATH} -d ${CMAKE_BINARY_DIR} --capture -o coverage.info
     COMMAND ${LCOV_PATH} -r coverage.info '/usr/include/*'
                          -o filtered.info
-    COMMAND ${GENHTML_PATH} -o coverage-${target}
+    COMMAND ${GENHTML_PATH} -o ${CMAKE_BINARY_DIR}/coverage-${target}
                             filtered.info --legend
-    COMMAND rm -rf coverage.info filtered.info
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMAND ${CMAKE_COMMAND} -E rm -rf coverage.info filtered.info
+    WORKING_DIRECTORY $<TARGET_FILE_DIR:${target}>
   )
 endfunction()
 
