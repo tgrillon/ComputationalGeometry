@@ -5,6 +5,7 @@ include(Testing)
 
 set(SOURCES
     Source/MeshLoader_utest.cpp
+    Source/VertexPair_utest.cpp
 )
 
 add_executable(AppUnitTests)
