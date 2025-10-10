@@ -41,4 +41,20 @@ const Face& Mesh::GetFaceData(const IndexType index) const
 	assert(index < GetFaceCount() && "[Mesh::GetFaceData] Index out of bound");
 	return m_Faces[index];
 }
+
+IndexType Mesh::AddVertex(const Vertex& vertex)
+{
+	IndexType index = static_cast<IndexType>(m_Vertices.size());
+	m_Vertices.emplace_back(vertex);
+	m_VertexExtraData.emplace_back();
+	return index;
+}
+
+BaseType::IndexType Mesh::AddFace(const Face& face)
+{
+	IndexType index = static_cast<IndexType>(m_Faces.size());
+	m_Faces.emplace_back(face);
+	m_FaceExtraData.emplace_back();
+	return index;
+}
 } // namespace Data::Surface

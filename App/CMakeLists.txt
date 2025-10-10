@@ -7,6 +7,8 @@ set(SOURCES
     Source/AppLayer.cpp
     Source/Mesh.cpp
     Source/MeshLoader.cpp
+    Source/MeshIntegrity.cpp
+    Source/Primitive.cpp
     Source/PrimitiveProxy.cpp
 )
 

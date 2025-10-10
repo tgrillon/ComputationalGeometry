@@ -72,6 +72,12 @@ public:
 	/// @brief Construct a VertexProxy from a mesh and a vertex.
 	VertexProxy(Data::Surface::Mesh& mesh, Data::Primitive::Vertex& vertex);
 
+	VertexProxy(const VertexProxy& other);
+	VertexProxy(VertexProxy&& other);
+
+	VertexProxy& operator=(const VertexProxy& other);
+	VertexProxy& operator=(VertexProxy&& other);
+
 	/// @brief Check if the proxy is valid (i.e., the mesh and vertex are valid).
 	bool IsValid() const;
 

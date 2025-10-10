@@ -1,5 +1,7 @@
 #include "Application/PrimitiveProxy.h"
 
+#include <utility>
+
 using namespace BaseType;
 
 namespace Data::Primitive
@@ -48,6 +50,38 @@ VertexProxy::VertexProxy(Data::Surface::Mesh& mesh, Data::Primitive::Vertex& ver
 	: m_Mesh(&mesh)
 	, m_Vertex(&vertex)
 {}
+
+VertexProxy::VertexProxy(const VertexProxy& other)
+	: m_Mesh(other.m_Mesh)
+	, m_Vertex(other.m_Vertex)
+{}
+
+VertexProxy::VertexProxy(VertexProxy&& other)
+	: m_Mesh(std::exchange(other.m_Mesh, nullptr))
+	, m_Vertex(std::exchange(other.m_Vertex, nullptr))
+{}
+
+VertexProxy& VertexProxy::operator=(const VertexProxy& other)
+{
+	if(this != &other)
+	{
+		m_Vertex = other.m_Vertex;
+		m_Mesh = other.m_Mesh;
+	}
+
+	return *this;
+}
+
+VertexProxy& VertexProxy::operator=(VertexProxy&& other)
+{
+	if(this != &other)
+	{
+		m_Vertex = std::exchange(other.m_Vertex, nullptr);
+		m_Mesh = std::exchange(other.m_Mesh, nullptr);
+	}
+
+	return *this;
+}
 
 bool VertexProxy::IsValid() const
 {

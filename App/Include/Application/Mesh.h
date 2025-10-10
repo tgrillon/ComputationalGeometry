@@ -8,10 +8,11 @@
 #include <vector>
 
 /// Forward declaration
-namespace Utilitary
+namespace Utilitary::Mesh
 {
 class MeshLoader;
-}
+class MeshIntegrity;
+} // namespace Utilitary::Mesh
 
 namespace Data::Primitive
 {
@@ -25,7 +26,8 @@ namespace Data::Surface
 class Mesh
 {
 public:
-	friend Utilitary::MeshLoader;
+	friend Utilitary::Mesh::MeshLoader;
+	friend Utilitary::Mesh::MeshIntegrity;
 	friend Data::Primitive::FaceProxy;
 	friend Data::Primitive::VertexProxy;
 
@@ -58,6 +60,11 @@ public:
 	Data::Primitive::Face& GetFaceData(const BaseType::IndexType index);
 	/// @brief Get the face data at the given index.
 	const Data::Primitive::Face& GetFaceData(const BaseType::IndexType index) const;
+
+	/// @brief Add a vertex to the mesh and return its index.
+	BaseType::IndexType AddVertex(const Data::Primitive::Vertex& vertex);
+	/// @brief Add a face to the mesh and return its index.
+	BaseType::IndexType AddFace(const Data::Primitive::Face& face);
 
 private:
 	/// @brief List of vertices.

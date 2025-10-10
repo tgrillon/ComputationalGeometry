@@ -43,3 +43,13 @@ struct Face
 	std::array<Face*, 3> Neighbors;
 };
 } // namespace Data::Primitive
+
+namespace Utilitary::Primitive
+{
+/// @brief Get the index of the edge defined by two vertices in a face.
+/// @param face The face containing the edge.
+/// @param v0 The first vertex of the edge.
+/// @param v1 The second vertex of the edge.
+/// @return The index of the edge (0, 1, or 2), or -1 if the edge is not found.
+int8_t GetEdgeIndex(const Data::Primitive::Face& face, const Data::Primitive::Vertex& v0, const Data::Primitive::Vertex& v1);
+} // namespace Utilitary::Primitive
