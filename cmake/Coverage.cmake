@@ -10,8 +10,8 @@ function(AddCoverage target)
     COMMAND ${GENHTML_PATH} -o ${CMAKE_BINARY_DIR}/coverage-${target}
                             filtered.info --legend
     COMMAND ${CMAKE_COMMAND} -E copy filtered.info 
-            ${CMAKE_BINARY_DIR}/coverage-${target}.info
-    COMMAND ${CMAKE_COMMAND} -E rm -rf coverage.info
+            ${CMAKE_BINARY_DIR}/coverage-${target}/coverage.info
+    COMMAND ${CMAKE_COMMAND} -E rm -rf coverage.info filtered.info
     WORKING_DIRECTORY $<TARGET_FILE_DIR:${target}>
   )
 endfunction()
