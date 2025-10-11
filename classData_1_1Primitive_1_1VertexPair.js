@@ -1,8 +1,6 @@
 var classData_1_1Primitive_1_1VertexPair =
 [
-    [ "VertexPair", "classData_1_1Primitive_1_1VertexPair.html#ad97637df25087354861907c98cafa3a4", null ],
-    [ "GetMaxVertex", "classData_1_1Primitive_1_1VertexPair.html#a3fe7a8b4b9db3f96b7cfc2d6657af567", null ],
-    [ "GetMaxVertexIndex", "classData_1_1Primitive_1_1VertexPair.html#a23ea58e46ca19d0e446648348243eb5d", null ],
-    [ "GetMinVertex", "classData_1_1Primitive_1_1VertexPair.html#ade927ac971850223b3b5ee895be2e39d", null ],
-    [ "GetMinVertexIndex", "classData_1_1Primitive_1_1VertexPair.html#a0113121301a33dacffa5d98a573f56e2", null ]
+    [ "VertexPair", "classData_1_1Primitive_1_1VertexPair.html#a19659151ea9db30a27a8f24c79149b7c", null ],
+    [ "GetMaxVertexIdx", "classData_1_1Primitive_1_1VertexPair.html#ac12a05f0a1f9c2a75655eb3f260a2bc7", null ],
+    [ "GetMinVertexIdx", "classData_1_1Primitive_1_1VertexPair.html#a834bd367ae2f86fa294422a9ec07654f", null ]
 ];
