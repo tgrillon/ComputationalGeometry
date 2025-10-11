@@ -1,0 +1,5 @@
+<map id="Data::Primitive::Vertex" name="Data::Primitive::Vertex">
+<area shape="rect" id="Node000001" title="Structure holding the informations relative to a vertex primitive." alt="" coords="5,93,176,119"/>
+<area shape="rect" id="Node000002" href="$structData_1_1Primitive_1_1Face.html" title="Structure holding the informations relative to a triangular face primitive." alt="" coords="12,5,169,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,45,93,93,88,93,88,45"/>
+</map>

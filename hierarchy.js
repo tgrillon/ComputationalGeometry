@@ -1,0 +1,15 @@
+var hierarchy =
+[
+    [ "Data::Internal::ExtraDataContainer", "classData_1_1Internal_1_1ExtraDataContainer.html", null ],
+    [ "Data::Primitive::Face", "structData_1_1Primitive_1_1Face.html", null ],
+    [ "Data::Primitive::FaceProxy", "classData_1_1Primitive_1_1FaceProxy.html", null ],
+    [ "Core::Layer", null, [
+      [ "Application::AppLayer", "classApplication_1_1AppLayer.html", null ]
+    ] ],
+    [ "Data::Surface::Mesh", "classData_1_1Surface_1_1Mesh.html", null ],
+    [ "Utilitary::Mesh::MeshIntegrity", "structUtilitary_1_1Mesh_1_1MeshIntegrity.html", null ],
+    [ "Utilitary::Mesh::MeshLoader", "structUtilitary_1_1Mesh_1_1MeshLoader.html", null ],
+    [ "Data::Primitive::Vertex", "structData_1_1Primitive_1_1Vertex.html", null ],
+    [ "Data::Primitive::VertexPair", "classData_1_1Primitive_1_1VertexPair.html", null ],
+    [ "Data::Primitive::VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html", null ]
+];
