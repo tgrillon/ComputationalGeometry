@@ -67,24 +67,24 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 	// Reading vertices
 	uint32_t vertexIndex = 0;
 	mesh->m_Vertices.resize(nVertices);
-	for(auto&& vertex : mesh->m_Vertices)
+	for(auto&& curVertex : mesh->m_Vertices)
 	{
 		SkipCommentsAndWhitespace(file);
-		vertex.Index = vertexIndex++;
-		file >> vertex.Position.x >> vertex.Position.y >> vertex.Position.z;
+		curVertex.Index = vertexIndex++;
+		file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
 	}
 
 	// Map to store edges and their corresponding face and edge index
-	std::unordered_map<VertexPair, std::pair<Face*, uint8_t>> neighborMap;
+	std::unordered_map<VertexPair, std::pair<IndexType, uint8_t>> neighborMap;
 
 	uint32_t faceIndex = 0;
 	mesh->m_Faces.resize(nFaces);
-	for(auto&& face : mesh->m_Faces)
+	for(auto&& curFace : mesh->m_Faces)
 	{
 		SkipCommentsAndWhitespace(file);
 
 		// Create a new face
-		face.Index = faceIndex++;
+		curFace.Index = faceIndex++;
 
 		// Set the face index
 		file >> nVertices;
@@ -97,35 +97,39 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 			// Get pointers to the vertex.
 			Vertex& curVertex = mesh->m_Vertices[curVertexIdx];
 
-			// Set IncidentFace for the vertex if it's not already the case.
-			if(curVertex.IncidentFace == nullptr)
-				curVertex.IncidentFace = &face;
+			// Set IncidentFaceIdx for the vertex if it's not already the case.
+			if(curVertex.IncidentFaceIdx == -1)
+				curVertex.IncidentFaceIdx = curFace.Index;
 
 			// Set vertices of the face.
-			face.Vertices[idx] = &curVertex;
+			curFace.Vertices[idx] = curVertex.Index;
 		}
 
 		// Set neighboring faces using the edges
-		auto SetFacesNeigbhor = [&](const Vertex& firstVertex, const Vertex& secondVertex, uint8_t edgeIndex)
+		auto SetFacesNeigbhor = [&](IndexType firstVertexIdx, IndexType secondVertexIdx, uint8_t edgeIdx)
 		{
-			if(neighborMap.find({ firstVertex, secondVertex }) == neighborMap.end())
+			if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
 			{
-				neighborMap[{ firstVertex, secondVertex }] = { &face, edgeIndex };
+				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFace.Index, edgeIdx };
 			}
 			else // The edge with firstVertex and secondVertex is already registered in map
 			{
-				auto [faceNeighbor, neighborEdgeIndex] = neighborMap[{ firstVertex, secondVertex }];
-				faceNeighbor->Neighbors[neighborEdgeIndex] = &face;
-				face.Neighbors[edgeIndex] = faceNeighbor;
+				auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
+				mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFace.Index;
+				curFace.Neighbors[edgeIdx] = faceNeighborIdx;
 			}
 		};
 
+		const IndexType v0Idx = curFace.Vertices[0];
+		const IndexType v1Idx = curFace.Vertices[1];
+		const IndexType v2Idx = curFace.Vertices[2];
+
 		// Edge v0-v1
-		SetFacesNeigbhor(*face.Vertices[0], *face.Vertices[1], 2);
+		SetFacesNeigbhor(v0Idx, v1Idx, 2);
 		// Edge v1-v2
-		SetFacesNeigbhor(*face.Vertices[1], *face.Vertices[2], 0);
+		SetFacesNeigbhor(v1Idx, v2Idx, 0);
 		// Edge v2-v0
-		SetFacesNeigbhor(*face.Vertices[2], *face.Vertices[0], 1);
+		SetFacesNeigbhor(v2Idx, v0Idx, 1);
 	}
 
 	file.close();
@@ -153,7 +157,7 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 	auto mesh = std::make_unique<Data::Surface::Mesh>();
 
 	// Map to store edges and their corresponding face and edge index
-	std::unordered_map<VertexPair, std::pair<Face*, uint8_t>> neighborMap;
+	std::unordered_map<VertexPair, std::pair<IndexType, uint8_t>> neighborMap;
 
 	std::string type;
 	IndexType curIndexV = 0;
@@ -171,10 +175,10 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 		// Process line based on its type
 		if(type == "v")
 		{ // Vertex position
-			Vertex vertex;
-			vertex.Index = curIndexV++;
-			file >> vertex.Position.x >> vertex.Position.y >> vertex.Position.z;
-			mesh->m_Vertices.emplace_back(vertex);
+			Vertex curVertex;
+			curVertex.Index = curIndexV++;
+			file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
+			mesh->m_Vertices.emplace_back(curVertex);
 			mesh->m_VertexExtraData.emplace_back();
 		}
 		else if(type == "vt")
@@ -213,7 +217,10 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 				vertexIdx = std::stoi(buffer);
 
 				Vertex& curVertex = mesh->m_Vertices[vertexIdx - 1];
-				curFace.Vertices[idx] = &curVertex;
+				if(curVertex.IncidentFaceIdx == -1)
+					curVertex.IncidentFaceIdx = curFace.Index;
+
+				curFace.Vertices[idx] = curVertex.Index;
 
 				// Skip texture/normal indices until next vertex or whitespace
 				while(file.peek() != EOF && !std::isspace(file.peek()))
@@ -221,38 +228,33 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 					file.ignore(1);
 				}
 			}
-		}
-	}
 
-	for(auto&& curFace : mesh->m_Faces)
-	{
-		for(auto&& vertex : curFace.Vertices)
-		{
-			if(vertex->IncidentFace == nullptr)
-				vertex->IncidentFace = &curFace;
-		}
-
-		// Set neighboring faces using the edges
-		auto SetFacesNeigbhor = [&](const Vertex& firstVertex, const Vertex& secondVertex, uint8_t edgeIndex)
-		{
-			if(neighborMap.find({ firstVertex, secondVertex }) == neighborMap.end())
+			// Set neighboring faces using the edges
+			auto SetFacesNeigbhor = [&](IndexType firstVertexIdx, IndexType secondVertexIdx, uint8_t edgeIdx)
 			{
-				neighborMap[{ firstVertex, secondVertex }] = { &curFace, edgeIndex };
-			}
-			else // The edge with firstVertex and secondVertex is already registered in map
-			{
-				auto [faceNeighbor, neighborEdgeIndex] = neighborMap[{ firstVertex, secondVertex }];
-				faceNeighbor->Neighbors[neighborEdgeIndex] = &curFace;
-				curFace.Neighbors[edgeIndex] = faceNeighbor;
-			}
-		};
+				if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
+				{
+					neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFace.Index, edgeIdx };
+				}
+				else // The edge with firstVertex and secondVertex is already registered in map
+				{
+					auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
+					mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFace.Index;
+					curFace.Neighbors[edgeIdx] = faceNeighborIdx;
+				}
+			};
 
-		// Edge v0-v1
-		SetFacesNeigbhor(*curFace.Vertices[0], *curFace.Vertices[1], 2);
-		// Edge v1-v2
-		SetFacesNeigbhor(*curFace.Vertices[1], *curFace.Vertices[2], 0);
-		// Edge v2-v0
-		SetFacesNeigbhor(*curFace.Vertices[2], *curFace.Vertices[0], 1);
+			const IndexType v0Idx = curFace.Vertices[0];
+			const IndexType v1Idx = curFace.Vertices[1];
+			const IndexType v2Idx = curFace.Vertices[2];
+
+			// Edge v0-v1
+			SetFacesNeigbhor(v0Idx, v1Idx, 2);
+			// Edge v1-v2
+			SetFacesNeigbhor(v1Idx, v2Idx, 0);
+			// Edge v2-v0
+			SetFacesNeigbhor(v2Idx, v0Idx, 1);
+		}
 	}
 
 	file.close();

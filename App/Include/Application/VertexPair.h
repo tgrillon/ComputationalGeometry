@@ -13,49 +13,43 @@ class VertexPair
 {
 public:
 	/// @brief Construct a VertexPair from two vertices.
-	VertexPair(const Vertex& v0, const Vertex& v1)
+	VertexPair(const BaseType::IndexType v0Idx, const BaseType::IndexType v1Idx)
 	{
-		if(v0.Index < v1.Index)
+		if(v0Idx < v1Idx)
 		{
-			m_MinVertex = const_cast<Vertex*>(&v0);
-			m_MaxVertex = const_cast<Vertex*>(&v1);
+			m_MinVertexIdx = v0Idx;
+			m_MaxVertexIdx = v1Idx;
 		}
-		else if(v0.Index > v1.Index)
+		else if(v0Idx > v1Idx)
 		{
-			m_MinVertex = const_cast<Vertex*>(&v1);
-			m_MaxVertex = const_cast<Vertex*>(&v0);
+			m_MinVertexIdx = v1Idx;
+			m_MaxVertexIdx = v0Idx;
 		}
 		else
 		{
-			throw std::invalid_argument("VertexPair cannot be created with two identical vertices.");
+			throw std::invalid_argument("VertexPair cannot be created with two identical vertex indices.");
 		}
 	}
 
 	bool operator==(const VertexPair& other) const
 	{
-		return (m_MinVertex == other.m_MinVertex && m_MaxVertex == other.m_MaxVertex)
-			|| (m_MinVertex == other.m_MaxVertex && m_MaxVertex == other.m_MinVertex);
+		return (m_MinVertexIdx == other.m_MinVertexIdx && m_MaxVertexIdx == other.m_MaxVertexIdx)
+			|| (m_MinVertexIdx == other.m_MaxVertexIdx && m_MaxVertexIdx == other.m_MinVertexIdx);
 	}
 
 	~VertexPair() = default;
 
 	/// @brief Get the index of the minimum vertex.
-	uint32_t GetMinVertexIndex() const { return m_MinVertex->Index; }
+	uint32_t GetMinVertexIdx() const { return m_MinVertexIdx; }
 
 	/// @brief Get the index of the maximum vertex.
-	uint32_t GetMaxVertexIndex() const { return m_MaxVertex->Index; }
-
-	/// @brief Get the minimum vertex.
-	const Vertex* GetMinVertex() const { return m_MinVertex; }
-
-	/// @brief Get the maximum vertex.
-	const Vertex* GetMaxVertex() const { return m_MaxVertex; }
+	uint32_t GetMaxVertexIdx() const { return m_MaxVertexIdx; }
 
 private:
-	/// @brief Pointer to the minimum vertex (the one with the smallest index).
-	const Vertex* m_MinVertex;
-	/// @brief Pointer to the maximum vertex (the one with the largest index).
-	const Vertex* m_MaxVertex;
+	/// @brief Minimum vertex (the one with the smaller index).
+	BaseType::IndexType m_MinVertexIdx;
+	/// @brief Maximum vertex (the one with the biggest index).
+	BaseType::IndexType m_MaxVertexIdx;
 };
 } // namespace Data::Primitive
 
@@ -67,8 +61,8 @@ struct hash<Data::Primitive::VertexPair>
 {
 	size_t operator()(const Data::Primitive::VertexPair& vertexPair) const
 	{
-		auto h1 = std::hash<const Data::Primitive::Vertex*>{}(vertexPair.GetMinVertex());
-		auto h2 = std::hash<const Data::Primitive::Vertex*>{}(vertexPair.GetMaxVertex());
+		auto h1 = std::hash<BaseType::IndexType>{}(vertexPair.GetMinVertexIdx());
+		auto h2 = std::hash<BaseType::IndexType>{}(vertexPair.GetMaxVertexIdx());
 		return h1 ^ h2;
 	}
 };

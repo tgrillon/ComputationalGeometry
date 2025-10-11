@@ -7,110 +7,129 @@ using namespace BaseType;
 namespace Data::Primitive
 {
 /*==================================FaceProxy Methods===================================*/
-FaceProxy::FaceProxy(Data::Surface::Mesh& mesh, Data::Primitive::Face& face)
+FaceProxy::FaceProxy(Data::Surface::Mesh& mesh, const IndexType faceIdx)
 	: m_Mesh(&mesh)
-	, m_Face(&face)
+	, m_Index(faceIdx)
 {}
 
 bool FaceProxy::IsValid() const
 {
-	return m_Mesh && m_Face->Index < m_Mesh->GetFaceCount();
+	return m_Mesh && m_Index < m_Mesh->GetFaceCount();
 }
 
 IndexType FaceProxy::GetIndex() const
 {
-	return m_Face->Index;
+	return m_Index;
 }
 
-Vertex* FaceProxy::GetVertex(const uint8_t index) const
+Face& FaceProxy::GetFace()
+{
+	return m_Mesh->m_Faces[m_Index];
+}
+
+const Face& FaceProxy::GetFace() const
+{
+	return m_Mesh->m_Faces[m_Index];
+}
+
+IndexType FaceProxy::GetVertex(const uint8_t index) const
 {
 	assert(index < 3 && "[FaceProxy::GetVertex] Index out of bound");
-	return m_Face->Vertices[index];
+	return GetFace().Vertices[index];
 }
 
-std::array<Vertex*, 3> FaceProxy::GetVertices() const
+std::array<int, 3> FaceProxy::GetVertices() const
 {
-	return m_Face->Vertices;
+	return GetFace().Vertices;
 }
 
-Face* FaceProxy::GetNeighbor(const uint8_t index) const
-
+int FaceProxy::GetNeighbor(const uint8_t index) const
 {
 	assert(index < 3 && "[FaceProxy::GetNeighbor] Index out of bound");
-	return m_Face->Neighbors[index];
+	return GetFace().Neighbors[index];
 }
 
-std::array<Face*, 3> FaceProxy::GetNeighbors() const
+std::array<int, 3> FaceProxy::GetNeighbors() const
 {
-	return m_Face->Neighbors;
+	return GetFace().Neighbors;
 }
 
 /*==================================VertexProxy Methods===================================*/
-VertexProxy::VertexProxy(Data::Surface::Mesh& mesh, Data::Primitive::Vertex& vertex)
+VertexProxy::VertexProxy(Data::Surface::Mesh& mesh, const IndexType vertexIdx)
 	: m_Mesh(&mesh)
-	, m_Vertex(&vertex)
+	, m_Index(vertexIdx)
 {}
 
-VertexProxy::VertexProxy(const VertexProxy& other)
-	: m_Mesh(other.m_Mesh)
-	, m_Vertex(other.m_Vertex)
-{}
+// VertexProxy::VertexProxy(const VertexProxy& other)
+// 	: m_Mesh(other.m_Mesh)
+// 	, m_Index(other.m_Index)
+// {}
 
-VertexProxy::VertexProxy(VertexProxy&& other)
-	: m_Mesh(std::exchange(other.m_Mesh, nullptr))
-	, m_Vertex(std::exchange(other.m_Vertex, nullptr))
-{}
+// VertexProxy::VertexProxy(VertexProxy&& other)
+// 	: m_Mesh(std::exchange(other.m_Mesh, nullptr))
+// 	, m_Index(other.m_Index)
+// {}
 
-VertexProxy& VertexProxy::operator=(const VertexProxy& other)
-{
-	if(this != &other)
-	{
-		m_Vertex = other.m_Vertex;
-		m_Mesh = other.m_Mesh;
-	}
+// VertexProxy& VertexProxy::operator=(const VertexProxy& other)
+// {
+// 	if(this != &other)
+// 	{
+// 		m_Mesh = other.m_Mesh;
+// 		m_Index = other.m_Index;
+// 	}
 
-	return *this;
-}
+// 	return *this;
+// }
 
-VertexProxy& VertexProxy::operator=(VertexProxy&& other)
-{
-	if(this != &other)
-	{
-		m_Vertex = std::exchange(other.m_Vertex, nullptr);
-		m_Mesh = std::exchange(other.m_Mesh, nullptr);
-	}
+// VertexProxy& VertexProxy::operator=(VertexProxy&& other)
+// {
+// 	if(this != &other)
+// 	{
+// 		m_Mesh = std::exchange(other.m_Mesh, nullptr);
+// 		m_Index = other.m_Index;
+// 	}
 
-	return *this;
-}
+// 	return *this;
+// }
 
 bool VertexProxy::IsValid() const
 {
-	return m_Mesh && m_Vertex->Index < m_Mesh->GetVertexCount();
+	return m_Mesh && m_Index < m_Mesh->GetVertexCount();
 }
 
 IndexType VertexProxy::GetIndex() const
 {
-	return m_Vertex->Index;
+	return m_Mesh->m_Vertices[m_Index].Index;
+}
+
+Vertex& VertexProxy::GetVertex()
+{
+	return m_Mesh->m_Vertices[m_Index];
+}
+
+const Vertex& VertexProxy::GetVertex() const
+{
+	return m_Mesh->m_Vertices[m_Index];
 }
 
 Vec3& VertexProxy::GetPosition()
 {
-	return m_Vertex->Position;
+	return GetVertex().Position;
 }
 
 const Vec3& VertexProxy::GetPosition() const
 {
-	return m_Vertex->Position;
+	return GetVertex().Position;
 }
 
-Face* VertexProxy::GetIncidentFace()
+int VertexProxy::GetIncidentFace()
 {
-	return m_Vertex->IncidentFace;
+	return GetVertex().IncidentFaceIdx;
 }
 
-const Face* VertexProxy::GetIncidentFace() const
+const int VertexProxy::GetIncidentFace() const
 {
-	return m_Vertex->IncidentFace;
+	return GetVertex().IncidentFaceIdx;
 }
 
 } // namespace Data::Primitive

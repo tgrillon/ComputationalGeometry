@@ -21,26 +21,31 @@ struct Face;
 struct Vertex
 {
 	/// @brief Unique index of the vertex in the mesh.
-	BaseType::IndexType Index;
+	BaseType::IndexType Index{};
 
 	/// @brief Vertex position in 3D.
-	BaseType::Vec3 Position;
+	BaseType::Vec3 Position{};
 
-	/// @brief Pointer to one of the incident faces for internal purposes.
-	Face* IncidentFace;
+	/// @brief Index to one of the incident faces for internal purposes.
+	/// @note If the vertex has no incident face, this index is set to -1.
+	int IncidentFaceIdx{ -1 };
 };
 
 /// @brief  Structure holding the informations relative to a triangular face primitive.
 struct Face
 {
 	/// @brief Unique index of the triangle in the mesh.
-	BaseType::IndexType Index;
+	BaseType::IndexType Index{};
 
-	/// @brief Face vertices.
-	std::array<Vertex*, 3> Vertices;
+	/// @brief Face vertex indices.
+	/// @note Vertices must be stored in counter-clockwise order.
+	/// @note The face wont be valid if one of the indices is -1.
+	std::array<int, 3> Vertices{ -1, -1, -1 };
 
-	/// @brief Face neighboring faces
-	std::array<Face*, 3> Neighbors;
+	/// @brief Face neighboring face indices.
+	/// @note Neighbors[i] is the neighbor opposite to Vertices[i].
+	/// @note If the face has no neighbor on the edge, the index is set to -1.
+	std::array<int, 3> Neighbors{ -1, -1, -1 };
 };
 } // namespace Data::Primitive
 
