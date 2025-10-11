@@ -57,9 +57,12 @@ jobs:
       if: matrix.build_type == 'Debug'
       uses: codecov/codecov-action@v3
       with:
+        token: ${{ secrets.CODECOV_TOKEN }}
         directory: ${{github.workspace}}/build/coverage-AppUnitTests
+        flags: unittests
+        name: codecov-umbrella
         fail_ci_if_error: true
-
+        
     # Documentation generation (only in Release build)
     - name: Generate documentation
       if: matrix.build_type == 'Release'
