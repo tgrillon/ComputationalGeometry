@@ -30,10 +30,22 @@ FaceProxy Mesh::GetFace(const IndexType index)
 	return FaceProxy(*this, index);
 }
 
+Vertex& Mesh::GetVertexData(const IndexType index)
+{
+	assert(index < GetVertexCount() && "[Mesh::GetVertexData] Index out of bound");
+	return m_Vertices[index];
+}
+
 const Vertex& Mesh::GetVertexData(const IndexType index) const
 {
 	assert(index < GetVertexCount() && "[Mesh::GetVertexData] Index out of bound");
 	return m_Vertices[index];
+}
+
+Face& Mesh::GetFaceData(const IndexType index)
+{
+	assert(index < GetFaceCount() && "[Mesh::GetFaceData] Index out of bound");
+	return m_Faces[index];
 }
 
 const Face& Mesh::GetFaceData(const IndexType index) const
