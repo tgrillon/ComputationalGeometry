@@ -1,77 +1,168 @@
 name: CI
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         build_type: [Debug, Release]
-
     steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: 'recursive'
-
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential lcov doxygen graphviz
-        sudo apt-get install -y \
-                                libwayland-dev \
-                                libwayland-client0 \
-                                libwayland-cursor0 \
-                                libwayland-egl1 \
-                                wayland-protocols \
-                                libxkbcommon-dev \
-                                libegl1-mesa-dev \
-                                libxrandr-dev \
-                                libxinerama-dev \
-                                libxcursor-dev \
-                                libxi-dev
-
-    - name: Configure CMake
-      run: |
-        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
-
-    - name: Build
-      run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
-
-    - name: Test
-      working-directory: ${{github.workspace}}/build
-      run: ctest -C ${{matrix.build_type}} --output-on-failure
-
-    # Coverage analysis (only in Debug build)
-    - name: Generate coverage
-      if: matrix.build_type == 'Debug'
-      working-directory: ${{github.workspace}}/build
-      run: |
-        make coverage-AppUnitTests
-        
-    - name: Upload coverage reports to Codecov
-      if: matrix.build_type == 'Debug'
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ${{github.workspace}}/build/coverage-AppUnitTests
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: true
-        
-    # Documentation generation (only in Release build)
-    - name: Generate documentation
-      if: matrix.build_type == 'Release'
-      working-directory: ${{github.workspace}}/build
-      run: make doxygen-AppDocs
-
-    - name: Deploy documentation
-      if: matrix.build_type == 'Release' && github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ${{github.workspace}}/build/AppDocs
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential lcov doxygen graphviz valgrind
+          sudo apt-get install -y \
+            libwayland-dev \
+            libwayland-client0 \
+            libwayland-cursor0 \
+            libwayland-egl1 \
+            wayland-protocols \
+            libxkbcommon-dev \
+            libegl1-mesa-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxcursor-dev \
+            libxi-dev
+      
+      - name: Configure CMake
+        run: |
+          cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+      
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
+      
+      - name: Test
+        working-directory: ${{github.workspace}}/build
+        run: ctest -C ${{matrix.build_type}} --output-on-failure
+      
+      # Coverage analysis (only in Debug build)
+      - name: Generate coverage
+        if: matrix.build_type == 'Debug'
+        working-directory: ${{github.workspace}}/build
+        run: |
+          make coverage-AppUnitTests
+      
+      - name: Upload coverage report as artifact
+        if: matrix.build_type == 'Debug'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: ${{github.workspace}}/build/coverage-AppUnitTests/
+          retention-days: 30
+      
+      - name: Upload coverage reports to Codecov
+        if: matrix.build_type == 'Debug'
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ${{github.workspace}}/build/coverage-AppUnitTests
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
+      
+      # Memcheck analysis (only in Debug build)
+      - name: Run memcheck
+        if: matrix.build_type == 'Debug'
+        working-directory: ${{github.workspace}}/build
+        run: |
+          make memcheck-AppUnitTests
+        continue-on-error: true
+      
+      - name: Upload memcheck report as artifact
+        if: matrix.build_type == 'Debug'
+        uses: actions/upload-artifact@v4
+        with:
+          name: memcheck-report
+          path: ${{github.workspace}}/build/valgrind-AppUnitTests/
+          retention-days: 30
+      
+      # Documentation generation (only in Release build)
+      - name: Generate documentation
+        if: matrix.build_type == 'Release'
+        working-directory: ${{github.workspace}}/build
+        run: make doxygen-AppDocs
+      
+      - name: Upload documentation as artifact
+        if: matrix.build_type == 'Release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: ${{github.workspace}}/build/AppDocs/
+          retention-days: 30
+  
+  # Separate job for deploying to GitHub Pages
+  deploy-reports:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Download coverage report
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-report
+          path: ./reports/coverage
+      
+      - name: Download memcheck report
+        uses: actions/download-artifact@v4
+        with:
+          name: memcheck-report
+          path: ./reports/memcheck
+      
+      - name: Download documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: documentation
+          path: ./reports/docs
+      
+      - name: Create index page
+        run: |
+          cat > ./reports/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Project Reports</title>
+              <style>
+                  body { font-family: Arial, sans-serif; margin: 40px; }
+                  h1 { color: #333; }
+                  .report-links { list-style: none; padding: 0; }
+                  .report-links li { margin: 15px 0; }
+                  .report-links a { 
+                      display: inline-block;
+                      padding: 10px 20px;
+                      background: #0066cc;
+                      color: white;
+                      text-decoration: none;
+                      border-radius: 5px;
+                  }
+                  .report-links a:hover { background: #0052a3; }
+              </style>
+          </head>
+          <body>
+              <h1>Project Reports</h1>
+              <ul class="report-links">
+                  <li><a href="docs/index.html">📚 Documentation</a></li>
+                  <li><a href="coverage/index.html">📊 Coverage Report</a></li>
+                  <li><a href="memcheck/index.html">🔍 Memcheck Report</a></li>
+              </ul>
+          </body>
+          </html>
+          EOF
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports
+          keep_files: false
