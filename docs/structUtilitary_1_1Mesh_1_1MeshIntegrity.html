@@ -123,6 +123,12 @@ Public Types</h2></td></tr>
 , <b>FaceHasNullVertex</b>
 , <br />
 &#160;&#160;<b>FaceNeighborNotReciprocal</b>
+, <b>FaceHasDuplicatedVertices</b>
+, <b>FaceIsItsOwnNeighbor</b>
+, <b>InvalidVertexIndex</b>
+, <br />
+&#160;&#160;<b>InvalidIncidentFaceIndex</b>
+, <b>InvalidNeighborFaceIndex</b>
 <br />
  }</td></tr>
 <tr class="memdesc:af6ea09c29f985547d0bcba8a95926c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status codes for mesh integrity check.  <a href="structUtilitary_1_1Mesh_1_1MeshIntegrity.html#af6ea09c29f985547d0bcba8a95926c72">More...</a><br /></td></tr>
@@ -168,7 +174,12 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   17</span>        VertexNotInFace,</div>
 <div class="line"><span class="lineno">   18</span>        FaceHasNullVertex,</div>
 <div class="line"><span class="lineno">   19</span>        FaceNeighborNotReciprocal,</div>
-<div class="line"><span class="lineno">   20</span>    };</div>
+<div class="line"><span class="lineno">   20</span>        FaceHasDuplicatedVertices,</div>
+<div class="line"><span class="lineno">   21</span>        FaceIsItsOwnNeighbor,</div>
+<div class="line"><span class="lineno">   22</span>        InvalidVertexIndex,</div>
+<div class="line"><span class="lineno">   23</span>        InvalidIncidentFaceIndex,</div>
+<div class="line"><span class="lineno">   24</span>        InvalidNeighborFaceIndex,</div>
+<div class="line"><span class="lineno">   25</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -216,50 +227,71 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   15</span>        <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> == -1)</div>
 <div class="line"><span class="lineno">   16</span>            <span class="keywordflow">return</span> Status::VertexHasNullIncidentFace;</div>
 <div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>        <span class="comment">// Check that the vertex is indeed part of its incident face.</span></div>
-<div class="line"><span class="lineno">   19</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; face = mesh.m_Faces[curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a>];</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keyword">auto</span>&amp;&amp; faceVertices = face.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>;</div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">if</span>(faceVertices[0] != vIdx &amp;&amp; faceVertices[1] != vIdx &amp;&amp; faceVertices[2] != vIdx)</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> Status::VertexNotInFace;</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>    <span class="comment">// Check the integrity of each face of the mesh.</span></div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp;&amp; curFace : mesh.m_Faces)</div>
-<div class="line"><span class="lineno">   27</span>    {</div>
-<div class="line"><span class="lineno">   28</span>        <span class="comment">// Check that the face has valid vertices.</span></div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">if</span>(curFace.Vertices[0] == -1 || curFace.Vertices[1] == -1 || curFace.Vertices[2] == -1)</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">return</span> Status::FaceHasNullVertex;</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>        <span class="comment">// Check that each neighbor face is reciprocal.</span></div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">for</span>(uint8_t idx = 0; idx &lt; 3; ++idx)</div>
-<div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            IndexType neighborIdx = curFace.Neighbors[idx];</div>
-<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">if</span>(neighborIdx != -1)</div>
-<div class="line"><span class="lineno">   37</span>            {</div>
-<div class="line"><span class="lineno">   38</span>                <span class="comment">// Get the two vertices defining the edge opposite to the neighbor.</span></div>
-<div class="line"><span class="lineno">   39</span>                IndexType v0Idx = curFace.Vertices[IndexHelpers::Next[idx]];</div>
-<div class="line"><span class="lineno">   40</span>                IndexType v1Idx = curFace.Vertices[IndexHelpers::Previous[idx]];</div>
+<div class="line"><span class="lineno">   18</span>        <span class="comment">// Check that the vertex has a valid incident face index.</span></div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> &gt;= mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>())</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">return</span> Status::InvalidIncidentFaceIndex;</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        <span class="comment">// Check that the vertex is indeed part of its incident face.</span></div>
+<div class="line"><span class="lineno">   23</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; face = mesh.m_Faces[curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a>];</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keyword">auto</span>&amp;&amp; faceVertices = face.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>;</div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span>(faceVertices[0] != vIdx &amp;&amp; faceVertices[1] != vIdx &amp;&amp; faceVertices[2] != vIdx)</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span> Status::VertexNotInFace;</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    <span class="comment">// Check the integrity of each face of the mesh.</span></div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">for</span>(IndexType curFaceIdx = 0; curFaceIdx &lt; mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>(); ++curFaceIdx)</div>
+<div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = mesh.m_Faces[curFaceIdx];</div>
+<div class="line"><span class="lineno">   33</span>        <span class="comment">// Check that the face has valid vertices.</span></div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] == -1 || curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1] == -1 || curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2] == -1)</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">return</span> Status::FaceHasNullVertex;</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>        <span class="comment">// Check that the face does not have duplicated vertices.</span></div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">if</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] == curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1] || curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1] == curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2]</div>
+<div class="line"><span class="lineno">   39</span>           || curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2] == curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0])</div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">return</span> Status::FaceHasDuplicatedVertices;</div>
 <div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>                <span class="comment">// Get the neighbor face and the two vertices.</span></div>
-<div class="line"><span class="lineno">   43</span>                <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; neighbor = mesh.m_Faces[neighborIdx];</div>
-<div class="line"><span class="lineno">   44</span>                <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; v0 = mesh.m_Vertices[v0Idx];</div>
-<div class="line"><span class="lineno">   45</span>                <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; v1 = mesh.m_Vertices[v1Idx];</div>
-<div class="line"><span class="lineno">   46</span>                int8_t edgeIndex = Utilitary::Primitive::GetEdgeIndex(neighbor, v0, v1);</div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">for</span>(uint8_t curEdgeIdx = 0; curEdgeIdx &lt; 3; ++curEdgeIdx)</div>
+<div class="line"><span class="lineno">   43</span>        {</div>
+<div class="line"><span class="lineno">   44</span>            <span class="comment">// Check that each vertex has a valid index.</span></div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">if</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[curEdgeIdx] &gt;= mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>())</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">return</span> MeshIntegrity::Status::InvalidVertexIndex;</div>
 <div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>                <span class="comment">// Check that the neighbor has the current face as neighbor on the same edge.</span></div>
-<div class="line"><span class="lineno">   49</span>                <span class="keywordflow">if</span>(edgeIndex == -1 || neighbor.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[edgeIndex] != curFace.Index)</div>
-<div class="line"><span class="lineno">   50</span>                    <span class="keywordflow">return</span> Status::FaceNeighborNotReciprocal;</div>
-<div class="line"><span class="lineno">   51</span>            }</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> MeshIntegrity::Status::MeshOK;</div>
-<div class="line"><span class="lineno">   55</span>}</div>
+<div class="line"><span class="lineno">   48</span>            <span class="comment">// Check that each neighbor face is reciprocal.</span></div>
+<div class="line"><span class="lineno">   49</span>            IndexType neighborIdx = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[curEdgeIdx];</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span>(neighborIdx != -1)</div>
+<div class="line"><span class="lineno">   51</span>            {</div>
+<div class="line"><span class="lineno">   52</span>                <span class="comment">// Get the two vertices defining the edge opposite to the neighbor.</span></div>
+<div class="line"><span class="lineno">   53</span>                IndexType v0Idx = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[IndexHelpers::Next[curEdgeIdx]];</div>
+<div class="line"><span class="lineno">   54</span>                IndexType v1Idx = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[IndexHelpers::Previous[curEdgeIdx]];</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>                <span class="comment">// Check that the neighbor index is valid.</span></div>
+<div class="line"><span class="lineno">   57</span>                <span class="keywordflow">if</span>(neighborIdx &gt;= mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>())</div>
+<div class="line"><span class="lineno">   58</span>                    <span class="keywordflow">return</span> Status::InvalidNeighborFaceIndex;</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>                <span class="comment">// A face cannot be its own neighbor.</span></div>
+<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">if</span>(neighborIdx == curFaceIdx)</div>
+<div class="line"><span class="lineno">   62</span>                    <span class="keywordflow">return</span> Status::FaceIsItsOwnNeighbor;</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>                <span class="comment">// Get the neighbor face and the two vertices.</span></div>
+<div class="line"><span class="lineno">   65</span>                <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; neighbor = mesh.m_Faces[neighborIdx];</div>
+<div class="line"><span class="lineno">   66</span>                int8_t edgeIndex = Utilitary::Primitive::GetEdgeIndex(neighbor, v0Idx, v1Idx);</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>                <span class="comment">// Check that the neighbor has the current face as neighbor on the same edge.</span></div>
+<div class="line"><span class="lineno">   69</span>                <span class="keywordflow">if</span>(edgeIndex == -1 || neighbor.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[edgeIndex] != curFaceIdx)</div>
+<div class="line"><span class="lineno">   70</span>                    <span class="keywordflow">return</span> Status::FaceNeighborNotReciprocal;</div>
+<div class="line"><span class="lineno">   71</span>            }</div>
+<div class="line"><span class="lineno">   72</span>        }</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> MeshIntegrity::Status::MeshOK;</div>
+<div class="line"><span class="lineno">   75</span>}</div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00045">Mesh.h:45</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00035">Primitive.h:36</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_a49432a6f6c8456ed87fdea60fe46acb3"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Data::Primitive::Face::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Face vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00043">Primitive.h:43</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_ab8daaca0bdaa80536c779c8d1296f533"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Data::Primitive::Face::Neighbors</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Neighbors</div><div class="ttdoc">Face neighboring face indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00048">Primitive.h:48</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad1a67c7f1a4cfdc468f15c808cfca25f"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">Data::Surface::Mesh::GetFaceCount</a></div><div class="ttdeci">uint32_t GetFaceCount() const</div><div class="ttdoc">Get the number of faces in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00048">Mesh.h:48</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00032">Primitive.h:33</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_a49432a6f6c8456ed87fdea60fe46acb3"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Data::Primitive::Face::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Face vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00037">Primitive.h:37</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_ab8daaca0bdaa80536c779c8d1296f533"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Data::Primitive::Face::Neighbors</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Neighbors</div><div class="ttdoc">Face neighboring face indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00042">Primitive.h:42</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html">Data::Primitive::Vertex</a></div><div class="ttdoc">Structure holding the informations relative to a vertex primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00021">Primitive.h:22</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_ad79c2d2b680be7d9d08cd2765d31620e"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">Data::Primitive::Vertex::IncidentFaceIdx</a></div><div class="ttdeci">int IncidentFaceIdx</div><div class="ttdoc">Index to one of the incident faces for internal purposes.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00031">Primitive.h:31</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_ad79c2d2b680be7d9d08cd2765d31620e"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">Data::Primitive::Vertex::IncidentFaceIdx</a></div><div class="ttdeci">int IncidentFaceIdx</div><div class="ttdoc">Index to one of the incident faces for internal purposes.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00028">Primitive.h:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -7,10 +7,10 @@ var classData_1_1Surface_1_1Mesh =
     [ "Clone", "classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87", null ],
     [ "GetFace", "classData_1_1Surface_1_1Mesh.html#a77306308167bb8edd342ea2c216db23c", null ],
     [ "GetFaceCount", "classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f", null ],
-    [ "GetFaceData", "classData_1_1Surface_1_1Mesh.html#a12262f4c25cff4ab383d0d7ef6ffa7d0", null ],
+    [ "GetFaceData", "classData_1_1Surface_1_1Mesh.html#ac17710099200d4370ddefe5ce32c1140", null ],
     [ "GetFaceData", "classData_1_1Surface_1_1Mesh.html#a4f76a23f9945e213daa74e2667c52cc2", null ],
     [ "GetVertex", "classData_1_1Surface_1_1Mesh.html#a8def77a190948ed59ae4a0546edee170", null ],
     [ "GetVertexCount", "classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8", null ],
-    [ "GetVertexData", "classData_1_1Surface_1_1Mesh.html#a99c6ef050bd67bc50602aa7f7e8cef0b", null ],
+    [ "GetVertexData", "classData_1_1Surface_1_1Mesh.html#ae9dea6944c15fd9b032b3022bc3c7fce", null ],
     [ "GetVertexData", "classData_1_1Surface_1_1Mesh.html#a785bf0b6cf70e0ed6f5b6340385c0f97", null ]
 ];
