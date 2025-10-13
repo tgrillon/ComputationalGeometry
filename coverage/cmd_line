@@ -1,0 +1,1 @@
+genhtml -o /home/runner/work/SandBox/SandBox/build/coverage-AppUnitTests filtered.info --legend
