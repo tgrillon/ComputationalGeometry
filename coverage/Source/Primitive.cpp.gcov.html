@@ -31,13 +31,13 @@
             <td class="headerValue">filtered.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">94.4&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">18</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-13 10:01:20</td>
+            <td class="headerValue">2025-10-13 13:24:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -75,35 +75,35 @@
 <span id="L5"><span class="lineNum">       5</span>              : </span>
 <span id="L6"><span class="lineNum">       6</span>              : namespace Utilitary::Primitive</span>
 <span id="L7"><span class="lineNum">       7</span>              : {</span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC tlaBgGNC">          91 : int8_t GetEdgeIndex(const Face&amp; face, const IndexType v0Idx, const IndexType v1Idx)</span></span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC tlaBgGNC">         104 : int GetEdgeIndex(const Face&amp; face, const IndexType v0Idx, const IndexType v1Idx)</span></span>
 <span id="L9"><span class="lineNum">       9</span>              : {</span>
 <span id="L10"><span class="lineNum">      10</span>              :         // Initialize edge index to -1 (not found)</span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">          91 :         int8_t edgeIdx = -1;</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">         104 :         int edgeIdx = -1;</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
 <span id="L13"><span class="lineNum">      13</span>              :         // Lambda to find the edge index given a vertex and the current index</span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">         182 :         auto FindEdgeIndex = [&amp;](const IndexType vertexIdx, const uint8_t idx)</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">         200 :         auto FindEdgeIndex = [&amp;](const IndexType vertexIdx, const uint8_t idx)</span></span>
 <span id="L15"><span class="lineNum">      15</span>              :         {</span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">         182 :                 IndexType prevVertexIdx = face.Vertices[IndexHelpers::Previous[idx]];</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         182 :                 IndexType nextVertexIdx = face.Vertices[IndexHelpers::Next[idx]];</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         182 :                 if(prevVertexIdx == vertexIdx)</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          91 :                         return static_cast&lt;int8_t&gt;(IndexHelpers::Next[idx]);</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          91 :                 else if(nextVertexIdx == vertexIdx)</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          91 :                         return static_cast&lt;int8_t&gt;(IndexHelpers::Previous[idx]);</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">         200 :                 IndexType prevVertexIdx = face.Vertices[IndexHelpers::Previous[idx]];</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         200 :                 IndexType nextVertexIdx = face.Vertices[IndexHelpers::Next[idx]];</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         200 :                 if(prevVertexIdx == vertexIdx)</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          97 :                         return static_cast&lt;int&gt;(IndexHelpers::Next[idx]);</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         103 :                 else if(nextVertexIdx == vertexIdx)</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          97 :                         return static_cast&lt;int&gt;(IndexHelpers::Previous[idx]);</span></span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC tlaBgUNC">           0 :                 return static_cast&lt;int8_t&gt;(-1);</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC tlaBgGNC">          91 :         };</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           6 :                 return -1;</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         104 :         };</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
 <span id="L26"><span class="lineNum">      26</span>              :         // Iterate through the vertices of the face to find the edge</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         364 :         for(uint8_t idx = 0; idx &lt; 3; ++idx)</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         416 :         for(uint8_t idx = 0; idx &lt; 3; ++idx)</span></span>
 <span id="L28"><span class="lineNum">      28</span>              :         {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         273 :                 IndexType curVertexIdx = face.Vertices[IndexHelpers::Current[idx]];</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         273 :                 if(curVertexIdx == v0Idx)</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          91 :                         edgeIdx = FindEdgeIndex(v1Idx, idx);</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         182 :                 else if(curVertexIdx == v1Idx)</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          91 :                         edgeIdx = FindEdgeIndex(v0Idx, idx);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         312 :                 IndexType curVertexIdx = face.Vertices[IndexHelpers::Current[idx]];</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         312 :                 if(curVertexIdx == v0Idx)</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         100 :                         edgeIdx = FindEdgeIndex(v1Idx, idx);</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         212 :                 else if(curVertexIdx == v1Idx)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         100 :                         edgeIdx = FindEdgeIndex(v0Idx, idx);</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :         }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          91 :         return edgeIdx;</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         104 :         return edgeIdx;</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : }</span>
 <span id="L38"><span class="lineNum">      38</span>              : } // namespace Utilitary::Primitive</span>
         </pre>

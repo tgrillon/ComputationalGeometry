@@ -11,6 +11,5 @@ var classData_1_1Primitive_1_1FaceProxy =
     [ "GetVertex", "classData_1_1Primitive_1_1FaceProxy.html#afa76f0ac4a1473ae8be124a3ad205424", null ],
     [ "GetVertices", "classData_1_1Primitive_1_1FaceProxy.html#a60315067be3aa5300d95d03aafe45de2", null ],
     [ "HasExtraData", "classData_1_1Primitive_1_1FaceProxy.html#a001552dbc93faaffc51ae9d62a791825", null ],
-    [ "IsValid", "classData_1_1Primitive_1_1FaceProxy.html#a15b23131b553993554775117c0a41134", null ],
     [ "SetExtraData", "classData_1_1Primitive_1_1FaceProxy.html#ab0fec3a200423bccc5cd6968e9f5ba5a", null ]
 ];

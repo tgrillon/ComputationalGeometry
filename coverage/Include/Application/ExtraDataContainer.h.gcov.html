@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-13 10:01:20</td>
+            <td class="headerValue">2025-10-13 13:24:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">80.0&nbsp;%</td>
@@ -81,7 +81,7 @@
 <span id="L11"><span class="lineNum">      11</span>              : {</span>
 <span id="L12"><span class="lineNum">      12</span>              : public:</span>
 <span id="L13"><span class="lineNum">      13</span>              :         /// @brief Default constructor</span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC tlaBgGNC">          74 :         ExtraDataContainer() = default;</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC tlaBgGNC">         137 :         ExtraDataContainer() = default;</span></span>
 <span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC tlaBgUNC">           0 :         ~ExtraDataContainer() = default;</span></span>
 <span id="L16"><span class="lineNum">      16</span>              : </span>
 <span id="L17"><span class="lineNum">      17</span>              :         /// @brief Disable copy semantics</span>
@@ -89,7 +89,7 @@
 <span id="L19"><span class="lineNum">      19</span>              :         ExtraDataContainer&amp; operator=(const ExtraDataContainer&amp;) = delete;</span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
 <span id="L21"><span class="lineNum">      21</span>              :         /// @brief Enable move semantics</span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">          65 :         ExtraDataContainer(ExtraDataContainer&amp;&amp;) = default;</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">         106 :         ExtraDataContainer(ExtraDataContainer&amp;&amp;) = default;</span></span>
 <span id="L23"><span class="lineNum">      23</span>              :         ExtraDataContainer&amp; operator=(ExtraDataContainer&amp;&amp;) = default;</span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
 <span id="L25"><span class="lineNum">      25</span>              :         /// @brief Set the value of type T in the container.</span>
@@ -101,7 +101,7 @@
 <span id="L31"><span class="lineNum">      31</span>              : </span>
 <span id="L32"><span class="lineNum">      32</span>              :         /// @brief Get a pointer to the value of type T in the container, or nullptr if not found.</span>
 <span id="L33"><span class="lineNum">      33</span>              :         template&lt;typename T&gt;</span>
-<span id="L34"><span class="lineNum">      34</span>              :         T* Get() const</span>
+<span id="L34"><span class="lineNum">      34</span>              :         T* Get()</span>
 <span id="L35"><span class="lineNum">      35</span>              :         {</span>
 <span id="L36"><span class="lineNum">      36</span>              :                 auto it = m_Data.find(std::type_index(typeid(T)));</span>
 <span id="L37"><span class="lineNum">      37</span>              :                 if(it == m_Data.end())</span>

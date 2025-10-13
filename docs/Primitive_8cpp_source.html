@@ -116,10 +116,10 @@ $(document).ready(function(){initNavTree('Primitive_8cpp_source.html',''); initR
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>Utilitary::Primitive</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>int8_t GetEdgeIndex(<span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; face, <span class="keyword">const</span> IndexType v0Idx, <span class="keyword">const</span> IndexType v1Idx)</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">int</span> GetEdgeIndex(<span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; face, <span class="keyword">const</span> IndexType v0Idx, <span class="keyword">const</span> IndexType v1Idx)</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="comment">// Initialize edge index to -1 (not found)</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    int8_t edgeIdx = -1;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">int</span> edgeIdx = -1;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// Lambda to find the edge index given a vertex and the current index</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">auto</span> FindEdgeIndex = [&amp;](<span class="keyword">const</span> IndexType vertexIdx, <span class="keyword">const</span> uint8_t idx)</div>
@@ -127,11 +127,11 @@ $(document).ready(function(){initNavTree('Primitive_8cpp_source.html',''); initR
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        IndexType prevVertexIdx = face.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[IndexHelpers::Previous[idx]];</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        IndexType nextVertexIdx = face.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[IndexHelpers::Next[idx]];</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordflow">if</span>(prevVertexIdx == vertexIdx)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int8_t<span class="keyword">&gt;</span>(IndexHelpers::Next[idx]);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(IndexHelpers::Next[idx]);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(nextVertexIdx == vertexIdx)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int8_t<span class="keyword">&gt;</span>(IndexHelpers::Previous[idx]);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(IndexHelpers::Previous[idx]);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int8_t<span class="keyword">&gt;</span>(-1);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    };</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// Iterate through the vertices of the face to find the edge</span></div>

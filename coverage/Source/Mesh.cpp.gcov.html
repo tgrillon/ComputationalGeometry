@@ -31,18 +31,18 @@
             <td class="headerValue">filtered.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">52.8&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">36</td>
-            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">36</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-13 10:01:20</td>
+            <td class="headerValue">2025-10-13 13:24:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">55.6&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">9</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -77,67 +77,67 @@
 <span id="L7"><span class="lineNum">       7</span>              : </span>
 <span id="L8"><span class="lineNum">       8</span>              : namespace Data::Surface</span>
 <span id="L9"><span class="lineNum">       9</span>              : {</span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC tlaBgUNC">           0 : Mesh::Mesh(const Mesh&amp; other)</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC tlaBgGNC">           1 : Mesh::Mesh(const Mesh&amp; other)</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : {</span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaUNC">           0 :         m_Vertices.reserve(other.m_Vertices.size()); // Pre-allocate space</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC">           0 :         m_Faces.reserve(other.m_Faces.size()); // Pre-allocate space</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           1 :         m_Vertices.reserve(other.m_Vertices.size()); // Pre-allocate space</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           1 :         m_Faces.reserve(other.m_Faces.size()); // Pre-allocate space</span></span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :         for(const auto&amp; vertex : other.m_Vertices)</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :                 m_Vertices.emplace_back(vertex);</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :         for(const auto&amp; face : other.m_Faces)</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :                 m_Faces.emplace_back(face);</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 : }</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           5 :         for(const auto&amp; vertex : other.m_Vertices)</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           4 :                 m_Vertices.emplace_back(vertex);</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           3 :         for(const auto&amp; face : other.m_Faces)</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           2 :                 m_Faces.emplace_back(face);</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 : }</span></span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC tlaBgGNC">          16 : VertexProxy Mesh::GetVertex(const IndexType index)</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          20 : VertexProxy Mesh::GetVertex(const IndexType index)</span></span>
 <span id="L22"><span class="lineNum">      22</span>              : {</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">          16 :         assert(index &lt; GetVertexCount() &amp;&amp; &quot;[Mesh::GetVertex] Index out of bound&quot;);</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          16 :         return VertexProxy(*this, index);</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">          20 :         assert(index &lt; GetVertexCount() &amp;&amp; &quot;Index out of bound&quot;);</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          20 :         return VertexProxy(*this, index);</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : }</span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC tlaBgUNC">           0 : FaceProxy Mesh::GetFace(const IndexType index)</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           4 : FaceProxy Mesh::GetFace(const IndexType index)</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :         assert(index &lt; GetFaceCount() &amp;&amp; &quot;[Mesh::GetFace] Index out of bound&quot;);</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :         return FaceProxy(*this, index);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           4 :         assert(index &lt; GetFaceCount() &amp;&amp; &quot;Index out of bound&quot;);</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           4 :         return FaceProxy(*this, index);</span></span>
 <span id="L31"><span class="lineNum">      31</span>              : }</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC tlaBgGNC">           2 : Vertex&amp; Mesh::GetVertexData(const IndexType index)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 : const Vertex&amp; Mesh::GetVertexData(const IndexType index) const</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : {</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :         assert(index &lt; GetVertexCount() &amp;&amp; &quot;[Mesh::GetVertexData] Index out of bound&quot;);</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           2 :         return m_Vertices[index];</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :         assert(index &lt; GetVertexCount() &amp;&amp; &quot;Index out of bound&quot;);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :         return m_Vertices[index];</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : }</span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC tlaBgUNC">           0 : const Vertex&amp; Mesh::GetVertexData(const IndexType index) const</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           7 : Vertex&amp; Mesh::GetVertexData(const IndexType index)</span></span>
 <span id="L40"><span class="lineNum">      40</span>              : {</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :         assert(index &lt; GetVertexCount() &amp;&amp; &quot;[Mesh::GetVertexData] Index out of bound&quot;);</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :         return m_Vertices[index];</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           7 :         assert(index &lt; GetVertexCount() &amp;&amp; &quot;Index out of bound&quot;);</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           7 :         return m_Vertices[index];</span></span>
 <span id="L43"><span class="lineNum">      43</span>              : }</span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC tlaBgGNC">           2 : Face&amp; Mesh::GetFaceData(const IndexType index)</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           1 : const Face&amp; Mesh::GetFaceData(const IndexType index) const</span></span>
 <span id="L46"><span class="lineNum">      46</span>              : {</span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           2 :         assert(index &lt; GetFaceCount() &amp;&amp; &quot;[Mesh::GetFaceData] Index out of bound&quot;);</span></span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           2 :         return m_Faces[index];</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           1 :         assert(index &lt; GetFaceCount() &amp;&amp; &quot;Index out of bound&quot;);</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           1 :         return m_Faces[index];</span></span>
 <span id="L49"><span class="lineNum">      49</span>              : }</span>
 <span id="L50"><span class="lineNum">      50</span>              : </span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC tlaBgUNC">           0 : const Face&amp; Mesh::GetFaceData(const IndexType index) const</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           7 : Face&amp; Mesh::GetFaceData(const IndexType index)</span></span>
 <span id="L52"><span class="lineNum">      52</span>              : {</span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC">           0 :         assert(index &lt; GetFaceCount() &amp;&amp; &quot;[Mesh::GetFaceData] Index out of bound&quot;);</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC">           0 :         return m_Faces[index];</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           7 :         assert(index &lt; GetFaceCount() &amp;&amp; &quot;Index out of bound&quot;);</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           7 :         return m_Faces[index];</span></span>
 <span id="L55"><span class="lineNum">      55</span>              : }</span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC tlaBgGNC">          40 : IndexType Mesh::AddVertex(const Vertex&amp; vertex)</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          82 : IndexType Mesh::AddVertex(const Vertex&amp; vertex)</span></span>
 <span id="L58"><span class="lineNum">      58</span>              : {</span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">          40 :         IndexType index = static_cast&lt;IndexType&gt;(m_Vertices.size());</span></span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          40 :         m_Vertices.emplace_back(vertex);</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          40 :         m_VertexExtraData.emplace_back();</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          40 :         return index;</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">          82 :         IndexType index = static_cast&lt;IndexType&gt;(m_Vertices.size());</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          82 :         m_Vertices.emplace_back(vertex);</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          82 :         m_VertexExtraData.emplace_back();</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          82 :         return index;</span></span>
 <span id="L63"><span class="lineNum">      63</span>              : }</span>
 <span id="L64"><span class="lineNum">      64</span>              : </span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">          25 : BaseType::IndexType Mesh::AddFace(const Face&amp; face)</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">          46 : BaseType::IndexType Mesh::AddFace(const Face&amp; face)</span></span>
 <span id="L66"><span class="lineNum">      66</span>              : {</span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">          25 :         IndexType index = static_cast&lt;IndexType&gt;(m_Faces.size());</span></span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">          25 :         m_Faces.emplace_back(face);</span></span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          25 :         m_FaceExtraData.emplace_back();</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          25 :         return index;</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">          46 :         IndexType index = static_cast&lt;IndexType&gt;(m_Faces.size());</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">          46 :         m_Faces.emplace_back(face);</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          46 :         m_FaceExtraData.emplace_back();</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          46 :         return index;</span></span>
 <span id="L71"><span class="lineNum">      71</span>              : }</span>
 <span id="L72"><span class="lineNum">      72</span>              : } // namespace Data::Surface</span>
         </pre>
