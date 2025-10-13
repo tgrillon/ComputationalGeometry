@@ -4,6 +4,7 @@
 include(Testing)
 
 set(SOURCES
+    Source/MeshIntegrity_utest.cpp
     Source/MeshLoader_utest.cpp
     Source/VertexPair_utest.cpp
 )

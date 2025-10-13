@@ -17,6 +17,11 @@ struct MeshIntegrity
 		VertexNotInFace,
 		FaceHasNullVertex,
 		FaceNeighborNotReciprocal,
+		FaceHasDuplicatedVertices,
+		FaceIsItsOwnNeighbor,
+		InvalidVertexIndex,
+		InvalidIncidentFaceIndex,
+		InvalidNeighborFaceIndex,
 	};
 
 	/// @brief Check the integrity of the mesh.
