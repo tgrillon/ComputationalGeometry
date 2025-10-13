@@ -31,7 +31,7 @@ public:
 
 	/// @brief Get a pointer to the value of type T in the container, or nullptr if not found.
 	template<typename T>
-	T* Get() const
+	T* Get()
 	{
 		auto it = m_Data.find(std::type_index(typeid(T)));
 		if(it == m_Data.end())

@@ -12,9 +12,6 @@ public:
 	/// @brief Construct a FaceProxy from a mesh and a face.
 	FaceProxy(Data::Surface::Mesh& mesh, const BaseType::IndexType faceIdx);
 
-	/// @brief Check if the proxy is valid (i.e., the mesh and face are valid).
-	bool IsValid() const;
-
 	/// @brief Get extra data of type T associated with the face, or nullptr if not found.
 	template<typename T>
 	T* GetExtraData() const
@@ -77,19 +74,16 @@ public:
 	/// @brief Construct a VertexProxy from a mesh and a vertex.
 	VertexProxy(Data::Surface::Mesh& mesh, const BaseType::IndexType vertexIdx);
 
-	/// @brief Check if the proxy is valid (i.e., the mesh and vertex are valid).
-	bool IsValid() const;
-
 	/// @brief Get extra data of type T associated with the vertex, or nullptr if not found.
 	template<typename T>
-	T* GetExtraData() const
+	T* GetExtraData()
 	{
 		return m_Mesh->m_VertexExtraData[m_Index].Get<T>();
 	}
 
 	/// @brief Get or create extra data of type T associated with the vertex.
 	template<typename T>
-	T& GetOrCreateExtraData() const
+	T& GetOrCreateExtraData()
 	{
 		return m_Mesh->m_VertexExtraData[m_Index].GetOrCreate<T>();
 	}

@@ -180,13 +180,13 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 		}
 		else if(type == "vt")
 		{ // Vertex texture coordinate
-			const VertexProxy& curVertex = mesh->GetVertex(curIndexVt++);
+			VertexProxy curVertex = mesh->GetVertex(curIndexVt++);
 			auto texCoordED = curVertex.GetOrCreateExtraData<Vec2>();
 			file >> texCoordED.x >> texCoordED.y;
 		}
 		else if(type == "vn")
 		{ // Vertex normal
-			const VertexProxy& curVertex = mesh->GetVertex(curIndexVn++);
+			VertexProxy curVertex = mesh->GetVertex(curIndexVn++);
 			auto normalED = curVertex.GetOrCreateExtraData<Vec3>();
 			file >> normalED.x >> normalED.y >> normalED.z;
 		}

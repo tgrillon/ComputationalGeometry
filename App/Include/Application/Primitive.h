@@ -50,5 +50,5 @@ namespace Utilitary::Primitive
 /// @param v0Idx The first vertex index of the edge.
 /// @param v1Idx The second vertex index of the edge.
 /// @return The index of the edge (0, 1, or 2), or -1 if the edge is not found.
-int8_t GetEdgeIndex(const Data::Primitive::Face& face, const BaseType::IndexType v0Idx, const BaseType::IndexType v1Idx);
+int GetEdgeIndex(const Data::Primitive::Face& face, const BaseType::IndexType v0Idx, const BaseType::IndexType v1Idx);
 } // namespace Utilitary::Primitive

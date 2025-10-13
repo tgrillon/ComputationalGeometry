@@ -12,11 +12,6 @@ FaceProxy::FaceProxy(Data::Surface::Mesh& mesh, const IndexType faceIdx)
 	, m_Index(faceIdx)
 {}
 
-bool FaceProxy::IsValid() const
-{
-	return m_Mesh && m_Index < m_Mesh->GetFaceCount();
-}
-
 IndexType FaceProxy::GetIndex() const
 {
 	return m_Index;
@@ -59,43 +54,6 @@ VertexProxy::VertexProxy(Data::Surface::Mesh& mesh, const IndexType vertexIdx)
 	: m_Mesh(&mesh)
 	, m_Index(vertexIdx)
 {}
-
-// VertexProxy::VertexProxy(const VertexProxy& other)
-// 	: m_Mesh(other.m_Mesh)
-// 	, m_Index(other.m_Index)
-// {}
-
-// VertexProxy::VertexProxy(VertexProxy&& other)
-// 	: m_Mesh(std::exchange(other.m_Mesh, nullptr))
-// 	, m_Index(other.m_Index)
-// {}
-
-// VertexProxy& VertexProxy::operator=(const VertexProxy& other)
-// {
-// 	if(this != &other)
-// 	{
-// 		m_Mesh = other.m_Mesh;
-// 		m_Index = other.m_Index;
-// 	}
-
-// 	return *this;
-// }
-
-// VertexProxy& VertexProxy::operator=(VertexProxy&& other)
-// {
-// 	if(this != &other)
-// 	{
-// 		m_Mesh = std::exchange(other.m_Mesh, nullptr);
-// 		m_Index = other.m_Index;
-// 	}
-
-// 	return *this;
-// }
-
-bool VertexProxy::IsValid() const
-{
-	return m_Mesh && m_Index < m_Mesh->GetVertexCount();
-}
 
 IndexType VertexProxy::GetIndex() const
 {

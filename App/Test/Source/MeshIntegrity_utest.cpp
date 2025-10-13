@@ -13,8 +13,8 @@ Mesh CreateValidMesh()
 
 	// Add vertices
 	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { 0 } });
 	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { 0 } });
 	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentFaceIdx = { 1 } });
 
 	// Add faces

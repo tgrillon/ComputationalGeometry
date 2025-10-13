@@ -54,7 +54,7 @@ public:
 
 	/// @brief Get the vertex data at the given index.
 	Data::Primitive::Vertex& GetVertexData(const BaseType::IndexType index);
-	/// @brief Get the face data at the given index.
+	/// @brief Get the vertex data at the given index.
 	const Data::Primitive::Vertex& GetVertexData(const BaseType::IndexType index) const;
 	/// @brief Get the face data at the given index.
 	Data::Primitive::Face& GetFaceData(const BaseType::IndexType index);

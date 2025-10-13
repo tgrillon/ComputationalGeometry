@@ -20,37 +20,37 @@ Mesh::Mesh(const Mesh& other)
 
 VertexProxy Mesh::GetVertex(const IndexType index)
 {
-	assert(index < GetVertexCount() && "[Mesh::GetVertex] Index out of bound");
+	assert(index < GetVertexCount() && "Index out of bound");
 	return VertexProxy(*this, index);
 }
 
 FaceProxy Mesh::GetFace(const IndexType index)
 {
-	assert(index < GetFaceCount() && "[Mesh::GetFace] Index out of bound");
+	assert(index < GetFaceCount() && "Index out of bound");
 	return FaceProxy(*this, index);
-}
-
-Vertex& Mesh::GetVertexData(const IndexType index)
-{
-	assert(index < GetVertexCount() && "[Mesh::GetVertexData] Index out of bound");
-	return m_Vertices[index];
 }
 
 const Vertex& Mesh::GetVertexData(const IndexType index) const
 {
-	assert(index < GetVertexCount() && "[Mesh::GetVertexData] Index out of bound");
+	assert(index < GetVertexCount() && "Index out of bound");
 	return m_Vertices[index];
 }
 
-Face& Mesh::GetFaceData(const IndexType index)
+Vertex& Mesh::GetVertexData(const IndexType index)
 {
-	assert(index < GetFaceCount() && "[Mesh::GetFaceData] Index out of bound");
-	return m_Faces[index];
+	assert(index < GetVertexCount() && "Index out of bound");
+	return m_Vertices[index];
 }
 
 const Face& Mesh::GetFaceData(const IndexType index) const
 {
-	assert(index < GetFaceCount() && "[Mesh::GetFaceData] Index out of bound");
+	assert(index < GetFaceCount() && "Index out of bound");
+	return m_Faces[index];
+}
+
+Face& Mesh::GetFaceData(const IndexType index)
+{
+	assert(index < GetFaceCount() && "Index out of bound");
 	return m_Faces[index];
 }
 

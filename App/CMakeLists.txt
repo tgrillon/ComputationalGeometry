@@ -10,6 +10,7 @@ set(SOURCES
     Source/MeshIntegrity.cpp
     Source/Primitive.cpp
     Source/PrimitiveProxy.cpp
+    Source/VertexPair.cpp
 )
 
 add_library(AppStaticLib STATIC ${SOURCES})
