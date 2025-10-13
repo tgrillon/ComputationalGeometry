@@ -70,7 +70,6 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 	for(auto&& curVertex : mesh->m_Vertices)
 	{
 		SkipCommentsAndWhitespace(file);
-		curVertex.Index = vertexIndex++;
 		file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
 	}
 
@@ -79,17 +78,16 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 
 	uint32_t faceIndex = 0;
 	mesh->m_Faces.resize(nFaces);
-	for(auto&& curFace : mesh->m_Faces)
+	for(IndexType curFaceIdx = 0; curFaceIdx < nFaces; ++curFaceIdx)
 	{
-		SkipCommentsAndWhitespace(file);
+		Face& curFace = mesh->m_Faces[curFaceIdx];
 
-		// Create a new face
-		curFace.Index = faceIndex++;
+		SkipCommentsAndWhitespace(file);
 
 		// Set the face index
 		file >> nVertices;
 
-		for(uint8_t idx = 0; idx < nVertices; ++idx)
+		for(uint8_t curEdgeIdx = 0; curEdgeIdx < nVertices; ++curEdgeIdx)
 		{
 			IndexType curVertexIdx;
 			file >> curVertexIdx;
@@ -99,24 +97,24 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 
 			// Set IncidentFaceIdx for the vertex if it's not already the case.
 			if(curVertex.IncidentFaceIdx == -1)
-				curVertex.IncidentFaceIdx = curFace.Index;
+				curVertex.IncidentFaceIdx = curFaceIdx;
 
 			// Set vertices of the face.
-			curFace.Vertices[idx] = curVertex.Index;
+			curFace.Vertices[curEdgeIdx] = curVertexIdx;
 		}
 
 		// Set neighboring faces using the edges
-		auto SetFacesNeigbhor = [&](IndexType firstVertexIdx, IndexType secondVertexIdx, uint8_t edgeIdx)
+		auto SetFacesNeigbhor = [&](IndexType firstVertexIdx, IndexType secondVertexIdx, uint8_t curEdgeIdx)
 		{
 			if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
 			{
-				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFace.Index, edgeIdx };
+				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFaceIdx, curEdgeIdx };
 			}
 			else // The edge with firstVertex and secondVertex is already registered in map
 			{
 				auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
-				mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFace.Index;
-				curFace.Neighbors[edgeIdx] = faceNeighborIdx;
+				mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFaceIdx;
+				curFace.Neighbors[curEdgeIdx] = faceNeighborIdx;
 			}
 		};
 
@@ -176,7 +174,6 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 		if(type == "v")
 		{ // Vertex position
 			Vertex curVertex;
-			curVertex.Index = curIndexV++;
 			file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
 			mesh->m_Vertices.emplace_back(curVertex);
 			mesh->m_VertexExtraData.emplace_back();
@@ -195,13 +192,13 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 		}
 		else if(type == "f")
 		{ // Face (triangle)
+			IndexType curFaceIdx = mesh->GetFaceCount();
 			Face& curFace = mesh->m_Faces.emplace_back();
-			curFace.Index = curIndexF++;
 
 			// Read three vertices for the triangle
-			for(uint8_t idx = 0; idx < 3; idx++)
+			for(uint8_t curEdgeIdx = 0; curEdgeIdx < 3; curEdgeIdx++)
 			{
-				IndexType vertexIdx;
+				IndexType curVertexIdx;
 				char buffer[16];
 				file >> std::ws; // Skip leading whitespace
 
@@ -214,13 +211,13 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 				buffer[i] = '\0';
 
 				// Convert string to index
-				vertexIdx = std::stoi(buffer);
+				curVertexIdx = std::stoi(buffer) - 1;
 
-				Vertex& curVertex = mesh->m_Vertices[vertexIdx - 1];
+				Vertex& curVertex = mesh->m_Vertices[curVertexIdx];
 				if(curVertex.IncidentFaceIdx == -1)
-					curVertex.IncidentFaceIdx = curFace.Index;
+					curVertex.IncidentFaceIdx = curFaceIdx;
 
-				curFace.Vertices[idx] = curVertex.Index;
+				curFace.Vertices[curEdgeIdx] = curVertexIdx;
 
 				// Skip texture/normal indices until next vertex or whitespace
 				while(file.peek() != EOF && !std::isspace(file.peek()))
@@ -230,17 +227,17 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 			}
 
 			// Set neighboring faces using the edges
-			auto SetFacesNeigbhor = [&](IndexType firstVertexIdx, IndexType secondVertexIdx, uint8_t edgeIdx)
+			auto SetFacesNeigbhor = [&](IndexType firstVertexIdx, IndexType secondVertexIdx, uint8_t curEdgeIdx)
 			{
 				if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
 				{
-					neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFace.Index, edgeIdx };
+					neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFaceIdx, curEdgeIdx };
 				}
 				else // The edge with firstVertex and secondVertex is already registered in map
 				{
 					auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
-					mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFace.Index;
-					curFace.Neighbors[edgeIdx] = faceNeighborIdx;
+					mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFaceIdx;
+					curFace.Neighbors[curEdgeIdx] = faceNeighborIdx;
 				}
 			};
 

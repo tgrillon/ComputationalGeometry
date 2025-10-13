@@ -20,9 +20,6 @@ struct Face;
 /// @note IncidentFace is a pointer to one of the incident faces of the vertex.
 struct Vertex
 {
-	/// @brief Unique index of the vertex in the mesh.
-	BaseType::IndexType Index{};
-
 	/// @brief Vertex position in 3D.
 	BaseType::Vec3 Position{};
 
@@ -34,9 +31,6 @@ struct Vertex
 /// @brief  Structure holding the informations relative to a triangular face primitive.
 struct Face
 {
-	/// @brief Unique index of the triangle in the mesh.
-	BaseType::IndexType Index{};
-
 	/// @brief Face vertex indices.
 	/// @note Vertices must be stored in counter-clockwise order.
 	/// @note The face wont be valid if one of the indices is -1.
@@ -53,8 +47,8 @@ namespace Utilitary::Primitive
 {
 /// @brief Get the index of the edge defined by two vertices in a face.
 /// @param face The face containing the edge.
-/// @param v0 The first vertex of the edge.
-/// @param v1 The second vertex of the edge.
+/// @param v0Idx The first vertex index of the edge.
+/// @param v1Idx The second vertex index of the edge.
 /// @return The index of the edge (0, 1, or 2), or -1 if the edge is not found.
-int8_t GetEdgeIndex(const Data::Primitive::Face& face, const Data::Primitive::Vertex& v0, const Data::Primitive::Vertex& v1);
+int8_t GetEdgeIndex(const Data::Primitive::Face& face, const BaseType::IndexType v0Idx, const BaseType::IndexType v1Idx);
 } // namespace Utilitary::Primitive

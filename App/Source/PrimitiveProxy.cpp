@@ -99,7 +99,7 @@ bool VertexProxy::IsValid() const
 
 IndexType VertexProxy::GetIndex() const
 {
-	return m_Mesh->m_Vertices[m_Index].Index;
+	return m_Index;
 }
 
 Vertex& VertexProxy::GetVertex()

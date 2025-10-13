@@ -23,8 +23,9 @@ MeshIntegrity::Status MeshIntegrity::CheckIntegrity(const Data::Surface::Mesh& m
 	}
 
 	// Check the integrity of each face of the mesh.
-	for(auto&& curFace : mesh.m_Faces)
+	for(IndexType fIdx = 0; fIdx < mesh.GetFaceCount(); ++fIdx)
 	{
+		const Face& curFace = mesh.m_Faces[fIdx];
 		// Check that the face has valid vertices.
 		if(curFace.Vertices[0] == -1 || curFace.Vertices[1] == -1 || curFace.Vertices[2] == -1)
 			return Status::FaceHasNullVertex;
@@ -41,12 +42,10 @@ MeshIntegrity::Status MeshIntegrity::CheckIntegrity(const Data::Surface::Mesh& m
 
 				// Get the neighbor face and the two vertices.
 				const Face& neighbor = mesh.m_Faces[neighborIdx];
-				const Vertex& v0 = mesh.m_Vertices[v0Idx];
-				const Vertex& v1 = mesh.m_Vertices[v1Idx];
-				int8_t edgeIndex = Utilitary::Primitive::GetEdgeIndex(neighbor, v0, v1);
+				int8_t edgeIndex = Utilitary::Primitive::GetEdgeIndex(neighbor, v0Idx, v1Idx);
 
 				// Check that the neighbor has the current face as neighbor on the same edge.
-				if(edgeIndex == -1 || neighbor.Neighbors[edgeIndex] != curFace.Index)
+				if(edgeIndex == -1 || neighbor.Neighbors[edgeIndex] != fIdx)
 					return Status::FaceNeighborNotReciprocal;
 			}
 		}
