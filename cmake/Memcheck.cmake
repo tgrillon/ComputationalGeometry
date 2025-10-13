@@ -17,6 +17,6 @@ function(AddMemcheck target)
         COMMAND ${MEMCHECK_PATH}/generate_html_report.sh
             -i ${REPORT_PATH}
             -o ${REPORT_PATH}
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        WORKING_DIRECTORY $<TARGET_FILE_DIR:${target}>
     )
 endfunction()
