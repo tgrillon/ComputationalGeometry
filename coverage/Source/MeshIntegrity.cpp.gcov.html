@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">36</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-13 13:24:30</td>
+            <td class="headerValue">2025-10-14 14:30:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -72,78 +72,81 @@
 <span id="L2"><span class="lineNum">       2</span>              : </span>
 <span id="L3"><span class="lineNum">       3</span>              : using namespace BaseType;</span>
 <span id="L4"><span class="lineNum">       4</span>              : using namespace Data::Primitive;</span>
-<span id="L5"><span class="lineNum">       5</span>              : </span>
-<span id="L6"><span class="lineNum">       6</span>              : namespace Utilitary::Mesh</span>
-<span id="L7"><span class="lineNum">       7</span>              : {</span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC tlaBgGNC">          12 : MeshIntegrity::Status MeshIntegrity::CheckIntegrity(const Data::Surface::Mesh&amp; mesh)</span></span>
-<span id="L9"><span class="lineNum">       9</span>              : {</span>
-<span id="L10"><span class="lineNum">      10</span>              :         // Check the integrity of each vertex of the mesh.</span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">          57 :         for(IndexType vIdx = 0; vIdx &lt; mesh.GetVertexCount(); ++vIdx)</span></span>
-<span id="L12"><span class="lineNum">      12</span>              :         {</span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">          48 :                 const Vertex&amp; curVertex = mesh.m_Vertices[vIdx];</span></span>
-<span id="L14"><span class="lineNum">      14</span>              :                 // Check that the vertex has a valid incident face.</span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">          48 :                 if(curVertex.IncidentFaceIdx == -1)</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :                         return Status::VertexHasNullIncidentFace;</span></span>
-<span id="L17"><span class="lineNum">      17</span>              : </span>
-<span id="L18"><span class="lineNum">      18</span>              :                 // Check that the vertex has a valid incident face index.</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          47 :                 if(curVertex.IncidentFaceIdx &gt;= mesh.GetFaceCount())</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           1 :                         return Status::InvalidIncidentFaceIndex;</span></span>
-<span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span>              :                 // Check that the vertex is indeed part of its incident face.</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">          46 :                 const Face&amp; face = mesh.m_Faces[curVertex.IncidentFaceIdx];</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          46 :                 auto&amp;&amp; faceVertices = face.Vertices;</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          46 :                 if(faceVertices[0] != vIdx &amp;&amp; faceVertices[1] != vIdx &amp;&amp; faceVertices[2] != vIdx)</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           1 :                         return Status::VertexNotInFace;</span></span>
-<span id="L27"><span class="lineNum">      27</span>              :         }</span>
-<span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span>              :         // Check the integrity of each face of the mesh.</span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          48 :         for(IndexType curFaceIdx = 0; curFaceIdx &lt; mesh.GetFaceCount(); ++curFaceIdx)</span></span>
-<span id="L31"><span class="lineNum">      31</span>              :         {</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          45 :                 const Face&amp; curFace = mesh.m_Faces[curFaceIdx];</span></span>
-<span id="L33"><span class="lineNum">      33</span>              :                 // Check that the face has valid vertices.</span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          45 :                 if(curFace.Vertices[0] == -1 || curFace.Vertices[1] == -1 || curFace.Vertices[2] == -1)</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :                         return Status::FaceHasNullVertex;</span></span>
-<span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span>              :                 // Check that the face does not have duplicated vertices.</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          88 :                 if(curFace.Vertices[0] == curFace.Vertices[1] || curFace.Vertices[1] == curFace.Vertices[2]</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          88 :                    || curFace.Vertices[2] == curFace.Vertices[0])</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           1 :                         return Status::FaceHasDuplicatedVertices;</span></span>
-<span id="L41"><span class="lineNum">      41</span>              : </span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         168 :                 for(uint8_t curEdgeIdx = 0; curEdgeIdx &lt; 3; ++curEdgeIdx)</span></span>
-<span id="L43"><span class="lineNum">      43</span>              :                 {</span>
-<span id="L44"><span class="lineNum">      44</span>              :                         // Check that each vertex has a valid index.</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         129 :                         if(curFace.Vertices[curEdgeIdx] &gt;= mesh.GetVertexCount())</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           1 :                                 return MeshIntegrity::Status::InvalidVertexIndex;</span></span>
-<span id="L47"><span class="lineNum">      47</span>              : </span>
-<span id="L48"><span class="lineNum">      48</span>              :                         // Check that each neighbor face is reciprocal.</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         128 :                         IndexType neighborIdx = curFace.Neighbors[curEdgeIdx];</span></span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         128 :                         if(neighborIdx != -1)</span></span>
-<span id="L51"><span class="lineNum">      51</span>              :                         {</span>
-<span id="L52"><span class="lineNum">      52</span>              :                                 // Get the two vertices defining the edge opposite to the neighbor.</span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          93 :                                 IndexType v0Idx = curFace.Vertices[IndexHelpers::Next[curEdgeIdx]];</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          93 :                                 IndexType v1Idx = curFace.Vertices[IndexHelpers::Previous[curEdgeIdx]];</span></span>
-<span id="L55"><span class="lineNum">      55</span>              : </span>
-<span id="L56"><span class="lineNum">      56</span>              :                                 // Check that the neighbor index is valid.</span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          93 :                                 if(neighborIdx &gt;= mesh.GetFaceCount())</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           1 :                                         return Status::InvalidNeighborFaceIndex;</span></span>
-<span id="L59"><span class="lineNum">      59</span>              : </span>
-<span id="L60"><span class="lineNum">      60</span>              :                                 // A face cannot be its own neighbor.</span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          92 :                                 if(neighborIdx == curFaceIdx)</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           1 :                                         return Status::FaceIsItsOwnNeighbor;</span></span>
-<span id="L63"><span class="lineNum">      63</span>              : </span>
-<span id="L64"><span class="lineNum">      64</span>              :                                 // Get the neighbor face and the two vertices.</span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">          91 :                                 const Face&amp; neighbor = mesh.m_Faces[neighborIdx];</span></span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">          91 :                                 int8_t edgeIndex = Utilitary::Primitive::GetEdgeIndex(neighbor, v0Idx, v1Idx);</span></span>
-<span id="L67"><span class="lineNum">      67</span>              : </span>
-<span id="L68"><span class="lineNum">      68</span>              :                                 // Check that the neighbor has the current face as neighbor on the same edge.</span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          91 :                                 if(edgeIndex == -1 || neighbor.Neighbors[edgeIndex] != curFaceIdx)</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">           1 :                                         return Status::FaceNeighborNotReciprocal;</span></span>
-<span id="L71"><span class="lineNum">      71</span>              :                         }</span>
-<span id="L72"><span class="lineNum">      72</span>              :                 }</span>
-<span id="L73"><span class="lineNum">      73</span>              :         }</span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">           3 :         return MeshIntegrity::Status::MeshOK;</span></span>
-<span id="L75"><span class="lineNum">      75</span>              : }</span>
-<span id="L76"><span class="lineNum">      76</span>              : } // namespace Utilitary::Mesh</span>
+<span id="L5"><span class="lineNum">       5</span>              : using namespace Data::Surface;</span>
+<span id="L6"><span class="lineNum">       6</span>              : </span>
+<span id="L7"><span class="lineNum">       7</span>              : namespace Utilitary::Surface</span>
+<span id="L8"><span class="lineNum">       8</span>              : {</span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC tlaBgGNC">          12 : MeshIntegrity::ExitCode MeshIntegrity::CheckIntegrity(const Mesh&amp; mesh)</span></span>
+<span id="L10"><span class="lineNum">      10</span>              : {</span>
+<span id="L11"><span class="lineNum">      11</span>              :         // Check the integrity of each vertex of the mesh.</span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">          57 :         for(int vIdx = 0; vIdx &lt; static_cast&lt;int&gt;(mesh.GetVertexCount()); ++vIdx)</span></span>
+<span id="L13"><span class="lineNum">      13</span>              :         {</span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">          48 :                 const Vertex&amp; curVertex = mesh.m_Vertices[vIdx];</span></span>
+<span id="L15"><span class="lineNum">      15</span>              :                 // Check that the vertex has a valid incident face.</span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          48 :                 if(curVertex.IncidentFaceIdx == -1)</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           1 :                         return ExitCode::VertexHasNullIncidentFace;</span></span>
+<span id="L18"><span class="lineNum">      18</span>              : </span>
+<span id="L19"><span class="lineNum">      19</span>              :                 // Check that the vertex has a valid incident face index.</span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          47 :                 if(static_cast&lt;IndexType&gt;(curVertex.IncidentFaceIdx) &gt;= mesh.GetFaceCount())</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :                         return ExitCode::InvalidIncidentFaceIndex;</span></span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span>              :                 // Check that the vertex is indeed part of its incident face.</span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          46 :                 const Face&amp; face = mesh.m_Faces[curVertex.IncidentFaceIdx];</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          46 :                 auto&amp;&amp; faceVertices = face.Vertices;</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">          46 :                 if(faceVertices[0] != vIdx &amp;&amp; faceVertices[1] != vIdx &amp;&amp; faceVertices[2] != vIdx)</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :                         return ExitCode::VertexNotInFace;</span></span>
+<span id="L28"><span class="lineNum">      28</span>              :         }</span>
+<span id="L29"><span class="lineNum">      29</span>              : </span>
+<span id="L30"><span class="lineNum">      30</span>              :         // Check the integrity of each face of the mesh.</span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           9 :         int vertexCount = static_cast&lt;int&gt;(mesh.GetVertexCount());</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           9 :         int faceCount = static_cast&lt;int&gt;(mesh.GetFaceCount());</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          48 :         for(int curFaceIdx = 0; curFaceIdx &lt; faceCount; ++curFaceIdx)</span></span>
+<span id="L34"><span class="lineNum">      34</span>              :         {</span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          45 :                 const Face&amp; curFace = mesh.m_Faces[curFaceIdx];</span></span>
+<span id="L36"><span class="lineNum">      36</span>              :                 // Check that the face has valid vertices.</span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          45 :                 if(curFace.Vertices[0] == -1 || curFace.Vertices[1] == -1 || curFace.Vertices[2] == -1)</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :                         return ExitCode::FaceHasNullVertex;</span></span>
+<span id="L39"><span class="lineNum">      39</span>              : </span>
+<span id="L40"><span class="lineNum">      40</span>              :                 // Check that the face does not have duplicated vertices.</span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          88 :                 if(curFace.Vertices[0] == curFace.Vertices[1] || curFace.Vertices[1] == curFace.Vertices[2]</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          88 :                    || curFace.Vertices[2] == curFace.Vertices[0])</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           1 :                         return ExitCode::FaceHasDuplicatedVertices;</span></span>
+<span id="L44"><span class="lineNum">      44</span>              : </span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         168 :                 for(uint8_t curEdgeIdx = 0; curEdgeIdx &lt; 3; ++curEdgeIdx)</span></span>
+<span id="L46"><span class="lineNum">      46</span>              :                 {</span>
+<span id="L47"><span class="lineNum">      47</span>              :                         // Check that each vertex has a valid index.</span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">         129 :                         if(curFace.Vertices[curEdgeIdx] &gt;= vertexCount)</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           1 :                                 return MeshIntegrity::ExitCode::InvalidVertexIndex;</span></span>
+<span id="L50"><span class="lineNum">      50</span>              : </span>
+<span id="L51"><span class="lineNum">      51</span>              :                         // Check that each neighbor face is reciprocal.</span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         128 :                         int neighborIdx = curFace.Neighbors[curEdgeIdx];</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">         128 :                         if(neighborIdx != -1)</span></span>
+<span id="L54"><span class="lineNum">      54</span>              :                         {</span>
+<span id="L55"><span class="lineNum">      55</span>              :                                 // Get the two vertices defining the edge opposite to the neighbor.</span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          93 :                                 IndexType v0Idx = curFace.Vertices[IndexHelpers::Next[curEdgeIdx]];</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          93 :                                 IndexType v1Idx = curFace.Vertices[IndexHelpers::Previous[curEdgeIdx]];</span></span>
+<span id="L58"><span class="lineNum">      58</span>              : </span>
+<span id="L59"><span class="lineNum">      59</span>              :                                 // Check that the neighbor index is valid.</span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          93 :                                 if(neighborIdx &gt;= faceCount)</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           1 :                                         return ExitCode::InvalidNeighborFaceIndex;</span></span>
+<span id="L62"><span class="lineNum">      62</span>              : </span>
+<span id="L63"><span class="lineNum">      63</span>              :                                 // A face cannot be its own neighbor.</span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">          92 :                                 if(neighborIdx == curFaceIdx)</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           1 :                                         return ExitCode::FaceIsItsOwnNeighbor;</span></span>
+<span id="L66"><span class="lineNum">      66</span>              : </span>
+<span id="L67"><span class="lineNum">      67</span>              :                                 // Get the neighbor face and the two vertices.</span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">          91 :                                 const Face&amp; neighbor = mesh.m_Faces[neighborIdx];</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          91 :                                 int8_t edgeIndex = Utilitary::Primitive::GetEdgeIndex(neighbor, v0Idx, v1Idx);</span></span>
+<span id="L70"><span class="lineNum">      70</span>              : </span>
+<span id="L71"><span class="lineNum">      71</span>              :                                 // Check that the neighbor has the current face as neighbor on the same edge.</span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">          91 :                                 if(edgeIndex == -1 || neighbor.Neighbors[edgeIndex] != curFaceIdx)</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">           1 :                                         return ExitCode::FaceNeighborNotReciprocal;</span></span>
+<span id="L74"><span class="lineNum">      74</span>              :                         }</span>
+<span id="L75"><span class="lineNum">      75</span>              :                 }</span>
+<span id="L76"><span class="lineNum">      76</span>              :         }</span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">           3 :         return MeshIntegrity::ExitCode::MeshOK;</span></span>
+<span id="L78"><span class="lineNum">      78</span>              : }</span>
+<span id="L79"><span class="lineNum">      79</span>              : } // namespace Utilitary::Surface</span>
         </pre>
               </td>
             </tr>

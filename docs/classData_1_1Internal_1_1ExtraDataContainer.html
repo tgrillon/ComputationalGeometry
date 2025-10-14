@@ -141,6 +141,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab8eab29db0e4be446d0ba0305ea2abb6"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classData_1_1Internal_1_1ExtraDataContainer.html#ab8eab29db0e4be446d0ba0305ea2abb6">Get</a> ()</td></tr>
 <tr class="memdesc:ab8eab29db0e4be446d0ba0305ea2abb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the value of type T in the container, or nullptr if not found.  <br /></td></tr>
 <tr class="separator:ab8eab29db0e4be446d0ba0305ea2abb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e4d016ba963bfd5a9f6808ce15566e9" id="r_a7e4d016ba963bfd5a9f6808ce15566e9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7e4d016ba963bfd5a9f6808ce15566e9"><td class="memTemplItemLeft" align="right" valign="top">const T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classData_1_1Internal_1_1ExtraDataContainer.html#a7e4d016ba963bfd5a9f6808ce15566e9">Get</a> () const</td></tr>
+<tr class="memdesc:a7e4d016ba963bfd5a9f6808ce15566e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the value of type T in the container, or nullptr if not found.  <br /></td></tr>
+<tr class="separator:a7e4d016ba963bfd5a9f6808ce15566e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80b0304f966a94db8080b92dc654c2a5" id="r_a80b0304f966a94db8080b92dc654c2a5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a80b0304f966a94db8080b92dc654c2a5"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classData_1_1Internal_1_1ExtraDataContainer.html#a80b0304f966a94db8080b92dc654c2a5">GetOrCreate</a> ()</td></tr>
 <tr class="memdesc:a80b0304f966a94db8080b92dc654c2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the value of type T in the container, creating a default one if not found.  <br /></td></tr>
@@ -189,13 +193,13 @@ Public Member Functions</h2></td></tr>
 
 <p>Clear container. </p>
 
-<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00065">65</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>{ m_Data.clear(); }</div>
+<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00076">76</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{ m_Data.clear(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="ab8eab29db0e4be446d0ba0305ea2abb6" name="ab8eab29db0e4be446d0ba0305ea2abb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8eab29db0e4be446d0ba0305ea2abb6">&#9670;&#160;</a></span>Get()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8eab29db0e4be446d0ba0305ea2abb6">&#9670;&#160;</a></span>Get() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,6 +236,44 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a7e4d016ba963bfd5a9f6808ce15566e9" name="a7e4d016ba963bfd5a9f6808ce15566e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e4d016ba963bfd5a9f6808ce15566e9">&#9670;&#160;</a></span>Get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T * Data::Internal::ExtraDataContainer::Get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a pointer to the value of type T in the container, or nullptr if not found. </p>
+
+<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00045">45</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keyword">auto</span> it = m_Data.find(std::type_index(<span class="keyword">typeid</span>(T)));</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span>(it == m_Data.end())</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> std::any_cast&lt;const T&gt;(&amp;it-&gt;second);</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a80b0304f966a94db8080b92dc654c2a5" name="a80b0304f966a94db8080b92dc654c2a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a80b0304f966a94db8080b92dc654c2a5">&#9670;&#160;</a></span>GetOrCreate()</h2>
 
@@ -259,17 +301,17 @@ template&lt;typename T &gt; </div>
 
 <p>Get a pointer to the value of type T in the container, creating a default one if not found. </p>
 
-<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00045">45</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
-<div class="line"><span class="lineno">   47</span>        <span class="keyword">auto</span> it = m_Data.find(std::type_index(<span class="keyword">typeid</span>(T)));</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span>(it == m_Data.end())</div>
-<div class="line"><span class="lineno">   49</span>        {</div>
-<div class="line"><span class="lineno">   50</span>            m_Data[std::type_index(<span class="keyword">typeid</span>(T))] = T{};</div>
-<div class="line"><span class="lineno">   51</span>            it = m_Data.find(std::type_index(<span class="keyword">typeid</span>(T)));</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> std::any_cast&lt;T&amp;&gt;(it-&gt;second);</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00056">56</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>    {</div>
+<div class="line"><span class="lineno">   58</span>        <span class="keyword">auto</span> it = m_Data.find(std::type_index(<span class="keyword">typeid</span>(T)));</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span>(it == m_Data.end())</div>
+<div class="line"><span class="lineno">   60</span>        {</div>
+<div class="line"><span class="lineno">   61</span>            m_Data[std::type_index(<span class="keyword">typeid</span>(T))] = T{};</div>
+<div class="line"><span class="lineno">   62</span>            it = m_Data.find(std::type_index(<span class="keyword">typeid</span>(T)));</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> std::any_cast&lt;T&amp;&gt;(it-&gt;second);</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -300,10 +342,10 @@ template&lt;typename T &gt; </div>
 
 <p>Check if the container has a value of type T. </p>
 
-<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00059">59</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> m_Data.find(std::type_index(<span class="keyword">typeid</span>(T))) != m_Data.end();</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00070">70</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> m_Data.find(std::type_index(<span class="keyword">typeid</span>(T))) != m_Data.end();</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -332,8 +374,8 @@ template&lt;typename T &gt; </div>
 
 <p>Check if the container is empty. </p>
 
-<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00068">68</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{ <span class="keywordflow">return</span> m_Data.empty(); }</div>
+<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00079">79</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{ <span class="keywordflow">return</span> m_Data.empty(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -397,8 +439,8 @@ template&lt;typename T &gt; </div>
 
 <p>Get the number of stored types in the container. </p>
 
-<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00071">71</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{ <span class="keywordflow">return</span> m_Data.size(); }</div>
+<p class="definition">Definition at line <a class="el" href="ExtraDataContainer_8h_source.html#l00082">82</a> of file <a class="el" href="ExtraDataContainer_8h_source.html">ExtraDataContainer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{ <span class="keywordflow">return</span> m_Data.size(); }</div>
 </div><!-- fragment -->
 </div>
 </div>

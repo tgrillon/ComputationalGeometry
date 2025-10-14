@@ -2,8 +2,8 @@ var classData_1_1Primitive_1_1VertexProxy =
 [
     [ "VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html#a491121aedeb9ebb1a5ed04c338c91e79", null ],
     [ "GetExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b", null ],
-    [ "GetIncidentFace", "classData_1_1Primitive_1_1VertexProxy.html#a19eba10dba54e910be32236fc8c87c40", null ],
-    [ "GetIncidentFace", "classData_1_1Primitive_1_1VertexProxy.html#ab73c73b29e122f82477b7b18702f3ff2", null ],
+    [ "GetExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a4cee163392225127317e2503c72fc159", null ],
+    [ "GetIncidentFace", "classData_1_1Primitive_1_1VertexProxy.html#a6f7da821ddc236682860cbe911397306", null ],
     [ "GetIndex", "classData_1_1Primitive_1_1VertexProxy.html#a10225a6d2f63ab221bf0f57ad62a6555", null ],
     [ "GetOrCreateExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a133db1989e2e684ee54f7797000c5c3e", null ],
     [ "GetPosition", "classData_1_1Primitive_1_1VertexProxy.html#aa2ee71001c0af3d12409afb00ae42c52", null ],

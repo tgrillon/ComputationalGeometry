@@ -7,8 +7,9 @@ var hierarchy =
       [ "Application::AppLayer", "classApplication_1_1AppLayer.html", null ]
     ] ],
     [ "Data::Surface::Mesh", "classData_1_1Surface_1_1Mesh.html", null ],
-    [ "Utilitary::Mesh::MeshIntegrity", "structUtilitary_1_1Mesh_1_1MeshIntegrity.html", null ],
-    [ "Utilitary::Mesh::MeshLoader", "structUtilitary_1_1Mesh_1_1MeshLoader.html", null ],
+    [ "Utilitary::Surface::MeshExporter", "structUtilitary_1_1Surface_1_1MeshExporter.html", null ],
+    [ "Utilitary::Surface::MeshIntegrity", "structUtilitary_1_1Surface_1_1MeshIntegrity.html", null ],
+    [ "Utilitary::Surface::MeshLoader", "structUtilitary_1_1Surface_1_1MeshLoader.html", null ],
     [ "Data::Primitive::Vertex", "structData_1_1Primitive_1_1Vertex.html", null ],
     [ "Data::Primitive::VertexPair", "classData_1_1Primitive_1_1VertexPair.html", null ],
     [ "Data::Primitive::VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html", null ]

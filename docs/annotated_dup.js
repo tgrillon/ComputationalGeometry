@@ -19,9 +19,10 @@ var annotated_dup =
       ] ]
     ] ],
     [ "Utilitary", null, [
-      [ "Mesh", "namespaceUtilitary_1_1Mesh.html", [
-        [ "MeshIntegrity", "structUtilitary_1_1Mesh_1_1MeshIntegrity.html", "structUtilitary_1_1Mesh_1_1MeshIntegrity" ],
-        [ "MeshLoader", "structUtilitary_1_1Mesh_1_1MeshLoader.html", null ]
+      [ "Surface", "namespaceUtilitary_1_1Surface.html", [
+        [ "MeshExporter", "structUtilitary_1_1Surface_1_1MeshExporter.html", null ],
+        [ "MeshIntegrity", "structUtilitary_1_1Surface_1_1MeshIntegrity.html", "structUtilitary_1_1Surface_1_1MeshIntegrity" ],
+        [ "MeshLoader", "structUtilitary_1_1Surface_1_1MeshLoader.html", null ]
       ] ]
     ] ]
 ];

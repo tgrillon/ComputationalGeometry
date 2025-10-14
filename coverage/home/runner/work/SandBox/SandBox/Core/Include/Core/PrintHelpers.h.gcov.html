@@ -31,18 +31,18 @@
             <td class="headerValue">filtered.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">81.2&nbsp;%</td>
-            <td class="headerCovTableEntry">16</td>
-            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">20.0&nbsp;%</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">4</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-13 13:24:30</td>
+            <td class="headerValue">2025-10-14 14:30:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">33.3&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">1</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -90,34 +90,34 @@
 <span id="L20"><span class="lineNum">      20</span>              : } // namespace Color</span>
 <span id="L21"><span class="lineNum">      21</span>              : </span>
 <span id="L22"><span class="lineNum">      22</span>              : // Helper to extract just the function name from the full signature</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC tlaBgGNC">           4 : inline std::string_view ExtractFunctionName(std::string_view signature)</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC tlaBgUNC">           0 : inline std::string_view ExtractFunctionName(std::string_view signature)</span></span>
 <span id="L24"><span class="lineNum">      24</span>              : {</span>
 <span id="L25"><span class="lineNum">      25</span>              :         // Find the opening parenthesis (marks end of function name)</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           4 :         auto paren_pos = signature.find('(');</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           4 :         if(paren_pos == std::string_view::npos)</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC tlaBgUNC">           0 :                 return signature;</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :         auto paren_pos = signature.find('(');</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :         if(paren_pos == std::string_view::npos)</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :                 return signature;</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span>              :         // Work backwards from the parenthesis to find the start of the function name</span>
 <span id="L31"><span class="lineNum">      31</span>              :         // Skip spaces before the parenthesis</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC tlaBgGNC">           4 :         while(paren_pos &gt; 0 &amp;&amp; signature[paren_pos - 1] == ' ')</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC tlaBgUNC">           0 :                 --paren_pos;</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :         while(paren_pos &gt; 0 &amp;&amp; signature[paren_pos - 1] == ' ')</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :                 --paren_pos;</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC tlaBgGNC">           4 :         auto name_end = paren_pos;</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :         auto name_end = paren_pos;</span></span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
 <span id="L37"><span class="lineNum">      37</span>              :         // Find the start of the function name</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           4 :         auto name_start = signature.rfind(' ', name_end);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         auto name_start = signature.rfind(' ', name_end);</span></span>
 <span id="L39"><span class="lineNum">      39</span>              : </span>
 <span id="L40"><span class="lineNum">      40</span>              :         // Take whichever delimiter comes last</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           4 :         if(name_start != std::string_view::npos)</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :         if(name_start != std::string_view::npos)</span></span>
 <span id="L42"><span class="lineNum">      42</span>              :         {</span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           4 :                 name_start = name_start + 1; // +1 to skip the space</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :                 name_start = name_start + 1; // +1 to skip the space</span></span>
 <span id="L44"><span class="lineNum">      44</span>              :         }</span>
 <span id="L45"><span class="lineNum">      45</span>              :         else</span>
 <span id="L46"><span class="lineNum">      46</span>              :         {</span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC tlaBgUNC">           0 :                 name_start = 0;</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :                 name_start = 0;</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :         }</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC tlaBgGNC">           4 :         return signature.substr(name_start, name_end - name_start);</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :         return signature.substr(name_start, name_end - name_start);</span></span>
 <span id="L51"><span class="lineNum">      51</span>              : }</span>
 <span id="L52"><span class="lineNum">      52</span>              : </span>
 <span id="L53"><span class="lineNum">      53</span>              : // Basic output functions</span>
@@ -179,7 +179,7 @@
 <span id="L109"><span class="lineNum">     109</span>              : }</span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
 <span id="L111"><span class="lineNum">     111</span>              : template&lt;typename... Args&gt;</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           4 : void ErrorImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">           4 : void ErrorImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span></span>
 <span id="L113"><span class="lineNum">     113</span>              : {</span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           4 :         auto func_name = ExtractFunctionName(loc.function_name());</span></span>
 <span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           4 :         std::cerr &lt;&lt; std::format(</span></span>
@@ -193,13 +193,13 @@
 <span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">           4 : }</span></span>
 <span id="L124"><span class="lineNum">     124</span>              : </span>
 <span id="L125"><span class="lineNum">     125</span>              : template&lt;typename... Args&gt;</span>
-<span id="L126"><span class="lineNum">     126</span>              : void DebugImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaUNC tlaBgUNC">           0 : void DebugImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span></span>
 <span id="L127"><span class="lineNum">     127</span>              : {</span>
 <span id="L128"><span class="lineNum">     128</span>              : #ifdef NDEBUG</span>
 <span id="L129"><span class="lineNum">     129</span>              :         (void)sizeof...(args);</span>
 <span id="L130"><span class="lineNum">     130</span>              : #else</span>
-<span id="L131"><span class="lineNum">     131</span>              :         auto func_name = ExtractFunctionName(loc.function_name());</span>
-<span id="L132"><span class="lineNum">     132</span>              :         std::cout &lt;&lt; std::format(</span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :         auto func_name = ExtractFunctionName(loc.function_name());</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC">           0 :         std::cout &lt;&lt; std::format(</span></span>
 <span id="L133"><span class="lineNum">     133</span>              :                 &quot;{}[DEBUG]{} {}[{}]{} {}\n&quot;,</span>
 <span id="L134"><span class="lineNum">     134</span>              :                 Color::Gray,</span>
 <span id="L135"><span class="lineNum">     135</span>              :                 Color::Reset,</span>
@@ -208,7 +208,7 @@
 <span id="L138"><span class="lineNum">     138</span>              :                 Color::Reset,</span>
 <span id="L139"><span class="lineNum">     139</span>              :                 std::format(fmt, std::forward&lt;Args&gt;(args)...));</span>
 <span id="L140"><span class="lineNum">     140</span>              : #endif</span>
-<span id="L141"><span class="lineNum">     141</span>              : }</span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              : template&lt;typename... Args&gt;</span>
 <span id="L144"><span class="lineNum">     144</span>              : void TraceImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span>
