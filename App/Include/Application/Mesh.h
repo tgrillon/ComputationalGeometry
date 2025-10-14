@@ -8,11 +8,12 @@
 #include <vector>
 
 /// Forward declaration
-namespace Utilitary::Mesh
+namespace Utilitary::Surface
 {
-class MeshLoader;
+class MeshExporter;
 class MeshIntegrity;
-} // namespace Utilitary::Mesh
+class MeshLoader;
+} // namespace Utilitary::Surface
 
 namespace Data::Primitive
 {
@@ -26,8 +27,9 @@ namespace Data::Surface
 class Mesh
 {
 public:
-	friend Utilitary::Mesh::MeshLoader;
-	friend Utilitary::Mesh::MeshIntegrity;
+	friend Utilitary::Surface::MeshExporter;
+	friend Utilitary::Surface::MeshIntegrity;
+	friend Utilitary::Surface::MeshLoader;
 	friend Data::Primitive::FaceProxy;
 	friend Data::Primitive::VertexProxy;
 
@@ -73,8 +75,8 @@ private:
 	std::vector<Data::Primitive::Face> m_Faces{};
 
 	/// @brief Extra data containers for each vertex.
-	std::vector<Data::Internal::ExtraDataContainer> m_VertexExtraData{};
+	std::vector<Data::Internal::ExtraDataContainer> m_VerticesExtraDataContainer{};
 	/// @brief Extra data containers for each face.
-	std::vector<Data::Internal::ExtraDataContainer> m_FaceExtraData{};
+	std::vector<Data::Internal::ExtraDataContainer> m_FacesExtraDataContainer{};
 };
 } // namespace Data::Surface

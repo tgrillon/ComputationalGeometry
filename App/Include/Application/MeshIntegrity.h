@@ -4,13 +4,13 @@
 
 #include <cstdint>
 
-namespace Utilitary::Mesh
+namespace Utilitary::Surface
 {
 /// @brief Struct to check the integrity of a mesh.
 struct MeshIntegrity
 {
-	/// @brief Status codes for mesh integrity check.
-	enum struct Status : uint8_t
+	/// @brief ExitCode codes for mesh integrity check.
+	enum struct ExitCode : uint8_t
 	{
 		MeshOK = 0,
 		VertexHasNullIncidentFace,
@@ -26,7 +26,7 @@ struct MeshIntegrity
 
 	/// @brief Check the integrity of the mesh.
 	/// @param mesh The mesh to check.
-	/// @return Status code indicating the result of the integrity check.
-	static Status CheckIntegrity(const Data::Surface::Mesh& mesh);
+	/// @return ExitCode indicating the result of the integrity check.
+	static ExitCode CheckIntegrity(const Data::Surface::Mesh& mesh);
 };
-} // namespace Utilitary::Mesh
+} // namespace Utilitary::Surface

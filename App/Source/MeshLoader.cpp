@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <utility>
 
+using namespace Data::Surface;
 using namespace Data::Primitive;
 using namespace BaseType;
 
@@ -34,9 +35,9 @@ void SkipCommentsAndWhitespace(std::ifstream& file)
 }
 } // namespace
 
-namespace Utilitary::Mesh
+namespace Utilitary::Surface
 {
-std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::path& filepath)
+std::unique_ptr<Mesh> MeshLoader::LoadOFF(const std::filesystem::path& filepath)
 {
 	std::ifstream file(filepath);
 
@@ -57,7 +58,7 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 		return nullptr;
 	}
 
-	auto mesh = std::make_unique<Data::Surface::Mesh>();
+	auto mesh = std::make_unique<Mesh>();
 
 	// Retrieving the number of vertices / faces
 	SkipCommentsAndWhitespace(file);
@@ -65,7 +66,6 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 	file >> nVertices >> nFaces >> nEdges;
 
 	// Reading vertices
-	uint32_t vertexIndex = 0;
 	mesh->m_Vertices.resize(nVertices);
 	for(auto&& curVertex : mesh->m_Vertices)
 	{
@@ -76,7 +76,6 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 	// Map to store edges and their corresponding face and edge index
 	std::unordered_map<VertexPair, std::pair<IndexType, uint8_t>> neighborMap;
 
-	uint32_t faceIndex = 0;
 	mesh->m_Faces.resize(nFaces);
 	for(IndexType curFaceIdx = 0; curFaceIdx < nFaces; ++curFaceIdx)
 	{
@@ -134,7 +133,7 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOFF(const std::filesystem::
 	return mesh;
 }
 
-std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::path& filepath)
+std::unique_ptr<Mesh> MeshLoader::LoadOBJ(const std::filesystem::path& filepath)
 {
 	std::ifstream file(filepath);
 
@@ -152,16 +151,14 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 		return nullptr;
 	}
 
-	auto mesh = std::make_unique<Data::Surface::Mesh>();
+	auto mesh = std::make_unique<Mesh>();
 
 	// Map to store edges and their corresponding face and edge index
 	std::unordered_map<VertexPair, std::pair<IndexType, uint8_t>> neighborMap;
 
 	std::string type;
-	IndexType curIndexV = 0;
 	IndexType curIndexVt = 0;
 	IndexType curIndexVn = 0;
-	IndexType curIndexF = 0;
 	while(file.peek() != EOF)
 	{
 		SkipCommentsAndWhitespace(file);
@@ -176,7 +173,7 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 			Vertex curVertex;
 			file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
 			mesh->m_Vertices.emplace_back(curVertex);
-			mesh->m_VertexExtraData.emplace_back();
+			mesh->m_VerticesExtraDataContainer.emplace_back();
 		}
 		else if(type == "vt")
 		{ // Vertex texture coordinate
@@ -258,4 +255,4 @@ std::unique_ptr<Data::Surface::Mesh> MeshLoader::LoadOBJ(const std::filesystem::
 	return mesh;
 }
 
-} // namespace Utilitary::Mesh
+} // namespace Utilitary::Surface

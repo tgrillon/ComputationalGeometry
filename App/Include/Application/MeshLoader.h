@@ -4,7 +4,7 @@
 
 #include <filesystem>
 
-namespace Utilitary::Mesh
+namespace Utilitary::Surface
 {
 /// @brief Struct for loading meshes from files.
 struct MeshLoader
@@ -21,4 +21,4 @@ struct MeshLoader
 	/// @return Pointer to the loaded mesh, or nullptr if loading failed.
 	static std::unique_ptr<Data::Surface::Mesh> LoadOBJ(const std::filesystem::path& filepath);
 };
-} // namespace Utilitary::Mesh
+} // namespace Utilitary::Surface
