@@ -6,6 +6,7 @@ set(SOURCES
     Source/RunApp.cpp
     Source/AppLayer.cpp
     Source/Mesh.cpp
+    Source/MeshExporter.cpp
     Source/MeshLoader.cpp
     Source/MeshIntegrity.cpp
     Source/Primitive.cpp
@@ -25,7 +26,10 @@ add_compile_definitions(
     GLFW_INCLUDE_NONE
 )
     
-target_link_libraries(AppStaticLib Core)
+
+include(WarningProperties)
+
+target_link_libraries(AppStaticLib PUBLIC Core warning_properties)
     
 target_include_directories(AppStaticLib PUBLIC Include)
     
