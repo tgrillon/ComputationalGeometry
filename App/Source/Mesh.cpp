@@ -73,16 +73,48 @@ Face& Mesh::GetFaceData(const IndexType index)
 IndexType Mesh::AddVertex(const Vertex& vertex)
 {
 	IndexType index = static_cast<IndexType>(m_Vertices.size());
+	if(m_VerticesExtraDataContainer.size() == m_Vertices.size())
+		m_VerticesExtraDataContainer.emplace_back();
 	m_Vertices.emplace_back(vertex);
-	m_VertexExtraData.emplace_back();
 	return index;
 }
 
 BaseType::IndexType Mesh::AddFace(const Face& face)
 {
 	IndexType index = static_cast<IndexType>(m_Faces.size());
+	if(m_FacesExtraDataContainer.size() == m_Faces.size())
+		m_FacesExtraDataContainer.emplace_back();
 	m_Faces.emplace_back(face);
-	m_FaceExtraData.emplace_back();
 	return index;
+}
+
+void Mesh::AddVerticesExtraDataContainer()
+{
+	m_VerticesExtraDataContainer.resize(GetVertexCount());
+}
+
+void Mesh::AddFacesExtraDataContainer()
+{
+	m_FacesExtraDataContainer.resize(GetFaceCount());
+}
+
+std::vector<Data::Primitive::Vertex>& Mesh::GetVertices()
+{
+	return m_Vertices;
+}
+
+const std::vector<Data::Primitive::Vertex>& Mesh::GetVertices() const
+{
+	return m_Vertices;
+}
+
+std::vector<Data::Primitive::Face>& Mesh::GetFaces()
+{
+	return m_Faces;
+}
+
+const std::vector<Data::Primitive::Face>& Mesh::GetFaces() const
+{
+	return m_Faces;
 }
 } // namespace Data::Surface

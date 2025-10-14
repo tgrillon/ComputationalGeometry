@@ -68,6 +68,20 @@ public:
 	/// @brief Add a face to the mesh and return its index.
 	BaseType::IndexType AddFace(const Data::Primitive::Face& face);
 
+	/// @brief Add extra data container for each vertex.
+	void AddVerticesExtraDataContainer();
+	/// @brief Add extra data container for each face.
+	void AddFacesExtraDataContainer();
+
+	/// @brief Get the vertices data.
+	std::vector<Data::Primitive::Vertex>& GetVertices();
+	/// @brief Get the vertices data.
+	const std::vector<Data::Primitive::Vertex>& GetVertices() const;
+	/// @brief Get the faces data.
+	std::vector<Data::Primitive::Face>& GetFaces();
+	/// @brief Get the faces data.
+	const std::vector<Data::Primitive::Face>& GetFaces() const;
+
 private:
 	/// @brief List of vertices.
 	std::vector<Data::Primitive::Vertex> m_Vertices{};
