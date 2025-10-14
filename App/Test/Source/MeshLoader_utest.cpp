@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace Utilitary::Mesh;
+using namespace Utilitary::Surface;
 
 TEST(MeshLoaderTest, LoadOFF_ValidFile_ShouldLoadMesh)
 {
@@ -13,7 +13,7 @@ TEST(MeshLoaderTest, LoadOFF_ValidFile_ShouldLoadMesh)
 	EXPECT_EQ(mesh->GetVertexCount(), 8);
 	EXPECT_EQ(mesh->GetFaceCount(), 12);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(*mesh), MeshIntegrity::Status::MeshOK);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(*mesh), MeshIntegrity::ExitCode::MeshOK);
 }
 
 TEST(MeshLoaderTest, LoadOFF_InvalidFile_ShouldReturnNullptr)
@@ -37,7 +37,7 @@ TEST(MeshLoaderTest, LoadOBJ_ValidFile_ShouldLoadMesh)
 	EXPECT_EQ(mesh->GetVertexCount(), 9);
 	EXPECT_EQ(mesh->GetFaceCount(), 14);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(*mesh), MeshIntegrity::Status::MeshOK);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(*mesh), MeshIntegrity::ExitCode::MeshOK);
 }
 
 TEST(MeshLoaderTest, LoadOBJ_InvalidFile_ShouldReturnNullptr)

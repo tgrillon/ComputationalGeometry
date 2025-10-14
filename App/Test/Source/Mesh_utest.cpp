@@ -1,5 +1,6 @@
 #include "Application/Mesh.h"
 #include "Application/PrimitiveProxy.h"
+#include "TestHelpers.h"
 
 #include <gtest/gtest.h>
 
@@ -7,29 +8,9 @@ using namespace BaseType;
 using namespace Data::Surface;
 using namespace Data::Primitive;
 
-namespace
-{
-Mesh CreateValidMesh()
-{
-	Mesh mesh;
-
-	// Add vertices
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentFaceIdx = { 1 } });
-
-	// Add faces
-	mesh.AddFace({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
-	mesh.AddFace({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
-
-	return mesh;
-}
-} // namespace
-
 TEST(MeshTest, CopyConstructor_ShouldDeepCopyMesh)
 {
-	Mesh originalMesh = CreateValidMesh();
+	Mesh originalMesh = TestHelpers::CreateValidMesh();
 
 	// Copy the mesh
 	Mesh copiedMesh(originalMesh);
@@ -70,7 +51,7 @@ TEST(MeshTest, AddVertexAndFace_ShouldReturnCorrectIndices)
 
 TEST(MeshTest, GetVertexAndFace_ShouldReturnProxies)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Get vertex proxy
 	VertexProxy vertexProxy = mesh.GetVertex(0);
@@ -87,7 +68,7 @@ TEST(MeshTest, GetVertexAndFace_ShouldReturnProxies)
 
 TEST(MeshTest, GetVertexAndFaceData_ShouldReturnReferences)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Get vertex data
 	Vertex& vertexData0 = mesh.GetVertexData(0);
@@ -110,7 +91,7 @@ TEST(MeshTest, GetVertexAndFaceData_ShouldReturnReferences)
 
 TEST(MeshTest, GetConstVertexAndFaceData_ShouldReturnReferences)
 {
-	const Mesh mesh = CreateValidMesh();
+	const Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Get vertex data
 	const Vertex& vertexData1 = mesh.GetVertexData(1);

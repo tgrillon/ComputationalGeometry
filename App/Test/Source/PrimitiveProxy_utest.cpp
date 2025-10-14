@@ -1,34 +1,15 @@
 #include "Application/PrimitiveProxy.h"
+#include "TestHelpers.h"
 
 #include <gtest/gtest.h>
 
-using namespace Utilitary::Mesh;
+using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::Primitive;
 
-namespace
-{
-Mesh CreateValidMesh()
-{
-	Mesh mesh;
-
-	// Add vertices
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentFaceIdx = { 1 } });
-
-	// Add faces
-	mesh.AddFace({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
-	mesh.AddFace({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
-
-	return mesh;
-}
-} // namespace
-
 TEST(PrimitiveProxyTest, VertexProxy_ValidVertex_ShouldBeValid)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 	VertexProxy vertexProxy = mesh.GetVertex(0);
 
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
@@ -42,7 +23,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ValidVertex_ShouldBeValid)
 
 TEST(PrimitiveProxyTest, VertexProxy_ConstValidVertex_ShouldBeValid)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 	const VertexProxy vertexProxy = mesh.GetVertex(0);
 
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
@@ -52,7 +33,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ConstValidVertex_ShouldBeValid)
 
 TEST(PrimitiveProxyTest, FaceProxy_ValidFace_ShouldBeValid)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 	FaceProxy faceProxy = mesh.GetFace(0);
 
 	EXPECT_EQ(faceProxy.GetIndex(), 0);
@@ -68,7 +49,7 @@ TEST(PrimitiveProxyTest, FaceProxy_ValidFace_ShouldBeValid)
 
 TEST(PrimitiveProxyTest, FaceProxy_ConstValidFace_ShouldBeValid)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 	const FaceProxy faceProxy = mesh.GetFace(0);
 
 	EXPECT_EQ(faceProxy.GetIndex(), 0);
@@ -80,7 +61,7 @@ TEST(PrimitiveProxyTest, FaceProxy_ConstValidFace_ShouldBeValid)
 
 TEST(PrimitiveProxyTest, VertexProxy_ExtraData_ShouldHandleCorrectly)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 	VertexProxy vertexProxy = mesh.GetVertex(0);
 
 	struct ExtraData
@@ -109,7 +90,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ExtraData_ShouldHandleCorrectly)
 
 TEST(PrimitiveProxyTest, FaceProxy_ExtraData_ShouldHandleCorrectly)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 	FaceProxy faceProxy = mesh.GetFace(0);
 
 	struct ExtraData

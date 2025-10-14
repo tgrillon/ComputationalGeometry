@@ -1,43 +1,24 @@
 #include "Application/MeshIntegrity.h"
+#include "TestHelpers.h"
 
 #include <gtest/gtest.h>
 
-using namespace Utilitary::Mesh;
+using namespace Utilitary::Surface;
 using namespace Data::Surface;
-
-namespace
-{
-Mesh CreateValidMesh()
-{
-	Mesh mesh;
-
-	// Add vertices
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentFaceIdx = { 1 } });
-
-	// Add faces
-	mesh.AddFace({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
-	mesh.AddFace({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
-
-	return mesh;
-}
-} // namespace
 
 TEST(MeshIntegrityTest, ValidMesh_ShouldReturnMeshOK)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 2);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::MeshOK);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::MeshOK);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnVertexHasNullIncidentFace)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the first vertex by setting its incident face to -1.
 	mesh.GetVertexData(0).IncidentFaceIdx = -1;
@@ -45,12 +26,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnVertexHasNullIncidentFace)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 2);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::VertexHasNullIncidentFace);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::VertexHasNullIncidentFace);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnVertexNotInFace)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the first vertex by setting its incident face to a face that doesn't contain it.
 	mesh.GetFaceData(0).Vertices[0] = 3;
@@ -58,12 +39,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnVertexNotInFace)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 2);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::VertexNotInFace);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::VertexNotInFace);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceHasNullVertex)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the first vertex of the first face.
 	mesh.AddFace({ .Vertices = { 0, 1, -1 } });
@@ -71,12 +52,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceHasNullVertex)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 3);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::FaceHasNullVertex);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::FaceHasNullVertex);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceNeighborNotReciprocal)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the neighbor relationship between the two faces.
 	mesh.GetFaceData(0).Neighbors[1] = -1;
@@ -84,12 +65,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceNeighborNotReciprocal)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 2);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::FaceNeighborNotReciprocal);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::FaceNeighborNotReciprocal);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceHasDuplicatedVertices)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the last face by duplicating two of its vertices.
 	mesh.AddFace({ .Vertices = { 0, 1, 1 }, .Neighbors = { -1, -1, -1 } });
@@ -97,12 +78,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceHasDuplicatedVertices)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 3);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::FaceHasDuplicatedVertices);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::FaceHasDuplicatedVertices);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceIsItsOwnNeighbor)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the neighbor index of the last face to point to itself.
 	mesh.AddFace({ .Vertices = { 0, 1, 3 }, .Neighbors = { -1, -1, 2 } });
@@ -110,12 +91,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnFaceIsItsOwnNeighbor)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 3);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::FaceIsItsOwnNeighbor);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::FaceIsItsOwnNeighbor);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnInvalidVertexIndex)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the first vertex by setting its index in a face to an out-of-bounds value.
 	mesh.AddFace({ .Vertices = { 0, 1, 4 } });
@@ -123,12 +104,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnInvalidVertexIndex)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 3);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::InvalidVertexIndex);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::InvalidVertexIndex);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnInvalidIncidentFaceIndex)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the first vertex by setting its incident face to an out-of-bounds value.
 	mesh.GetVertexData(0).IncidentFaceIdx = 2;
@@ -136,12 +117,12 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnInvalidIncidentFaceIndex)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 2);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::InvalidIncidentFaceIndex);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::InvalidIncidentFaceIndex);
 }
 
 TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnInvalidNeighborFaceIndex)
 {
-	Mesh mesh = CreateValidMesh();
+	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Invalidate the neighbor index of the last face to an out-of-bounds value.
 	mesh.AddFace({ .Vertices = { 0, 1, 3 }, .Neighbors = { -1, -1, 3 } });
@@ -149,5 +130,5 @@ TEST(MeshIntegrityTest, InvalidMesh_ShouldReturnInvalidNeighborFaceIndex)
 	EXPECT_EQ(mesh.GetVertexCount(), 4);
 	EXPECT_EQ(mesh.GetFaceCount(), 3);
 
-	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::Status::InvalidNeighborFaceIndex);
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::InvalidNeighborFaceIndex);
 }
