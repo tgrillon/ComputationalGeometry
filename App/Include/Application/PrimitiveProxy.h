@@ -14,30 +14,37 @@ public:
 
 	/// @brief Get extra data of type T associated with the face, or nullptr if not found.
 	template<typename T>
-	T* GetExtraData() const
+	T* GetExtraData()
 	{
-		return m_Mesh->m_FaceExtraData[m_Index].Get<T>();
+		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<T>();
+	}
+
+	/// @brief Get extra data of type T associated with the face, or nullptr if not found.
+	template<typename T>
+	const T* GetExtraData() const
+	{
+		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<const T>();
 	}
 
 	/// @brief Get or create extra data of type T associated with the face.
 	template<typename T>
 	T& GetOrCreateExtraData() const
 	{
-		return m_Mesh->m_FaceExtraData[m_Index].GetOrCreate<T>();
+		return m_Mesh->m_FacesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
 	/// @brief Set extra data of type T associated with the face.
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
-		return m_Mesh->m_FaceExtraData[m_Index].Set<T>(data);
+		return m_Mesh->m_FacesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
 	/// @brief Check if extra data of type T is associated with the face.
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->m_FaceExtraData[m_Index].Has<T>();
+		return m_Mesh->m_FacesExtraDataContainer[m_Index].Has<T>();
 	}
 
 	/// @brief Get the index of the face in the mesh.
@@ -62,7 +69,7 @@ public:
 
 private:
 	/// @brief Pointer to the mesh containing the face.
-	Data::Surface::Mesh* m_Mesh;
+	mutable Data::Surface::Mesh* m_Mesh;
 	/// @brief Index to the face being proxied.
 	BaseType::IndexType m_Index;
 };
@@ -78,28 +85,35 @@ public:
 	template<typename T>
 	T* GetExtraData()
 	{
-		return m_Mesh->m_VertexExtraData[m_Index].Get<T>();
+		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
+	}
+
+	/// @brief Get extra data of type T associated with the vertex, or nullptr if not found.
+	template<typename T>
+	const T* GetExtraData() const
+	{
+		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
 	}
 
 	/// @brief Get or create extra data of type T associated with the vertex.
 	template<typename T>
 	T& GetOrCreateExtraData()
 	{
-		return m_Mesh->m_VertexExtraData[m_Index].GetOrCreate<T>();
+		return m_Mesh->m_VerticesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
 	/// @brief Set extra data of type T associated with the vertex.
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
-		return m_Mesh->m_VertexExtraData[m_Index].Set<T>(data);
+		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
 	/// @brief Check if extra data of type T is associated with the vertex.
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->m_VertexExtraData[m_Index].Has<T>();
+		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Has<T>();
 	}
 
 	/// @brief Get the index of the vertex in the mesh.
@@ -117,10 +131,7 @@ public:
 	const BaseType::Vec3& GetPosition() const;
 
 	/// @brief Get the incident face of the vertex.
-	int GetIncidentFace();
-
-	/// @brief Get the incident face of the vertex (const version).
-	const int GetIncidentFace() const;
+	int GetIncidentFace() const;
 
 private:
 	/// @brief Pointer to the mesh containing the vertex.

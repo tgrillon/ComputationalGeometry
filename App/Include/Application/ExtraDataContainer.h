@@ -40,6 +40,17 @@ public:
 		return std::any_cast<T>(&it->second);
 	}
 
+	/// @brief Get a pointer to the value of type T in the container, or nullptr if not found.
+	template<typename T>
+	const T* Get() const
+	{
+		auto it = m_Data.find(std::type_index(typeid(T)));
+		if(it == m_Data.end())
+			return nullptr;
+
+		return std::any_cast<const T>(&it->second);
+	}
+
 	/// @brief Get a pointer to the value of type T in the container, creating a default one if not found.
 	template<typename T>
 	T& GetOrCreate()

@@ -80,14 +80,8 @@ const Vec3& VertexProxy::GetPosition() const
 	return GetVertex().Position;
 }
 
-int VertexProxy::GetIncidentFace()
+int VertexProxy::GetIncidentFace() const
 {
 	return GetVertex().IncidentFaceIdx;
 }
-
-const int VertexProxy::GetIncidentFace() const
-{
-	return GetVertex().IncidentFaceIdx;
-}
-
 } // namespace Data::Primitive
