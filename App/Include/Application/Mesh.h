@@ -39,13 +39,13 @@ public:
 	~Mesh() = default;
 
 	/// @brief Deep clone of the mesh.
-	std::unique_ptr<Mesh> Clone() const { return std::make_unique<Mesh>(*this); }
+	std::unique_ptr<Mesh> Clone() const;
 
 	/// @brief Get the number of vertices in the mesh.
-	uint32_t GetVertexCount() const { return static_cast<uint32_t>(m_Vertices.size()); }
+	BaseType::IndexType GetVertexCount() const;
 
 	/// @brief Get the number of faces in the mesh.
-	uint32_t GetFaceCount() const { return static_cast<uint32_t>(m_Faces.size()); }
+	BaseType::IndexType GetFaceCount() const;
 
 	/// @brief Get a proxy to the vertex at the given index.
 	Data::Primitive::VertexProxy GetVertex(const BaseType::IndexType index);

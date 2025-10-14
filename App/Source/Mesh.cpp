@@ -18,6 +18,22 @@ Mesh::Mesh(const Mesh& other)
 		m_Faces.emplace_back(face);
 }
 
+/// @brief Get the number of faces in the mesh.
+std::unique_ptr<Mesh> Mesh::Clone() const
+{
+	return std::make_unique<Mesh>(*this);
+}
+
+BaseType::IndexType Mesh::GetVertexCount() const
+{
+	return static_cast<BaseType::IndexType>(m_Vertices.size());
+}
+
+BaseType::IndexType Mesh::GetFaceCount() const
+{
+	return static_cast<BaseType::IndexType>(m_Faces.size());
+}
+
 VertexProxy Mesh::GetVertex(const IndexType index)
 {
 	assert(index < GetVertexCount() && "Index out of bound");

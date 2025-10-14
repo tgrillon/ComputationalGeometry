@@ -25,4 +25,14 @@ bool VertexPair::operator==(const VertexPair& other) const
 	return (m_MinVertexIdx == other.m_MinVertexIdx && m_MaxVertexIdx == other.m_MaxVertexIdx)
 		|| (m_MinVertexIdx == other.m_MaxVertexIdx && m_MaxVertexIdx == other.m_MinVertexIdx);
 }
+
+uint32_t VertexPair::GetMinVertexIdx() const
+{
+	return m_MinVertexIdx;
+}
+
+uint32_t VertexPair::GetMaxVertexIdx() const
+{
+	return m_MaxVertexIdx;
+}
 } // namespace Data::Primitive

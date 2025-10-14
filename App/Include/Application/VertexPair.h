@@ -20,10 +20,10 @@ public:
 	~VertexPair() = default;
 
 	/// @brief Get the index of the minimum vertex.
-	uint32_t GetMinVertexIdx() const { return m_MinVertexIdx; }
+	uint32_t GetMinVertexIdx() const;
 
 	/// @brief Get the index of the maximum vertex.
-	uint32_t GetMaxVertexIdx() const { return m_MaxVertexIdx; }
+	uint32_t GetMaxVertexIdx() const;
 
 private:
 	/// @brief Minimum vertex (the one with the smaller index).
