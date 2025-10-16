@@ -29,3 +29,33 @@ TEST(PrimitiveTest, GetEdgeIndex_InvalidEdge_ShouldReturnMinusOne)
 	EXPECT_EQ(GetEdgeIndex(face, 3, 2), -1);
 	EXPECT_EQ(GetEdgeIndex(face, 3, 4), -1);
 }
+
+TEST(PrimitiveTest, GetVertexLocalIndex_ValidVertex_ShouldReturnCorrectIndex)
+{
+	{
+		Face face{ .Vertices = { 0, 1, 2 } };
+
+		EXPECT_EQ(GetVertexLocalIndex(face, 0), 0);
+		EXPECT_EQ(GetVertexLocalIndex(face, 1), 1);
+		EXPECT_EQ(GetVertexLocalIndex(face, 2), 2);
+	}
+
+	{
+		Face face{ .Vertices = { 5, 8, 1 } };
+
+		EXPECT_EQ(GetVertexLocalIndex(face, 5), 0);
+		EXPECT_EQ(GetVertexLocalIndex(face, 8), 1);
+		EXPECT_EQ(GetVertexLocalIndex(face, 1), 2);
+	}
+}
+
+TEST(PrimitiveTest, GetVertexLocalIndex_InvalidVertex_ShouldReturnMinusOne)
+{
+	{
+		Face face{ .Vertices = { 0, 1, 2 } };
+
+		EXPECT_EQ(GetVertexLocalIndex(face, 4), -1);
+		EXPECT_EQ(GetVertexLocalIndex(face, 8), -1);
+		EXPECT_EQ(GetVertexLocalIndex(face, 6), -1);
+	}
+}

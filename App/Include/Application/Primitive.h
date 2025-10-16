@@ -53,5 +53,12 @@ namespace Utilitary::Primitive
 /// @param v0Idx The first vertex index of the edge.
 /// @param v1Idx The second vertex index of the edge.
 /// @return The index of the edge (0, 1, or 2), or -1 if the edge is not found.
-int GetEdgeIndex(const Data::Primitive::Face& face, const BaseType::IndexType v0Idx, const BaseType::IndexType v1Idx);
+int GetEdgeIndex(
+	const Data::Primitive::Face& face, const BaseType::VertexIndex firstIndex, const BaseType::VertexIndex secondIndex);
+
+/// @brief Get the local index of a vertex in a face.
+/// @param face The face containing the vertex.
+/// @param vertexIdx The vertex to found in the face.
+/// @return The local index of the vertex (0, 1, or 2), or -1 if it is not found.
+int GetVertexLocalIndex(const Data::Primitive::Face& face, const BaseType::VertexIndex index);
 } // namespace Utilitary::Primitive
