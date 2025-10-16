@@ -1,9 +1,11 @@
 #include "Application/Mesh.h"
 
 #include "Application/PrimitiveProxy.h"
+#include "Application/VertexPair.h"
 
 using namespace BaseType;
 using namespace Data::Primitive;
+using namespace Utilitary::Primitive;
 
 namespace Data::Surface
 {
@@ -94,6 +96,54 @@ void Mesh::AddVerticesExtraDataContainer()
 void Mesh::AddFacesExtraDataContainer()
 {
 	m_FacesExtraDataContainer.resize(GetFaceCount());
+}
+
+void Mesh::UpdateMeshConnectivity()
+{
+	std::unordered_map<VertexPair, std::pair<FaceIndex, EdgeIndex>> neighborMap;
+
+	for(FaceIndex iFace = 0; iFace < GetFaceCount(); ++iFace)
+	{
+		Face& curFace = m_Faces[iFace];
+
+		// Set the incident face index for each vertex if it's not already the case.
+		for(EdgeIndex iEdge = 0; iEdge < 3; ++iEdge)
+		{
+			int curVertexIdx = curFace.Vertices[iEdge];
+			assert(curVertexIdx != -1);
+
+			Vertex& curVertex = m_Vertices[curVertexIdx];
+
+			if(curVertex.IncidentFaceIdx == -1)
+				curVertex.IncidentFaceIdx = iFace;
+		}
+
+		// Set neighboring faces using the edges
+		auto SetFacesNeigbhor = [&](VertexIndex firstVertexIdx, VertexIndex secondVertexIdx, uint8_t edgeIdx)
+		{
+			if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
+			{
+				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iFace, edgeIdx };
+			}
+			else // The edge with firstVertex and secondVertex is already registered in map
+			{
+				auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
+				m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iFace;
+				curFace.Neighbors[edgeIdx] = faceNeighborIdx;
+			}
+		};
+
+		const VertexIndex v0Idx = static_cast<VertexIndex>(curFace.Vertices[0]);
+		const VertexIndex v1Idx = static_cast<VertexIndex>(curFace.Vertices[1]);
+		const VertexIndex v2Idx = static_cast<VertexIndex>(curFace.Vertices[2]);
+
+		// Edge v0-v1
+		SetFacesNeigbhor(v0Idx, v1Idx, 2);
+		// Edge v1-v2
+		SetFacesNeigbhor(v1Idx, v2Idx, 0);
+		// Edge v2-v0
+		SetFacesNeigbhor(v2Idx, v0Idx, 1);
+	}
 }
 
 std::vector<Data::Primitive::Vertex>& Mesh::GetVertices()

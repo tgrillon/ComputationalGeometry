@@ -73,6 +73,9 @@ public:
 	/// @brief Add extra data container for each face.
 	void AddFacesExtraDataContainer();
 
+	/// @brief Update neighbor informations on each face and incident face for each vertex.
+	void UpdateMeshConnectivity();
+
 	/// @brief Get the vertices data.
 	std::vector<Data::Primitive::Vertex>& GetVertices();
 	/// @brief Get the vertices data.
