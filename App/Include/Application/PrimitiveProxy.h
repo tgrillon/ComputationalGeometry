@@ -10,12 +10,13 @@ class FaceProxy
 {
 public:
 	/// @brief Construct a FaceProxy from a mesh and a face.
-	FaceProxy(Data::Surface::Mesh& mesh, const BaseType::IndexType faceIdx);
+	FaceProxy(Data::Surface::Mesh& mesh, const BaseType::FaceIndex index);
 
 	/// @brief Get extra data of type T associated with the face, or nullptr if not found.
 	template<typename T>
 	T* GetExtraData()
 	{
+		assert(m_Mesh->HasFaceExtraData());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<T>();
 	}
 
@@ -39,6 +40,7 @@ public:
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
+		assert(m_Mesh->HasFaceExtraData());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
@@ -46,7 +48,7 @@ public:
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->m_FacesExtraDataContainer[m_Index].Has<T>();
+		return m_Mesh->HasFaceExtraData() && m_Mesh->m_FacesExtraDataContainer[m_Index].Has<T>();
 	}
 
 	/// @brief Get the index of the face in the mesh.
@@ -87,6 +89,7 @@ public:
 	template<typename T>
 	T* GetExtraData()
 	{
+		assert(m_Mesh->HasVertexExtraData());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
 	}
 
@@ -94,6 +97,7 @@ public:
 	template<typename T>
 	const T* GetExtraData() const
 	{
+		assert(m_Mesh->HasVertexExtraData());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
 	}
 
@@ -101,6 +105,7 @@ public:
 	template<typename T>
 	T& GetOrCreateExtraData()
 	{
+		assert(m_Mesh->HasVertexExtraData());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
@@ -108,6 +113,7 @@ public:
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
+		assert(m_Mesh->HasVertexExtraData());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
@@ -115,7 +121,7 @@ public:
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Has<T>();
+		return m_Mesh->HasVertexExtraData() && m_Mesh->m_VerticesExtraDataContainer[m_Index].Has<T>();
 	}
 
 	/// @brief Get the index of the vertex in the mesh.

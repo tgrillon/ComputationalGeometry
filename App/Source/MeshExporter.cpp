@@ -51,7 +51,7 @@ void MeshExporter::ExportOBJ(const Mesh& mesh, const std::filesystem::path& file
 
 	// Write texture coordinates if available.
 	// Assuming texture coordinates are stored as Vec2 in the ExtraDataContainer of each vertex.
-	if(mesh.m_VerticesExtraDataContainer[0].Has<Vec2>())
+	if(mesh.HasVertexExtraData() && mesh.m_VerticesExtraDataContainer[0].Has<Vec2>())
 	{
 		for(auto&& curVertexED : mesh.m_VerticesExtraDataContainer)
 		{
@@ -63,7 +63,7 @@ void MeshExporter::ExportOBJ(const Mesh& mesh, const std::filesystem::path& file
 
 	// Write vertex normals if available.
 	// Assuming normals are stored as Vec3 in the ExtraDataContainer of each vertex.
-	if(mesh.m_VerticesExtraDataContainer[0].Has<Vec3>())
+	if(mesh.HasVertexExtraData() && mesh.m_VerticesExtraDataContainer[0].Has<Vec3>())
 	{
 		for(auto&& curVertexED : mesh.m_VerticesExtraDataContainer)
 		{
@@ -82,8 +82,8 @@ void MeshExporter::ExportOBJ(const Mesh& mesh, const std::filesystem::path& file
 			file << ' ' << (vertexIdx + 1);
 
 			// Check if texture coordinates and normals are available
-			bool hasTexCoords = mesh.m_VerticesExtraDataContainer[0].Has<Vec2>();
-			bool hasNormals = mesh.m_VerticesExtraDataContainer[0].Has<Vec3>();
+			bool hasTexCoords = mesh.HasVertexExtraData() && mesh.m_VerticesExtraDataContainer[0].Has<Vec2>();
+			bool hasNormals = mesh.HasVertexExtraData() && mesh.m_VerticesExtraDataContainer[0].Has<Vec3>();
 
 			if(hasTexCoords || hasNormals)
 			{
