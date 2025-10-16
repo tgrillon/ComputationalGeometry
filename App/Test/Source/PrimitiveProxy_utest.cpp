@@ -71,6 +71,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ExtraData_ShouldHandleCorrectly)
 
 	// Initially, there should be no extra data.
 	EXPECT_FALSE(vertexProxy.HasExtraData<ExtraData>());
+	mesh.AddVerticesExtraDataContainer();
 	EXPECT_EQ(vertexProxy.GetExtraData<ExtraData>(), nullptr);
 
 	// Create extra data.
@@ -100,6 +101,7 @@ TEST(PrimitiveProxyTest, FaceProxy_ExtraData_ShouldHandleCorrectly)
 
 	// Initially, there should be no extra data.
 	EXPECT_FALSE(faceProxy.HasExtraData<ExtraData>());
+	mesh.AddFacesExtraDataContainer();
 	EXPECT_EQ(faceProxy.GetExtraData<ExtraData>(), nullptr);
 
 	// Create extra data.
