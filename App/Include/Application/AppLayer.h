@@ -6,13 +6,18 @@
 
 namespace Application
 {
+/// @brief Application layer class.
 class AppLayer : public Core::Layer
 {
 public:
+	/// @brief Default constructor
 	AppLayer();
+	/// @brief Default destructor
 	virtual ~AppLayer();
 
+	/// @brief Override from Layer
 	virtual void OnUpdate(float ts) override;
+	/// @brief Override from Layer
 	virtual void OnRender() override;
 
 private:

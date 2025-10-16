@@ -15,8 +15,10 @@ public:
 	/// @brief Construct a VertexPair from two vertices.
 	VertexPair(const BaseType::VertexIndex firstIndex, const BaseType::VertexIndex secondIndex);
 
+	/// @brief Equality operator.
 	bool operator==(const VertexPair& other) const;
 
+	/// @brief Default destructor.
 	~VertexPair() = default;
 
 	/// @brief Get the index of the minimum vertex.

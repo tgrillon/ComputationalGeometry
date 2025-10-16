@@ -20,6 +20,7 @@ public:
 
 	/// @brief Enable move semantics
 	ExtraDataContainer(ExtraDataContainer&&) = default;
+	/// @brief Enable move semantics
 	ExtraDataContainer& operator=(ExtraDataContainer&&) = default;
 
 	/// @brief Set the value of type T in the container.
