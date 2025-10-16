@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['loadobj_0',['LoadOBJ',['../structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5',1,'Utilitary::Surface::MeshLoader']]],
-  ['loadoff_1',['LoadOFF',['../structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99',1,'Utilitary::Surface::MeshLoader']]]
+  ['isempty_0',['IsEmpty',['../classData_1_1Internal_1_1ExtraDataContainer.html#a3a3e715bb5f379fcca3cdd2abcbbf9d3',1,'Data::Internal::ExtraDataContainer']]]
 ];

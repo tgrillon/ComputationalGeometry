@@ -123,7 +123,8 @@ $(document).ready(function(){initNavTree('AppLayer_8cpp_source.html',''); initRe
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span>Application</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>AppLayer::AppLayer()</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classApplication_1_1AppLayer.html#ab7d87861d49bc09ad317b7c766646bec">   15</a></span><a class="code hl_function" href="classApplication_1_1AppLayer.html#ab7d87861d49bc09ad317b7c766646bec">AppLayer::AppLayer</a>()</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Create shaders</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    m_Shader = Renderer::CreateGraphicsShader(<span class="stringliteral">&quot;Data/Shaders/Vertex.glsl&quot;</span>, <span class="stringliteral">&quot;Data/Shaders/Fragment.glsl&quot;</span>);</div>
@@ -167,8 +168,10 @@ $(document).ready(function(){initNavTree('AppLayer_8cpp_source.html',''); initRe
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;OpenGL\t &quot;</span> &lt;&lt; glGetString(GL_VERSION) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;GLSL\t &quot;</span> &lt;&lt; glGetString(GL_SHADING_LANGUAGE_VERSION) &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>AppLayer::~AppLayer()</div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classApplication_1_1AppLayer.html#a2bfe290487ddf85a4352f75fba5274ca">   60</a></span><a class="code hl_function" href="classApplication_1_1AppLayer.html#a2bfe290487ddf85a4352f75fba5274ca">AppLayer::~AppLayer</a>()</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    glDeleteVertexArrays(1, &amp;m_VertexArray);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    glDeleteBuffers(1, &amp;m_VertexBuffer);</div>
@@ -184,11 +187,15 @@ $(document).ready(function(){initNavTree('AppLayer_8cpp_source.html',''); initRe
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        glDeleteFramebuffers(1, &amp;renderFramebuffer.Handle);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">void</span> AppLayer::OnUpdate(<span class="keywordtype">float</span> ts)</div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classApplication_1_1AppLayer.html#a89e9cdad6ae5259e94465fa9c9e3b23a">   77</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classApplication_1_1AppLayer.html#a89e9cdad6ae5259e94465fa9c9e3b23a">AppLayer::OnUpdate</a>(<span class="keywordtype">float</span> ts)</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{}</div>
+</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">void</span> AppLayer::OnRender()</div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classApplication_1_1AppLayer.html#a8da2d2fc4ee6fdb51502d95c83481065">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classApplication_1_1AppLayer.html#a8da2d2fc4ee6fdb51502d95c83481065">AppLayer::OnRender</a>()</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// ImGui stuff</span></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    ImGui::Begin(<span class="stringliteral">&quot;My Application&quot;</span>);</div>
@@ -243,7 +250,12 @@ $(document).ready(function(){initNavTree('AppLayer_8cpp_source.html',''); initRe
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    glDrawArrays(GL_TRIANGLES, 0, 3);</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    glBindFramebuffer(GL_FRAMEBUFFER, 0);</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>} <span class="comment">// namespace Application</span></div>
+<div class="ttc" id="aclassApplication_1_1AppLayer_html_a2bfe290487ddf85a4352f75fba5274ca"><div class="ttname"><a href="classApplication_1_1AppLayer.html#a2bfe290487ddf85a4352f75fba5274ca">Application::AppLayer::~AppLayer</a></div><div class="ttdeci">virtual ~AppLayer()</div><div class="ttdoc">Default destructor.</div><div class="ttdef"><b>Definition</b> <a href="AppLayer_8cpp_source.html#l00060">AppLayer.cpp:60</a></div></div>
+<div class="ttc" id="aclassApplication_1_1AppLayer_html_a89e9cdad6ae5259e94465fa9c9e3b23a"><div class="ttname"><a href="classApplication_1_1AppLayer.html#a89e9cdad6ae5259e94465fa9c9e3b23a">Application::AppLayer::OnUpdate</a></div><div class="ttdeci">virtual void OnUpdate(float ts) override</div><div class="ttdoc">Override from Layer.</div><div class="ttdef"><b>Definition</b> <a href="AppLayer_8cpp_source.html#l00077">AppLayer.cpp:77</a></div></div>
+<div class="ttc" id="aclassApplication_1_1AppLayer_html_a8da2d2fc4ee6fdb51502d95c83481065"><div class="ttname"><a href="classApplication_1_1AppLayer.html#a8da2d2fc4ee6fdb51502d95c83481065">Application::AppLayer::OnRender</a></div><div class="ttdeci">virtual void OnRender() override</div><div class="ttdoc">Override from Layer.</div><div class="ttdef"><b>Definition</b> <a href="AppLayer_8cpp_source.html#l00080">AppLayer.cpp:80</a></div></div>
+<div class="ttc" id="aclassApplication_1_1AppLayer_html_ab7d87861d49bc09ad317b7c766646bec"><div class="ttname"><a href="classApplication_1_1AppLayer.html#ab7d87861d49bc09ad317b7c766646bec">Application::AppLayer::AppLayer</a></div><div class="ttdeci">AppLayer()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> <a href="AppLayer_8cpp_source.html#l00015">AppLayer.cpp:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

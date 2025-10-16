@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "Application", null, [
-      [ "AppLayer", "classApplication_1_1AppLayer.html", null ]
+      [ "AppLayer", "classApplication_1_1AppLayer.html", "classApplication_1_1AppLayer" ]
     ] ],
     [ "Data", null, [
       [ "Internal", null, [

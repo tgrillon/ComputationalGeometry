@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['neighbors_0',['Neighbors',['../structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533',1,'Data::Primitive::Face']]]
+  ['incidentfaceidx_0',['IncidentFaceIdx',['../structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e',1,'Data::Primitive::Vertex']]]
 ];

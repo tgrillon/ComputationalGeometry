@@ -12,5 +12,7 @@ var hierarchy =
     [ "Utilitary::Surface::MeshLoader", "structUtilitary_1_1Surface_1_1MeshLoader.html", null ],
     [ "Data::Primitive::Vertex", "structData_1_1Primitive_1_1Vertex.html", null ],
     [ "Data::Primitive::VertexPair", "classData_1_1Primitive_1_1VertexPair.html", null ],
-    [ "Data::Primitive::VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html", null ]
+    [ "Data::Primitive::VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html", null ],
+    [ "Data::Surface::Mesh::VerticesAroundVertexCirculator", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html", null ],
+    [ "Data::Surface::Mesh::VerticesAroundVertexRange", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html", null ]
 ];
