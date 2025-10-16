@@ -5,16 +5,16 @@ using namespace BaseType;
 
 namespace Utilitary::Primitive
 {
-int GetEdgeIndex(const Face& face, const IndexType v0Idx, const IndexType v1Idx)
+int GetEdgeIndex(const Face& face, const VertexIndex firstIndex, const VertexIndex secondIndex)
 {
 	// Initialize edge index to -1 (not found)
 	int edgeIdx = -1;
 
 	// Lambda to find the edge index given a vertex and the current index
-	auto FindEdgeIndex = [&](const IndexType vertexIdx, const uint8_t idx)
+	auto FindEdgeIndex = [&](const VertexIndex vertexIdx, const uint8_t idx)
 	{
-		IndexType prevVertexIdx = face.Vertices[IndexHelpers::Previous[idx]];
-		IndexType nextVertexIdx = face.Vertices[IndexHelpers::Next[idx]];
+		VertexIndex prevVertexIdx = face.Vertices[IndexHelpers::Previous[idx]];
+		VertexIndex nextVertexIdx = face.Vertices[IndexHelpers::Next[idx]];
 		if(prevVertexIdx == vertexIdx)
 			return static_cast<int>(IndexHelpers::Next[idx]);
 		else if(nextVertexIdx == vertexIdx)
@@ -24,15 +24,24 @@ int GetEdgeIndex(const Face& face, const IndexType v0Idx, const IndexType v1Idx)
 	};
 
 	// Iterate through the vertices of the face to find the edge
-	for(uint8_t idx = 0; idx < 3; ++idx)
+	for(EdgeIndex iEdge = 0; iEdge < 3; ++iEdge)
 	{
-		IndexType curVertexIdx = face.Vertices[IndexHelpers::Current[idx]];
-		if(curVertexIdx == v0Idx)
-			edgeIdx = FindEdgeIndex(v1Idx, idx);
-		else if(curVertexIdx == v1Idx)
-			edgeIdx = FindEdgeIndex(v0Idx, idx);
+		VertexIndex curVertexIdx = face.Vertices[IndexHelpers::Current[iEdge]];
+		if(curVertexIdx == firstIndex)
+			edgeIdx = FindEdgeIndex(secondIndex, iEdge);
+		else if(curVertexIdx == secondIndex)
+			edgeIdx = FindEdgeIndex(firstIndex, iEdge);
 	}
 
 	return edgeIdx;
+}
+
+int GetVertexLocalIndex(const Face& face, const VertexIndex index)
+{
+	for(int iEdge = 0; iEdge < 3; ++iEdge)
+		if(static_cast<VertexIndex>(face.Vertices[iEdge]) == index)
+			return iEdge;
+
+	return -1;
 }
 } // namespace Utilitary::Primitive

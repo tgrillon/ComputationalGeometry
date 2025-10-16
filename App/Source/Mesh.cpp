@@ -24,65 +24,65 @@ std::unique_ptr<Mesh> Mesh::Clone() const
 	return std::make_unique<Mesh>(*this);
 }
 
-BaseType::IndexType Mesh::GetVertexCount() const
+uint32_t Mesh::GetVertexCount() const
 {
-	return static_cast<BaseType::IndexType>(m_Vertices.size());
+	return static_cast<uint32_t>(m_Vertices.size());
 }
 
-BaseType::IndexType Mesh::GetFaceCount() const
+uint32_t Mesh::GetFaceCount() const
 {
-	return static_cast<BaseType::IndexType>(m_Faces.size());
+	return static_cast<uint32_t>(m_Faces.size());
 }
 
-VertexProxy Mesh::GetVertex(const IndexType index)
+VertexProxy Mesh::GetVertex(const VertexIndex index)
 {
 	assert(index < GetVertexCount() && "Index out of bound");
 	return VertexProxy(*this, index);
 }
 
-FaceProxy Mesh::GetFace(const IndexType index)
+FaceProxy Mesh::GetFace(const FaceIndex index)
 {
 	assert(index < GetFaceCount() && "Index out of bound");
 	return FaceProxy(*this, index);
 }
 
-const Vertex& Mesh::GetVertexData(const IndexType index) const
+const Vertex& Mesh::GetVertexData(const VertexIndex index) const
 {
 	assert(index < GetVertexCount() && "Index out of bound");
 	return m_Vertices[index];
 }
 
-Vertex& Mesh::GetVertexData(const IndexType index)
+Vertex& Mesh::GetVertexData(const VertexIndex index)
 {
 	assert(index < GetVertexCount() && "Index out of bound");
 	return m_Vertices[index];
 }
 
-const Face& Mesh::GetFaceData(const IndexType index) const
+const Face& Mesh::GetFaceData(const FaceIndex index) const
 {
 	assert(index < GetFaceCount() && "Index out of bound");
 	return m_Faces[index];
 }
 
-Face& Mesh::GetFaceData(const IndexType index)
+Face& Mesh::GetFaceData(const FaceIndex index)
 {
 	assert(index < GetFaceCount() && "Index out of bound");
 	return m_Faces[index];
 }
 
-IndexType Mesh::AddVertex(const Vertex& vertex)
+VertexIndex Mesh::AddVertex(const Vertex& vertex)
 {
-	IndexType index = static_cast<IndexType>(m_Vertices.size());
-	if(m_VerticesExtraDataContainer.size() == m_Vertices.size())
+	VertexIndex index = static_cast<VertexIndex>(m_Vertices.size());
+	if(!m_Vertices.empty() && m_VerticesExtraDataContainer.size() == m_Vertices.size())
 		m_VerticesExtraDataContainer.emplace_back();
 	m_Vertices.emplace_back(vertex);
 	return index;
 }
 
-BaseType::IndexType Mesh::AddFace(const Face& face)
+FaceIndex Mesh::AddFace(const Face& face)
 {
-	IndexType index = static_cast<IndexType>(m_Faces.size());
-	if(m_FacesExtraDataContainer.size() == m_Faces.size())
+	FaceIndex index = static_cast<FaceIndex>(m_Faces.size());
+	if(!m_Faces.empty() && m_FacesExtraDataContainer.size() == m_Faces.size())
 		m_FacesExtraDataContainer.emplace_back();
 	m_Faces.emplace_back(face);
 	return index;

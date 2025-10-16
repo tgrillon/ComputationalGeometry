@@ -7,12 +7,12 @@ using namespace BaseType;
 namespace Data::Primitive
 {
 /*==================================FaceProxy Methods===================================*/
-FaceProxy::FaceProxy(Data::Surface::Mesh& mesh, const IndexType faceIdx)
+FaceProxy::FaceProxy(Data::Surface::Mesh& mesh, const FaceIndex index)
 	: m_Mesh(&mesh)
-	, m_Index(faceIdx)
+	, m_Index(index)
 {}
 
-IndexType FaceProxy::GetIndex() const
+FaceIndex FaceProxy::GetIndex() const
 {
 	return m_Index;
 }
@@ -27,7 +27,7 @@ const Face& FaceProxy::GetFace() const
 	return m_Mesh->m_Faces[m_Index];
 }
 
-IndexType FaceProxy::GetVertex(const uint8_t index) const
+VertexIndex FaceProxy::GetVertex(const EdgeIndex index) const
 {
 	assert(index < 3 && "[FaceProxy::GetVertex] Index out of bound");
 	return GetFace().Vertices[index];
@@ -50,12 +50,13 @@ std::array<int, 3> FaceProxy::GetNeighbors() const
 }
 
 /*==================================VertexProxy Methods===================================*/
-VertexProxy::VertexProxy(Data::Surface::Mesh& mesh, const IndexType vertexIdx)
+
+VertexProxy::VertexProxy(Data::Surface::Mesh& mesh, const VertexIndex index)
 	: m_Mesh(&mesh)
-	, m_Index(vertexIdx)
+	, m_Index(index)
 {}
 
-IndexType VertexProxy::GetIndex() const
+VertexIndex VertexProxy::GetIndex() const
 {
 	return m_Index;
 }

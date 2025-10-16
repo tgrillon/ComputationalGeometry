@@ -32,8 +32,8 @@ TEST(MeshTest, AddVertexAndFace_ShouldReturnCorrectIndices)
 	Mesh mesh;
 
 	// Add vertices
-	IndexType vIdx1 = mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { -1 } });
-	IndexType vIdx2 = mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { -1 } });
+	VertexIndex vIdx1 = mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { -1 } });
+	VertexIndex vIdx2 = mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { -1 } });
 
 	// Verify vertex indices
 	EXPECT_EQ(vIdx1, 0);
@@ -41,7 +41,7 @@ TEST(MeshTest, AddVertexAndFace_ShouldReturnCorrectIndices)
 	EXPECT_EQ(mesh.GetVertexCount(), 2);
 
 	// Add a face
-	IndexType fIdx = mesh.AddFace(
+	FaceIndex fIdx = mesh.AddFace(
 		{ .Vertices = { static_cast<int>(vIdx1), static_cast<int>(vIdx2), -1 }, .Neighbors = { -1, -1, -1 } });
 
 	// Verify face index

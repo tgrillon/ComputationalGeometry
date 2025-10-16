@@ -7,9 +7,12 @@
 /// @brief Helper namespace for index manipulations in triangular faces.
 namespace IndexHelpers
 {
-constexpr std::array<uint8_t, 3> Previous{ 2, 0, 1 };
-constexpr std::array<uint8_t, 3> Current{ 0, 1, 2 };
-constexpr std::array<uint8_t, 3> Next{ 1, 2, 0 };
+/// @brief Arrays to get the previous index in a triangular face.
+constexpr std::array<BaseType::EdgeIndex, 3> Previous{ 2, 0, 1 };
+/// @brief Arrays to get the current index in a triangular face.
+constexpr std::array<BaseType::EdgeIndex, 3> Current{ 0, 1, 2 };
+/// @brief Arrays to get the next index in a triangular face.
+constexpr std::array<BaseType::EdgeIndex, 3> Next{ 1, 2, 0 };
 } // namespace IndexHelpers
 
 namespace Data::Primitive

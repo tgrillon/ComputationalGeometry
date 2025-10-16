@@ -12,8 +12,8 @@ TEST(VertexPairTest, Creation_ValidVertices_ShouldCreatePair)
 
 TEST(VertexPairTest, Creation_IdenticalVertexPairs_ShouldBeEqual)
 {
-	BaseType::IndexType idxA{ 1 };
-	BaseType::IndexType idxB{ 2 };
+	BaseType::VertexIndex idxA{ 1 };
+	BaseType::VertexIndex idxB{ 2 };
 
 	Data::Primitive::VertexPair AB(idxA, idxB);
 	EXPECT_EQ(AB.GetMinVertexIdx(), 1);

@@ -23,6 +23,7 @@ public:
 	template<typename T>
 	const T* GetExtraData() const
 	{
+		assert(m_Mesh->HasFaceExtraData());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<const T>();
 	}
 
@@ -30,6 +31,7 @@ public:
 	template<typename T>
 	T& GetOrCreateExtraData() const
 	{
+		assert(m_Mesh->HasFaceExtraData());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
@@ -48,7 +50,7 @@ public:
 	}
 
 	/// @brief Get the index of the face in the mesh.
-	BaseType::IndexType GetIndex() const;
+	BaseType::FaceIndex GetIndex() const;
 
 	/// @brief Get the face being proxied.
 	Face& GetFace();
@@ -56,13 +58,13 @@ public:
 	const Face& GetFace() const;
 
 	/// @brief Get the vertex at the given index of the face.
-	BaseType::IndexType GetVertex(const uint8_t index) const;
+	BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const;
 
 	/// @brief Get all vertex indices of the face.
 	std::array<int, 3> GetVertices() const;
 
 	/// @brief Get the neighbor face at the given index of the face.
-	int GetNeighbor(const uint8_t index) const;
+	int GetNeighbor(const BaseType::EdgeIndex index) const;
 
 	/// @brief Get all neighbor face indices of the face.
 	std::array<int, 3> GetNeighbors() const;
@@ -71,7 +73,7 @@ private:
 	/// @brief Pointer to the mesh containing the face.
 	mutable Data::Surface::Mesh* m_Mesh;
 	/// @brief Index to the face being proxied.
-	BaseType::IndexType m_Index;
+	BaseType::FaceIndex m_Index;
 };
 
 /// @brief Proxy class for a vertex in a mesh, providing safe access and extra data storage.
@@ -79,7 +81,7 @@ class VertexProxy
 {
 public:
 	/// @brief Construct a VertexProxy from a mesh and a vertex.
-	VertexProxy(Data::Surface::Mesh& mesh, const BaseType::IndexType vertexIdx);
+	VertexProxy(Data::Surface::Mesh& mesh, const BaseType::VertexIndex index);
 
 	/// @brief Get extra data of type T associated with the vertex, or nullptr if not found.
 	template<typename T>
@@ -117,7 +119,7 @@ public:
 	}
 
 	/// @brief Get the index of the vertex in the mesh.
-	BaseType::IndexType GetIndex() const;
+	BaseType::VertexIndex GetIndex() const;
 
 	/// @brief Get the vertex being proxied.
 	Vertex& GetVertex();
@@ -137,6 +139,6 @@ private:
 	/// @brief Pointer to the mesh containing the vertex.
 	Data::Surface::Mesh* m_Mesh;
 	/// @brief Index to the vertex being proxied.
-	BaseType::IndexType m_Index;
+	BaseType::VertexIndex m_Index;
 };
 } // namespace Data::Primitive

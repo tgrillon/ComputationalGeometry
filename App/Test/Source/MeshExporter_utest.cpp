@@ -127,7 +127,7 @@ TEST(MeshExporterTest, ValidMesh_ExportOBJWithEDShouldSucceed)
 	}
 
 	// Read and verify vertex texCoords.
-	for(IndexType curVertexIdx = 0; curVertexIdx < mesh.GetVertexCount(); ++curVertexIdx)
+	for(VertexIndex iVertex = 0; iVertex < mesh.GetVertexCount(); ++iVertex)
 	{
 		std::string vHead;
 		file >> vHead;
@@ -136,14 +136,14 @@ TEST(MeshExporterTest, ValidMesh_ExportOBJWithEDShouldSucceed)
 		Vec2 texCoords;
 		file >> texCoords.x >> texCoords.y;
 
-		const VertexProxy& curVertex = mesh.GetVertex(curVertexIdx);
+		const VertexProxy& curVertex = mesh.GetVertex(iVertex);
 		const Vec2* curVertexTexCoords = curVertex.GetExtraData<Vec2>();
 		EXPECT_NE(curVertexTexCoords, nullptr);
 		EXPECT_EQ(*curVertexTexCoords, texCoords);
 	}
 
 	// Read and verify vertex normals.
-	for(IndexType curVertexIdx = 0; curVertexIdx < mesh.GetVertexCount(); ++curVertexIdx)
+	for(VertexIndex iVertex = 0; iVertex < mesh.GetVertexCount(); ++iVertex)
 	{
 		std::string vHead;
 		file >> vHead;
@@ -152,7 +152,7 @@ TEST(MeshExporterTest, ValidMesh_ExportOBJWithEDShouldSucceed)
 		Vec3 normal;
 		file >> normal.x >> normal.y >> normal.z;
 
-		const VertexProxy& curVertex = mesh.GetVertex(curVertexIdx);
+		const VertexProxy& curVertex = mesh.GetVertex(iVertex);
 		const Vec3* curVertexNormal = curVertex.GetExtraData<Vec3>();
 		EXPECT_NE(curVertexNormal, nullptr);
 		EXPECT_EQ(*curVertexNormal, normal);

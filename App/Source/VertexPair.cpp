@@ -1,18 +1,20 @@
 #include "Application/VertexPair.h"
 
+using namespace BaseType;
+
 namespace Data::Primitive
 {
-VertexPair::VertexPair(const BaseType::IndexType v0Idx, const BaseType::IndexType v1Idx)
+VertexPair::VertexPair(const VertexIndex firstIndex, const VertexIndex secondIndex)
 {
-	if(v0Idx < v1Idx)
+	if(firstIndex < secondIndex)
 	{
-		m_MinVertexIdx = v0Idx;
-		m_MaxVertexIdx = v1Idx;
+		m_MinVertexIdx = firstIndex;
+		m_MaxVertexIdx = secondIndex;
 	}
-	else if(v0Idx > v1Idx)
+	else if(firstIndex > secondIndex)
 	{
-		m_MinVertexIdx = v1Idx;
-		m_MaxVertexIdx = v0Idx;
+		m_MinVertexIdx = secondIndex;
+		m_MaxVertexIdx = firstIndex;
 	}
 	else
 	{
@@ -26,12 +28,12 @@ bool VertexPair::operator==(const VertexPair& other) const
 		|| (m_MinVertexIdx == other.m_MaxVertexIdx && m_MaxVertexIdx == other.m_MinVertexIdx);
 }
 
-uint32_t VertexPair::GetMinVertexIdx() const
+VertexIndex VertexPair::GetMinVertexIdx() const
 {
 	return m_MinVertexIdx;
 }
 
-uint32_t VertexPair::GetMaxVertexIdx() const
+VertexIndex VertexPair::GetMaxVertexIdx() const
 {
 	return m_MaxVertexIdx;
 }
