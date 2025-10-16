@@ -5,6 +5,7 @@ include(Testing)
 
 set(SOURCES
     Source/Mesh_utest.cpp
+    Source/MeshCirculator_utest.cpp
     Source/MeshExporter_utest.cpp
     Source/MeshIntegrity_utest.cpp
     Source/MeshLoader_utest.cpp
