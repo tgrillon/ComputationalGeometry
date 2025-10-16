@@ -15,8 +15,8 @@ public:
 	~ExtraDataContainer() = default;
 
 	/// @brief Disable copy semantics
-	ExtraDataContainer(const ExtraDataContainer&) = delete;
-	ExtraDataContainer& operator=(const ExtraDataContainer&) = delete;
+	ExtraDataContainer(const ExtraDataContainer&) = default;
+	ExtraDataContainer& operator=(const ExtraDataContainer&) = default;
 
 	/// @brief Enable move semantics
 	ExtraDataContainer(ExtraDataContainer&&) = default;

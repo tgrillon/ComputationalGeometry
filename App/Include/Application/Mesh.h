@@ -37,7 +37,7 @@ public:
 	/// @brief Default ctor.
 	Mesh() = default;
 	/// @brief Copy ctor.
-	Mesh(const Mesh& mesh);
+	Mesh(const Mesh& other);
 	~Mesh() = default;
 
 	/// @brief Deep clone of the mesh.

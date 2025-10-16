@@ -9,13 +9,11 @@ namespace Data::Surface
 {
 Mesh::Mesh(const Mesh& other)
 {
-	m_Vertices.reserve(other.m_Vertices.size()); // Pre-allocate space
-	m_Faces.reserve(other.m_Faces.size()); // Pre-allocate space
+	m_Vertices = other.m_Vertices;
+	m_VerticesExtraDataContainer = other.m_VerticesExtraDataContainer;
 
-	for(const auto& vertex : other.m_Vertices)
-		m_Vertices.emplace_back(vertex);
-	for(const auto& face : other.m_Faces)
-		m_Faces.emplace_back(face);
+	m_Faces = other.m_Faces;
+	m_VerticesExtraDataContainer = other.m_VerticesExtraDataContainer;
 }
 
 /// @brief Get the number of faces in the mesh.
