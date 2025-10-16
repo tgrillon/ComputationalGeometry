@@ -44,29 +44,29 @@ public:
 	std::unique_ptr<Mesh> Clone() const;
 
 	/// @brief Get the number of vertices in the mesh.
-	BaseType::IndexType GetVertexCount() const;
+	uint32_t GetVertexCount() const;
 
 	/// @brief Get the number of faces in the mesh.
-	BaseType::IndexType GetFaceCount() const;
+	uint32_t GetFaceCount() const;
 
 	/// @brief Get a proxy to the vertex at the given index.
-	Data::Primitive::VertexProxy GetVertex(const BaseType::IndexType index);
+	Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index);
 	/// @brief Get a proxy to the face at the given index.
-	Data::Primitive::FaceProxy GetFace(const BaseType::IndexType index);
+	Data::Primitive::FaceProxy GetFace(const BaseType::FaceIndex index);
 
 	/// @brief Get the vertex data at the given index.
-	Data::Primitive::Vertex& GetVertexData(const BaseType::IndexType index);
+	Data::Primitive::Vertex& GetVertexData(const BaseType::VertexIndex index);
 	/// @brief Get the vertex data at the given index.
-	const Data::Primitive::Vertex& GetVertexData(const BaseType::IndexType index) const;
+	const Data::Primitive::Vertex& GetVertexData(const BaseType::VertexIndex index) const;
 	/// @brief Get the face data at the given index.
-	Data::Primitive::Face& GetFaceData(const BaseType::IndexType index);
+	Data::Primitive::Face& GetFaceData(const BaseType::FaceIndex index);
 	/// @brief Get the face data at the given index.
-	const Data::Primitive::Face& GetFaceData(const BaseType::IndexType index) const;
+	const Data::Primitive::Face& GetFaceData(const BaseType::FaceIndex index) const;
 
 	/// @brief Add a vertex to the mesh and return its index.
-	BaseType::IndexType AddVertex(const Data::Primitive::Vertex& vertex);
+	BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex& vertex);
 	/// @brief Add a face to the mesh and return its index.
-	BaseType::IndexType AddFace(const Data::Primitive::Face& face);
+	BaseType::FaceIndex AddFace(const Data::Primitive::Face& face);
 
 	/// @brief Add extra data container for each vertex.
 	void AddVerticesExtraDataContainer();
