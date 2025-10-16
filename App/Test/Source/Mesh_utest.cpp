@@ -1,10 +1,12 @@
 #include "Application/Mesh.h"
+#include "Application/MeshIntegrity.h"
 #include "Application/PrimitiveProxy.h"
 #include "TestHelpers.h"
 
 #include <gtest/gtest.h>
 
 using namespace BaseType;
+using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::Primitive;
 
@@ -102,4 +104,70 @@ TEST(MeshTest, GetConstVertexAndFaceData_ShouldReturnReferences)
 	EXPECT_EQ(faceData1.Vertices[0], 0);
 	EXPECT_EQ(faceData1.Vertices[1], 2);
 	EXPECT_EQ(faceData1.Vertices[2], 3);
+}
+
+TEST(MeshTest, AddExtraDataContainers_ShouldAddContainers)
+{
+	Mesh mesh = TestHelpers::CreateValidMesh();
+
+	// Initially, the mesh should not have extra data containers
+	EXPECT_FALSE(mesh.HasVertexExtraData());
+	EXPECT_FALSE(mesh.HasFaceExtraData());
+
+	// Add extra data containers
+	mesh.AddVerticesExtraDataContainer();
+	mesh.AddFacesExtraDataContainer();
+
+	// Now, the mesh should have extra data containers
+	EXPECT_TRUE(mesh.HasVertexExtraData());
+	EXPECT_TRUE(mesh.HasFaceExtraData());
+}
+
+TEST(MeshTest, Clone_ShouldReturnDeepCopy)
+{
+	Mesh originalMesh = TestHelpers::CreateValidMesh();
+
+	// Clone the mesh
+	std::unique_ptr<Mesh> clonedMesh = originalMesh.Clone();
+
+	// Verify that the cloned mesh has the same number of vertices and faces
+	EXPECT_EQ(clonedMesh->GetVertexCount(), originalMesh.GetVertexCount());
+	EXPECT_EQ(clonedMesh->GetFaceCount(), originalMesh.GetFaceCount());
+
+	// Modify the original mesh and verify that the cloned mesh remains unchanged
+	originalMesh.GetVertexData(0).Position = { 2., 2., 2. };
+	EXPECT_NE(clonedMesh->GetVertexData(0).Position, originalMesh.GetVertexData(0).Position);
+
+	originalMesh.GetFaceData(0).Vertices[0] = 3;
+	EXPECT_NE(clonedMesh->GetFaceData(0).Vertices[0], originalMesh.GetFaceData(0).Vertices[0]);
+}
+
+TEST(MeshTest, UpdateMeshConnectivity_ShouldSetNeighborsAndIncidentFaces)
+{
+	Mesh mesh;
+
+	// Create a simple square mesh with two faces sharing an edge
+	mesh.AddVertex({ .Position = { 0., 0., 0. } }); // Vertex 0
+	mesh.AddVertex({ .Position = { 1., 0., 0. } }); // Vertex 1
+	mesh.AddVertex({ .Position = { 1., 1., 0. } }); // Vertex 2
+	mesh.AddVertex({ .Position = { 0., 1., 0. } }); // Vertex 3
+
+	mesh.AddFace({ .Vertices = { 0, 1, 2 } }); // Face 0
+	mesh.AddFace({ .Vertices = { 0, 2, 3 } }); // Face 1
+
+	// Update connectivity
+	mesh.UpdateMeshConnectivity();
+
+	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::MeshOK);
+}
+
+TEST(MeshTest, AddVertex_ValidMeshWithED_ShouldAddExtraDataContainer)
+{
+	Mesh mesh = TestHelpers::CreateValidMeshWithED();
+
+	mesh.AddVertex({ .Position = { 1, 2, 1 } });
+	EXPECT_EQ(mesh.GetVertex(mesh.GetVertexCount() - 1).GetExtraData<void>(), nullptr);
+
+	mesh.AddFace({ .Vertices = { 2, 4, 3 } });
+	EXPECT_EQ(mesh.GetFace(mesh.GetFaceCount() - 1).GetExtraData<void>(), nullptr);
 }
