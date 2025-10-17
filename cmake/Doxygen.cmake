@@ -61,7 +61,7 @@ function(Doxygen target input_dirs source_root)
   # Set README.md as mainpage
   set(DOXYGEN_USE_MDFILE_AS_MAINPAGE "${source_root}/README.md")
 
-  # Set image path
+  # Set images path
   set(DOXYGEN_IMAGE_PATH "${source_root}/Docs/Images")
   
   # Extract all symbols
