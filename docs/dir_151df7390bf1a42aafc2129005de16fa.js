@@ -9,5 +9,6 @@ var dir_151df7390bf1a42aafc2129005de16fa =
     [ "MeshLoader.h", "MeshLoader_8h.html", "MeshLoader_8h" ],
     [ "Primitive.h", "Primitive_8h.html", "Primitive_8h" ],
     [ "PrimitiveProxy.h", "PrimitiveProxy_8h.html", "PrimitiveProxy_8h" ],
+    [ "TestHelpers.h", "TestHelpers_8h.html", "TestHelpers_8h" ],
     [ "VertexPair.h", "VertexPair_8h.html", "VertexPair_8h" ]
 ];

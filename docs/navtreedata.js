@@ -79,8 +79,8 @@ var NAVTREEINDEX =
 [
 "AppLayer_8cpp.html",
 "classCore_1_1Application.html#ab8b99d5c1e1c0ec4cde0db2a97b294ae",
-"classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb",
-"stb__image_8h.html#aff26696e30b62a40dd00bc12415343f6"
+"classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afe234fa3ca5b0465e274885f2c5ebdae",
+"structCore_1_1ApplicationSpecification.html#ad0cc45f01ac93a3c254b7e5c272cd8ca"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

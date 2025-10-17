@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-17 11:46:00</td>
+            <td class="headerValue">2025-10-17 13:30:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -106,11 +106,11 @@
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         106 :         return edgeIdx;</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : }</span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          39 : int GetVertexLocalIndex(const Face&amp; face, const VertexIndex index)</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          46 : int GetVertexLocalIndex(const Face&amp; face, const VertexIndex index)</span></span>
 <span id="L40"><span class="lineNum">      40</span>              : {</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          86 :         for(int iEdge = 0; iEdge &lt; 3; ++iEdge)</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          83 :                 if(static_cast&lt;VertexIndex&gt;(face.Vertices[iEdge]) == index)</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          36 :                         return iEdge;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          99 :         for(int iEdge = 0; iEdge &lt; 3; ++iEdge)</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          96 :                 if(static_cast&lt;VertexIndex&gt;(face.Vertices[iEdge]) == index)</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          43 :                         return iEdge;</span></span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           3 :         return -1;</span></span>
 <span id="L46"><span class="lineNum">      46</span>              : }</span>

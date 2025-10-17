@@ -9,7 +9,6 @@ var classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator =
     [ "operator!=", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a3cd7e1e1b835c5e6b06ae3c4e07afad1", null ],
     [ "operator*", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8a830d429431d76e84ce518c44b7968f", null ],
     [ "operator++", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a9174f248eed08d9b2a48504026ad065d", null ],
-    [ "operator++", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a6fe7e57f39a773ffd22629322a306e01", null ],
     [ "operator==", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb", null ],
     [ "SetIsActive", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#ac7236d1a1d32894b10f4bb4bddf79983", null ],
     [ "m_CentralVertexIdx", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc", null ],

@@ -1,10 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"stb__image_8h.html#aff26696e30b62a40dd00bc12415343f6":[11,0,1,2,0,1,6],
-"stb__image_8h_source.html":[11,0,1,2,0,1],
-"structCore_1_1ApplicationSpecification.html":[9,0,2,1],
-"structCore_1_1ApplicationSpecification.html":[10,0,1,1],
-"structCore_1_1ApplicationSpecification.html#ad0cc45f01ac93a3c254b7e5c272cd8ca":[10,0,1,1,0],
 "structCore_1_1ApplicationSpecification.html#ad0cc45f01ac93a3c254b7e5c272cd8ca":[9,0,2,1,0],
 "structCore_1_1ApplicationSpecification.html#add62b89091536372c15c095c61e9efce":[9,0,2,1,1],
 "structCore_1_1ApplicationSpecification.html#add62b89091536372c15c095c61e9efce":[10,0,1,1,1],

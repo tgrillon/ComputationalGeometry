@@ -147,9 +147,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9174f248eed08d9b2a48504026ad065d" id="r_a9174f248eed08d9b2a48504026ad065d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html">FacesAroundVertexCirculator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a9174f248eed08d9b2a48504026ad065d">operator++</a> ()</td></tr>
 <tr class="memdesc:a9174f248eed08d9b2a48504026ad065d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-increment operator.  <br /></td></tr>
 <tr class="separator:a9174f248eed08d9b2a48504026ad065d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fe7e57f39a773ffd22629322a306e01" id="r_a6fe7e57f39a773ffd22629322a306e01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html">FacesAroundVertexCirculator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a6fe7e57f39a773ffd22629322a306e01">operator++</a> (int)</td></tr>
-<tr class="memdesc:a6fe7e57f39a773ffd22629322a306e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Post-increment operator.  <br /></td></tr>
-<tr class="separator:a6fe7e57f39a773ffd22629322a306e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a830d429431d76e84ce518c44b7968f" id="r_a8a830d429431d76e84ce518c44b7968f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">BaseType::FaceIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8a830d429431d76e84ce518c44b7968f">operator*</a> () const</td></tr>
 <tr class="memdesc:a8a830d429431d76e84ce518c44b7968f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to get the current face index.  <br /></td></tr>
 <tr class="separator:a8a830d429431d76e84ce518c44b7968f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,9 +180,17 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Circulator to iterate over the faces around a given vertex. </p>
-<dl class="section note"><dt>Note</dt><dd>The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary. <div class="image">
+<object type="image/svg+xml" data="FacesAroundVertexClosedRing.svg" style="pointer-events: none;"></object>
+<div class="caption">
+Case where the one-ring neighborhood is closed.</div></div>
+ <div class="image">
+<object type="image/svg+xml" data="FacesAroundVertexOpenedRing.svg" style="pointer-events: none;"></object>
+<div class="caption">
+Case where the one-ring neighborhood is opened.</div></div>
+ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00191">191</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00193">193</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ad825a44e88e9a52dc048882949d71892" name="ad825a44e88e9a52dc048882949d71892"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad825a44e88e9a52dc048882949d71892">&#9670;&#160;</a></span>difference_type</h2>
@@ -199,7 +204,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00196">196</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00198">198</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +220,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00194">194</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00196">196</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -231,7 +236,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00197">197</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00199">199</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -247,7 +252,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00198">198</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00200">200</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -263,7 +268,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00195">195</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00197">197</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -303,19 +308,19 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00331">331</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  332</span>    : <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>(mesh)</div>
-<div class="line"><span class="lineno">  333</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>(index)</div>
-<div class="line"><span class="lineno">  334</span>{</div>
-<div class="line"><span class="lineno">  335</span>    <span class="comment">// Get the vertex data of the central vertex.</span></div>
-<div class="line"><span class="lineno">  336</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
-<div class="line"><span class="lineno">  337</span>    assert(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> != -1); <span class="comment">// Its incident face index must be set.</span></div>
-<div class="line"><span class="lineno">  338</span> </div>
-<div class="line"><span class="lineno">  339</span>    <span class="comment">// Set the current face index.</span></div>
-<div class="line"><span class="lineno">  340</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a>;</div>
-<div class="line"><span class="lineno">  341</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = -1;</div>
-<div class="line"><span class="lineno">  342</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a>++;</div>
-<div class="line"><span class="lineno">  343</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00324">324</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  325</span>    : <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>(mesh)</div>
+<div class="line"><span class="lineno">  326</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>(index)</div>
+<div class="line"><span class="lineno">  327</span>{</div>
+<div class="line"><span class="lineno">  328</span>    <span class="comment">// Get the vertex data of the central vertex.</span></div>
+<div class="line"><span class="lineno">  329</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
+<div class="line"><span class="lineno">  330</span>    assert(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> != -1); <span class="comment">// Its incident face index must be set.</span></div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>    <span class="comment">// Set the current face index.</span></div>
+<div class="line"><span class="lineno">  333</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a>;</div>
+<div class="line"><span class="lineno">  334</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = -1;</div>
+<div class="line"><span class="lineno">  335</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a>++;</div>
+<div class="line"><span class="lineno">  336</span>}</div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_a0647c8c57454940130692bc177fd1523"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">Data::Surface::Mesh::FacesAroundVertexCirculator::m_Mesh</a></div><div class="ttdeci">const Mesh &amp; m_Mesh</div><div class="ttdoc">Reference to the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00224">Mesh.h:224</a></div></div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_a37ae89cf4a0a54d6cf7296d44655697e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">Data::Surface::Mesh::FacesAroundVertexCirculator::m_CurFaceIdx</a></div><div class="ttdeci">int m_CurFaceIdx</div><div class="ttdoc">Current face index in the circulation.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00230">Mesh.h:230</a></div></div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_a7cd540984e94e54afff0cf8794285718"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">Data::Surface::Mesh::FacesAroundVertexCirculator::m_JumpCount</a></div><div class="ttdeci">uint8_t m_JumpCount</div><div class="ttdoc">Number of jumps made in the circulation (used to detect boundaries).</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00235">Mesh.h:235</a></div></div>
@@ -346,11 +351,11 @@ Private Attributes</h2></td></tr>
 
 <p>Inequality operator. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00354">354</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  355</span>{</div>
-<div class="line"><span class="lineno">  356</span>    <span class="keywordflow">return</span> !<a class="code hl_function" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb">operator==</a>(rhs);</div>
-<div class="line"><span class="lineno">  357</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_afda5206d81a65afed77dc5323ffe4acb"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb">Data::Surface::Mesh::FacesAroundVertexCirculator::operator==</a></div><div class="ttdeci">bool operator==(const FacesAroundVertexCirculator &amp;rhs) const</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00345">Mesh.cpp:345</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00347">347</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  348</span>{</div>
+<div class="line"><span class="lineno">  349</span>    <span class="keywordflow">return</span> !<a class="code hl_function" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb">operator==</a>(rhs);</div>
+<div class="line"><span class="lineno">  350</span>}</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_afda5206d81a65afed77dc5323ffe4acb"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb">Data::Surface::Mesh::FacesAroundVertexCirculator::operator==</a></div><div class="ttdeci">bool operator==(const FacesAroundVertexCirculator &amp;rhs) const</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00338">Mesh.cpp:338</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -371,15 +376,15 @@ Private Attributes</h2></td></tr>
 
 <p>Dereference operator to get the current face index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00418">418</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  419</span>{</div>
-<div class="line"><span class="lineno">  420</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
-<div class="line"><span class="lineno">  421</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00401">401</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  402</span>{</div>
+<div class="line"><span class="lineno">  403</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
+<div class="line"><span class="lineno">  404</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a9174f248eed08d9b2a48504026ad065d" name="a9174f248eed08d9b2a48504026ad065d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9174f248eed08d9b2a48504026ad065d">&#9670;&#160;</a></span>operator++() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9174f248eed08d9b2a48504026ad065d">&#9670;&#160;</a></span>operator++()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,57 +400,54 @@ Private Attributes</h2></td></tr>
 
 <p>Pre-increment operator. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00359">359</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  360</span>{</div>
-<div class="line"><span class="lineno">  361</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">m_IsActive</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  362</span> </div>
-<div class="line"><span class="lineno">  363</span>    <span class="keywordtype">int</span> neighborFaceIdx;</div>
-<div class="line"><span class="lineno">  364</span>    {</div>
-<div class="line"><span class="lineno">  365</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>);</div>
-<div class="line"><span class="lineno">  366</span>        <span class="keywordtype">int</span> localIdx = <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(curFace, <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
-<div class="line"><span class="lineno">  367</span>        assert(localIdx != -1);</div>
-<div class="line"><span class="lineno">  368</span>        neighborFaceIdx = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[<a class="code hl_variable" href="namespaceIndexHelpers.html#a4800e0ce9f1f1c511265df11c76408eb">IndexHelpers::Next</a>[localIdx]];</div>
-<div class="line"><span class="lineno">  369</span>    }</div>
-<div class="line"><span class="lineno">  370</span> </div>
-<div class="line"><span class="lineno">  371</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a>)</div>
-<div class="line"><span class="lineno">  372</span>    {</div>
-<div class="line"><span class="lineno">  373</span>        <span class="keywordflow">if</span>(neighborFaceIdx == -1)</div>
-<div class="line"><span class="lineno">  374</span>        { <span class="comment">// If there is no next face, we reached a boundary.</span></div>
-<div class="line"><span class="lineno">  375</span>            <span class="keywordflow">while</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a> &gt; 0)</div>
-<div class="line"><span class="lineno">  376</span>            { <span class="comment">// We need to go back to the previous face and start going in the opposite direction.</span></div>
-<div class="line"><span class="lineno">  377</span>                <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>);</div>
-<div class="line"><span class="lineno">  378</span>                <span class="keywordtype">int</span> localIdx = <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(curFace, <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
-<div class="line"><span class="lineno">  379</span>                assert(localIdx != -1);</div>
-<div class="line"><span class="lineno">  380</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
-<div class="line"><span class="lineno">  381</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[<a class="code hl_variable" href="namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c">IndexHelpers::Previous</a>[localIdx]];</div>
-<div class="line"><span class="lineno">  382</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a>--;</div>
-<div class="line"><span class="lineno">  383</span>            }</div>
-<div class="line"><span class="lineno">  384</span> </div>
-<div class="line"><span class="lineno">  385</span>            <span class="comment">// We are now going in the clock-wise direction.</span></div>
-<div class="line"><span class="lineno">  386</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a> = <span class="keyword">false</span>;</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00352">352</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  353</span>{</div>
+<div class="line"><span class="lineno">  354</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">m_IsActive</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  355</span> </div>
+<div class="line"><span class="lineno">  356</span>    <span class="keywordtype">int</span> neighborFaceIdx;</div>
+<div class="line"><span class="lineno">  357</span>    {</div>
+<div class="line"><span class="lineno">  358</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>);</div>
+<div class="line"><span class="lineno">  359</span>        <span class="keywordtype">int</span> localIdx = <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(curFace, <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
+<div class="line"><span class="lineno">  360</span>        assert(localIdx != -1);</div>
+<div class="line"><span class="lineno">  361</span>        neighborFaceIdx = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[<a class="code hl_variable" href="namespaceIndexHelpers.html#a4800e0ce9f1f1c511265df11c76408eb">IndexHelpers::Next</a>[localIdx]];</div>
+<div class="line"><span class="lineno">  362</span>    }</div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a>)</div>
+<div class="line"><span class="lineno">  365</span>    {</div>
+<div class="line"><span class="lineno">  366</span>        <span class="keywordflow">if</span>(neighborFaceIdx == -1)</div>
+<div class="line"><span class="lineno">  367</span>        { <span class="comment">// If there is no next face, we reached a boundary.</span></div>
+<div class="line"><span class="lineno">  368</span>            <span class="keywordflow">while</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  369</span>            { <span class="comment">// We need to go back to the previous face and start going in the opposite direction.</span></div>
+<div class="line"><span class="lineno">  370</span>                <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>);</div>
+<div class="line"><span class="lineno">  371</span>                <span class="keywordtype">int</span> localIdx = <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(curFace, <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
+<div class="line"><span class="lineno">  372</span>                assert(localIdx != -1);</div>
+<div class="line"><span class="lineno">  373</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
+<div class="line"><span class="lineno">  374</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[<a class="code hl_variable" href="namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c">IndexHelpers::Previous</a>[localIdx]];</div>
+<div class="line"><span class="lineno">  375</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a>--;</div>
+<div class="line"><span class="lineno">  376</span>            }</div>
+<div class="line"><span class="lineno">  377</span> </div>
+<div class="line"><span class="lineno">  378</span>            <span class="comment">// We are now going in the clock-wise direction.</span></div>
+<div class="line"><span class="lineno">  379</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  380</span>        }</div>
+<div class="line"><span class="lineno">  381</span>        <span class="keywordflow">else</span> <span class="comment">// We are still going in the counter clock-wise direction.</span></div>
+<div class="line"><span class="lineno">  382</span>        {</div>
+<div class="line"><span class="lineno">  383</span>            <span class="comment">// Update the jump count.</span></div>
+<div class="line"><span class="lineno">  384</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a>++;</div>
+<div class="line"><span class="lineno">  385</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
+<div class="line"><span class="lineno">  386</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = neighborFaceIdx;</div>
 <div class="line"><span class="lineno">  387</span>        }</div>
-<div class="line"><span class="lineno">  388</span>        <span class="keywordflow">else</span> <span class="comment">// We are still going in the counter clock-wise direction.</span></div>
-<div class="line"><span class="lineno">  389</span>        {</div>
-<div class="line"><span class="lineno">  390</span>            <span class="comment">// Update the jump count.</span></div>
-<div class="line"><span class="lineno">  391</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a7cd540984e94e54afff0cf8794285718">m_JumpCount</a>++;</div>
-<div class="line"><span class="lineno">  392</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
-<div class="line"><span class="lineno">  393</span>            <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = neighborFaceIdx;</div>
-<div class="line"><span class="lineno">  394</span>        }</div>
-<div class="line"><span class="lineno">  395</span>    }</div>
-<div class="line"><span class="lineno">  396</span>    <span class="keywordflow">else</span> <span class="comment">// We are going in the clock-wise direction.</span></div>
-<div class="line"><span class="lineno">  397</span>    {</div>
-<div class="line"><span class="lineno">  398</span>        <span class="keywordflow">if</span>(neighborFaceIdx == -1)</div>
-<div class="line"><span class="lineno">  399</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>; <span class="comment">// We reached a boundary, we stop here.</span></div>
-<div class="line"><span class="lineno">  400</span> </div>
-<div class="line"><span class="lineno">  401</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
-<div class="line"><span class="lineno">  402</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; prevFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>);</div>
-<div class="line"><span class="lineno">  403</span>        <span class="keywordtype">int</span> localIdx = <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(prevFace, <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
-<div class="line"><span class="lineno">  404</span>        assert(localIdx != -1);</div>
-<div class="line"><span class="lineno">  405</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = prevFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[<a class="code hl_variable" href="namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c">IndexHelpers::Previous</a>[localIdx]];</div>
-<div class="line"><span class="lineno">  406</span>    }</div>
-<div class="line"><span class="lineno">  407</span> </div>
-<div class="line"><span class="lineno">  408</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  409</span>}</div>
+<div class="line"><span class="lineno">  388</span>    }</div>
+<div class="line"><span class="lineno">  389</span>    <span class="keywordflow">else</span> <span class="comment">// We are going in the clock-wise direction.</span></div>
+<div class="line"><span class="lineno">  390</span>    {</div>
+<div class="line"><span class="lineno">  391</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a860de6508b6e0d388255e2366c6c1c43">m_PrevFaceIdx</a> = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>;</div>
+<div class="line"><span class="lineno">  392</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; prevFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a0647c8c57454940130692bc177fd1523">m_Mesh</a>.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a>);</div>
+<div class="line"><span class="lineno">  393</span>        <span class="keywordtype">int</span> localIdx = <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(prevFace, <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#aef53387da105ef91afb599e9e4039fbc">m_CentralVertexIdx</a>);</div>
+<div class="line"><span class="lineno">  394</span>        assert(localIdx != -1);</div>
+<div class="line"><span class="lineno">  395</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> = prevFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[<a class="code hl_variable" href="namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c">IndexHelpers::Previous</a>[localIdx]];</div>
+<div class="line"><span class="lineno">  396</span>    }</div>
+<div class="line"><span class="lineno">  397</span> </div>
+<div class="line"><span class="lineno">  398</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  399</span>}</div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_a1648aa21cb5599bc6655228fad7bac96"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">Data::Surface::Mesh::FacesAroundVertexCirculator::m_IsActive</a></div><div class="ttdeci">bool m_IsActive</div><div class="ttdoc">Whether the circulator is active (to detect the end of the circulation).</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00239">Mesh.h:239</a></div></div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator_html_a8ca9504ed578b89847e16e2a3379c775"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">Data::Surface::Mesh::FacesAroundVertexCirculator::m_IsInCCWOrder</a></div><div class="ttdeci">bool m_IsInCCWOrder</div><div class="ttdoc">Whether we are currently circulating in counter-clockwise direction.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00237">Mesh.h:237</a></div></div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a544f30c1d16f4941814236e696cc2349"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">Data::Surface::Mesh::GetFaceData</a></div><div class="ttdeci">Data::Primitive::Face &amp; GetFaceData(const BaseType::FaceIndex index)</div><div class="ttdoc">Get the face data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00065">Mesh.cpp:65</a></div></div>
@@ -454,33 +456,6 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_abaaff4c4271871ab94b68cd4665745a5"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">Utilitary::Primitive::GetVertexLocalIndex</a></div><div class="ttdeci">int GetVertexLocalIndex(const Data::Primitive::Face &amp;face, const BaseType::VertexIndex index)</div><div class="ttdoc">Get the local index of a vertex in a face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00039">Primitive.cpp:39</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00035">Primitive.h:36</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html_ab8daaca0bdaa80536c779c8d1296f533"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Data::Primitive::Face::Neighbors</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Neighbors</div><div class="ttdoc">Face neighboring face indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00045">Primitive.h:45</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6fe7e57f39a773ffd22629322a306e01" name="a6fe7e57f39a773ffd22629322a306e01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fe7e57f39a773ffd22629322a306e01">&#9670;&#160;</a></span>operator++() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html">Mesh::FacesAroundVertexCirculator</a> Data::Surface::Mesh::FacesAroundVertexCirculator::operator++ </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Post-increment operator. </p>
-
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00411">411</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  412</span>{</div>
-<div class="line"><span class="lineno">  413</span>    <span class="keyword">auto</span> tmp = *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  414</span>    ++(*this);</div>
-<div class="line"><span class="lineno">  415</span>    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><span class="lineno">  416</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -502,14 +477,14 @@ Private Attributes</h2></td></tr>
 
 <p>Equality operator. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00345">345</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  346</span>{</div>
-<div class="line"><span class="lineno">  347</span>    <span class="comment">// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)</span></div>
-<div class="line"><span class="lineno">  348</span>    <span class="keywordtype">bool</span> hasCompletedFullCirculation = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a> &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">m_IsActive</a> &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> == rhs.m_CurFaceIdx;</div>
-<div class="line"><span class="lineno">  349</span>    <span class="comment">// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)</span></div>
-<div class="line"><span class="lineno">  350</span>    <span class="keywordtype">bool</span> hasReachedBoundaryEnd = !<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a> &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> == -1;</div>
-<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">return</span> hasCompletedFullCirculation || hasReachedBoundaryEnd;</div>
-<div class="line"><span class="lineno">  352</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00338">338</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  339</span>{</div>
+<div class="line"><span class="lineno">  340</span>    <span class="comment">// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)</span></div>
+<div class="line"><span class="lineno">  341</span>    <span class="keywordtype">bool</span> hasCompletedFullCirculation = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a> &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">m_IsActive</a> &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> == rhs.m_CurFaceIdx;</div>
+<div class="line"><span class="lineno">  342</span>    <span class="comment">// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)</span></div>
+<div class="line"><span class="lineno">  343</span>    <span class="keywordtype">bool</span> hasReachedBoundaryEnd = !<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a8ca9504ed578b89847e16e2a3379c775">m_IsInCCWOrder</a> &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a37ae89cf4a0a54d6cf7296d44655697e">m_CurFaceIdx</a> == -1;</div>
+<div class="line"><span class="lineno">  344</span>    <span class="keywordflow">return</span> hasCompletedFullCirculation || hasReachedBoundaryEnd;</div>
+<div class="line"><span class="lineno">  345</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -531,10 +506,10 @@ Private Attributes</h2></td></tr>
 
 <p>Set whether the circulator is active or not. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00423">423</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  424</span>{</div>
-<div class="line"><span class="lineno">  425</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">m_IsActive</a> = value;</div>
-<div class="line"><span class="lineno">  426</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00406">406</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  407</span>{</div>
+<div class="line"><span class="lineno">  408</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a1648aa21cb5599bc6655228fad7bac96">m_IsActive</a> = value;</div>
+<div class="line"><span class="lineno">  409</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
