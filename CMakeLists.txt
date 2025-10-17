@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 
 project(SandBox)
 
@@ -29,3 +29,6 @@ include(Doxygen)
 # Projects
 add_subdirectory(Core)
 add_subdirectory(App)
+
+# Create unified documentation for both Core and App
+Doxygen(UnifiedDocs "Core;App" "${CMAKE_SOURCE_DIR}")

@@ -40,20 +40,43 @@ macro(UseDoxygenAwesomeExtensions)
 endmacro()
 
 # --- Main Doxygen function ---
-function(Doxygen target input)
+function(Doxygen target input_dirs source_root)
   set(NAME "doxygen-${target}")
+  
+  # Build the input paths
+  set(INPUT_PATHS "")
+  foreach(dir ${input_dirs})
+    list(APPEND INPUT_PATHS "${source_root}/${dir}")
+  endforeach()
+  
+  # Add README.md as input
+  list(APPEND INPUT_PATHS "${source_root}/README.md")
+  
   set(DOXYGEN_GENERATE_HTML YES)
-  set(DOXYGEN_HTML_OUTPUT   ${PROJECT_BINARY_DIR}/${target})
+  set(DOXYGEN_HTML_OUTPUT ${PROJECT_BINARY_DIR}/docs/${target})
   set(DOXYGEN_PROJECT_NUMBER ${PROJECT_VERSION})
   set(DOXYGEN_SOURCE_BROWSER YES)
   set(DOXYGEN_INLINE_SOURCES YES)
-
+  
+  # Set README.md as mainpage
+  set(DOXYGEN_USE_MDFILE_AS_MAINPAGE "${source_root}/README.md")
+  
+  # Extract all symbols
+  set(DOXYGEN_EXTRACT_ALL YES)
+  set(DOXYGEN_EXTRACT_PRIVATE YES)
+  set(DOXYGEN_EXTRACT_STATIC YES)
+  
+  # Enable grouping for modules
+  set(DOXYGEN_ENABLE_PREPROCESSING YES)
+  
   UseDoxygenAwesomeCss()
   UseDoxygenAwesomeExtensions()
-
+  
+  message(STATUS "Documentation inputs: ${INPUT_PATHS}")
+  
   doxygen_add_docs(
-      ${NAME}
-      ${PROJECT_SOURCE_DIR}/${input}
-      COMMENT "Generate HTML documentation"
+    ${NAME}
+    ${INPUT_PATHS}
+    COMMENT "Generate HTML documentation for ${target}"
   )
 endfunction()
