@@ -18,8 +18,6 @@ add_executable(AppUnitTests)
 
 target_sources(AppUnitTests PRIVATE ${SOURCES})
 
-target_include_directories(AppUnitTests PRIVATE Include)
-
 target_link_libraries(AppUnitTests PRIVATE AppStaticLib warning_properties)
 
 # Copy Data files into build tree 

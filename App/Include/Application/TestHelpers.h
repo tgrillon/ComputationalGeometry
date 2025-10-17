@@ -74,6 +74,8 @@ inline Data::Surface::Mesh CreateValidMeshWithED()
 }
 
 /// @brief Create a grid mesh with (nRow+1)*(nCol+1) vertices and 2*nRow*nCol faces.
+/// @image html Docs/Images/GridMesh2x2.svg "Generated mesh for nRow=nCol=2"
+/// @image html Docs/Images/GridMesh3x2.svg "Generated mesh for nRow=3 and nCol=2"
 inline Data::Surface::Mesh CreateGridMesh(int nRow = 1, int nCol = 1)
 {
 	Data::Surface::Mesh mesh;
@@ -93,12 +95,12 @@ inline Data::Surface::Mesh CreateGridMesh(int nRow = 1, int nCol = 1)
 				int prevRow = iRow - 1;
 				int prevCol = iCol - 1;
 				int nVertexCol = nCol + 1;
-				mesh.AddFace({ .Vertices = { prevRow * nVertexCol + prevCol,
-											 prevRow * nVertexCol + iCol,
-											 iRow * nVertexCol + iCol } });
-				mesh.AddFace({ .Vertices = { prevRow * nVertexCol + prevCol,
-											 iRow * nVertexCol + iCol,
-											 iRow * nVertexCol + prevCol } });
+				mesh.AddFace(
+					{ .Vertices = {
+						  prevRow * nVertexCol + prevCol, prevRow * nVertexCol + iCol, iRow * nVertexCol + iCol } });
+				mesh.AddFace(
+					{ .Vertices = {
+						  prevRow * nVertexCol + prevCol, iRow * nVertexCol + iCol, iRow * nVertexCol + prevCol } });
 			}
 		}
 	}

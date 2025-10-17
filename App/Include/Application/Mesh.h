@@ -94,6 +94,8 @@ public:
 public:
 	/// @brief Circulator to iterate over the vertices around a given vertex.
 	/// @note The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.
+	/// @image html Docs/Images/VerticesAroundVertexClosedRing.svg "Case where the one-ring neighborhood is closed."
+	/// @image html Docs/Images/VerticesAroundVertexOpenedRing.svg "Case where the one-ring neighborhood is opened."
 	class VerticesAroundVertexCirculator
 	{
 	public:
@@ -116,8 +118,6 @@ public:
 
 		/// @brief Pre-increment operator.
 		VerticesAroundVertexCirculator& operator++();
-		/// @brief Post-increment operator.
-		VerticesAroundVertexCirculator operator++(int);
 
 		/// @brief Dereference operator to get the current vertex index.
 		BaseType::VertexIndex operator*() const;
@@ -188,6 +188,8 @@ public:
 
 	/// @brief Circulator to iterate over the faces around a given vertex.
 	/// @note The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.
+	/// @image html Docs/Images/FacesAroundVertexClosedRing.svg "Case where the one-ring neighborhood is closed."
+	/// @image html Docs/Images/FacesAroundVertexOpenedRing.svg "Case where the one-ring neighborhood is opened."
 	class FacesAroundVertexCirculator
 	{
 	public:
@@ -210,8 +212,6 @@ public:
 
 		/// @brief Pre-increment operator.
 		FacesAroundVertexCirculator& operator++();
-		/// @brief Post-increment operator.
-		FacesAroundVertexCirculator operator++(int);
 
 		/// @brief Dereference operator to get the current face index.
 		BaseType::FaceIndex operator*() const;
