@@ -97,6 +97,13 @@ public:
 	class VerticesAroundVertexCirculator
 	{
 	public:
+		using iterator_category = std::input_iterator_tag;
+		using value_type = BaseType::VertexIndex;
+		using difference_type = std::ptrdiff_t;
+		using pointer = BaseType::VertexIndex*;
+		using reference = BaseType::VertexIndex&;
+
+	public:
 		/// @brief Construct a circulator to iterate over the vertices around a given vertex in the mesh.
 		/// @param mesh The mesh containing the vertex.
 		/// @param index The index of the vertex around which to circulate.
@@ -183,6 +190,13 @@ public:
 	/// @note The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.
 	class FacesAroundVertexCirculator
 	{
+	public:
+		using iterator_category = std::forward_iterator_tag;
+		using value_type = BaseType::FaceIndex;
+		using difference_type = std::ptrdiff_t;
+		using pointer = const BaseType::FaceIndex*;
+		using reference = const BaseType::FaceIndex&;
+
 	public:
 		/// @brief Construct a circulator to iterate over the faces around a given vertex in the mesh.
 		/// @param mesh The mesh containing the vertex.

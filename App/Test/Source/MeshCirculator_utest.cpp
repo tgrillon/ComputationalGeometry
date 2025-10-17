@@ -22,11 +22,11 @@ TEST(MeshTest, GetVerticesAroundVertex_OneFace_ShouldIterateCorrectly)
 	auto vertexRange = mesh.GetVerticesAroundVertex(0);
 
 	// Collect the vertices around vertex 0
-	std::set<VertexIndex> collectedVertices;
+	std::vector<VertexIndex> collectedVertices;
 	std::copy(vertexRange.begin(), vertexRange.end(), std::back_inserter(collectedVertices));
 
 	// Vertex 0 is connected to vertices 1 and 2 in counter-clockwise order
-	std::set<VertexIndex> expectedVertices = { 2, 1 };
+	std::vector<VertexIndex> expectedVertices = { 2, 1 };
 	EXPECT_EQ(collectedVertices, expectedVertices);
 }
 
@@ -38,11 +38,11 @@ TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCor
 	auto vertexRange = mesh.GetVerticesAroundVertex(5);
 
 	// Collect the vertices around vertex 5
-	std::set<VertexIndex> collectedVertices;
+	std::vector<VertexIndex> collectedVertices;
 	std::copy(vertexRange.begin(), vertexRange.end(), std::back_inserter(collectedVertices));
 
 	// Vertex 5 is connected to the one-ring vertices in counter-clockwise order
-	std::set<VertexIndex> expectedVertices = { 1, 2, 4, 8 };
+	std::vector<VertexIndex> expectedVertices = { 2, 1, 4, 8 };
 	EXPECT_EQ(collectedVertices, expectedVertices);
 }
 
@@ -76,11 +76,11 @@ TEST(MeshTest, GetFacesAroundVertex_OneFace_ShouldIterateCorrectly)
 	auto faceRange = mesh.GetFacesAroundVertex(0);
 
 	// Collect the vertices around vertex 0
-	std::set<FaceIndex> collectedFaces;
+	std::vector<FaceIndex> collectedFaces;
 	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
 
 	// Vertex 0 is connected to one face.
-	std::set<FaceIndex> expectedFaces = { 0 };
+	std::vector<FaceIndex> expectedFaces = { 0 };
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }
 
@@ -92,11 +92,11 @@ TEST(MeshTest, GetFacesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrec
 	auto faceRange = mesh.GetFacesAroundVertex(5);
 
 	// Collect the vertices around vertex 5
-	std::set<FaceIndex> collectedFaces;
+	std::vector<FaceIndex> collectedFaces;
 	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
 
 	// Vertex 5 is connected to the one-ring vertices in counter-clockwise order
-	std::set<FaceIndex> expectedFaces = { 2, 3, 6 };
+	std::vector<FaceIndex> expectedFaces = { 2, 3, 6 };
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }
 
