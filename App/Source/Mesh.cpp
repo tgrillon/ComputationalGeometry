@@ -324,4 +324,128 @@ Mesh::VerticesAroundVertexRange Mesh::GetVerticesAroundVertex(const VertexIndex 
 {
 	return VerticesAroundVertexRange(*this, index);
 }
+
+//==========================FacesAroundVertexCirculator==========================//
+Mesh::FacesAroundVertexCirculator::FacesAroundVertexCirculator(const Mesh& mesh, const VertexIndex index)
+	: m_Mesh(mesh)
+	, m_CentralVertexIdx(index)
+{
+	// Get the vertex data of the central vertex.
+	const Vertex& curVertex = m_Mesh.GetVertexData(m_CentralVertexIdx);
+	assert(curVertex.IncidentFaceIdx != -1); // Its incident face index must be set.
+
+	// Set the current face index.
+	m_CurFaceIdx = curVertex.IncidentFaceIdx;
+	m_PrevFaceIdx = -1;
+	m_JumpCount++;
+}
+
+bool Mesh::FacesAroundVertexCirculator::operator==(const Mesh::FacesAroundVertexCirculator& rhs) const
+{
+	// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)
+	bool hasCompletedFullCirculation = m_IsInCCWOrder && m_IsActive && m_CurFaceIdx == rhs.m_CurFaceIdx;
+	// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)
+	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurFaceIdx == -1;
+	return hasCompletedFullCirculation || hasReachedBoundaryEnd;
+}
+
+bool Mesh::FacesAroundVertexCirculator::operator!=(const Mesh::FacesAroundVertexCirculator& rhs) const
+{
+	return !operator==(rhs);
+}
+
+Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++()
+{
+	m_IsActive = true;
+
+	int neighborFaceIdx;
+	{
+		const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+		int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
+		assert(localIdx != -1);
+		neighborFaceIdx = curFace.Neighbors[IndexHelpers::Next[localIdx]];
+	}
+
+	if(m_IsInCCWOrder)
+	{
+		if(neighborFaceIdx == -1)
+		{ // If there is no next face, we reached a boundary.
+			while(m_JumpCount > 0)
+			{ // We need to go back to the previous face and start going in the opposite direction.
+				const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+				int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
+				assert(localIdx != -1);
+				m_PrevFaceIdx = m_CurFaceIdx;
+				m_CurFaceIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
+				m_JumpCount--;
+			}
+
+			// We are now going in the clock-wise direction.
+			m_IsInCCWOrder = false;
+		}
+		else // We are still going in the counter clock-wise direction.
+		{
+			// Update the jump count.
+			m_JumpCount++;
+			m_PrevFaceIdx = m_CurFaceIdx;
+			m_CurFaceIdx = neighborFaceIdx;
+		}
+	}
+	else // We are going in the clock-wise direction.
+	{
+		if(neighborFaceIdx == -1)
+			return *this; // We reached a boundary, we stop here.
+
+		m_PrevFaceIdx = m_CurFaceIdx;
+		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+		int localIdx = GetVertexLocalIndex(prevFace, m_CentralVertexIdx);
+		assert(localIdx != -1);
+		m_CurFaceIdx = prevFace.Neighbors[IndexHelpers::Previous[localIdx]];
+	}
+
+	return *this;
+}
+
+Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexCirculator::operator++(int)
+{
+	auto tmp = *this;
+	++(*this);
+	return tmp;
+}
+
+FaceIndex Mesh::FacesAroundVertexCirculator::operator*() const
+{
+	return m_CurFaceIdx;
+}
+
+void Mesh::FacesAroundVertexCirculator::SetIsActive(bool value)
+{
+	m_IsActive = value;
+}
+
+//==========================FacesAroundVertexRange==========================//
+Mesh::FacesAroundVertexRange::FacesAroundVertexRange(const Mesh& mesh, const VertexIndex index)
+	: m_Mesh(mesh)
+	, m_VertexIdx(index)
+{}
+
+Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexRange::begin() const
+{
+	Mesh::FacesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
+	circ.SetIsActive(false);
+	return circ;
+}
+
+Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexRange::end() const
+{
+	Mesh::FacesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
+	circ.SetIsActive(true);
+	return circ;
+}
+
+Mesh::FacesAroundVertexRange Mesh::GetFacesAroundVertex(const VertexIndex index) const
+{
+	return FacesAroundVertexRange(*this, index);
+}
+
 } // namespace Data::Surface

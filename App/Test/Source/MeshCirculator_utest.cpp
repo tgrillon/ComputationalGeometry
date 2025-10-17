@@ -64,3 +64,57 @@ TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithClosedRing_ShouldIterateCor
 	std::vector<VertexIndex> expectedVertices = { 1, 5, 8, 7, 3, 0 };
 	EXPECT_EQ(collectedVertices, expectedVertices);
 }
+
+TEST(MeshTest, GetFacesAroundVertex_OneFace_ShouldIterateCorrectly)
+{
+	Mesh mesh;
+
+	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = 0 }); // Vertex 0
+	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = 0 }); // Vertex 1
+	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentFaceIdx = 0 }); // Vertex 2
+
+	mesh.AddFace({ .Vertices = { 0, 1, 2 } }); // Face 0
+
+	// Get the range of vertices around vertex 0
+	auto faceRange = mesh.GetFacesAroundVertex(0);
+
+	// Collect the vertices around vertex 0
+	std::set<FaceIndex> collectedFaces;
+	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
+
+	// Vertex 0 is connected to one face.
+	std::set<FaceIndex> expectedFaces = { 0 };
+	EXPECT_EQ(collectedFaces, expectedFaces);
+}
+
+TEST(MeshTest, GetFacesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrectly)
+{
+	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
+
+	// Get the range of vertices around vertex 5
+	auto faceRange = mesh.GetFacesAroundVertex(5);
+
+	// Collect the vertices around vertex 5
+	std::set<FaceIndex> collectedFaces;
+	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
+
+	// Vertex 5 is connected to the one-ring vertices in counter-clockwise order
+	std::set<FaceIndex> expectedFaces = { 2, 3, 6 };
+	EXPECT_EQ(collectedFaces, expectedFaces);
+}
+
+TEST(MeshTest, GetFacesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrectly)
+{
+	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
+
+	// Get the range of vertices around vertex 4
+	auto faceRange = mesh.GetFacesAroundVertex(4);
+
+	// Collect the vertices around vertex 4
+	std::vector<FaceIndex> collectedFaces;
+	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
+
+	// Vertex 4 is connected to the one-ring incident faces in counter-clockwise order
+	std::vector<FaceIndex> expectedFaces = { 0, 3, 6, 7, 4, 1 };
+	EXPECT_EQ(collectedFaces, expectedFaces);
+}

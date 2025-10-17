@@ -135,10 +135,12 @@ public:
 		int m_CurFaceIdx;
 		/// @brief Previous face index in the circulation.
 		int m_PrevFaceIdx;
+
 		/// @brief Current vertex local index in the current face.
 		BaseType::EdgeIndex m_CurVertexLocalIdx;
 		/// @brief Current vertex index in the circulation.
 		BaseType::VertexIndex m_CurVertexIdx;
+
 		/// @brief Number of jumps made in the circulation (used to detect boundaries).
 		uint8_t m_JumpCount{ 0 };
 		/// @brief Whether we are currently circulating in counter-clockwise direction.
@@ -176,6 +178,82 @@ public:
 	/// @param index The index of the vertex around which to circulate.
 	/// @return A range to iterate over the vertices around the given vertex.
 	VerticesAroundVertexRange GetVerticesAroundVertex(const BaseType::VertexIndex index) const;
+
+	/// @brief Circulator to iterate over the faces around a given vertex.
+	/// @note The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.
+	class FacesAroundVertexCirculator
+	{
+	public:
+		/// @brief Construct a circulator to iterate over the faces around a given vertex in the mesh.
+		/// @param mesh The mesh containing the vertex.
+		/// @param index The index of the vertex around which to circulate.
+		FacesAroundVertexCirculator(const Mesh& mesh, const BaseType::VertexIndex index);
+
+		/// @brief Equality operator.
+		bool operator==(const FacesAroundVertexCirculator& rhs) const;
+		/// @brief Inequality operator.
+		bool operator!=(const FacesAroundVertexCirculator& rhs) const;
+
+		/// @brief Pre-increment operator.
+		FacesAroundVertexCirculator& operator++();
+		/// @brief Post-increment operator.
+		FacesAroundVertexCirculator operator++(int);
+
+		/// @brief Dereference operator to get the current face index.
+		BaseType::FaceIndex operator*() const;
+
+		/// @brief Set whether the circulator is active or not.
+		void SetIsActive(bool value);
+
+	private:
+		/// @brief Reference to the mesh.
+		const Mesh& m_Mesh;
+
+		/// @brief Index of the central vertex around which we circulate.
+		BaseType::VertexIndex m_CentralVertexIdx;
+
+		/// @brief Current face index in the circulation.
+		int m_CurFaceIdx;
+		/// @brief Previous face index in the circulation.
+		int m_PrevFaceIdx;
+
+		/// @brief Number of jumps made in the circulation (used to detect boundaries).
+		uint8_t m_JumpCount{ 0 };
+		/// @brief Whether we are currently circulating in counter-clockwise direction.
+		bool m_IsInCCWOrder{ true };
+		/// @brief Whether the circulator is active (to detect the end of the circulation).
+		bool m_IsActive{ true };
+	};
+
+	/// @brief Range to iterate over the faces around a given vertex.
+	/// @note The range will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.
+	class FacesAroundVertexRange
+	{
+	public:
+		friend FacesAroundVertexCirculator;
+
+	public:
+		/// @brief Construct a range to iterate over the faces around a given vertex in the mesh.
+		/// @param mesh The mesh containing the vertex.
+		/// @param index The index of the vertex around which to circulate.
+		FacesAroundVertexRange(const Mesh& mesh, const BaseType::VertexIndex index);
+
+		/// @brief Get the begin circulator.
+		FacesAroundVertexCirculator begin() const;
+		/// @brief Get the end circulator.
+		FacesAroundVertexCirculator end() const;
+
+	private:
+		/// @brief Reference to the mesh.
+		const Mesh& m_Mesh;
+		/// @brief Index of the central vertex around which we circulate.
+		BaseType::VertexIndex m_VertexIdx;
+	};
+
+	/// @brief Get a range to iterate over the faces around a given vertex.
+	/// @param index The index of the vertex around which to circulate.
+	/// @return A range to iterate over the faces around the given vertex.
+	FacesAroundVertexRange GetFacesAroundVertex(const BaseType::VertexIndex index) const;
 
 private:
 	/// @brief List of vertices.
