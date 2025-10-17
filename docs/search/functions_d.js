@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['vertexpair_0',['VertexPair',['../classData_1_1Primitive_1_1VertexPair.html#a5bfceeb95d42a941df6316dccee90e83',1,'Data::Primitive::VertexPair']]],
-  ['vertexproxy_1',['VertexProxy',['../classData_1_1Primitive_1_1VertexProxy.html#a4a735ba5a6253316ada18ac83bc06b98',1,'Data::Primitive::VertexProxy']]],
-  ['verticesaroundvertexcirculator_2',['VerticesAroundVertexCirculator',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a4d33205000c8a8c895ebe51726df5bbd',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator']]],
-  ['verticesaroundvertexrange_3',['VerticesAroundVertexRange',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#aacf1e89291d860160920e9cf4a18dce1',1,'Data::Surface::Mesh::VerticesAroundVertexRange']]]
+  ['readtextfile_0',['ReadTextFile',['../namespaceRenderer.html#a4f6e48366391aca4b0f6605da77ae04f',1,'Renderer']]],
+  ['reloadcomputeshader_1',['ReloadComputeShader',['../namespaceRenderer.html#afda4b1083bf26deb7e10bf5e40c3ca59',1,'Renderer']]],
+  ['reloadgraphicsshader_2',['ReloadGraphicsShader',['../namespaceRenderer.html#a3543b26302193b0f8ade3177051df85f',1,'Renderer']]],
+  ['run_3',['run',['../classCore_1_1Application.html#a073563ab83ba295eb366975f55a9d20f',1,'Core::Application::Run()'],['../namespaceApplication.html#afd3930e7705af94cf318f392e72f1171',1,'Application::Run()']]]
 ];

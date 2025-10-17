@@ -1,9 +1,12 @@
 var classData_1_1Surface_1_1Mesh =
 [
+    [ "FacesAroundVertexCirculator", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator" ],
+    [ "FacesAroundVertexRange", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexRange.html", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexRange" ],
     [ "VerticesAroundVertexCirculator", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator" ],
     [ "VerticesAroundVertexRange", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange" ],
     [ "Mesh", "classData_1_1Surface_1_1Mesh.html#afbe3cccf492cf48b6ff3fae4497cafe8", null ],
     [ "Mesh", "classData_1_1Surface_1_1Mesh.html#ae9a141748d36826a315675b64cdfc225", null ],
+    [ "~Mesh", "classData_1_1Surface_1_1Mesh.html#a33a9e9c157ddc7946d4d68a81becb8d1", null ],
     [ "AddFace", "classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058", null ],
     [ "AddFacesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a9d974322852c4cc0cdad6ef62b39c434", null ],
     [ "AddVertex", "classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e", null ],
@@ -15,6 +18,7 @@ var classData_1_1Surface_1_1Mesh =
     [ "GetFaceData", "classData_1_1Surface_1_1Mesh.html#a625e51d082ae48522518f31f304c1249", null ],
     [ "GetFaces", "classData_1_1Surface_1_1Mesh.html#a879f0bfcb410ca2ade28c865fbda64f9", null ],
     [ "GetFaces", "classData_1_1Surface_1_1Mesh.html#ab294a1b024211af34ef31c8c5b553218", null ],
+    [ "GetFacesAroundVertex", "classData_1_1Surface_1_1Mesh.html#aa2b096216d10a396f82fbbd173af62fa", null ],
     [ "GetVertex", "classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5", null ],
     [ "GetVertexCount", "classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8", null ],
     [ "GetVertexData", "classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8", null ],
@@ -24,5 +28,9 @@ var classData_1_1Surface_1_1Mesh =
     [ "GetVerticesAroundVertex", "classData_1_1Surface_1_1Mesh.html#a068d9fb90cd43f53764d30690ddbeaa4", null ],
     [ "HasFaceExtraData", "classData_1_1Surface_1_1Mesh.html#a61f0afee25d3e5b28168a6d186faf24b", null ],
     [ "HasVertexExtraData", "classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709", null ],
-    [ "UpdateMeshConnectivity", "classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88", null ]
+    [ "UpdateMeshConnectivity", "classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88", null ],
+    [ "m_Faces", "classData_1_1Surface_1_1Mesh.html#aa47f09839a7f56ff94f0ca2b112f5c06", null ],
+    [ "m_FacesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#ad15863008ad3153e13dc696534cd489a", null ],
+    [ "m_Vertices", "classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31", null ],
+    [ "m_VerticesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38", null ]
 ];

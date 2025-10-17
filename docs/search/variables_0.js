@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['current_0',['Current',['../namespaceIndexHelpers.html#a07b6e6c71e5874541f56038982287d73',1,'IndexHelpers']]]
+  ['blue_0',['Blue',['../namespacePrintHelpers_1_1Color.html#a0480a1522b2ccb3606a3e7acab11c229',1,'PrintHelpers::Color']]],
+  ['brightred_1',['BrightRed',['../namespacePrintHelpers_1_1Color.html#a2866067f6d68b99ee320809f8cebcf1d',1,'PrintHelpers::Color']]]
 ];

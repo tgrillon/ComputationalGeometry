@@ -1,10 +1,26 @@
 var classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator =
 [
+    [ "difference_type", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a6dba30510dd12dbaa7ada1f50d831062", null ],
+    [ "iterator_category", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a670bb8987db11ff0167b332e4a7dbe1e", null ],
+    [ "pointer", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a5939b33b7ec2bf5d06b287432de064e2", null ],
+    [ "reference", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a4dfbf105f20d05474d55f9c69ad87bd9", null ],
+    [ "value_type", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#ac6b59a904f12921441153d098598613c", null ],
     [ "VerticesAroundVertexCirculator", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a4d33205000c8a8c895ebe51726df5bbd", null ],
     [ "operator!=", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a90131ae048dcdd3af9fa496879a50f39", null ],
     [ "operator*", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a3de716d843985ce3a075c4bb88e00070", null ],
     [ "operator++", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a422b90fa0927c2bd387deb842d41a52f", null ],
     [ "operator++", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#afcb3a37f31ae7679e2b1c607062b81f9", null ],
     [ "operator==", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a6e5ec594dabe9c61075944188d2bb870", null ],
-    [ "SetIsActive", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a686a845d9e41c361764ee04275eef3e9", null ]
+    [ "SetIsActive", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a686a845d9e41c361764ee04275eef3e9", null ],
+    [ "UpdateCurVertexIndexInCCWOrder", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a6a8287131e62c2cbe68aca461ac42fbd", null ],
+    [ "UpdateCurVertexIndexInCWOrder", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a0e2dd24b29bf5631a81c9fdb8bee9b9c", null ],
+    [ "m_CentralVertexIdx", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a70d0cd4643b15989000ae4e342c0e440", null ],
+    [ "m_CurFaceIdx", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a5000aebe0f29ef228d351394dff23904", null ],
+    [ "m_CurVertexIdx", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#ae7aca4dce6abb598e34069a5c52d50a6", null ],
+    [ "m_CurVertexLocalIdx", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a5916ad3df2d8128ac739443a79339cfc", null ],
+    [ "m_IsActive", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#aa9d809973a086de04184aaea46e4ee07", null ],
+    [ "m_IsInCCWOrder", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#ab0e0ca3109dfa5d4f58c536977f24392", null ],
+    [ "m_JumpCount", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#ac48c72e635041d5008c331bae4fd61e0", null ],
+    [ "m_Mesh", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a0835b54781f5e50fdddf372eb07b11b3", null ],
+    [ "m_PrevFaceIdx", "classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#ab2bd0c60a1cba7f219599652d64b1858", null ]
 ];

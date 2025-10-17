@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['end_0',['end',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#a60bf1dbfe6b82a1214b114a7be73dd6b',1,'Data::Surface::Mesh::VerticesAroundVertexRange']]],
-  ['exitcode_1',['ExitCode',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125ac',1,'Utilitary::Surface::MeshIntegrity']]],
-  ['exportobj_2',['ExportOBJ',['../structUtilitary_1_1Surface_1_1MeshExporter.html#a62f90f83051e22770492e23b96f99d65',1,'Utilitary::Surface::MeshExporter']]],
-  ['exportoff_3',['ExportOFF',['../structUtilitary_1_1Surface_1_1MeshExporter.html#a535653b650fdfa9bd50be563c2efdf6a',1,'Utilitary::Surface::MeshExporter']]],
-  ['extradatacontainer_4',['extradatacontainer',['../classData_1_1Internal_1_1ExtraDataContainer.html',1,'Data::Internal::ExtraDataContainer'],['../classData_1_1Internal_1_1ExtraDataContainer.html#a2b67391a843f51f63a4855d7cc5bd1fa',1,'Data::Internal::ExtraDataContainer::ExtraDataContainer()=default'],['../classData_1_1Internal_1_1ExtraDataContainer.html#a4245c6abb4098bac1adc65b4aef41c94',1,'Data::Internal::ExtraDataContainer::ExtraDataContainer(const ExtraDataContainer &amp;)=default'],['../classData_1_1Internal_1_1ExtraDataContainer.html#a2bb849f7fab1af7dce0568c5c3d11c13',1,'Data::Internal::ExtraDataContainer::ExtraDataContainer(ExtraDataContainer &amp;&amp;)=default']]]
+  ['data_0',['Data',['../namespaceData.html',1,'']]],
+  ['data_3a_3ainternal_1',['Internal',['../namespaceData_1_1Internal.html',1,'Data']]],
+  ['data_3a_3aprimitive_2',['Primitive',['../namespaceData_1_1Primitive.html',1,'Data']]],
+  ['data_3a_3asurface_3',['Surface',['../namespaceData_1_1Surface.html',1,'Data']]],
+  ['debug_4',['Debug',['../PrintHelpers_8h.html#acd8dd41e8a67bba7ccfb3b50f7aa88a5',1,'PrintHelpers.h']]],
+  ['debugimpl_5',['DebugImpl',['../namespacePrintHelpers_1_1detail.html#a8a7150138f4a457b97f124a691d974e5',1,'PrintHelpers::detail']]],
+  ['destroy_6',['Destroy',['../classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3',1,'Core::Window']]],
+  ['development_20guidelines_7',['Development Guidelines',['../index.html#autotoc_md1',1,'']]],
+  ['difference_5ftype_8',['difference_type',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a6dba30510dd12dbaa7ada1f50d831062',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::difference_type'],['../classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#ad825a44e88e9a52dc048882949d71892',1,'Data::Surface::Mesh::FacesAroundVertexCirculator::difference_type']]],
+  ['displaymode_9',['DisplayMode',['../classCore_1_1Application.html#a16f8895de8269ebcfae75da390bcd7ca',1,'Core::Application']]]
 ];

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: Include/Application/Primitive.h Source File</title>
+<title>SandBox: App/Include/Application/Primitive.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -109,9 +109,9 @@ $(document).ready(function(){initNavTree('Primitive_8h_source.html',''); initRes
   <div class="headertitle"><div class="title">Primitive.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="Primitive_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;Application/BaseType.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="BaseType_8h.html">Application/BaseType.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
@@ -124,14 +124,14 @@ $(document).ready(function(){initNavTree('Primitive_8h_source.html',''); initRes
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>} <span class="comment">// namespace IndexHelpers</span></div>
 </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span>Data::Primitive</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceData_1_1Primitive.html">Data::Primitive</a></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">struct </span>Face;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structData_1_1Primitive_1_1Vertex.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">   27</a></span>    BaseType::Vec3 <a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>{};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">   27</a></span>    <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a> <a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>{};</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">   31</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a>{ -1 };</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
@@ -147,17 +147,26 @@ $(document).ready(function(){initNavTree('Primitive_8h_source.html',''); initRes
 </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} <span class="comment">// namespace Data::Primitive</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">namespace </span>Utilitary::Primitive</div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespaceUtilitary_1_1Primitive.html">   49</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUtilitary_1_1Primitive.html">Utilitary::Primitive</a></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> GetEdgeIndex(</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a>&amp; face, <span class="keyword">const</span> BaseType::VertexIndex firstIndex, <span class="keyword">const</span> BaseType::VertexIndex secondIndex);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a>&amp; face, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a> firstIndex, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a> secondIndex);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">int</span> GetVertexLocalIndex(<span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a>&amp; face, <span class="keyword">const</span> BaseType::VertexIndex index);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">int</span> <a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a>&amp; face, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a> index);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>} <span class="comment">// namespace Utilitary::Primitive</span></div>
+</div>
+<div class="ttc" id="aBaseType_8h_html"><div class="ttname"><a href="BaseType_8h.html">BaseType.h</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00010">BaseType.h:10</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00017">BaseType.h:17</a></div></div>
+<div class="ttc" id="anamespaceData_1_1Primitive_html"><div class="ttname"><a href="namespaceData_1_1Primitive.html">Data::Primitive</a></div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00018">Mesh.h:19</a></div></div>
 <div class="ttc" id="anamespaceIndexHelpers_html"><div class="ttname"><a href="namespaceIndexHelpers.html">IndexHelpers</a></div><div class="ttdoc">Helper namespace for index manipulations in triangular faces.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00008">Primitive.h:9</a></div></div>
 <div class="ttc" id="anamespaceIndexHelpers_html_a07b6e6c71e5874541f56038982287d73"><div class="ttname"><a href="namespaceIndexHelpers.html#a07b6e6c71e5874541f56038982287d73">IndexHelpers::Current</a></div><div class="ttdeci">constexpr std::array&lt; BaseType::EdgeIndex, 3 &gt; Current</div><div class="ttdoc">Arrays to get the current index in a triangular face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00013">Primitive.h:13</a></div></div>
 <div class="ttc" id="anamespaceIndexHelpers_html_a25052cbd70c0b7d8abe3380d644b914c"><div class="ttname"><a href="namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c">IndexHelpers::Previous</a></div><div class="ttdeci">constexpr std::array&lt; BaseType::EdgeIndex, 3 &gt; Previous</div><div class="ttdoc">Arrays to get the previous index in a triangular face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00011">Primitive.h:11</a></div></div>
 <div class="ttc" id="anamespaceIndexHelpers_html_a4800e0ce9f1f1c511265df11c76408eb"><div class="ttname"><a href="namespaceIndexHelpers.html#a4800e0ce9f1f1c511265df11c76408eb">IndexHelpers::Next</a></div><div class="ttdeci">constexpr std::array&lt; BaseType::EdgeIndex, 3 &gt; Next</div><div class="ttdoc">Arrays to get the next index in a triangular face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00015">Primitive.h:15</a></div></div>
+<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html">Utilitary::Primitive</a></div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00049">Primitive.h:50</a></div></div>
+<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_a49b312af49a1a9abf0110c67fa844aa8"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">Utilitary::Primitive::GetEdgeIndex</a></div><div class="ttdeci">int GetEdgeIndex(const Data::Primitive::Face &amp;face, const BaseType::VertexIndex firstIndex, const BaseType::VertexIndex secondIndex)</div><div class="ttdoc">Get the index of the edge defined by two vertices in a face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00008">Primitive.cpp:8</a></div></div>
+<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_abaaff4c4271871ab94b68cd4665745a5"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">Utilitary::Primitive::GetVertexLocalIndex</a></div><div class="ttdeci">int GetVertexLocalIndex(const Data::Primitive::Face &amp;face, const BaseType::VertexIndex index)</div><div class="ttdoc">Get the local index of a vertex in a face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00039">Primitive.cpp:39</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00035">Primitive.h:36</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html_a49432a6f6c8456ed87fdea60fe46acb3"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Data::Primitive::Face::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Face vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00040">Primitive.h:40</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html_ab8daaca0bdaa80536c779c8d1296f533"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Data::Primitive::Face::Neighbors</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Neighbors</div><div class="ttdoc">Face neighboring face indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00045">Primitive.h:45</a></div></div>
@@ -169,7 +178,7 @@ $(document).ready(function(){initNavTree('Primitive_8h_source.html',''); initRes
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_856524284ebe840938865dc061f982fb.html">Include</a></li><li class="navelem"><a class="el" href="dir_76d58c5c53acb9560a8aed7987657af9.html">Application</a></li><li class="navelem"><b>Primitive.h</b></li>
+    <li class="navelem"><a class="el" href="dir_b1617d756d2224e91d37255e84e89ba2.html">App</a></li><li class="navelem"><a class="el" href="dir_8375c9afe14e2d6744036dd32af5f2a6.html">Include</a></li><li class="navelem"><a class="el" href="dir_151df7390bf1a42aafc2129005de16fa.html">Application</a></li><li class="navelem"><a class="el" href="Primitive_8h.html">Primitive.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

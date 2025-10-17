@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: Main Page</title>
+<title>SandBox: SandBox</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -100,10 +100,82 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">SandBox Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">SandBox </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="mainpage"></a> </p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Overview</h1>
+<p>This project aims to provide various algorithmic tools for meshes, as well as other features related to 3D object modeling. Eventually, an interactive graphical interface will allow visualization of the results from different algorithms.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Development Guidelines</h1>
+<p>This project follows strict development practices to ensure code quality, reliability, and maintainability.</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Code Quality Standards</h2>
+<ul>
+<li><b>Unit Testing</b>: Every feature must include comprehensive unit tests. All new code should be accompanied by tests that verify its functionality and edge cases.</li>
+<li><b>Code Coverage</b>: Maintain high code coverage standards (&gt;90%).</li>
+<li><b>Memory Safety</b>: All code must pass memory leak detection. Use Valgrind/Memcheck to verify proper memory management.</li>
+<li><b>Static Analysis</b>: Code must pass static analysis checks.</li>
+<li><b>Code Formatting</b>: Follow the project's coding style. Use the provided formatting tools to ensure consistency.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Continuous Integration</h2>
+<p>All changes are automatically validated through the CI pipeline, which runs:</p><ul>
+<li>Unit tests in Debug and Release</li>
+<li>Code coverage analysis</li>
+<li>Memory leak detection</li>
+<li>Static code analysis</li>
+<li>Documentation generation</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Key Features</h1>
+<ul>
+<li><b>Load/Export Mesh</b>: Load and export mesh into two format (off and obj).</li>
+<li><b>Display interactive window</b>: Configurable interface (ImGui).</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Getting Started</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Prerequisites</h2>
+<ul>
+<li>Compiler: C++20 or later</li>
+<li>CMake 3.15+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Installation &amp; Build</h2>
+<div class="fragment"><div class="line">git clone https://github.com/tgrillon/SandBox.git</div>
+<div class="line">cd SandBox</div>
+<div class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release &amp;&amp; cmake --build build/ -j 16</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+Architecture Overview</h1>
+<p>Brief description of the overall architecture, design patterns used, and how major components interact.</p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Modules</h1>
+<p>The project is organized into the following modules:</p>
+<ul>
+<li><b><a class="el" href="namespaceCore.html">Core</a> Module</b>: Rendering + Print utilities.</li>
+<li><b>App Module</b>: <a class="el" href="namespaceApplication.html">Application</a> features.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
+License</h1>
+<p>This repository uses <a href="https://unlicense.org/">The Unlicense</a>, so feel free to use this however you like.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Support</h1>
+<ul>
+<li><b>Documentation</b>: <a href="https://tgrillon.github.io/SandBox/docs/index.html">https://tgrillon.github.io/SandBox/docs/index.html</a></li>
+<li><b>Coverage report</b>: <a href="https://tgrillon.github.io/SandBox/coverage/index.html">https://tgrillon.github.io/SandBox/coverage/index.html</a></li>
+<li><b>Memcheck report</b>: <a href="https://tgrillon.github.io/SandBox/memcheck/index.html">https://tgrillon.github.io/SandBox/memcheck/index.html</a></li>
+<li><b>Email</b>: <a href="#" onclick="location.href='mai'+'lto:'+'the'+'og'+'ril'+'lo'+'n6f'+'9@'+'gma'+'il'+'.co'+'m'; return false;">theog<span class="obfuscator">.nosp@m.</span>rill<span class="obfuscator">.nosp@m.</span>on6f9<span class="obfuscator">.nosp@m.</span>@gma<span class="obfuscator">.nosp@m.</span>il.co<span class="obfuscator">.nosp@m.</span>m</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Authors and Acknowledgments</h1>
+<ul>
+<li><b>Théo GRILLON</b> - <a href="https://github.com/tgrillon">tgrillon</a></li>
+<li><em>Project structure inspired by <a href="https://github.com/TheCherno/Architecture">TheCherno/Architecture</a></em> </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

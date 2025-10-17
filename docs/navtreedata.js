@@ -25,11 +25,28 @@
 var NAVTREE =
 [
   [ "SandBox", "index.html", [
+    [ "Overview", "index.html#autotoc_md0", null ],
+    [ "Development Guidelines", "index.html#autotoc_md1", [
+      [ "Code Quality Standards", "index.html#autotoc_md2", null ],
+      [ "Continuous Integration", "index.html#autotoc_md3", null ]
+    ] ],
+    [ "Key Features", "index.html#autotoc_md4", null ],
+    [ "Getting Started", "index.html#autotoc_md5", [
+      [ "Prerequisites", "index.html#autotoc_md6", null ],
+      [ "Installation & Build", "index.html#autotoc_md7", null ]
+    ] ],
+    [ "Architecture Overview", "index.html#autotoc_md8", null ],
+    [ "Modules", "index.html#autotoc_md9", null ],
+    [ "License", "index.html#autotoc_md10", null ],
+    [ "Support", "index.html#autotoc_md11", null ],
+    [ "Authors and Acknowledgments", "index.html#autotoc_md12", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -40,18 +57,30 @@ var NAVTREE =
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerator", "globals_eval.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"AppLayer_8cpp_source.html"
+"AppLayer_8cpp.html",
+"classCore_1_1Application.html#ab8b99d5c1e1c0ec4cde0db2a97b294ae",
+"classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#afda5206d81a65afed77dc5323ffe4acb",
+"stb__image_8h.html#aff26696e30b62a40dd00bc12415343f6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

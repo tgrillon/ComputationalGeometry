@@ -175,7 +175,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
 <div class="line"><span class="lineno">   44</span>    std::ofstream file(filepath, std::ios::trunc);</div>
 <div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>    Debug(<span class="stringliteral">&quot;Writing to {}&quot;</span>, filepath.string());</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_define" href="PrintHelpers_8h.html#acd8dd41e8a67bba7ccfb3b50f7aa88a5">Debug</a>(<span class="stringliteral">&quot;Writing to {}&quot;</span>, filepath.string());</div>
 <div class="line"><span class="lineno">   47</span> </div>
 <div class="line"><span class="lineno">   48</span>    <span class="comment">// Write vertex positions.</span></div>
 <div class="line"><span class="lineno">   49</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp;&amp; curVertex : mesh.m_Vertices)</div>
@@ -183,11 +183,11 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>    <span class="comment">// Write texture coordinates if available.</span></div>
 <div class="line"><span class="lineno">   53</span>    <span class="comment">// Assuming texture coordinates are stored as Vec2 in the ExtraDataContainer of each vertex.</span></div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.m_VerticesExtraDataContainer[0].Has&lt;Vec2&gt;())</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38">m_VerticesExtraDataContainer</a>[0].Has&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a>&gt;())</div>
 <div class="line"><span class="lineno">   55</span>    {</div>
 <div class="line"><span class="lineno">   56</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp;&amp; curVertexED : mesh.m_VerticesExtraDataContainer)</div>
 <div class="line"><span class="lineno">   57</span>        {</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keyword">const</span> Vec2* texCoords = curVertexED.Get&lt;Vec2&gt;();</div>
+<div class="line"><span class="lineno">   58</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a>* texCoords = curVertexED.Get&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a>&gt;();</div>
 <div class="line"><span class="lineno">   59</span>            assert(texCoords != <span class="keyword">nullptr</span> &amp;&amp; <span class="stringliteral">&quot;All vertices must have texture coordinates if one has it&quot;</span>);</div>
 <div class="line"><span class="lineno">   60</span>            file &lt;&lt; <span class="stringliteral">&quot;vt&quot;</span> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; texCoords-&gt;x &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; texCoords-&gt;y &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><span class="lineno">   61</span>        }</div>
@@ -195,11 +195,11 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>    <span class="comment">// Write vertex normals if available.</span></div>
 <div class="line"><span class="lineno">   65</span>    <span class="comment">// Assuming normals are stored as Vec3 in the ExtraDataContainer of each vertex.</span></div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.m_VerticesExtraDataContainer[0].Has&lt;Vec3&gt;())</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38">m_VerticesExtraDataContainer</a>[0].Has&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&gt;())</div>
 <div class="line"><span class="lineno">   67</span>    {</div>
 <div class="line"><span class="lineno">   68</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp;&amp; curVertexED : mesh.m_VerticesExtraDataContainer)</div>
 <div class="line"><span class="lineno">   69</span>        {</div>
-<div class="line"><span class="lineno">   70</span>            <span class="keyword">const</span> Vec3* vertexNormal = curVertexED.Get&lt;Vec3&gt;();</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>* vertexNormal = curVertexED.Get&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&gt;();</div>
 <div class="line"><span class="lineno">   71</span>            assert(vertexNormal != <span class="keyword">nullptr</span> &amp;&amp; <span class="stringliteral">&quot;All vertices must have a vertex normal if one has it&quot;</span>);</div>
 <div class="line"><span class="lineno">   72</span>            file &lt;&lt; <span class="stringliteral">&quot;vn&quot;</span> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; vertexNormal-&gt;x &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; vertexNormal-&gt;y &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; vertexNormal-&gt;z &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><span class="lineno">   73</span>        }</div>
@@ -214,8 +214,8 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   82</span>            file &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; (vertexIdx + 1);</div>
 <div class="line"><span class="lineno">   83</span> </div>
 <div class="line"><span class="lineno">   84</span>            <span class="comment">// Check if texture coordinates and normals are available</span></div>
-<div class="line"><span class="lineno">   85</span>            <span class="keywordtype">bool</span> hasTexCoords = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.m_VerticesExtraDataContainer[0].Has&lt;Vec2&gt;();</div>
-<div class="line"><span class="lineno">   86</span>            <span class="keywordtype">bool</span> hasNormals = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.m_VerticesExtraDataContainer[0].Has&lt;Vec3&gt;();</div>
+<div class="line"><span class="lineno">   85</span>            <span class="keywordtype">bool</span> hasTexCoords = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38">m_VerticesExtraDataContainer</a>[0].Has&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a>&gt;();</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordtype">bool</span> hasNormals = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>() &amp;&amp; mesh.<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38">m_VerticesExtraDataContainer</a>[0].Has&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&gt;();</div>
 <div class="line"><span class="lineno">   87</span> </div>
 <div class="line"><span class="lineno">   88</span>            <span class="keywordflow">if</span>(hasTexCoords || hasNormals)</div>
 <div class="line"><span class="lineno">   89</span>            {</div>
@@ -238,7 +238,11 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  106</span> </div>
 <div class="line"><span class="lineno">  107</span>    file.close();</div>
 <div class="line"><span class="lineno">  108</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a56c30a8d1d6423d08ebf7a8b0594b709"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">Data::Surface::Mesh::HasVertexExtraData</a></div><div class="ttdeci">bool HasVertexExtraData() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00169">Mesh.cpp:169</a></div></div>
+<div class="ttc" id="aPrintHelpers_8h_html_acd8dd41e8a67bba7ccfb3b50f7aa88a5"><div class="ttname"><a href="PrintHelpers_8h.html#acd8dd41e8a67bba7ccfb3b50f7aa88a5">Debug</a></div><div class="ttdeci">#define Debug(...)</div><div class="ttdef"><b>Definition</b> <a href="PrintHelpers_8h_source.html#l00173">PrintHelpers.h:173</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a10775c7ce06da8d9538d1e63a8f5bd38"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38">Data::Surface::Mesh::m_VerticesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::Internal::ExtraDataContainer &gt; m_VerticesExtraDataContainer</div><div class="ttdoc">Extra data containers for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00280">Mesh.h:280</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a56c30a8d1d6423d08ebf7a8b0594b709"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">Data::Surface::Mesh::HasVertexExtraData</a></div><div class="ttdeci">bool HasVertexExtraData() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00167">Mesh.cpp:167</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00017">BaseType.h:17</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00016">BaseType.h:16</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -290,7 +294,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
 <div class="line"><span class="lineno">   20</span>    std::ofstream file(filepath, std::ios::trunc);</div>
 <div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>    Debug(<span class="stringliteral">&quot;Writing to {}&quot;</span>, filepath.string());</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_define" href="PrintHelpers_8h.html#acd8dd41e8a67bba7ccfb3b50f7aa88a5">Debug</a>(<span class="stringliteral">&quot;Writing to {}&quot;</span>, filepath.string());</div>
 <div class="line"><span class="lineno">   23</span> </div>
 <div class="line"><span class="lineno">   24</span>    <span class="comment">// Write the OFF header.</span></div>
 <div class="line"><span class="lineno">   25</span>    file &lt;&lt; <span class="stringliteral">&quot;OFF&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
@@ -309,21 +313,21 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   38</span> </div>
 <div class="line"><span class="lineno">   39</span>    file.close();</div>
 <div class="line"><span class="lineno">   40</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00027">Mesh.cpp:27</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad1a67c7f1a4cfdc468f15c808cfca25f"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">Data::Surface::Mesh::GetFaceCount</a></div><div class="ttdeci">uint32_t GetFaceCount() const</div><div class="ttdoc">Get the number of faces in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00032">Mesh.cpp:32</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00025">Mesh.cpp:25</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad1a67c7f1a4cfdc468f15c808cfca25f"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">Data::Surface::Mesh::GetFaceCount</a></div><div class="ttdeci">uint32_t GetFaceCount() const</div><div class="ttdoc">Get the number of faces in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00030">Mesh.cpp:30</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>Include/Application/<a class="el" href="MeshExporter_8h_source.html">MeshExporter.h</a></li>
-<li>Source/<a class="el" href="MeshExporter_8cpp_source.html">MeshExporter.cpp</a></li>
+<li>App/Include/Application/<a class="el" href="MeshExporter_8h_source.html">MeshExporter.h</a></li>
+<li>App/Source/<a class="el" href="MeshExporter_8cpp_source.html">MeshExporter.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Utilitary</b></li><li class="navelem"><a class="el" href="namespaceUtilitary_1_1Surface.html">Surface</a></li><li class="navelem"><a class="el" href="structUtilitary_1_1Surface_1_1MeshExporter.html">MeshExporter</a></li>
+    <li class="navelem"><a class="el" href="namespaceUtilitary.html">Utilitary</a></li><li class="navelem"><a class="el" href="namespaceUtilitary_1_1Surface.html">Surface</a></li><li class="navelem"><a class="el" href="structUtilitary_1_1Surface_1_1MeshExporter.html">MeshExporter</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

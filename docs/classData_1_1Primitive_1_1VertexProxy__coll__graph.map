@@ -1,0 +1,5 @@
+<map id="Data::Primitive::VertexProxy" name="Data::Primitive::VertexProxy">
+<area shape="rect" id="Node000001" title="Proxy class for a vertex in a mesh, providing safe access and extra data storage." alt="" coords="5,93,212,119"/>
+<area shape="rect" id="Node000002" href="$classData_1_1Surface_1_1Mesh.html" title="Class representing a 3D triangular mesh." alt="" coords="32,5,185,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,45,111,93,106,93,106,45"/>
+</map>
