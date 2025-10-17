@@ -4,6 +4,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -18,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake build-essential lcov doxygen graphviz valgrind
+          sudo apt-get install -y cmake build-essential lcov doxygen graphviz valgrind cppcheck
           sudo apt-get install -y \
             libwayland-dev \
             libwayland-client0 \
@@ -31,11 +32,28 @@ jobs:
             libxinerama-dev \
             libxcursor-dev \
             libxi-dev
-      
+
       - name: Configure CMake
         run: |
           cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
       
+      # --- Static analysis step using existing CMake target ---
+      - name: Run static analysis (Cppcheck)
+        if: matrix.build_type == 'Debug'
+        working-directory: ${{github.workspace}}/build
+        run: |
+          make cppcheck || true
+        continue-on-error: true
+
+      - name: Upload static analysis report as artifact
+        if: matrix.build_type == 'Debug'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cppcheck-report
+          path: ${{github.workspace}}/build/cppcheck/
+          retention-days: 30
+      # --------------------------------------------------------
+
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
       
@@ -98,7 +116,6 @@ jobs:
           path: ${{github.workspace}}/build/AppDocs/
           retention-days: 30
   
-  # Separate job for deploying to GitHub Pages
   deploy-reports:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -119,12 +136,18 @@ jobs:
         with:
           name: memcheck-report
           path: ./reports/memcheck
-      
+
       - name: Download documentation
         uses: actions/download-artifact@v4
         with:
           name: documentation
           path: ./reports/docs
+
+      - name: Download cppcheck report
+        uses: actions/download-artifact@v4
+        with:
+          name: cppcheck-report
+          path: ./reports/cppcheck
       
       - name: Create index page
         run: |
@@ -155,6 +178,7 @@ jobs:
                   <li><a href="docs/index.html">📚 Documentation</a></li>
                   <li><a href="coverage/index.html">📊 Coverage Report</a></li>
                   <li><a href="memcheck/index.html">🔍 Memcheck Report</a></li>
+                  <li><a href="cppcheck/index.html">🧩 Static Analysis (Cppcheck)</a></li>
               </ul>
           </body>
           </html>

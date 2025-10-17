@@ -23,7 +23,7 @@ struct ApplicationSpecification
 class Application
 {
 public:
-	Application(const ApplicationSpecification& specification = ApplicationSpecification());
+	explicit Application(const ApplicationSpecification& specification = ApplicationSpecification());
 	~Application();
 
 	void Run();

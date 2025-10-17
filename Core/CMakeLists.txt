@@ -27,3 +27,5 @@ target_link_libraries(Core glfw glad glm imgui)
 target_include_directories(Core PUBLIC "Include" "vendor/stb")
 
 Format(Core .)
+
+AddCppCheck(Core)

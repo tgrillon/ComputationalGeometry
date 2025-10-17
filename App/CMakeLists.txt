@@ -58,3 +58,6 @@ add_custom_command(TARGET App POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory 
     "${CMAKE_SOURCE_DIR}/App/Data" 
     $<TARGET_FILE_DIR:App>/Data)
+
+AddCppCheck(AppStaticLib)
+AddCppCheck(App)

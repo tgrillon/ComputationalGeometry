@@ -20,7 +20,7 @@ struct WindowSpecification
 class Window
 {
 public:
-	Window(const WindowSpecification& specification = WindowSpecification());
+	explicit Window(const WindowSpecification& specification = WindowSpecification());
 	~Window();
 
 	void Create();

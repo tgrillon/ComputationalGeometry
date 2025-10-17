@@ -74,7 +74,7 @@ AppLayer::~AppLayer()
 	}
 }
 
-void AppLayer::OnUpdate(float ts)
+void AppLayer::OnUpdate(float)
 {}
 
 void AppLayer::OnRender()
@@ -105,7 +105,7 @@ void AppLayer::OnRender()
 	ImVec2 pos = ImGui::GetCursorScreenPos();
 
 	ImGui::GetWindowDrawList()->AddImage(
-		(void*)static_cast<uintptr_t>(renderTexture.Handle),
+		reinterpret_cast<void*>(static_cast<uintptr_t>(renderTexture.Handle)),
 		ImVec2(pos.x, pos.y),
 		ImVec2(pos.x + windowWidth, pos.y + windowHeight),
 		ImVec2(0, 1),

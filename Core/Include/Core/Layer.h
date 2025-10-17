@@ -10,9 +10,9 @@ class Layer
 public:
 	virtual ~Layer() = default;
 
-	virtual void OnEvent(Event& event) {}
+	virtual void OnEvent(Event&) {}
 
-	virtual void OnUpdate(float ts) {}
+	virtual void OnUpdate(float) {}
 
 	virtual void OnRender() {}
 };

@@ -29,3 +29,4 @@ add_custom_command(TARGET AppUnitTests POST_BUILD
     $<TARGET_FILE_DIR:AppUnitTests>/TestFiles)
 
 AddTests(AppUnitTests)
+AddCppCheck(AppUnitTests)

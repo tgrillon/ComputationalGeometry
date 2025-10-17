@@ -72,7 +72,6 @@ TEST(MeshExporterTest, ValidMesh_ExportOBJShouldSucceed)
 	EXPECT_TRUE(file.is_open());
 
 	// Read and verify vertex positions.
-	std::string line;
 	for(auto&& curVertex : mesh.GetVertices())
 	{
 		char vChar;

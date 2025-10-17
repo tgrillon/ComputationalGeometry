@@ -30,7 +30,7 @@ uint32_t CreateComputeShader(const std::filesystem::path& path)
 
 	GLuint shaderHandle = glCreateShader(GL_COMPUTE_SHADER);
 
-	const GLchar* source = (const GLchar*)shaderSource.c_str();
+	const GLchar* source = static_cast<const GLchar*>(shaderSource.c_str());
 	glShaderSource(shaderHandle, 1, &source, 0);
 
 	glCompileShader(shaderHandle);
@@ -56,7 +56,7 @@ uint32_t CreateComputeShader(const std::filesystem::path& path)
 	glLinkProgram(program);
 
 	GLint isLinked = 0;
-	glGetProgramiv(program, GL_LINK_STATUS, (int*)&isLinked);
+	glGetProgramiv(program, GL_LINK_STATUS, static_cast<int*>(&isLinked));
 	if(isLinked == GL_FALSE)
 	{
 		GLint maxLength = 0;
@@ -98,7 +98,7 @@ uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std
 
 	GLuint vertexShaderHandle = glCreateShader(GL_VERTEX_SHADER);
 
-	const GLchar* source = (const GLchar*)vertexShaderSource.c_str();
+	const GLchar* source = static_cast<const GLchar*>(vertexShaderSource.c_str());
 	glShaderSource(vertexShaderHandle, 1, &source, 0);
 
 	glCompileShader(vertexShaderHandle);
@@ -123,7 +123,7 @@ uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std
 
 	GLuint fragmentShaderHandle = glCreateShader(GL_FRAGMENT_SHADER);
 
-	source = (const GLchar*)fragmentShaderSource.c_str();
+	source = static_cast<const GLchar*>(fragmentShaderSource.c_str());
 	glShaderSource(fragmentShaderHandle, 1, &source, 0);
 
 	glCompileShader(fragmentShaderHandle);
@@ -152,7 +152,7 @@ uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std
 	glLinkProgram(program);
 
 	GLint isLinked = 0;
-	glGetProgramiv(program, GL_LINK_STATUS, (int*)&isLinked);
+	glGetProgramiv(program, GL_LINK_STATUS, static_cast<int*>(&isLinked));
 	if(isLinked == GL_FALSE)
 	{
 		GLint maxLength = 0;

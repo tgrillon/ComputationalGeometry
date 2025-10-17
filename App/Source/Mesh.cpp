@@ -10,13 +10,11 @@ using namespace Utilitary::Primitive;
 namespace Data::Surface
 {
 Mesh::Mesh(const Mesh& other)
-{
-	m_Vertices = other.m_Vertices;
-	m_VerticesExtraDataContainer = other.m_VerticesExtraDataContainer;
-
-	m_Faces = other.m_Faces;
-	m_VerticesExtraDataContainer = other.m_VerticesExtraDataContainer;
-}
+	: m_Vertices(other.m_Vertices)
+	, m_Faces(other.m_Faces)
+	, m_VerticesExtraDataContainer(other.m_VerticesExtraDataContainer)
+	, m_FacesExtraDataContainer(other.m_FacesExtraDataContainer)
+{}
 
 /// @brief Get the number of faces in the mesh.
 std::unique_ptr<Mesh> Mesh::Clone() const
@@ -217,8 +215,12 @@ Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::oper
 {
 	m_IsActive = true;
 
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-	int neighborFaceIdx = curFace.Neighbors[IndexHelpers::Previous[m_CurVertexLocalIdx]];
+	int neighborFaceIdx;
+	{
+		const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+		neighborFaceIdx = curFace.Neighbors[IndexHelpers::Previous[m_CurVertexLocalIdx]];
+	}
+
 	if(m_IsInCCWOrder)
 	{
 		if(neighborFaceIdx == -1)
@@ -300,7 +302,7 @@ void Mesh::VerticesAroundVertexCirculator::UpdateCurVertexIndexInCCWOrder()
 	m_CurVertexIdx = curFace.Vertices[m_CurVertexLocalIdx];
 }
 
-//==========================VerticesAroundVertexCirculator==========================//
+//==========================VerticesAroundVertexRange==========================//
 Mesh::VerticesAroundVertexRange::VerticesAroundVertexRange(const Mesh& mesh, const VertexIndex index)
 	: m_Mesh(mesh)
 	, m_VertexIdx(index)
