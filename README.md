@@ -1,17 +1,77 @@
-# Architecture
+# SandBox {#mainpage}
 
-An example of how I like to architect applications in C++, as part of a [YouTube mini-series](https://youtube.com/playlist?list=PLlrATfBNZ98cpX2LuxLnLyLEmfD2FPpRA).
+## Overview
 
-## Build
+This project aims to provide various algorithmic tools for meshes, as well as other features related to 3D object modeling. Eventually, an interactive graphical interface will allow visualization of the results from different algorithms.
 
-Generate project files/build using CMake. I like to make a directory called `build` at the root and then run
+## Development Guidelines
+
+This project follows strict development practices to ensure code quality, reliability, and maintainability.
+
+### Code Quality Standards
+
+- **Unit Testing**: Every feature must include comprehensive unit tests. All new code should be accompanied by tests that verify its functionality and edge cases.
+
+- **Code Coverage**: Maintain high code coverage standards (>90%).
+
+- **Memory Safety**: All code must pass memory leak detection. Use Valgrind/Memcheck to verify proper memory management.
+
+- **Static Analysis**: Code must pass static analysis checks.
+
+- **Code Formatting**: Follow the project's coding style. Use the provided formatting tools to ensure consistency.
+
+### Continuous Integration
+
+All changes are automatically validated through the CI pipeline, which runs:
+- Unit tests in Debug and Release
+- Code coverage analysis
+- Memory leak detection
+- Static code analysis
+- Documentation generation
+
+## Key Features
+
+- **Load/Export Mesh**: Load and export mesh into two format (off and obj).
+- **Display interactive window**: Configurable interface (ImGui). 
+
+## Getting Started
+
+### Prerequisites
+
+- Compiler: C++20 or later
+- CMake 3.15+
+
+### Installation & Build
+
+```bash
+git clone https://github.com/tgrillon/SandBox.git
+cd SandBox
+cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build/ -j 16
 ```
-cmake ..
-```
-from that directory. This will generate relevant project files (eg. Visual Studio for me) which you can then use to build and run.
 
-## Notes
-I chose to use OpenGL (and GLFW) for this due to popular demand [after running a poll](https://www.youtube.com/post/UgkxP9IU8D8UjH8szUipCS3QkJJQOc_cdb0k), however these concepts mostly translate to any other libraries/rendering APIs you may be using. OpenGL and GLFW is simply used as an example, substitute what you like.
+## Architecture Overview
+
+Brief description of the overall architecture, design patterns used, and how major components interact.
+
+## Modules
+
+The project is organized into the following modules:
+
+- **Core Module**: Rendering + Print utilities. 
+- **App Module**: Application features. 
 
 ## License
+
 This repository uses [The Unlicense](https://unlicense.org/), so feel free to use this however you like.
+
+## Support
+
+- **Documentation**: https://tgrillon.github.io/SandBox/docs/index.html
+- **Coverage report**: https://tgrillon.github.io/SandBox/coverage/index.html
+- **Memcheck report**: https://tgrillon.github.io/SandBox/memcheck/index.html
+- **Email**: theogrillon6f9@gmail.com
+
+## Authors and Acknowledgments
+
+- **Théo GRILLON** - [tgrillon](https://github.com/tgrillon)
+- *Project structure inspired by [TheCherno/Architecture](https://github.com/TheCherno/Architecture)*

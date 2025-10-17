@@ -53,7 +53,7 @@ function(Doxygen target input_dirs source_root)
   list(APPEND INPUT_PATHS "${source_root}/README.md")
   
   set(DOXYGEN_GENERATE_HTML YES)
-  set(DOXYGEN_HTML_OUTPUT ${PROJECT_BINARY_DIR}/docs/${target})
+  set(DOXYGEN_HTML_OUTPUT ${PROJECT_BINARY_DIR}/docs)
   set(DOXYGEN_PROJECT_NUMBER ${PROJECT_VERSION})
   set(DOXYGEN_SOURCE_BROWSER YES)
   set(DOXYGEN_INLINE_SOURCES YES)

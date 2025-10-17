@@ -1,8 +1,11 @@
-PROJECT_NAME           = "GAM"
+PROJECT_NAME           = "SANDBOX"
 OUTPUT_DIRECTORY       = @DOXYGEN_OUTPUT_DIRECTORY@
 INPUT                  = @DOX_INPUTS@
-FILE_PATTERNS          = *.h *.hpp *.cpp
+FILE_PATTERNS          = *.h *.hpp *.cpp 
+FILE                   = README.md Docs/ App/ Core/      
 RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+
 
 EXTRACT_ALL            = YES
 EXTRACT_FUNCTIONS      = YES
@@ -23,3 +26,4 @@ REFERENCES_RELATION    = YES
 SHOW_FILES             = YES
 SHOW_NAMESPACES        = YES
 SEARCHENGINE           = YES
+
