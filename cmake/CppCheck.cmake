@@ -17,16 +17,20 @@ function(AddCppCheck target)
         endforeach()
     endif()
     
-    # Filter sources to exclude external code
+    # Filter sources to exclude external code and specific files
     set(SOURCES_TO_CHECK "")
     foreach(source ${TARGET_SOURCES})
         get_filename_component(ABS_SOURCE "${source}" ABSOLUTE BASE_DIR "${SOURCE_DIR}")
+        get_filename_component(FILENAME "${source}" NAME)
         
-        # Only include project sources (exclude external)
+        # Only include project sources (exclude external and stb_image)
         if(NOT ABS_SOURCE MATCHES "/_deps/|/external/|/third_party/|FetchContent")
-            # Only check .cpp, .cc, .cxx files (not headers from external libs)
-            if(source MATCHES "\\.(cpp|cc|cxx)$")
-                list(APPEND SOURCES_TO_CHECK ${ABS_SOURCE})
+            # Exclude stb_image files specifically
+            if(NOT FILENAME MATCHES "stb_image\\.(cpp|h)")
+                # Only check .cpp, .cc, .cxx files (not headers from external libs)
+                if(source MATCHES "\\.(cpp|cc|cxx)$")
+                    list(APPEND SOURCES_TO_CHECK ${ABS_SOURCE})
+                endif()
             endif()
         endif()
     endforeach()
@@ -42,10 +46,15 @@ function(AddCppCheck target)
                 --suppress=*:*/_deps/*
                 --suppress=*:*/external/*
                 --suppress=*:*/third_party/*
+                --suppress=*:*/stb_image.cpp
+                --suppress=*:*/stb_image.h
+                --std=c++23
+                --language=c++
                 ${INCLUDE_ARGS}
                 ${SOURCES_TO_CHECK}
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             COMMENT "Running CppCheck on ${target}"
+            VERBATIM
         )
         
         # Add to main cppcheck target if it exists, or create it
@@ -53,5 +62,7 @@ function(AddCppCheck target)
             add_custom_target(cppcheck)
         endif()
         add_dependencies(cppcheck cppcheck-${target})
+    else()
+        message(STATUS "No sources to check for target ${target}")
     endif()
 endfunction()
