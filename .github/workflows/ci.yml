@@ -37,22 +37,12 @@ jobs:
         run: |
           cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
       
-      # --- Static analysis step using existing CMake target ---
       - name: Run static analysis (Cppcheck)
         if: matrix.build_type == 'Debug'
         working-directory: ${{github.workspace}}/build
         run: |
           make cppcheck || true
         continue-on-error: true
-
-      - name: Upload static analysis report as artifact
-        if: matrix.build_type == 'Debug'
-        uses: actions/upload-artifact@v4
-        with:
-          name: cppcheck-report
-          path: ${{github.workspace}}/build/cppcheck/
-          retention-days: 30
-      # --------------------------------------------------------
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
@@ -106,14 +96,14 @@ jobs:
       - name: Generate documentation
         if: matrix.build_type == 'Release'
         working-directory: ${{github.workspace}}/build
-        run: make doxygen-AppDocs
+        run: make doxygen-UnifiedDocs
       
       - name: Upload documentation as artifact
         if: matrix.build_type == 'Release'
         uses: actions/upload-artifact@v4
         with:
           name: documentation
-          path: ${{github.workspace}}/build/AppDocs/
+          path: ${{github.workspace}}/build/docs/
           retention-days: 30
   
   deploy-reports:
@@ -143,12 +133,6 @@ jobs:
           name: documentation
           path: ./reports/docs
 
-      - name: Download cppcheck report
-        uses: actions/download-artifact@v4
-        with:
-          name: cppcheck-report
-          path: ./reports/cppcheck
-      
       - name: Create index page
         run: |
           cat > ./reports/index.html << 'EOF'
@@ -178,7 +162,6 @@ jobs:
                   <li><a href="docs/index.html">📚 Documentation</a></li>
                   <li><a href="coverage/index.html">📊 Coverage Report</a></li>
                   <li><a href="memcheck/index.html">🔍 Memcheck Report</a></li>
-                  <li><a href="cppcheck/index.html">🧩 Static Analysis (Cppcheck)</a></li>
               </ul>
           </body>
           </html>
