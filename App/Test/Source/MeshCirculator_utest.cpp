@@ -1,5 +1,5 @@
 #include "Application/Mesh.h"
-#include "TestHelpers.h"
+#include "Application/TestHelpers.h"
 
 #include <gtest/gtest.h>
 
@@ -33,17 +33,31 @@ TEST(MeshTest, GetVerticesAroundVertex_OneFace_ShouldIterateCorrectly)
 TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrectly)
 {
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
+	{
+		// Get the range of vertices around vertex 5
+		auto vertexRange = mesh.GetVerticesAroundVertex(5);
 
-	// Get the range of vertices around vertex 5
-	auto vertexRange = mesh.GetVerticesAroundVertex(5);
+		// Collect the vertices around vertex 5
+		std::vector<VertexIndex> collectedVertices;
+		std::copy(vertexRange.begin(), vertexRange.end(), std::back_inserter(collectedVertices));
 
-	// Collect the vertices around vertex 5
-	std::vector<VertexIndex> collectedVertices;
-	std::copy(vertexRange.begin(), vertexRange.end(), std::back_inserter(collectedVertices));
+		// Vertex 5 is connected to the one-ring vertices in counter-clockwise order
+		std::vector<VertexIndex> expectedVertices = { 2, 1, 4, 8 };
+		EXPECT_EQ(collectedVertices, expectedVertices);
+	}
 
-	// Vertex 5 is connected to the one-ring vertices in counter-clockwise order
-	std::vector<VertexIndex> expectedVertices = { 2, 1, 4, 8 };
-	EXPECT_EQ(collectedVertices, expectedVertices);
+	{
+		// Get the range of vertices around vertex 3
+		auto vertexRange = mesh.GetVerticesAroundVertex(3);
+
+		// Collect the vertices around vertex 3
+		std::vector<VertexIndex> collectedVertices;
+		std::copy(vertexRange.begin(), vertexRange.end(), std::back_inserter(collectedVertices));
+
+		// Vertex 3 is connected to the one-ring vertices in counter-clockwise order
+		std::vector<VertexIndex> expectedVertices = { 4, 7, 6, 0 };
+		EXPECT_EQ(collectedVertices, expectedVertices);
+	}
 }
 
 TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrectly)

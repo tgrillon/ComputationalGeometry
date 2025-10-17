@@ -1,7 +1,7 @@
 #include "Application/Mesh.h"
 #include "Application/MeshIntegrity.h"
 #include "Application/PrimitiveProxy.h"
-#include "TestHelpers.h"
+#include "Application/TestHelpers.h"
 
 #include <gtest/gtest.h>
 

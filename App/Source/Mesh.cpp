@@ -215,14 +215,13 @@ Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::oper
 {
 	m_IsActive = true;
 
-	int neighborFaceIdx;
-	{
-		const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-		neighborFaceIdx = curFace.Neighbors[IndexHelpers::Previous[m_CurVertexLocalIdx]];
-	}
-
 	if(m_IsInCCWOrder)
 	{
+		int neighborFaceIdx;
+		{
+			const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+			neighborFaceIdx = curFace.Neighbors[IndexHelpers::Previous[m_CurVertexLocalIdx]];
+		}
 		if(neighborFaceIdx == -1)
 		{ // If there is no next face, we reached a boundary.
 			while(m_JumpCount > 0)
@@ -254,6 +253,7 @@ Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::oper
 		m_PrevFaceIdx = m_CurFaceIdx;
 		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
 		m_CurFaceIdx = prevFace.Neighbors[IndexHelpers::Next[m_CurVertexLocalIdx]];
+
 		if(m_CurFaceIdx == -1)
 			return *this; // We reached a boundary, we stop here.
 
@@ -261,13 +261,6 @@ Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::oper
 	}
 
 	return *this;
-}
-
-Mesh::VerticesAroundVertexCirculator Mesh::VerticesAroundVertexCirculator::operator++(int)
-{
-	auto tmp = *this;
-	++(*this);
-	return tmp;
 }
 
 VertexIndex Mesh::VerticesAroundVertexCirculator::operator*() const
@@ -395,9 +388,6 @@ Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++
 	}
 	else // We are going in the clock-wise direction.
 	{
-		if(neighborFaceIdx == -1)
-			return *this; // We reached a boundary, we stop here.
-
 		m_PrevFaceIdx = m_CurFaceIdx;
 		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
 		int localIdx = GetVertexLocalIndex(prevFace, m_CentralVertexIdx);
@@ -406,13 +396,6 @@ Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++
 	}
 
 	return *this;
-}
-
-Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexCirculator::operator++(int)
-{
-	auto tmp = *this;
-	++(*this);
-	return tmp;
 }
 
 FaceIndex Mesh::FacesAroundVertexCirculator::operator*() const

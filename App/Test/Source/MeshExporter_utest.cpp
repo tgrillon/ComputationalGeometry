@@ -1,7 +1,7 @@
 #include "Application/MeshExporter.h"
 #include "Application/PrimitiveProxy.h"
+#include "Application/TestHelpers.h"
 #include "Core/PrintHelpers.h"
-#include "TestHelpers.h"
 
 #include <gtest/gtest.h>
 
