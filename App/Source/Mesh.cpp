@@ -164,12 +164,12 @@ const std::vector<Data::Primitive::Face>& Mesh::GetFaces() const
 	return m_Faces;
 }
 
-bool Mesh::HasVertexExtraData() const
+bool Mesh::HasVerticesExtraDataContainer() const
 {
 	return m_VerticesExtraDataContainer.size() > 0;
 }
 
-bool Mesh::HasFaceExtraData() const
+bool Mesh::HasFacesExtraDataContainer() const
 {
 	return m_FacesExtraDataContainer.size() > 0;
 }

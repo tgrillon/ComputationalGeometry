@@ -16,7 +16,7 @@ public:
 	template<typename T>
 	T* GetExtraData()
 	{
-		assert(m_Mesh->HasFaceExtraData());
+		assert(m_Mesh->HasFacesExtraDataContainer());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<T>();
 	}
 
@@ -24,7 +24,7 @@ public:
 	template<typename T>
 	const T* GetExtraData() const
 	{
-		assert(m_Mesh->HasFaceExtraData());
+		assert(m_Mesh->HasFacesExtraDataContainer());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<const T>();
 	}
 
@@ -32,7 +32,7 @@ public:
 	template<typename T>
 	T& GetOrCreateExtraData() const
 	{
-		assert(m_Mesh->HasFaceExtraData());
+		assert(m_Mesh->HasFacesExtraDataContainer());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
@@ -40,7 +40,7 @@ public:
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
-		assert(m_Mesh->HasFaceExtraData());
+		assert(m_Mesh->HasFacesExtraDataContainer());
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
@@ -56,7 +56,7 @@ public:
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->HasFaceExtraData() && m_Mesh->m_FacesExtraDataContainer[m_Index].Has<T>();
+		return m_Mesh->HasFacesExtraDataContainer() && m_Mesh->m_FacesExtraDataContainer[m_Index].Has<T>();
 	}
 
 	/// @brief Get the index of the face in the mesh.
@@ -97,7 +97,7 @@ public:
 	template<typename T>
 	T* GetExtraData()
 	{
-		assert(m_Mesh->HasVertexExtraData());
+		assert(m_Mesh->HasVerticesExtraDataContainer());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
 	}
 
@@ -105,15 +105,15 @@ public:
 	template<typename T>
 	const T* GetExtraData() const
 	{
-		assert(m_Mesh->HasVertexExtraData());
+		assert(m_Mesh->HasVerticesExtraDataContainer());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
 	}
 
 	/// @brief Get or create extra data of type T associated with the vertex.
 	template<typename T>
-	T& GetOrCreateExtraData()
+	T& GetOrCreateExtraData() const
 	{
-		assert(m_Mesh->HasVertexExtraData());
+		assert(m_Mesh->HasVerticesExtraDataContainer());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
@@ -121,7 +121,7 @@ public:
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
-		assert(m_Mesh->HasVertexExtraData());
+		assert(m_Mesh->HasVerticesExtraDataContainer());
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Set<T>(data);
 	}
 

@@ -111,16 +111,16 @@ TEST(MeshTest, AddExtraDataContainers_ShouldAddContainers)
 	Mesh mesh = TestHelpers::CreateValidMesh();
 
 	// Initially, the mesh should not have extra data containers
-	EXPECT_FALSE(mesh.HasVertexExtraData());
-	EXPECT_FALSE(mesh.HasFaceExtraData());
+	EXPECT_FALSE(mesh.HasVerticesExtraDataContainer());
+	EXPECT_FALSE(mesh.HasFacesExtraDataContainer());
 
 	// Add extra data containers
 	mesh.AddVerticesExtraDataContainer();
 	mesh.AddFacesExtraDataContainer();
 
 	// Now, the mesh should have extra data containers
-	EXPECT_TRUE(mesh.HasVertexExtraData());
-	EXPECT_TRUE(mesh.HasFaceExtraData());
+	EXPECT_TRUE(mesh.HasVerticesExtraDataContainer());
+	EXPECT_TRUE(mesh.HasFacesExtraDataContainer());
 }
 
 TEST(MeshTest, Clone_ShouldReturnDeepCopy)

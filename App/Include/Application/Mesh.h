@@ -87,9 +87,10 @@ public:
 	const std::vector<Data::Primitive::Face>& GetFaces() const;
 
 	/// @brief Check if the mesh has extra data containers for vertices.
-	bool HasVertexExtraData() const;
+	bool HasVerticesExtraDataContainer() const;
 	/// @brief Check if the mesh has extra data containers for faces.
-	bool HasFaceExtraData() const;
+	bool HasFacesExtraDataContainer() const;
+
 
 public:
 	/// @brief Circulator to iterate over the vertices around a given vertex.
@@ -277,8 +278,8 @@ private:
 	std::vector<Data::Primitive::Face> m_Faces{};
 
 	/// @brief Extra data containers for each vertex.
-	std::vector<Data::Internal::ExtraDataContainer> m_VerticesExtraDataContainer{};
+	std::vector<Data::ExtraData::ExtraDataContainer> m_VerticesExtraDataContainer{};
 	/// @brief Extra data containers for each face.
-	std::vector<Data::Internal::ExtraDataContainer> m_FacesExtraDataContainer{};
+	std::vector<Data::ExtraData::ExtraDataContainer> m_FacesExtraDataContainer{};
 };
 } // namespace Data::Surface
