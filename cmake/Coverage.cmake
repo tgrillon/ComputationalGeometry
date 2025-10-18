@@ -6,6 +6,7 @@ function(AddCoverage target)
     COMMAND $<TARGET_FILE:${target}>
     COMMAND ${LCOV_PATH} -d ${CMAKE_BINARY_DIR} --capture -o coverage.info
     COMMAND ${LCOV_PATH} -r coverage.info '/usr/include/*'
+                         '${CMAKE_BINARY_DIR}/_deps/*'
                          -o filtered.info
     COMMAND ${GENHTML_PATH} -o ${CMAKE_BINARY_DIR}/coverage-${target}
                             filtered.info --legend
