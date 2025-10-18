@@ -44,6 +44,14 @@ public:
 		return m_Mesh->m_FacesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
+	/// @brief Erase extra data of type T associated with the face.
+	template<typename T>
+	void EraseExtraData()
+	{
+		assert(m_Mesh->HasFacesExtraDataContainer() && HasExtraData<T>());
+		return m_Mesh->m_FacesExtraDataContainer[m_Index].Erase<T>();
+	}
+
 	/// @brief Check if extra data of type T is associated with the face.
 	template<typename T>
 	bool HasExtraData() const
@@ -121,7 +129,15 @@ public:
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->HasVertexExtraData() && m_Mesh->m_VerticesExtraDataContainer[m_Index].Has<T>();
+		return m_Mesh->HasVerticesExtraDataContainer() && m_Mesh->m_VerticesExtraDataContainer[m_Index].Has<T>();
+	}
+
+	/// @brief Erase extra data of type T associated with the vertex.
+	template<typename T>
+	void EraseExtraData() const
+	{
+		assert(m_Mesh->HasVerticesExtraDataContainer() && HasExtraData<T>());
+		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Erase<T>();
 	}
 
 	/// @brief Get the index of the vertex in the mesh.

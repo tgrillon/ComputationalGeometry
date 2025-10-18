@@ -4,7 +4,7 @@
 #include <typeindex>
 #include <unordered_map>
 
-namespace Data::Internal
+namespace Data::ExtraData
 {
 /// @brief A container for storing extra data of arbitrary types, identified by their type.
 class ExtraDataContainer
@@ -66,6 +66,15 @@ public:
 		return std::any_cast<T&>(it->second);
 	}
 
+	/// @brief Erase the pointer to the value of type T in the container.
+	template<typename T>
+	void Erase()
+	{
+		auto it = m_Data.find(std::type_index(typeid(T)));
+		if(it != m_Data.end())
+			m_Data.erase(it);
+	}
+
 	/// @brief Check if the container has a value of type T.
 	template<typename T>
 	bool Has() const
@@ -86,4 +95,4 @@ private:
 	/// @brief Map storing the data, indexed by their type.
 	std::unordered_map<std::type_index, std::any> m_Data{};
 };
-} // namespace Data::Internal
+} // namespace Data::ExtraData
