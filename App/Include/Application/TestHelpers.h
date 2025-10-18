@@ -95,12 +95,12 @@ inline Data::Surface::Mesh CreateGridMesh(int nRow = 1, int nCol = 1)
 				int prevRow = iRow - 1;
 				int prevCol = iCol - 1;
 				int nVertexCol = nCol + 1;
-				mesh.AddFace(
-					{ .Vertices = {
-						  prevRow * nVertexCol + prevCol, prevRow * nVertexCol + iCol, iRow * nVertexCol + iCol } });
-				mesh.AddFace(
-					{ .Vertices = {
-						  prevRow * nVertexCol + prevCol, iRow * nVertexCol + iCol, iRow * nVertexCol + prevCol } });
+				mesh.AddFace({ .Vertices = { prevRow * nVertexCol + prevCol,
+											 prevRow * nVertexCol + iCol,
+											 iRow * nVertexCol + iCol } });
+				mesh.AddFace({ .Vertices = { prevRow * nVertexCol + prevCol,
+											 iRow * nVertexCol + iCol,
+											 iRow * nVertexCol + prevCol } });
 			}
 		}
 	}

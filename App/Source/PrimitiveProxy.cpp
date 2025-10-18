@@ -38,7 +38,7 @@ std::array<int, 3> FaceProxy::GetVertices() const
 	return GetFace().Vertices;
 }
 
-int FaceProxy::GetNeighbor(const uint8_t index) const
+int FaceProxy::GetNeighbor(const EdgeIndex index) const
 {
 	assert(index < 3 && "[FaceProxy::GetNeighbor] Index out of bound");
 	return GetFace().Neighbors[index];
