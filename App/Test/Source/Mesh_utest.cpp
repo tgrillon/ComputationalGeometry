@@ -1,5 +1,8 @@
+#include "Application/ExtraDataType.h"
+#include "Application/MathUtils.h"
 #include "Application/Mesh.h"
 #include "Application/MeshIntegrity.h"
+#include "Application/MeshLoader.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/TestHelpers.h"
 
@@ -8,7 +11,9 @@
 using namespace BaseType;
 using namespace Utilitary::Surface;
 using namespace Data::Surface;
+using namespace Data::ExtraData;
 using namespace Data::Primitive;
+using namespace Math;
 
 TEST(MeshTest, CopyConstructor_ShouldDeepCopyMesh)
 {
@@ -170,4 +175,75 @@ TEST(MeshTest, AddVertex_ValidMeshWithED_ShouldAddExtraDataContainer)
 
 	mesh.AddFace({ .Vertices = { 2, 4, 3 } });
 	EXPECT_EQ(mesh.GetFace(mesh.GetFaceCount() - 1).GetExtraData<void>(), nullptr);
+}
+
+TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
+{
+	std::unique_ptr<Mesh> mesh = MeshLoader::LoadOFF("TestFiles/Off/cube.off");
+	mesh->ComputeFaceNormals(true);
+
+	// The cube has 12 triangular faces (2 per cube face)
+	ASSERT_EQ(mesh->GetFaceCount(), 12);
+
+	// Expected normals for each cube face (normalized)
+	// Each cube face has 2 triangular faces with the same normal
+	const std::vector<Vec3> expectedFaceNormals = {
+		Vec3(0, 0, -1), // Face 0: Front face (-Z)
+		Vec3(0, 0, -1), // Face 1: Front face (-Z)
+		Vec3(-1, 0, 0), // Face 2: Left face (-X)
+		Vec3(-1, 0, 0), // Face 3: Left face (-X)
+		Vec3(1, 0, 0), // Face 4: Right face (+X)
+		Vec3(1, 0, 0), // Face 5: Right face (+X)
+		Vec3(0, -1, 0), // Face 6: Bottom face (-Y)
+		Vec3(0, -1, 0), // Face 7: Bottom face (-Y)
+		Vec3(0, 0, 1), // Face 8: Back face (+Z)
+		Vec3(0, 0, 1), // Face 9: Back face (+Z)
+		Vec3(0, 1, 0), // Face 10: Top face (+Y)
+		Vec3(0, 1, 0) // Face 11: Top face (+Y)
+	};
+
+	constexpr float epsilon = 1e-5f;
+
+	// Check that each face computed normal matches the expected one.
+	for(FaceIndex iFace = 0; iFace < mesh->GetFaceCount(); ++iFace)
+	{
+		// Get the computed normal for the current face.
+		auto curFaceExtraData = mesh->GetFace(iFace).GetExtraData<FaceNormalExtraData>();
+		assert(curFaceExtraData != nullptr);
+		const Vec3& computedNormal = curFaceExtraData->GetData();
+
+		// Check that the normal matches the expected direction.
+		EXPECT_TRUE(EqualNear(computedNormal, expectedFaceNormals[iFace], epsilon));
+	}
+
+	// For a cube, each vertex is shared by 3 faces meeting at 90-degree angles
+	// The angle-weighted vertex normal is the sum of face normals weighted by their angles
+	// Since all angles are 90 degrees (π/2) and faces are orthogonal:
+	// Each vertex normal = normalized sum of 3 orthogonal face normals
+	// This results in normals pointing along the diagonal from cube center to each vertex
+
+	const float invSqrt3 = 1.0f / std::sqrt(3.0f); // ≈ 0.57735
+
+	const std::vector<Vec3> expectedVertexNormals = {
+		Vec3(-invSqrt3, -invSqrt3, -invSqrt3), // Vertex 0: (-1, -1, -1)
+		Vec3(-invSqrt3, invSqrt3, -invSqrt3), // Vertex 1: (-1, 1, -1)
+		Vec3(invSqrt3, invSqrt3, -invSqrt3), // Vertex 2: (1, 1, -1)
+		Vec3(invSqrt3, -invSqrt3, -invSqrt3), // Vertex 3: (1, -1, -1)
+		Vec3(-invSqrt3, -invSqrt3, invSqrt3), // Vertex 4: (-1, -1, 1)
+		Vec3(-invSqrt3, invSqrt3, invSqrt3), // Vertex 5: (-1, 1, 1)
+		Vec3(invSqrt3, invSqrt3, invSqrt3), // Vertex 6: (1, 1, 1)
+		Vec3(invSqrt3, -invSqrt3, invSqrt3) // Vertex 7: (1, -1, 1)
+	};
+
+	// Check that each smooth vertex computed normal matches the expected one.
+	for(VertexIndex iVertex = 0; iVertex < mesh->GetVertexCount(); ++iVertex)
+	{
+		// Get the computed normal for the current vertex.
+		auto curVertexExtraData = mesh->GetVertex(iVertex).GetExtraData<VertexNormalExtraData>();
+		assert(curVertexExtraData != nullptr);
+		const Vec3& computedNormal = curVertexExtraData->GetData();
+
+		// Check that the normal matches the expected direction.
+		EXPECT_TRUE(EqualNear(computedNormal, expectedVertexNormals[iVertex], epsilon));
+	}
 }

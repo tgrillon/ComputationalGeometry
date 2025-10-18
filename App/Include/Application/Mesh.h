@@ -91,6 +91,10 @@ public:
 	/// @brief Check if the mesh has extra data containers for faces.
 	bool HasFacesExtraDataContainer() const;
 
+	/// @brief Compute normal for each face of the mesh (Normalized).
+	/// @param computeSmoothVertexNormals If true, compute smooth vertex normals (Normalized).
+	/// @note The computed normals are stored as extra data on the faces and vertices.
+	void ComputeFaceNormals(bool computeSmoothVertexNormals = false);
 
 public:
 	/// @brief Circulator to iterate over the vertices around a given vertex.

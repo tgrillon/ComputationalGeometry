@@ -1,11 +1,18 @@
 #include "Application/Mesh.h"
 
+#include "Application/ExtraDataType.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/VertexPair.h"
 
 using namespace BaseType;
 using namespace Data::Primitive;
+using namespace Data::ExtraData;
 using namespace Utilitary::Primitive;
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/vector_angle.hpp>
+
+#include <numeric>
 
 namespace Data::Surface
 {
@@ -174,263 +181,81 @@ bool Mesh::HasFacesExtraDataContainer() const
 	return m_FacesExtraDataContainer.size() > 0;
 }
 
-//==========================VerticesAroundVertexCirculator==========================//
-Mesh::VerticesAroundVertexCirculator::VerticesAroundVertexCirculator(const Mesh& mesh, const VertexIndex index)
-	: m_Mesh(mesh)
-	, m_CentralVertexIdx(index)
+void Mesh::ComputeFaceNormals(bool computeSmoothVertexNormals)
 {
-	// Get the vertex data of the central vertex.
-	const Vertex& curVertex = m_Mesh.GetVertexData(m_CentralVertexIdx);
-	assert(curVertex.IncidentFaceIdx != -1); // Its incident face index must be set.
+	if(m_FacesExtraDataContainer.empty())
+		AddFacesExtraDataContainer();
 
-	// Set the current face index.
-	m_CurFaceIdx = curVertex.IncidentFaceIdx;
+	if(computeSmoothVertexNormals && m_VerticesExtraDataContainer.empty())
+		AddVerticesExtraDataContainer();
 
-	// Get the current face data.
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-	// Get the local index of the central mesh in the current face.
-	int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-	assert(localIdx != -1); // The current face must contains the central vertex.
-
-	//  Set the current vertex index.
-	m_CurVertexLocalIdx = IndexHelpers::Previous[localIdx];
-	m_CurVertexIdx = curFace.Vertices[m_CurVertexLocalIdx];
-}
-
-bool Mesh::VerticesAroundVertexCirculator::operator==(const Mesh::VerticesAroundVertexCirculator& rhs) const
-{
-	// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)
-	bool hasCompletedFullCirculation = m_IsInCCWOrder && m_IsActive && m_CurVertexIdx == rhs.m_CurVertexIdx;
-	// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)
-	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurFaceIdx == -1;
-	return hasCompletedFullCirculation || hasReachedBoundaryEnd;
-}
-
-bool Mesh::VerticesAroundVertexCirculator::operator!=(const Mesh::VerticesAroundVertexCirculator& rhs) const
-{
-	return !operator==(rhs);
-}
-
-Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::operator++()
-{
-	m_IsActive = true;
-
-	if(m_IsInCCWOrder)
+	for(FaceIndex iFace = 0; iFace < GetFaceCount(); ++iFace)
 	{
-		int neighborFaceIdx;
+		const FaceProxy& curFace = GetFace(iFace);
+
+		const Vec3& posA = m_Vertices[curFace.GetVertex(0)].Position;
+		const Vec3& posB = m_Vertices[curFace.GetVertex(1)].Position;
+		const Vec3& posC = m_Vertices[curFace.GetVertex(2)].Position;
+
+		const Vec3 AB = glm::normalize(posB - posA);
+		const Vec3 AC = glm::normalize(posC - posA);
+
+		FaceNormalExtraData& curFaceNormal = curFace.GetOrCreateExtraData<FaceNormalExtraData>();
+		const Vec3& computedNormal = glm::normalize(glm::cross(AB, AC));
+		curFaceNormal.SetData(computedNormal);
+
+		if(computeSmoothVertexNormals)
 		{
-			const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-			neighborFaceIdx = curFace.Neighbors[IndexHelpers::Previous[m_CurVertexLocalIdx]];
-		}
-		if(neighborFaceIdx == -1)
-		{ // If there is no next face, we reached a boundary.
-			while(m_JumpCount > 0)
-			{ // We need to go back to the previous face and start going in the opposite direction.
-				const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-				int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-				assert(localIdx != -1);
-				m_PrevFaceIdx = m_CurFaceIdx;
-				m_CurFaceIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
-				m_JumpCount--;
-			}
+			// Compute the remaining vectors of the triangle.
+			const Vec3 BC = glm::normalize(posC - posB);
+			const Vec3 BA = glm::normalize(posA - posB);
 
-			// We are now going in the clock-wise direction.
-			m_IsInCCWOrder = false;
-			UpdateCurVertexIndexInCWOrder();
+			const Vec3 CA = glm::normalize(posA - posC);
+			const Vec3 CB = glm::normalize(posB - posC);
+
+			// Compute each angle (in randian).
+			const float angleA = glm::angle(AB, AC);
+			const float angleB = glm::angle(BC, BA);
+			const float angleC = glm::angle(CA, CB);
+
+			// Get a proxy on each vertex of the triangle.
+			const VertexProxy& vertexA = GetVertex(curFace.GetVertex(0));
+			const VertexProxy& vertexB = GetVertex(curFace.GetVertex(1));
+			const VertexProxy& vertexC = GetVertex(curFace.GetVertex(2));
+
+			// Add the normal weighted by the related angle as an extra data to each vertex.
+			FlatVertexNormalsExtraData& vertexAExtraData = vertexA.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+			vertexAExtraData.GetData().emplace_back(computedNormal * angleA);
+			FlatVertexNormalsExtraData& vertexBExtraData = vertexB.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+			vertexBExtraData.GetData().emplace_back(computedNormal * angleB);
+			FlatVertexNormalsExtraData& vertexCExtraData = vertexC.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+			vertexCExtraData.GetData().emplace_back(computedNormal * angleC);
 		}
-		else // We are still going in the counter clock-wise direction.
+	}
+
+	if(computeSmoothVertexNormals)
+	{
+		// Compute the smooth normal for each vertex of the mesh.
+		for(VertexIndex iVertex = 0; iVertex < GetVertexCount(); ++iVertex)
 		{
-			// Update the jump count.
-			m_JumpCount++;
-			m_PrevFaceIdx = m_CurFaceIdx;
-			m_CurFaceIdx = neighborFaceIdx;
+			// Get the current vertex and create the extra data that will handle the smooth vertex normal.
+			const VertexProxy& curVertex = GetVertex(iVertex);
+			VertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<VertexNormalExtraData>();
 
-			UpdateCurVertexIndexInCCWOrder();
+			// Get the precomputed flat vertex normals.
+			auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();
+			assert(vertexFlatNormals != nullptr);
+
+			// Accumulate the flat vertex normals.
+			Vec3 computedNormal = std::accumulate(
+				vertexFlatNormals->GetData().begin(),
+				vertexFlatNormals->GetData().end(),
+				Vec3{ 0., 0., 0. },
+				std::plus<Vec3>());
+
+			curVertexNormal.SetData(glm::normalize(computedNormal));
+			curVertex.EraseExtraData<FlatVertexNormalsExtraData>();
 		}
 	}
-	else // We are going in the clock-wise direction.
-	{
-		m_PrevFaceIdx = m_CurFaceIdx;
-		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-		m_CurFaceIdx = prevFace.Neighbors[IndexHelpers::Next[m_CurVertexLocalIdx]];
-
-		if(m_CurFaceIdx == -1)
-			return *this; // We reached a boundary, we stop here.
-
-		UpdateCurVertexIndexInCWOrder();
-	}
-
-	return *this;
 }
-
-VertexIndex Mesh::VerticesAroundVertexCirculator::operator*() const
-{
-	return m_CurVertexIdx;
-}
-
-void Mesh::VerticesAroundVertexCirculator::SetIsActive(bool value)
-{
-	m_IsActive = value;
-}
-
-void Mesh::VerticesAroundVertexCirculator::UpdateCurVertexIndexInCWOrder()
-{
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-	int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-	assert(localIdx != -1);
-
-	// Update the vertex and face informations.
-	m_CurVertexLocalIdx = IndexHelpers::Next[localIdx];
-	m_CurVertexIdx = curFace.Vertices[m_CurVertexLocalIdx];
-}
-
-void Mesh::VerticesAroundVertexCirculator::UpdateCurVertexIndexInCCWOrder()
-{
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-	int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-	assert(localIdx != -1);
-
-	// Update the vertex and face informations.
-	m_CurVertexLocalIdx = IndexHelpers::Previous[localIdx];
-	m_CurVertexIdx = curFace.Vertices[m_CurVertexLocalIdx];
-}
-
-//==========================VerticesAroundVertexRange==========================//
-Mesh::VerticesAroundVertexRange::VerticesAroundVertexRange(const Mesh& mesh, const VertexIndex index)
-	: m_Mesh(mesh)
-	, m_VertexIdx(index)
-{}
-
-Mesh::VerticesAroundVertexCirculator Mesh::VerticesAroundVertexRange::begin() const
-{
-	Mesh::VerticesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
-	circ.SetIsActive(false);
-	return circ;
-}
-
-Mesh::VerticesAroundVertexCirculator Mesh::VerticesAroundVertexRange::end() const
-{
-	Mesh::VerticesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
-	circ.SetIsActive(true);
-	return circ;
-}
-
-Mesh::VerticesAroundVertexRange Mesh::GetVerticesAroundVertex(const VertexIndex index) const
-{
-	return VerticesAroundVertexRange(*this, index);
-}
-
-//==========================FacesAroundVertexCirculator==========================//
-Mesh::FacesAroundVertexCirculator::FacesAroundVertexCirculator(const Mesh& mesh, const VertexIndex index)
-	: m_Mesh(mesh)
-	, m_CentralVertexIdx(index)
-{
-	// Get the vertex data of the central vertex.
-	const Vertex& curVertex = m_Mesh.GetVertexData(m_CentralVertexIdx);
-	assert(curVertex.IncidentFaceIdx != -1); // Its incident face index must be set.
-
-	// Set the current face index.
-	m_CurFaceIdx = curVertex.IncidentFaceIdx;
-	m_PrevFaceIdx = -1;
-	m_JumpCount++;
-}
-
-bool Mesh::FacesAroundVertexCirculator::operator==(const Mesh::FacesAroundVertexCirculator& rhs) const
-{
-	// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)
-	bool hasCompletedFullCirculation = m_IsInCCWOrder && m_IsActive && m_CurFaceIdx == rhs.m_CurFaceIdx;
-	// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)
-	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurFaceIdx == -1;
-	return hasCompletedFullCirculation || hasReachedBoundaryEnd;
-}
-
-bool Mesh::FacesAroundVertexCirculator::operator!=(const Mesh::FacesAroundVertexCirculator& rhs) const
-{
-	return !operator==(rhs);
-}
-
-Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++()
-{
-	m_IsActive = true;
-
-	int neighborFaceIdx;
-	{
-		const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-		int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-		assert(localIdx != -1);
-		neighborFaceIdx = curFace.Neighbors[IndexHelpers::Next[localIdx]];
-	}
-
-	if(m_IsInCCWOrder)
-	{
-		if(neighborFaceIdx == -1)
-		{ // If there is no next face, we reached a boundary.
-			while(m_JumpCount > 0)
-			{ // We need to go back to the previous face and start going in the opposite direction.
-				const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-				int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-				assert(localIdx != -1);
-				m_PrevFaceIdx = m_CurFaceIdx;
-				m_CurFaceIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
-				m_JumpCount--;
-			}
-
-			// We are now going in the clock-wise direction.
-			m_IsInCCWOrder = false;
-		}
-		else // We are still going in the counter clock-wise direction.
-		{
-			// Update the jump count.
-			m_JumpCount++;
-			m_PrevFaceIdx = m_CurFaceIdx;
-			m_CurFaceIdx = neighborFaceIdx;
-		}
-	}
-	else // We are going in the clock-wise direction.
-	{
-		m_PrevFaceIdx = m_CurFaceIdx;
-		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-		int localIdx = GetVertexLocalIndex(prevFace, m_CentralVertexIdx);
-		assert(localIdx != -1);
-		m_CurFaceIdx = prevFace.Neighbors[IndexHelpers::Previous[localIdx]];
-	}
-
-	return *this;
-}
-
-FaceIndex Mesh::FacesAroundVertexCirculator::operator*() const
-{
-	return m_CurFaceIdx;
-}
-
-void Mesh::FacesAroundVertexCirculator::SetIsActive(bool value)
-{
-	m_IsActive = value;
-}
-
-//==========================FacesAroundVertexRange==========================//
-Mesh::FacesAroundVertexRange::FacesAroundVertexRange(const Mesh& mesh, const VertexIndex index)
-	: m_Mesh(mesh)
-	, m_VertexIdx(index)
-{}
-
-Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexRange::begin() const
-{
-	Mesh::FacesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
-	circ.SetIsActive(false);
-	return circ;
-}
-
-Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexRange::end() const
-{
-	Mesh::FacesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
-	circ.SetIsActive(true);
-	return circ;
-}
-
-Mesh::FacesAroundVertexRange Mesh::GetFacesAroundVertex(const VertexIndex index) const
-{
-	return FacesAroundVertexRange(*this, index);
-}
-
 } // namespace Data::Surface
