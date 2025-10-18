@@ -106,15 +106,18 @@ $(document).ready(function(){initNavTree('Mesh__utest_8cpp.html',''); initResiza
   <div class="headertitle"><div class="title">Mesh_utest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="Mesh_8h_source.html">Application/Mesh.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="ExtraDataType_8h_source.html">Application/ExtraDataType.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MathUtils_8h_source.html">Application/MathUtils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Mesh_8h_source.html">Application/Mesh.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MeshIntegrity_8h_source.html">Application/MeshIntegrity.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MeshLoader_8h_source.html">Application/MeshLoader.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="PrimitiveProxy_8h_source.html">Application/PrimitiveProxy.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="TestHelpers_8h_source.html">Application/TestHelpers.h</a>&quot;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Mesh_utest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="Mesh__utest_8cpp__incl.svg" width="791" height="491"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="Mesh__utest_8cpp__incl.svg" width="1139" height="491"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="Mesh__utest_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -139,10 +142,12 @@ Functions</h2></td></tr>
 <tr class="separator:a8a12a72d38b579f04cd168a7fe372ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bd2587f1612a106c6ba9a2c7900d727" id="r_a8bd2587f1612a106c6ba9a2c7900d727"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Mesh__utest_8cpp.html#a8bd2587f1612a106c6ba9a2c7900d727">TEST</a> (MeshTest, AddVertex_ValidMeshWithED_ShouldAddExtraDataContainer)</td></tr>
 <tr class="separator:a8bd2587f1612a106c6ba9a2c7900d727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adddae56dc77d10223c61543e485692f0" id="r_adddae56dc77d10223c61543e485692f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Mesh__utest_8cpp.html#adddae56dc77d10223c61543e485692f0">TEST</a> (MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)</td></tr>
+<tr class="separator:adddae56dc77d10223c61543e485692f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="afc03289f31bc3b59a44b869b126d5d28" name="afc03289f31bc3b59a44b869b126d5d28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc03289f31bc3b59a44b869b126d5d28">&#9670;&#160;</a></span>TEST() <span class="overload">[1/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afc03289f31bc3b59a44b869b126d5d28">&#9670;&#160;</a></span>TEST() <span class="overload">[1/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,33 +172,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00109">109</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>    <span class="comment">// Initially, the mesh should not have extra data containers</span></div>
-<div class="line"><span class="lineno">  114</span>    EXPECT_FALSE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>());</div>
-<div class="line"><span class="lineno">  115</span>    EXPECT_FALSE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a61f0afee25d3e5b28168a6d186faf24b">HasFaceExtraData</a>());</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>    <span class="comment">// Add extra data containers</span></div>
-<div class="line"><span class="lineno">  118</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">AddVerticesExtraDataContainer</a>();</div>
-<div class="line"><span class="lineno">  119</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d974322852c4cc0cdad6ef62b39c434">AddFacesExtraDataContainer</a>();</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>    <span class="comment">// Now, the mesh should have extra data containers</span></div>
-<div class="line"><span class="lineno">  122</span>    EXPECT_TRUE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">HasVertexExtraData</a>());</div>
-<div class="line"><span class="lineno">  123</span>    EXPECT_TRUE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a61f0afee25d3e5b28168a6d186faf24b">HasFaceExtraData</a>());</div>
-<div class="line"><span class="lineno">  124</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00114">114</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>{</div>
+<div class="line"><span class="lineno">  116</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="comment">// Initially, the mesh should not have extra data containers</span></div>
+<div class="line"><span class="lineno">  119</span>    EXPECT_FALSE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">HasVerticesExtraDataContainer</a>());</div>
+<div class="line"><span class="lineno">  120</span>    EXPECT_FALSE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ab89605991b30e0011323679e91928925">HasFacesExtraDataContainer</a>());</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>    <span class="comment">// Add extra data containers</span></div>
+<div class="line"><span class="lineno">  123</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">AddVerticesExtraDataContainer</a>();</div>
+<div class="line"><span class="lineno">  124</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d974322852c4cc0cdad6ef62b39c434">AddFacesExtraDataContainer</a>();</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="comment">// Now, the mesh should have extra data containers</span></div>
+<div class="line"><span class="lineno">  127</span>    EXPECT_TRUE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">HasVerticesExtraDataContainer</a>());</div>
+<div class="line"><span class="lineno">  128</span>    EXPECT_TRUE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ab89605991b30e0011323679e91928925">HasFacesExtraDataContainer</a>());</div>
+<div class="line"><span class="lineno">  129</span>}</div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html">Data::Surface::Mesh</a></div><div class="ttdoc">Class representing a 3D triangular mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00027">Mesh.h:28</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a56c30a8d1d6423d08ebf7a8b0594b709"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709">Data::Surface::Mesh::HasVertexExtraData</a></div><div class="ttdeci">bool HasVertexExtraData() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00167">Mesh.cpp:167</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a61f0afee25d3e5b28168a6d186faf24b"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a61f0afee25d3e5b28168a6d186faf24b">Data::Surface::Mesh::HasFaceExtraData</a></div><div class="ttdeci">bool HasFaceExtraData() const</div><div class="ttdoc">Check if the mesh has extra data containers for faces.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00172">Mesh.cpp:172</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a6898dfd93edbe132daa22781cce59ec6"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">Data::Surface::Mesh::AddVerticesExtraDataContainer</a></div><div class="ttdeci">void AddVerticesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00089">Mesh.cpp:89</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9d974322852c4cc0cdad6ef62b39c434"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9d974322852c4cc0cdad6ef62b39c434">Data::Surface::Mesh::AddFacesExtraDataContainer</a></div><div class="ttdeci">void AddFacesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each face.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00094">Mesh.cpp:94</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a6898dfd93edbe132daa22781cce59ec6"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">Data::Surface::Mesh::AddVerticesExtraDataContainer</a></div><div class="ttdeci">void AddVerticesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00096">Mesh.cpp:96</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a7c25e22f9f5bb5216fbe039fef6dd962"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">Data::Surface::Mesh::HasVerticesExtraDataContainer</a></div><div class="ttdeci">bool HasVerticesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00174">Mesh.cpp:174</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9d974322852c4cc0cdad6ef62b39c434"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9d974322852c4cc0cdad6ef62b39c434">Data::Surface::Mesh::AddFacesExtraDataContainer</a></div><div class="ttdeci">void AddFacesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each face.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00101">Mesh.cpp:101</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ab89605991b30e0011323679e91928925"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ab89605991b30e0011323679e91928925">Data::Surface::Mesh::HasFacesExtraDataContainer</a></div><div class="ttdeci">bool HasFacesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for faces.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00179">Mesh.cpp:179</a></div></div>
 <div class="ttc" id="anamespaceTestHelpers_html_aa550fac9559f4f09371354d6fcdc4a34"><div class="ttname"><a href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a></div><div class="ttdeci">Data::Surface::Mesh CreateValidMesh()</div><div class="ttdoc">Create a valid mesh with 4 vertices and 2 faces, and add extra data to vertices.</div><div class="ttdef"><b>Definition</b> <a href="TestHelpers_8h_source.html#l00009">TestHelpers.h:9</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a8bd2587f1612a106c6ba9a2c7900d727" name="a8bd2587f1612a106c6ba9a2c7900d727"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bd2587f1612a106c6ba9a2c7900d727">&#9670;&#160;</a></span>TEST() <span class="overload">[2/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bd2587f1612a106c6ba9a2c7900d727">&#9670;&#160;</a></span>TEST() <span class="overload">[2/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,30 +223,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00164">164</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
-<div class="line"><span class="lineno">  166</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#a0d5d69934fe21d1a358de3d0cd7c1b0a">TestHelpers::CreateValidMeshWithED</a>();</div>
-<div class="line"><span class="lineno">  167</span> </div>
-<div class="line"><span class="lineno">  168</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1, 2, 1 } });</div>
-<div class="line"><span class="lineno">  169</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() - 1).<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">GetExtraData</a>&lt;<span class="keywordtype">void</span>&gt;(), <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>({ .Vertices = { 2, 4, 3 } });</div>
-<div class="line"><span class="lineno">  172</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7">GetFace</a>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>() - 1).<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#aee5b630a3680226b96376c30e9dc52f6">GetExtraData</a>&lt;<span class="keywordtype">void</span>&gt;(), <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  173</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00169">169</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>{</div>
+<div class="line"><span class="lineno">  171</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#a0d5d69934fe21d1a358de3d0cd7c1b0a">TestHelpers::CreateValidMeshWithED</a>();</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1, 2, 1 } });</div>
+<div class="line"><span class="lineno">  174</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() - 1).<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">GetExtraData</a>&lt;<span class="keywordtype">void</span>&gt;(), <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>({ .Vertices = { 2, 4, 3 } });</div>
+<div class="line"><span class="lineno">  177</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7">GetFace</a>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>() - 1).<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#aee5b630a3680226b96376c30e9dc52f6">GetExtraData</a>&lt;<span class="keywordtype">void</span>&gt;(), <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  178</span>}</div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1FaceProxy_html_aee5b630a3680226b96376c30e9dc52f6"><div class="ttname"><a href="classData_1_1Primitive_1_1FaceProxy.html#aee5b630a3680226b96376c30e9dc52f6">Data::Primitive::FaceProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the face, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00017">PrimitiveProxy.h:17</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a4fc9bd2fe9345aeb2d6e78745456f04b"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">Data::Primitive::VertexProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the vertex, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00090">PrimitiveProxy.h:90</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a57da399a6ee7674465074f77e16cc058"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">Data::Surface::Mesh::AddFace</a></div><div class="ttdeci">BaseType::FaceIndex AddFace(const Data::Primitive::Face &amp;face)</div><div class="ttdoc">Add a face to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00080">Mesh.cpp:80</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a884cafda4dde383690fca778774e7da5"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">Data::Surface::Mesh::GetVertex</a></div><div class="ttdeci">Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index)</div><div class="ttdoc">Get a proxy to the vertex at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00035">Mesh.cpp:35</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9faf5e443155eeaad0f2783efac743d7"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7">Data::Surface::Mesh::GetFace</a></div><div class="ttdeci">Data::Primitive::FaceProxy GetFace(const BaseType::FaceIndex index)</div><div class="ttdoc">Get a proxy to the face at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00041">Mesh.cpp:41</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00025">Mesh.cpp:25</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aca551211639d9b221c89683667548d0e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">Data::Surface::Mesh::AddVertex</a></div><div class="ttdeci">BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex &amp;vertex)</div><div class="ttdoc">Add a vertex to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00071">Mesh.cpp:71</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad1a67c7f1a4cfdc468f15c808cfca25f"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">Data::Surface::Mesh::GetFaceCount</a></div><div class="ttdeci">uint32_t GetFaceCount() const</div><div class="ttdoc">Get the number of faces in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00030">Mesh.cpp:30</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a4fc9bd2fe9345aeb2d6e78745456f04b"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">Data::Primitive::VertexProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the vertex, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00098">PrimitiveProxy.h:98</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a57da399a6ee7674465074f77e16cc058"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">Data::Surface::Mesh::AddFace</a></div><div class="ttdeci">BaseType::FaceIndex AddFace(const Data::Primitive::Face &amp;face)</div><div class="ttdoc">Add a face to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00087">Mesh.cpp:87</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a884cafda4dde383690fca778774e7da5"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">Data::Surface::Mesh::GetVertex</a></div><div class="ttdeci">Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index)</div><div class="ttdoc">Get a proxy to the vertex at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00042">Mesh.cpp:42</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9faf5e443155eeaad0f2783efac743d7"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7">Data::Surface::Mesh::GetFace</a></div><div class="ttdeci">Data::Primitive::FaceProxy GetFace(const BaseType::FaceIndex index)</div><div class="ttdoc">Get a proxy to the face at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00048">Mesh.cpp:48</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00032">Mesh.cpp:32</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aca551211639d9b221c89683667548d0e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">Data::Surface::Mesh::AddVertex</a></div><div class="ttdeci">BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex &amp;vertex)</div><div class="ttdoc">Add a vertex to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00078">Mesh.cpp:78</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad1a67c7f1a4cfdc468f15c808cfca25f"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">Data::Surface::Mesh::GetFaceCount</a></div><div class="ttdeci">uint32_t GetFaceCount() const</div><div class="ttdoc">Get the number of faces in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00037">Mesh.cpp:37</a></div></div>
 <div class="ttc" id="anamespaceTestHelpers_html_a0d5d69934fe21d1a358de3d0cd7c1b0a"><div class="ttname"><a href="namespaceTestHelpers.html#a0d5d69934fe21d1a358de3d0cd7c1b0a">TestHelpers::CreateValidMeshWithED</a></div><div class="ttdeci">Data::Surface::Mesh CreateValidMeshWithED()</div><div class="ttdoc">Create a valid mesh with extra data for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="TestHelpers_8h_source.html#l00027">TestHelpers.h:27</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="aba4af5dda55fbe414c34fc4747acb0c7" name="aba4af5dda55fbe414c34fc4747acb0c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba4af5dda55fbe414c34fc4747acb0c7">&#9670;&#160;</a></span>TEST() <span class="overload">[3/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aba4af5dda55fbe414c34fc4747acb0c7">&#9670;&#160;</a></span>TEST() <span class="overload">[3/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,34 +271,34 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00032">32</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh;</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">// Add vertices</span></div>
-<div class="line"><span class="lineno">   37</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> vIdx1 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { -1 } });</div>
-<div class="line"><span class="lineno">   38</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> vIdx2 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { -1 } });</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">// Verify vertex indices</span></div>
-<div class="line"><span class="lineno">   41</span>    EXPECT_EQ(vIdx1, 0);</div>
-<div class="line"><span class="lineno">   42</span>    EXPECT_EQ(vIdx2, 1);</div>
-<div class="line"><span class="lineno">   43</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>(), 2);</div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00037">37</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh;</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// Add vertices</span></div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> vIdx1 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { -1 } });</div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> vIdx2 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { -1 } });</div>
 <div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>    <span class="comment">// Add a face</span></div>
-<div class="line"><span class="lineno">   46</span>    <a class="code hl_typedef" href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">FaceIndex</a> fIdx = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>(</div>
-<div class="line"><span class="lineno">   47</span>        { .Vertices = { <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(vIdx1), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(vIdx2), -1 }, .Neighbors = { -1, -1, -1 } });</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>    <span class="comment">// Verify face index</span></div>
-<div class="line"><span class="lineno">   50</span>    EXPECT_EQ(fIdx, 0);</div>
-<div class="line"><span class="lineno">   51</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>(), 1);</div>
-<div class="line"><span class="lineno">   52</span>}</div>
+<div class="line"><span class="lineno">   45</span>    <span class="comment">// Verify vertex indices</span></div>
+<div class="line"><span class="lineno">   46</span>    EXPECT_EQ(vIdx1, 0);</div>
+<div class="line"><span class="lineno">   47</span>    EXPECT_EQ(vIdx2, 1);</div>
+<div class="line"><span class="lineno">   48</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>(), 2);</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>    <span class="comment">// Add a face</span></div>
+<div class="line"><span class="lineno">   51</span>    <a class="code hl_typedef" href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">FaceIndex</a> fIdx = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>(</div>
+<div class="line"><span class="lineno">   52</span>        { .Vertices = { <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(vIdx1), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(vIdx2), -1 }, .Neighbors = { -1, -1, -1 } });</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    <span class="comment">// Verify face index</span></div>
+<div class="line"><span class="lineno">   55</span>    EXPECT_EQ(fIdx, 0);</div>
+<div class="line"><span class="lineno">   56</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>(), 1);</div>
+<div class="line"><span class="lineno">   57</span>}</div>
 <div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00010">BaseType.h:10</a></div></div>
 <div class="ttc" id="anamespaceBaseType_html_ab5e1083b72a5beb47aca4b562f079110"><div class="ttname"><a href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">BaseType::FaceIndex</a></div><div class="ttdeci">uint32_t FaceIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00011">BaseType.h:11</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a12ded1d464c6b8bb17ca32b2f9a67f6e" name="a12ded1d464c6b8bb17ca32b2f9a67f6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12ded1d464c6b8bb17ca32b2f9a67f6e">&#9670;&#160;</a></span>TEST() <span class="overload">[4/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ded1d464c6b8bb17ca32b2f9a67f6e">&#9670;&#160;</a></span>TEST() <span class="overload">[4/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -318,34 +323,138 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00126">126</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
-<div class="line"><span class="lineno">  128</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> originalMesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>    <span class="comment">// Clone the mesh</span></div>
-<div class="line"><span class="lineno">  131</span>    std::unique_ptr&lt;Mesh&gt; clonedMesh = originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87">Clone</a>();</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>    <span class="comment">// Verify that the cloned mesh has the same number of vertices and faces</span></div>
-<div class="line"><span class="lineno">  134</span>    EXPECT_EQ(clonedMesh-&gt;GetVertexCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>());</div>
-<div class="line"><span class="lineno">  135</span>    EXPECT_EQ(clonedMesh-&gt;GetFaceCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>());</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>    <span class="comment">// Modify the original mesh and verify that the cloned mesh remains unchanged</span></div>
-<div class="line"><span class="lineno">  138</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> = { 2., 2., 2. };</div>
-<div class="line"><span class="lineno">  139</span>    EXPECT_NE(clonedMesh-&gt;GetVertexData(0).Position, originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>);</div>
-<div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] = 3;</div>
-<div class="line"><span class="lineno">  142</span>    EXPECT_NE(clonedMesh-&gt;GetFaceData(0).Vertices[0], originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0]);</div>
-<div class="line"><span class="lineno">  143</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a544f30c1d16f4941814236e696cc2349"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">Data::Surface::Mesh::GetFaceData</a></div><div class="ttdeci">Data::Primitive::Face &amp; GetFaceData(const BaseType::FaceIndex index)</div><div class="ttdoc">Get the face data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00065">Mesh.cpp:65</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9126b1520d0f2385c8e692e531527ad8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">Data::Surface::Mesh::GetVertexData</a></div><div class="ttdeci">Data::Primitive::Vertex &amp; GetVertexData(const BaseType::VertexIndex index)</div><div class="ttdoc">Get the vertex data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00053">Mesh.cpp:53</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aaa536140f461bc514bef21971c627e87"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87">Data::Surface::Mesh::Clone</a></div><div class="ttdeci">std::unique_ptr&lt; Mesh &gt; Clone() const</div><div class="ttdoc">Deep clone of the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00020">Mesh.cpp:20</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00131">131</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>{</div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> originalMesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    <span class="comment">// Clone the mesh</span></div>
+<div class="line"><span class="lineno">  136</span>    std::unique_ptr&lt;Mesh&gt; clonedMesh = originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87">Clone</a>();</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    <span class="comment">// Verify that the cloned mesh has the same number of vertices and faces</span></div>
+<div class="line"><span class="lineno">  139</span>    EXPECT_EQ(clonedMesh-&gt;GetVertexCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>());</div>
+<div class="line"><span class="lineno">  140</span>    EXPECT_EQ(clonedMesh-&gt;GetFaceCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>());</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    <span class="comment">// Modify the original mesh and verify that the cloned mesh remains unchanged</span></div>
+<div class="line"><span class="lineno">  143</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> = { 2., 2., 2. };</div>
+<div class="line"><span class="lineno">  144</span>    EXPECT_NE(clonedMesh-&gt;GetVertexData(0).Position, originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>);</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] = 3;</div>
+<div class="line"><span class="lineno">  147</span>    EXPECT_NE(clonedMesh-&gt;GetFaceData(0).Vertices[0], originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0]);</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a544f30c1d16f4941814236e696cc2349"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">Data::Surface::Mesh::GetFaceData</a></div><div class="ttdeci">Data::Primitive::Face &amp; GetFaceData(const BaseType::FaceIndex index)</div><div class="ttdoc">Get the face data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00072">Mesh.cpp:72</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9126b1520d0f2385c8e692e531527ad8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">Data::Surface::Mesh::GetVertexData</a></div><div class="ttdeci">Data::Primitive::Vertex &amp; GetVertexData(const BaseType::VertexIndex index)</div><div class="ttdoc">Get the vertex data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00060">Mesh.cpp:60</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aaa536140f461bc514bef21971c627e87"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87">Data::Surface::Mesh::Clone</a></div><div class="ttdeci">std::unique_ptr&lt; Mesh &gt; Clone() const</div><div class="ttdoc">Deep clone of the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00027">Mesh.cpp:27</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html_a49432a6f6c8456ed87fdea60fe46acb3"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Data::Primitive::Face::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Face vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00040">Primitive.h:40</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_a0ec39fc8cfa23371d37e4d1179a52067"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Data::Primitive::Vertex::Position</a></div><div class="ttdeci">BaseType::Vec3 Position</div><div class="ttdoc">Vertex position in 3D.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00027">Primitive.h:27</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="adddae56dc77d10223c61543e485692f0" name="adddae56dc77d10223c61543e485692f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adddae56dc77d10223c61543e485692f0">&#9670;&#160;</a></span>TEST() <span class="overload">[5/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">MeshTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00180">180</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>{</div>
+<div class="line"><span class="lineno">  182</span>    std::unique_ptr&lt;Mesh&gt; mesh = <a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">MeshLoader::LoadOFF</a>(<span class="stringliteral">&quot;TestFiles/Off/cube.off&quot;</span>);</div>
+<div class="line"><span class="lineno">  183</span>    mesh-&gt;ComputeFaceNormals(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    <span class="comment">// The cube has 12 triangular faces (2 per cube face)</span></div>
+<div class="line"><span class="lineno">  186</span>    ASSERT_EQ(mesh-&gt;GetFaceCount(), 12);</div>
+<div class="line"><span class="lineno">  187</span> </div>
+<div class="line"><span class="lineno">  188</span>    <span class="comment">// Expected normals for each cube face (normalized)</span></div>
+<div class="line"><span class="lineno">  189</span>    <span class="comment">// Each cube face has 2 triangular faces with the same normal</span></div>
+<div class="line"><span class="lineno">  190</span>    <span class="keyword">const</span> std::vector&lt;Vec3&gt; expectedFaceNormals = {</div>
+<div class="line"><span class="lineno">  191</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, -1), <span class="comment">// Face 0: Front face (-Z)</span></div>
+<div class="line"><span class="lineno">  192</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, -1), <span class="comment">// Face 1: Front face (-Z)</span></div>
+<div class="line"><span class="lineno">  193</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-1, 0, 0), <span class="comment">// Face 2: Left face (-X)</span></div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-1, 0, 0), <span class="comment">// Face 3: Left face (-X)</span></div>
+<div class="line"><span class="lineno">  195</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(1, 0, 0), <span class="comment">// Face 4: Right face (+X)</span></div>
+<div class="line"><span class="lineno">  196</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(1, 0, 0), <span class="comment">// Face 5: Right face (+X)</span></div>
+<div class="line"><span class="lineno">  197</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, -1, 0), <span class="comment">// Face 6: Bottom face (-Y)</span></div>
+<div class="line"><span class="lineno">  198</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, -1, 0), <span class="comment">// Face 7: Bottom face (-Y)</span></div>
+<div class="line"><span class="lineno">  199</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, 1), <span class="comment">// Face 8: Back face (+Z)</span></div>
+<div class="line"><span class="lineno">  200</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, 1), <span class="comment">// Face 9: Back face (+Z)</span></div>
+<div class="line"><span class="lineno">  201</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 1, 0), <span class="comment">// Face 10: Top face (+Y)</span></div>
+<div class="line"><span class="lineno">  202</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 1, 0) <span class="comment">// Face 11: Top face (+Y)</span></div>
+<div class="line"><span class="lineno">  203</span>    };</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    <span class="keyword">constexpr</span> <span class="keywordtype">float</span> epsilon = 1e-5f;</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>    <span class="comment">// Check that each face computed normal matches the expected one.</span></div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">FaceIndex</a> iFace = 0; iFace &lt; mesh-&gt;GetFaceCount(); ++iFace)</div>
+<div class="line"><span class="lineno">  209</span>    {</div>
+<div class="line"><span class="lineno">  210</span>        <span class="comment">// Get the computed normal for the current face.</span></div>
+<div class="line"><span class="lineno">  211</span>        <span class="keyword">auto</span> curFaceExtraData = mesh-&gt;GetFace(iFace).GetExtraData&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FaceNormalExtraData.html">FaceNormalExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  212</span>        assert(curFaceExtraData != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  213</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = curFaceExtraData-&gt;GetData();</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>        <span class="comment">// Check that the normal matches the expected direction.</span></div>
+<div class="line"><span class="lineno">  216</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(computedNormal, expectedFaceNormals[iFace], epsilon));</div>
+<div class="line"><span class="lineno">  217</span>    }</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>    <span class="comment">// For a cube, each vertex is shared by 3 faces meeting at 90-degree angles</span></div>
+<div class="line"><span class="lineno">  220</span>    <span class="comment">// The angle-weighted vertex normal is the sum of face normals weighted by their angles</span></div>
+<div class="line"><span class="lineno">  221</span>    <span class="comment">// Since all angles are 90 degrees (π/2) and faces are orthogonal:</span></div>
+<div class="line"><span class="lineno">  222</span>    <span class="comment">// Each vertex normal = normalized sum of 3 orthogonal face normals</span></div>
+<div class="line"><span class="lineno">  223</span>    <span class="comment">// This results in normals pointing along the diagonal from cube center to each vertex</span></div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> invSqrt3 = 1.0f / std::sqrt(3.0f); <span class="comment">// ≈ 0.57735</span></div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>    <span class="keyword">const</span> std::vector&lt;Vec3&gt; expectedVertexNormals = {</div>
+<div class="line"><span class="lineno">  228</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, -invSqrt3, -invSqrt3), <span class="comment">// Vertex 0: (-1, -1, -1)</span></div>
+<div class="line"><span class="lineno">  229</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, invSqrt3, -invSqrt3), <span class="comment">// Vertex 1: (-1, 1, -1)</span></div>
+<div class="line"><span class="lineno">  230</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, invSqrt3, -invSqrt3), <span class="comment">// Vertex 2: (1, 1, -1)</span></div>
+<div class="line"><span class="lineno">  231</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, -invSqrt3, -invSqrt3), <span class="comment">// Vertex 3: (1, -1, -1)</span></div>
+<div class="line"><span class="lineno">  232</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, -invSqrt3, invSqrt3), <span class="comment">// Vertex 4: (-1, -1, 1)</span></div>
+<div class="line"><span class="lineno">  233</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, invSqrt3, invSqrt3), <span class="comment">// Vertex 5: (-1, 1, 1)</span></div>
+<div class="line"><span class="lineno">  234</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, invSqrt3, invSqrt3), <span class="comment">// Vertex 6: (1, 1, 1)</span></div>
+<div class="line"><span class="lineno">  235</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, -invSqrt3, invSqrt3) <span class="comment">// Vertex 7: (1, -1, 1)</span></div>
+<div class="line"><span class="lineno">  236</span>    };</div>
+<div class="line"><span class="lineno">  237</span> </div>
+<div class="line"><span class="lineno">  238</span>    <span class="comment">// Check that each smooth vertex computed normal matches the expected one.</span></div>
+<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex = 0; iVertex &lt; mesh-&gt;GetVertexCount(); ++iVertex)</div>
+<div class="line"><span class="lineno">  240</span>    {</div>
+<div class="line"><span class="lineno">  241</span>        <span class="comment">// Get the computed normal for the current vertex.</span></div>
+<div class="line"><span class="lineno">  242</span>        <span class="keyword">auto</span> curVertexExtraData = mesh-&gt;GetVertex(iVertex).GetExtraData&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1VertexNormalExtraData.html">VertexNormalExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  243</span>        assert(curVertexExtraData != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = curVertexExtraData-&gt;GetData();</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>        <span class="comment">// Check that the normal matches the expected direction.</span></div>
+<div class="line"><span class="lineno">  247</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(computedNormal, expectedVertexNormals[iVertex], epsilon));</div>
+<div class="line"><span class="lineno">  248</span>    }</div>
+<div class="line"><span class="lineno">  249</span>}</div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1FaceNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1FaceNormalExtraData.html">Data::ExtraData::FaceNormalExtraData</a></div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00034">ExtraDataType.h:35</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1VertexNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1VertexNormalExtraData.html">Data::ExtraData::VertexNormalExtraData</a></div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00040">ExtraDataType.h:41</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00017">BaseType.h:17</a></div></div>
+<div class="ttc" id="anamespaceMath_html_a3e57c16e11079bbc2f537dd1746b0602"><div class="ttname"><a href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">Math::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float a, float b, float eps=1e-6)</div><div class="ttdef"><b>Definition</b> <a href="MathUtils_8h_source.html#l00010">MathUtils.h:10</a></div></div>
+<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_ab6956d24e900067738077b12ddde0c99"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">Utilitary::Surface::MeshLoader::LoadOFF</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOFF(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OFF file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00040">MeshLoader.cpp:40</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a61aa6f0ddf2101d0b66acb903242132b" name="a61aa6f0ddf2101d0b66acb903242132b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61aa6f0ddf2101d0b66acb903242132b">&#9670;&#160;</a></span>TEST() <span class="overload">[5/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a61aa6f0ddf2101d0b66acb903242132b">&#9670;&#160;</a></span>TEST() <span class="overload">[6/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -370,29 +479,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00013">13</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> originalMesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    <span class="comment">// Copy the mesh</span></div>
-<div class="line"><span class="lineno">   18</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> copiedMesh(originalMesh);</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>    <span class="comment">// Verify that the copied mesh has the same number of vertices and faces</span></div>
-<div class="line"><span class="lineno">   21</span>    EXPECT_EQ(copiedMesh.GetVertexCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>());</div>
-<div class="line"><span class="lineno">   22</span>    EXPECT_EQ(copiedMesh.GetFaceCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>());</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    <span class="comment">// Modify the original mesh and verify that the copied mesh remains unchanged</span></div>
-<div class="line"><span class="lineno">   25</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> = { 2., 2., 2. };</div>
-<div class="line"><span class="lineno">   26</span>    EXPECT_NE(copiedMesh.GetVertexData(0).Position, originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>);</div>
-<div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] = 3;</div>
-<div class="line"><span class="lineno">   29</span>    EXPECT_NE(copiedMesh.GetFaceData(0).Vertices[0], originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0]);</div>
-<div class="line"><span class="lineno">   30</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00018">18</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
+<div class="line"><span class="lineno">   20</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> originalMesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>    <span class="comment">// Copy the mesh</span></div>
+<div class="line"><span class="lineno">   23</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> copiedMesh(originalMesh);</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    <span class="comment">// Verify that the copied mesh has the same number of vertices and faces</span></div>
+<div class="line"><span class="lineno">   26</span>    EXPECT_EQ(copiedMesh.GetVertexCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>());</div>
+<div class="line"><span class="lineno">   27</span>    EXPECT_EQ(copiedMesh.GetFaceCount(), originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f">GetFaceCount</a>());</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    <span class="comment">// Modify the original mesh and verify that the copied mesh remains unchanged</span></div>
+<div class="line"><span class="lineno">   30</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> = { 2., 2., 2. };</div>
+<div class="line"><span class="lineno">   31</span>    EXPECT_NE(copiedMesh.GetVertexData(0).Position, originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>);</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] = 3;</div>
+<div class="line"><span class="lineno">   34</span>    EXPECT_NE(copiedMesh.GetFaceData(0).Vertices[0], originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0]);</div>
+<div class="line"><span class="lineno">   35</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a3de98438b0a2ed06f101f864bd81b854" name="a3de98438b0a2ed06f101f864bd81b854"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3de98438b0a2ed06f101f864bd81b854">&#9670;&#160;</a></span>TEST() <span class="overload">[6/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3de98438b0a2ed06f101f864bd81b854">&#9670;&#160;</a></span>TEST() <span class="overload">[7/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -417,28 +526,27 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00094">94</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
-<div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>    <span class="comment">// Get vertex data</span></div>
-<div class="line"><span class="lineno">   99</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; vertexData1 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(1);</div>
-<div class="line"><span class="lineno">  100</span>    EXPECT_EQ(vertexData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>, (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 1., 0., 0. }));</div>
-<div class="line"><span class="lineno">  101</span> </div>
-<div class="line"><span class="lineno">  102</span>    <span class="comment">// Get face data</span></div>
-<div class="line"><span class="lineno">  103</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; faceData1 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(1);</div>
-<div class="line"><span class="lineno">  104</span>    EXPECT_EQ(faceData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0], 0);</div>
-<div class="line"><span class="lineno">  105</span>    EXPECT_EQ(faceData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1], 2);</div>
-<div class="line"><span class="lineno">  106</span>    EXPECT_EQ(faceData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2], 3);</div>
-<div class="line"><span class="lineno">  107</span>}</div>
-<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00017">BaseType.h:17</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00099">99</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span>{</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>    <span class="comment">// Get vertex data</span></div>
+<div class="line"><span class="lineno">  104</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; vertexData1 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(1);</div>
+<div class="line"><span class="lineno">  105</span>    EXPECT_EQ(vertexData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>, (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 1., 0., 0. }));</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="comment">// Get face data</span></div>
+<div class="line"><span class="lineno">  108</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; faceData1 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(1);</div>
+<div class="line"><span class="lineno">  109</span>    EXPECT_EQ(faceData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0], 0);</div>
+<div class="line"><span class="lineno">  110</span>    EXPECT_EQ(faceData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1], 2);</div>
+<div class="line"><span class="lineno">  111</span>    EXPECT_EQ(faceData1.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2], 3);</div>
+<div class="line"><span class="lineno">  112</span>}</div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00035">Primitive.h:36</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html">Data::Primitive::Vertex</a></div><div class="ttdoc">Structure holding the informations relative to a vertex primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00024">Primitive.h:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a00d55c71a52f56c778fba16b1c7f5975" name="a00d55c71a52f56c778fba16b1c7f5975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00d55c71a52f56c778fba16b1c7f5975">&#9670;&#160;</a></span>TEST() <span class="overload">[7/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00d55c71a52f56c778fba16b1c7f5975">&#9670;&#160;</a></span>TEST() <span class="overload">[8/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -463,33 +571,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00054">54</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    <span class="comment">// Get vertex proxy</span></div>
-<div class="line"><span class="lineno">   59</span>    <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a> vertexProxy = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(0);</div>
-<div class="line"><span class="lineno">   60</span>    EXPECT_EQ(vertexProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a65b3a363088ca3081f03b6bd9092b117">GetIndex</a>(), 0);</div>
-<div class="line"><span class="lineno">   61</span>    EXPECT_EQ(vertexProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#aa2ee71001c0af3d12409afb00ae42c52">GetPosition</a>(), (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 0., 0., 0. }));</div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00059">59</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
 <div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>    <span class="comment">// Get face proxy</span></div>
-<div class="line"><span class="lineno">   64</span>    <a class="code hl_class" href="classData_1_1Primitive_1_1FaceProxy.html">FaceProxy</a> faceProxy = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7">GetFace</a>(0);</div>
-<div class="line"><span class="lineno">   65</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a64e97a1e6a60be0d47dfc092581384ee">GetIndex</a>(), 0);</div>
-<div class="line"><span class="lineno">   66</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">GetVertex</a>(0), 0);</div>
-<div class="line"><span class="lineno">   67</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">GetVertex</a>(1), 1);</div>
-<div class="line"><span class="lineno">   68</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">GetVertex</a>(2), 2);</div>
-<div class="line"><span class="lineno">   69</span>}</div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">// Get vertex proxy</span></div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a> vertexProxy = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(0);</div>
+<div class="line"><span class="lineno">   65</span>    EXPECT_EQ(vertexProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a65b3a363088ca3081f03b6bd9092b117">GetIndex</a>(), 0);</div>
+<div class="line"><span class="lineno">   66</span>    EXPECT_EQ(vertexProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#aa2ee71001c0af3d12409afb00ae42c52">GetPosition</a>(), (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 0., 0., 0. }));</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="comment">// Get face proxy</span></div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_class" href="classData_1_1Primitive_1_1FaceProxy.html">FaceProxy</a> faceProxy = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7">GetFace</a>(0);</div>
+<div class="line"><span class="lineno">   70</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a64e97a1e6a60be0d47dfc092581384ee">GetIndex</a>(), 0);</div>
+<div class="line"><span class="lineno">   71</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">GetVertex</a>(0), 0);</div>
+<div class="line"><span class="lineno">   72</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">GetVertex</a>(1), 1);</div>
+<div class="line"><span class="lineno">   73</span>    EXPECT_EQ(faceProxy.<a class="code hl_function" href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">GetVertex</a>(2), 2);</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1FaceProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1FaceProxy.html">Data::Primitive::FaceProxy</a></div><div class="ttdoc">Proxy class for a face in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00009">PrimitiveProxy.h:10</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1FaceProxy_html_a2140554db3deb955ca50fee9941b764a"><div class="ttname"><a href="classData_1_1Primitive_1_1FaceProxy.html#a2140554db3deb955ca50fee9941b764a">Data::Primitive::FaceProxy::GetVertex</a></div><div class="ttdeci">BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const</div><div class="ttdoc">Get the vertex at the given index of the face.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00030">PrimitiveProxy.cpp:30</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1FaceProxy_html_a64e97a1e6a60be0d47dfc092581384ee"><div class="ttname"><a href="classData_1_1Primitive_1_1FaceProxy.html#a64e97a1e6a60be0d47dfc092581384ee">Data::Primitive::FaceProxy::GetIndex</a></div><div class="ttdeci">BaseType::FaceIndex GetIndex() const</div><div class="ttdoc">Get the index of the face in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00015">PrimitiveProxy.cpp:15</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00082">PrimitiveProxy.h:83</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00090">PrimitiveProxy.h:91</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a65b3a363088ca3081f03b6bd9092b117"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a65b3a363088ca3081f03b6bd9092b117">Data::Primitive::VertexProxy::GetIndex</a></div><div class="ttdeci">BaseType::VertexIndex GetIndex() const</div><div class="ttdoc">Get the index of the vertex in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00059">PrimitiveProxy.cpp:59</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_aa2ee71001c0af3d12409afb00ae42c52"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#aa2ee71001c0af3d12409afb00ae42c52">Data::Primitive::VertexProxy::GetPosition</a></div><div class="ttdeci">BaseType::Vec3 &amp; GetPosition()</div><div class="ttdoc">Get the position of the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00074">PrimitiveProxy.cpp:74</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a6d6d69baff83ab2c9e677378fd4ec60f" name="a6d6d69baff83ab2c9e677378fd4ec60f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d6d69baff83ab2c9e677378fd4ec60f">&#9670;&#160;</a></span>TEST() <span class="overload">[8/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6d69baff83ab2c9e677378fd4ec60f">&#9670;&#160;</a></span>TEST() <span class="overload">[9/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -514,33 +622,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00071">71</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>    <span class="comment">// Get vertex data</span></div>
-<div class="line"><span class="lineno">   76</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; vertexData0 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0);</div>
-<div class="line"><span class="lineno">   77</span>    EXPECT_EQ(vertexData0.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>, (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 0., 0., 0. }));</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>    <span class="comment">// Modify vertex data</span></div>
-<div class="line"><span class="lineno">   80</span>    vertexData0.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> = { 2., 2., 2. };</div>
-<div class="line"><span class="lineno">   81</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>, (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 2., 2., 2. }));</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    <span class="comment">// Get face data</span></div>
-<div class="line"><span class="lineno">   84</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; faceData = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0);</div>
-<div class="line"><span class="lineno">   85</span>    EXPECT_EQ(faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0], 0);</div>
-<div class="line"><span class="lineno">   86</span>    EXPECT_EQ(faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1], 1);</div>
-<div class="line"><span class="lineno">   87</span>    EXPECT_EQ(faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2], 2);</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>    <span class="comment">// Modify face data</span></div>
-<div class="line"><span class="lineno">   90</span>    faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] = 3;</div>
-<div class="line"><span class="lineno">   91</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0], 3);</div>
-<div class="line"><span class="lineno">   92</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00076">76</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
+<div class="line"><span class="lineno">   78</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh = <a class="code hl_function" href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a>();</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>    <span class="comment">// Get vertex data</span></div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; vertexData0 = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0);</div>
+<div class="line"><span class="lineno">   82</span>    EXPECT_EQ(vertexData0.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>, (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 0., 0., 0. }));</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>    <span class="comment">// Modify vertex data</span></div>
+<div class="line"><span class="lineno">   85</span>    vertexData0.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> = { 2., 2., 2. };</div>
+<div class="line"><span class="lineno">   86</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">GetVertexData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>, (<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 2., 2., 2. }));</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>    <span class="comment">// Get face data</span></div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; faceData = mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0);</div>
+<div class="line"><span class="lineno">   90</span>    EXPECT_EQ(faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0], 0);</div>
+<div class="line"><span class="lineno">   91</span>    EXPECT_EQ(faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1], 1);</div>
+<div class="line"><span class="lineno">   92</span>    EXPECT_EQ(faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2], 2);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    <span class="comment">// Modify face data</span></div>
+<div class="line"><span class="lineno">   95</span>    faceData.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0] = 3;</div>
+<div class="line"><span class="lineno">   96</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349">GetFaceData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0], 3);</div>
+<div class="line"><span class="lineno">   97</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a8a12a72d38b579f04cd168a7fe372ff5" name="a8a12a72d38b579f04cd168a7fe372ff5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a12a72d38b579f04cd168a7fe372ff5">&#9670;&#160;</a></span>TEST() <span class="overload">[9/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a12a72d38b579f04cd168a7fe372ff5">&#9670;&#160;</a></span>TEST() <span class="overload">[10/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -565,25 +673,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00145">145</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
-<div class="line"><span class="lineno">  147</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh;</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>    <span class="comment">// Create a simple square mesh with two faces sharing an edge</span></div>
-<div class="line"><span class="lineno">  150</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 0., 0., 0. } }); <span class="comment">// Vertex 0</span></div>
-<div class="line"><span class="lineno">  151</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1., 0., 0. } }); <span class="comment">// Vertex 1</span></div>
-<div class="line"><span class="lineno">  152</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1., 1., 0. } }); <span class="comment">// Vertex 2</span></div>
-<div class="line"><span class="lineno">  153</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 0., 1., 0. } }); <span class="comment">// Vertex 3</span></div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>({ .Vertices = { 0, 1, 2 } }); <span class="comment">// Face 0</span></div>
-<div class="line"><span class="lineno">  156</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>({ .Vertices = { 0, 2, 3 } }); <span class="comment">// Face 1</span></div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>    <span class="comment">// Update connectivity</span></div>
-<div class="line"><span class="lineno">  159</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88">UpdateMeshConnectivity</a>();</div>
-<div class="line"><span class="lineno">  160</span> </div>
-<div class="line"><span class="lineno">  161</span>    EXPECT_EQ(<a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshIntegrity.html#ac090620611b383ab6337b448ddf9a235">MeshIntegrity::CheckIntegrity</a>(mesh), MeshIntegrity::ExitCode::MeshOK);</div>
-<div class="line"><span class="lineno">  162</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9b826c6a581cb0b8461dea1fdae7cc88"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88">Data::Surface::Mesh::UpdateMeshConnectivity</a></div><div class="ttdeci">void UpdateMeshConnectivity()</div><div class="ttdoc">Update neighbor informations on each face and incident face for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00099">Mesh.cpp:99</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00150">150</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_class" href="classData_1_1Surface_1_1Mesh.html">Mesh</a> mesh;</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="comment">// Create a simple square mesh with two faces sharing an edge</span></div>
+<div class="line"><span class="lineno">  155</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 0., 0., 0. } }); <span class="comment">// Vertex 0</span></div>
+<div class="line"><span class="lineno">  156</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1., 0., 0. } }); <span class="comment">// Vertex 1</span></div>
+<div class="line"><span class="lineno">  157</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 1., 1., 0. } }); <span class="comment">// Vertex 2</span></div>
+<div class="line"><span class="lineno">  158</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">AddVertex</a>({ .Position = { 0., 1., 0. } }); <span class="comment">// Vertex 3</span></div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>({ .Vertices = { 0, 1, 2 } }); <span class="comment">// Face 0</span></div>
+<div class="line"><span class="lineno">  161</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058">AddFace</a>({ .Vertices = { 0, 2, 3 } }); <span class="comment">// Face 1</span></div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    <span class="comment">// Update connectivity</span></div>
+<div class="line"><span class="lineno">  164</span>    mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88">UpdateMeshConnectivity</a>();</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>    EXPECT_EQ(<a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshIntegrity.html#ac090620611b383ab6337b448ddf9a235">MeshIntegrity::CheckIntegrity</a>(mesh), MeshIntegrity::ExitCode::MeshOK);</div>
+<div class="line"><span class="lineno">  167</span>}</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9b826c6a581cb0b8461dea1fdae7cc88"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88">Data::Surface::Mesh::UpdateMeshConnectivity</a></div><div class="ttdeci">void UpdateMeshConnectivity()</div><div class="ttdoc">Update neighbor informations on each face and incident face for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00106">Mesh.cpp:106</a></div></div>
 <div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshIntegrity_html_ac090620611b383ab6337b448ddf9a235"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshIntegrity.html#ac090620611b383ab6337b448ddf9a235">Utilitary::Surface::MeshIntegrity::CheckIntegrity</a></div><div class="ttdeci">static ExitCode CheckIntegrity(const Data::Surface::Mesh &amp;mesh)</div><div class="ttdoc">Check the integrity of the mesh.</div><div class="ttdef"><b>Definition</b> <a href="MeshIntegrity_8cpp_source.html#l00009">MeshIntegrity.cpp:9</a></div></div>
 </div><!-- fragment -->
 </div>

@@ -18,6 +18,11 @@ var namespaces_dup =
       [ "Next", "namespaceIndexHelpers.html#a4800e0ce9f1f1c511265df11c76408eb", null ],
       [ "Previous", "namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c", null ]
     ] ],
+    [ "Math", "namespaceMath.html", [
+      [ "EqualNear", "namespaceMath.html#af0d04a6e49b897b1a55cd640d3bcfc2f", null ],
+      [ "EqualNear", "namespaceMath.html#ad33ffd9b9e6be9a72db237983a6a6035", null ],
+      [ "EqualNear", "namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602", null ]
+    ] ],
     [ "PrintHelpers", "namespacePrintHelpers.html", "namespacePrintHelpers" ],
     [ "Renderer", "namespaceRenderer.html", "namespaceRenderer" ],
     [ "std", "namespacestd.html", "namespacestd" ],

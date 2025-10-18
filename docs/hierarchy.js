@@ -2,8 +2,18 @@ var hierarchy =
 [
     [ "Core::Application", "classCore_1_1Application.html", null ],
     [ "Core::ApplicationSpecification", "structCore_1_1ApplicationSpecification.html", null ],
+    [ "Data::ExtraData::BaseExtraDataType", "classData_1_1ExtraData_1_1BaseExtraDataType.html", [
+      [ "Data::ExtraData::SingleDataExtraData< BaseType::Vec3 >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
+        [ "Data::ExtraData::FaceNormalExtraData", "classData_1_1ExtraData_1_1FaceNormalExtraData.html", null ],
+        [ "Data::ExtraData::VertexNormalExtraData", "classData_1_1ExtraData_1_1VertexNormalExtraData.html", null ]
+      ] ],
+      [ "Data::ExtraData::SingleDataExtraData< std::vector< BaseType::Vec3 > >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
+        [ "Data::ExtraData::FlatVertexNormalsExtraData", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html", null ]
+      ] ],
+      [ "Data::ExtraData::SingleDataExtraData< T >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", null ]
+    ] ],
     [ "Core::Event", "classCore_1_1Event.html", null ],
-    [ "Data::Internal::ExtraDataContainer", "classData_1_1Internal_1_1ExtraDataContainer.html", null ],
+    [ "Data::ExtraData::ExtraDataContainer", "classData_1_1ExtraData_1_1ExtraDataContainer.html", null ],
     [ "Data::Primitive::Face", "structData_1_1Primitive_1_1Face.html", null ],
     [ "Data::Primitive::FaceProxy", "classData_1_1Primitive_1_1FaceProxy.html", null ],
     [ "Data::Surface::Mesh::FacesAroundVertexCirculator", "classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html", null ],

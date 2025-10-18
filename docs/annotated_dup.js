@@ -12,8 +12,13 @@ var annotated_dup =
       [ "WindowSpecification", "structCore_1_1WindowSpecification.html", "structCore_1_1WindowSpecification" ]
     ] ],
     [ "Data", "namespaceData.html", [
-      [ "Internal", "namespaceData_1_1Internal.html", [
-        [ "ExtraDataContainer", "classData_1_1Internal_1_1ExtraDataContainer.html", "classData_1_1Internal_1_1ExtraDataContainer" ]
+      [ "ExtraData", "namespaceData_1_1ExtraData.html", [
+        [ "BaseExtraDataType", "classData_1_1ExtraData_1_1BaseExtraDataType.html", "classData_1_1ExtraData_1_1BaseExtraDataType" ],
+        [ "ExtraDataContainer", "classData_1_1ExtraData_1_1ExtraDataContainer.html", "classData_1_1ExtraData_1_1ExtraDataContainer" ],
+        [ "FaceNormalExtraData", "classData_1_1ExtraData_1_1FaceNormalExtraData.html", "classData_1_1ExtraData_1_1FaceNormalExtraData" ],
+        [ "FlatVertexNormalsExtraData", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData" ],
+        [ "SingleDataExtraData", "classData_1_1ExtraData_1_1SingleDataExtraData.html", "classData_1_1ExtraData_1_1SingleDataExtraData" ],
+        [ "VertexNormalExtraData", "classData_1_1ExtraData_1_1VertexNormalExtraData.html", "classData_1_1ExtraData_1_1VertexNormalExtraData" ]
       ] ],
       [ "Primitive", "namespaceData_1_1Primitive.html", [
         [ "Face", "structData_1_1Primitive_1_1Face.html", "structData_1_1Primitive_1_1Face" ],

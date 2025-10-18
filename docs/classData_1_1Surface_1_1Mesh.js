@@ -12,6 +12,7 @@ var classData_1_1Surface_1_1Mesh =
     [ "AddVertex", "classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e", null ],
     [ "AddVerticesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6", null ],
     [ "Clone", "classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87", null ],
+    [ "ComputeFaceNormals", "classData_1_1Surface_1_1Mesh.html#a3e206bec66b032df60e39ba21c97ac66", null ],
     [ "GetFace", "classData_1_1Surface_1_1Mesh.html#a9faf5e443155eeaad0f2783efac743d7", null ],
     [ "GetFaceCount", "classData_1_1Surface_1_1Mesh.html#ad1a67c7f1a4cfdc468f15c808cfca25f", null ],
     [ "GetFaceData", "classData_1_1Surface_1_1Mesh.html#a544f30c1d16f4941814236e696cc2349", null ],
@@ -26,11 +27,11 @@ var classData_1_1Surface_1_1Mesh =
     [ "GetVertices", "classData_1_1Surface_1_1Mesh.html#ac679409f9b4f4916d838112f6b64c4f9", null ],
     [ "GetVertices", "classData_1_1Surface_1_1Mesh.html#ab71eabeb4556f5825ccdef0cf688d408", null ],
     [ "GetVerticesAroundVertex", "classData_1_1Surface_1_1Mesh.html#a068d9fb90cd43f53764d30690ddbeaa4", null ],
-    [ "HasFaceExtraData", "classData_1_1Surface_1_1Mesh.html#a61f0afee25d3e5b28168a6d186faf24b", null ],
-    [ "HasVertexExtraData", "classData_1_1Surface_1_1Mesh.html#a56c30a8d1d6423d08ebf7a8b0594b709", null ],
+    [ "HasFacesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#ab89605991b30e0011323679e91928925", null ],
+    [ "HasVerticesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962", null ],
     [ "UpdateMeshConnectivity", "classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88", null ],
     [ "m_Faces", "classData_1_1Surface_1_1Mesh.html#aa47f09839a7f56ff94f0ca2b112f5c06", null ],
-    [ "m_FacesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#ad15863008ad3153e13dc696534cd489a", null ],
+    [ "m_FacesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a9c735411d0d2b9489f036a3e58760db8", null ],
     [ "m_Vertices", "classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31", null ],
-    [ "m_VerticesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a10775c7ce06da8d9538d1e63a8f5bd38", null ]
+    [ "m_VerticesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0", null ]
 ];

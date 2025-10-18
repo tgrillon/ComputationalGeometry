@@ -11,7 +11,7 @@ var searchData=
   ['invalidneighborfaceindex_8',['InvalidNeighborFaceIndex',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acac48b24350249c7860292e6ae8b1b0c4a',1,'Utilitary::Surface::MeshIntegrity']]],
   ['invalidvertexindex_9',['InvalidVertexIndex',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125aca57c4f5845e628560cd9b9759d42e3916',1,'Utilitary::Surface::MeshIntegrity']]],
   ['isdarkmodeenabled_10',['IsDarkModeEnabled',['../classCore_1_1Application.html#a1b5b50442d3986a5009e364739147e9c',1,'Core::Application']]],
-  ['isempty_11',['IsEmpty',['../classData_1_1Internal_1_1ExtraDataContainer.html#a3a3e715bb5f379fcca3cdd2abcbbf9d3',1,'Data::Internal::ExtraDataContainer']]],
+  ['isempty_11',['IsEmpty',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#ad181c51f17aa753e8f8f88ae2e4c6093',1,'Data::ExtraData::ExtraDataContainer']]],
   ['isresizeable_12',['IsResizeable',['../structCore_1_1WindowSpecification.html#a626608e069747c6727735b7d75d34976',1,'Core::WindowSpecification']]],
   ['iterator_5fcategory_13',['iterator_category',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a670bb8987db11ff0167b332e4a7dbe1e',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::iterator_category'],['../classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a4ca6eb8f82e13c6f254f70517770ce21',1,'Data::Surface::Mesh::FacesAroundVertexCirculator::iterator_category']]],
   ['ivec2_14',['iVec2',['../namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243',1,'BaseType']]]

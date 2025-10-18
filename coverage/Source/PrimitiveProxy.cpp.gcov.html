@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-17 13:32:21</td>
+            <td class="headerValue">2025-10-18 13:05:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -77,10 +77,10 @@
 <span id="L7"><span class="lineNum">       7</span>              : namespace Data::Primitive</span>
 <span id="L8"><span class="lineNum">       8</span>              : {</span>
 <span id="L9"><span class="lineNum">       9</span>              : /*==================================FaceProxy Methods===================================*/</span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC tlaBgGNC">           9 : FaceProxy::FaceProxy(Data::Surface::Mesh&amp; mesh, const FaceIndex index)</span></span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           9 :         : m_Mesh(&amp;mesh)</span></span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           9 :         , m_Index(index)</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           9 : {}</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC tlaBgGNC">          33 : FaceProxy::FaceProxy(Data::Surface::Mesh&amp; mesh, const FaceIndex index)</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">          33 :         : m_Mesh(&amp;mesh)</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">          33 :         , m_Index(index)</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">          33 : {}</span></span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
 <span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           3 : FaceIndex FaceProxy::GetIndex() const</span></span>
 <span id="L16"><span class="lineNum">      16</span>              : {</span>
@@ -92,15 +92,15 @@
 <span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           1 :         return m_Mesh-&gt;m_Faces[m_Index];</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : }</span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          12 : const Face&amp; FaceProxy::GetFace() const</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          84 : const Face&amp; FaceProxy::GetFace() const</span></span>
 <span id="L26"><span class="lineNum">      26</span>              : {</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">          12 :         return m_Mesh-&gt;m_Faces[m_Index];</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">          84 :         return m_Mesh-&gt;m_Faces[m_Index];</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : }</span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           6 : VertexIndex FaceProxy::GetVertex(const EdgeIndex index) const</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          78 : VertexIndex FaceProxy::GetVertex(const EdgeIndex index) const</span></span>
 <span id="L31"><span class="lineNum">      31</span>              : {</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           6 :         assert(index &lt; 3 &amp;&amp; &quot;[FaceProxy::GetVertex] Index out of bound&quot;);</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           6 :         return GetFace().Vertices[index];</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          78 :         assert(index &lt; 3 &amp;&amp; &quot;[FaceProxy::GetVertex] Index out of bound&quot;);</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          78 :         return GetFace().Vertices[index];</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           2 : std::array&lt;int, 3&gt; FaceProxy::GetVertices() const</span></span>
@@ -108,7 +108,7 @@
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           2 :         return GetFace().Vertices;</span></span>
 <span id="L39"><span class="lineNum">      39</span>              : }</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 : int FaceProxy::GetNeighbor(const uint8_t index) const</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 : int FaceProxy::GetNeighbor(const EdgeIndex index) const</span></span>
 <span id="L42"><span class="lineNum">      42</span>              : {</span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           2 :         assert(index &lt; 3 &amp;&amp; &quot;[FaceProxy::GetNeighbor] Index out of bound&quot;);</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           2 :         return GetFace().Neighbors[index];</span></span>
@@ -121,10 +121,10 @@
 <span id="L51"><span class="lineNum">      51</span>              : </span>
 <span id="L52"><span class="lineNum">      52</span>              : /*==================================VertexProxy Methods===================================*/</span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          37 : VertexProxy::VertexProxy(Data::Surface::Mesh&amp; mesh, const VertexIndex index)</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          37 :         : m_Mesh(&amp;mesh)</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          37 :         , m_Index(index)</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          37 : {}</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          89 : VertexProxy::VertexProxy(Data::Surface::Mesh&amp; mesh, const VertexIndex index)</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          89 :         : m_Mesh(&amp;mesh)</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          89 :         , m_Index(index)</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          89 : {}</span></span>
 <span id="L58"><span class="lineNum">      58</span>              : </span>
 <span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           3 : VertexIndex VertexProxy::GetIndex() const</span></span>
 <span id="L60"><span class="lineNum">      60</span>              : {</span>

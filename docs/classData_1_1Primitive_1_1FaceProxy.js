@@ -1,6 +1,7 @@
 var classData_1_1Primitive_1_1FaceProxy =
 [
     [ "FaceProxy", "classData_1_1Primitive_1_1FaceProxy.html#aed6ab8ea5467b1dc17fd382b7b96a6f4", null ],
+    [ "EraseExtraData", "classData_1_1Primitive_1_1FaceProxy.html#a57928f1e4172800323730006dc72c39a", null ],
     [ "GetExtraData", "classData_1_1Primitive_1_1FaceProxy.html#aee5b630a3680226b96376c30e9dc52f6", null ],
     [ "GetExtraData", "classData_1_1Primitive_1_1FaceProxy.html#ac8aec5d0609fa7cb0e81e9c76d189f14", null ],
     [ "GetFace", "classData_1_1Primitive_1_1FaceProxy.html#a7bddcbcd31975c20ab96c5b530729c4b", null ],

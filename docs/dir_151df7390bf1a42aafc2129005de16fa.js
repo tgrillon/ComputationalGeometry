@@ -3,6 +3,8 @@ var dir_151df7390bf1a42aafc2129005de16fa =
     [ "AppLayer.h", "AppLayer_8h.html", "AppLayer_8h" ],
     [ "BaseType.h", "BaseType_8h.html", "BaseType_8h" ],
     [ "ExtraDataContainer.h", "ExtraDataContainer_8h.html", "ExtraDataContainer_8h" ],
+    [ "ExtraDataType.h", "ExtraDataType_8h.html", "ExtraDataType_8h" ],
+    [ "MathUtils.h", "MathUtils_8h.html", "MathUtils_8h" ],
     [ "Mesh.h", "Mesh_8h.html", "Mesh_8h" ],
     [ "MeshExporter.h", "MeshExporter_8h.html", "MeshExporter_8h" ],
     [ "MeshIntegrity.h", "MeshIntegrity_8h.html", "MeshIntegrity_8h" ],
