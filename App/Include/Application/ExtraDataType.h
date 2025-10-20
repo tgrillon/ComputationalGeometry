@@ -31,10 +31,12 @@ private:
 	T m_Data;
 };
 
-class FaceNormalExtraData : public SingleDataExtraData<BaseType::Vec3>
+/// @brief Extra data type to store a triangle normal.
+class TriangleNormalExtraData : public SingleDataExtraData<BaseType::Vec3>
 {
 public:
-	std::string GetName() override { return "FaceNormalExtraData"; }
+	/// @brief Returns the name of the extra data.
+	std::string GetName() override { return "TriangleNormalExtraData"; }
 };
 
 class VertexNormalExtraData : public SingleDataExtraData<BaseType::Vec3>

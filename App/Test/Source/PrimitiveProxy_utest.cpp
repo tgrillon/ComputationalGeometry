@@ -14,7 +14,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ValidVertex_ShouldBeValid)
 
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
 	EXPECT_EQ(vertexProxy.GetPosition(), (BaseType::Vec3{ 0., 0., 0. }));
-	EXPECT_EQ(vertexProxy.GetIncidentFace(), 0);
+	EXPECT_EQ(vertexProxy.GetIncidentTriangle(), 0);
 
 	Vertex& vertex = vertexProxy.GetVertex();
 	vertex.Position = { 2., 2., 2. };
@@ -28,13 +28,13 @@ TEST(PrimitiveProxyTest, VertexProxy_ConstValidVertex_ShouldBeValid)
 
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
 	EXPECT_EQ(vertexProxy.GetPosition(), (BaseType::Vec3{ 0., 0., 0. }));
-	EXPECT_EQ(vertexProxy.GetIncidentFace(), 0);
+	EXPECT_EQ(vertexProxy.GetIncidentTriangle(), 0);
 }
 
 TEST(PrimitiveProxyTest, FaceProxy_ValidFace_ShouldBeValid)
 {
 	Mesh mesh = TestHelpers::CreateValidMesh();
-	FaceProxy faceProxy = mesh.GetFace(0);
+	TriangleProxy faceProxy = mesh.GetTriangle(0);
 
 	EXPECT_EQ(faceProxy.GetIndex(), 0);
 	EXPECT_EQ(faceProxy.GetVertex(0), 0);
@@ -42,15 +42,15 @@ TEST(PrimitiveProxyTest, FaceProxy_ValidFace_ShouldBeValid)
 	EXPECT_EQ(faceProxy.GetNeighbor(1), 1);
 	EXPECT_EQ(faceProxy.GetNeighbors(), (std::array<int, 3>{ -1, 1, -1 }));
 
-	Face& face = faceProxy.GetFace();
-	face.Vertices[0] = 3;
+	Triangle& triangle = faceProxy.GetTriangle();
+	triangle.Vertices[0] = 3;
 	EXPECT_EQ(faceProxy.GetVertex(0), 3);
 }
 
 TEST(PrimitiveProxyTest, FaceProxy_ConstValidFace_ShouldBeValid)
 {
 	Mesh mesh = TestHelpers::CreateValidMesh();
-	const FaceProxy faceProxy = mesh.GetFace(0);
+	const TriangleProxy faceProxy = mesh.GetTriangle(0);
 
 	EXPECT_EQ(faceProxy.GetIndex(), 0);
 	EXPECT_EQ(faceProxy.GetVertex(0), 0);
@@ -92,7 +92,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ExtraData_ShouldHandleCorrectly)
 TEST(PrimitiveProxyTest, FaceProxy_ExtraData_ShouldHandleCorrectly)
 {
 	Mesh mesh = TestHelpers::CreateValidMesh();
-	FaceProxy faceProxy = mesh.GetFace(0);
+	TriangleProxy faceProxy = mesh.GetTriangle(0);
 
 	struct ExtraData
 	{
@@ -101,7 +101,7 @@ TEST(PrimitiveProxyTest, FaceProxy_ExtraData_ShouldHandleCorrectly)
 
 	// Initially, there should be no extra data.
 	EXPECT_FALSE(faceProxy.HasExtraData<ExtraData>());
-	mesh.AddFacesExtraDataContainer();
+	mesh.AddTrianglesExtraDataContainer();
 	EXPECT_EQ(faceProxy.GetExtraData<ExtraData>(), nullptr);
 
 	// Create extra data.

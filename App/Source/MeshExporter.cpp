@@ -25,14 +25,14 @@ void MeshExporter::ExportOFF(const Mesh& mesh, const std::filesystem::path& file
 	file << "OFF" << '\n';
 
 	// Write the number of vertices, faces, and edges (0 for edges as per OFF format).
-	file << mesh.GetVertexCount() << ' ' << mesh.GetFaceCount() << ' ' << 0 << '\n';
+	file << mesh.GetVertexCount() << ' ' << mesh.GetTriangleCount() << ' ' << 0 << '\n';
 
 	// Write vertex positions.
 	for(auto&& curVertex : mesh.m_Vertices)
 		file << curVertex.Position.x << ' ' << curVertex.Position.y << ' ' << curVertex.Position.z << '\n';
 
-	// Write face definitions.
-	for(auto&& curFace : mesh.m_Faces)
+	// Write triangle definitions.
+	for(auto&& curFace : mesh.m_Triangles)
 		file << curFace.Vertices.size() << ' ' << (curFace.Vertices[0] + 1) << ' ' << (curFace.Vertices[1] + 1) << ' '
 			 << (curFace.Vertices[2] + 1) << '\n';
 
@@ -40,6 +40,7 @@ void MeshExporter::ExportOFF(const Mesh& mesh, const std::filesystem::path& file
 }
 
 void MeshExporter::ExportOBJ(const Mesh& mesh, const std::filesystem::path& filepath)
+
 {
 	std::ofstream file(filepath, std::ios::trunc);
 

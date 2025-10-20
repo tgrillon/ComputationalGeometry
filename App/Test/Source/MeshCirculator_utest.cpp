@@ -12,11 +12,11 @@ TEST(MeshTest, GetVerticesAroundVertex_OneFace_ShouldIterateCorrectly)
 {
 	Mesh mesh;
 
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = 0 }); // Vertex 0
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = 0 }); // Vertex 1
-	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentFaceIdx = 0 }); // Vertex 2
+	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentTriangleIdx = 0 }); // Vertex 0
+	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentTriangleIdx = 0 }); // Vertex 1
+	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentTriangleIdx = 0 }); // Vertex 2
 
-	mesh.AddFace({ .Vertices = { 0, 1, 2 } }); // Face 0
+	mesh.AddTriangle({ .Vertices = { 0, 1, 2 } }); // Triangle 0
 
 	// Get the range of vertices around vertex 0
 	auto vertexRange = mesh.GetVerticesAroundVertex(0);
@@ -80,21 +80,21 @@ TEST(MeshTest, GetFacesAroundVertex_OneFace_ShouldIterateCorrectly)
 {
 	Mesh mesh;
 
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = 0 }); // Vertex 0
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = 0 }); // Vertex 1
-	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentFaceIdx = 0 }); // Vertex 2
+	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentTriangleIdx = 0 }); // Vertex 0
+	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentTriangleIdx = 0 }); // Vertex 1
+	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentTriangleIdx = 0 }); // Vertex 2
 
-	mesh.AddFace({ .Vertices = { 0, 1, 2 } }); // Face 0
+	mesh.AddTriangle({ .Vertices = { 0, 1, 2 } }); // Triangle 0
 
 	// Get the range of vertices around vertex 0
-	auto faceRange = mesh.GetFacesAroundVertex(0);
+	auto faceRange = mesh.GetTrianglesAroundVertex(0);
 
 	// Collect the vertices around vertex 0
-	std::vector<FaceIndex> collectedFaces;
+	std::vector<TriangleIndex> collectedFaces;
 	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
 
-	// Vertex 0 is connected to one face.
-	std::vector<FaceIndex> expectedFaces = { 0 };
+	// Vertex 0 is connected to one triangle.
+	std::vector<TriangleIndex> expectedFaces = { 0 };
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }
 
@@ -103,14 +103,14 @@ TEST(MeshTest, GetFacesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrec
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
 
 	// Get the range of vertices around vertex 5
-	auto faceRange = mesh.GetFacesAroundVertex(5);
+	auto faceRange = mesh.GetTrianglesAroundVertex(5);
 
 	// Collect the vertices around vertex 5
-	std::vector<FaceIndex> collectedFaces;
+	std::vector<TriangleIndex> collectedFaces;
 	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
 
 	// Vertex 5 is connected to the one-ring vertices in counter-clockwise order
-	std::vector<FaceIndex> expectedFaces = { 2, 3, 6 };
+	std::vector<TriangleIndex> expectedFaces = { 2, 3, 6 };
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }
 
@@ -119,13 +119,13 @@ TEST(MeshTest, GetFacesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrec
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
 
 	// Get the range of vertices around vertex 4
-	auto faceRange = mesh.GetFacesAroundVertex(4);
+	auto faceRange = mesh.GetTrianglesAroundVertex(4);
 
 	// Collect the vertices around vertex 4
-	std::vector<FaceIndex> collectedFaces;
+	std::vector<TriangleIndex> collectedFaces;
 	std::copy(faceRange.begin(), faceRange.end(), std::back_inserter(collectedFaces));
 
 	// Vertex 4 is connected to the one-ring incident faces in counter-clockwise order
-	std::vector<FaceIndex> expectedFaces = { 0, 3, 6, 7, 4, 1 };
+	std::vector<TriangleIndex> expectedFaces = { 0, 3, 6, 7, 4, 1 };
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }

@@ -6,47 +6,47 @@ using namespace BaseType;
 
 namespace Data::Primitive
 {
-/*==================================FaceProxy Methods===================================*/
-FaceProxy::FaceProxy(Data::Surface::Mesh& mesh, const FaceIndex index)
+/*==================================TriangleProxy Methods===================================*/
+TriangleProxy::TriangleProxy(Data::Surface::Mesh& mesh, const TriangleIndex index)
 	: m_Mesh(&mesh)
 	, m_Index(index)
 {}
 
-FaceIndex FaceProxy::GetIndex() const
+TriangleIndex TriangleProxy::GetIndex() const
 {
 	return m_Index;
 }
 
-Face& FaceProxy::GetFace()
+Triangle& TriangleProxy::GetTriangle()
 {
-	return m_Mesh->m_Faces[m_Index];
+	return m_Mesh->m_Triangles[m_Index];
 }
 
-const Face& FaceProxy::GetFace() const
+const Triangle& TriangleProxy::GetTriangle() const
 {
-	return m_Mesh->m_Faces[m_Index];
+	return m_Mesh->m_Triangles[m_Index];
 }
 
-VertexIndex FaceProxy::GetVertex(const EdgeIndex index) const
+VertexIndex TriangleProxy::GetVertex(const EdgeIndex index) const
 {
-	assert(index < 3 && "[FaceProxy::GetVertex] Index out of bound");
-	return GetFace().Vertices[index];
+	assert(index < 3 && "[TriangleProxy::GetVertex] Index out of bound");
+	return GetTriangle().Vertices[index];
 }
 
-std::array<int, 3> FaceProxy::GetVertices() const
+std::array<int, 3> TriangleProxy::GetVertices() const
 {
-	return GetFace().Vertices;
+	return GetTriangle().Vertices;
 }
 
-int FaceProxy::GetNeighbor(const EdgeIndex index) const
+int TriangleProxy::GetNeighbor(const EdgeIndex index) const
 {
-	assert(index < 3 && "[FaceProxy::GetNeighbor] Index out of bound");
-	return GetFace().Neighbors[index];
+	assert(index < 3 && "[TriangleProxy::GetNeighbor] Index out of bound");
+	return GetTriangle().Neighbors[index];
 }
 
-std::array<int, 3> FaceProxy::GetNeighbors() const
+std::array<int, 3> TriangleProxy::GetNeighbors() const
 {
-	return GetFace().Neighbors;
+	return GetTriangle().Neighbors;
 }
 
 /*==================================VertexProxy Methods===================================*/
@@ -81,8 +81,8 @@ const Vec3& VertexProxy::GetPosition() const
 	return GetVertex().Position;
 }
 
-int VertexProxy::GetIncidentFace() const
+int VertexProxy::GetIncidentTriangle() const
 {
-	return GetVertex().IncidentFaceIdx;
+	return GetVertex().IncidentTriangleIdx;
 }
 } // namespace Data::Primitive

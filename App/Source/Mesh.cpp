@@ -18,9 +18,9 @@ namespace Data::Surface
 {
 Mesh::Mesh(const Mesh& other)
 	: m_Vertices(other.m_Vertices)
-	, m_Faces(other.m_Faces)
+	, m_Triangles(other.m_Triangles)
 	, m_VerticesExtraDataContainer(other.m_VerticesExtraDataContainer)
-	, m_FacesExtraDataContainer(other.m_FacesExtraDataContainer)
+	, m_TrianglesExtraDataContainer(other.m_TrianglesExtraDataContainer)
 {}
 
 /// @brief Get the number of faces in the mesh.
@@ -34,9 +34,9 @@ uint32_t Mesh::GetVertexCount() const
 	return static_cast<uint32_t>(m_Vertices.size());
 }
 
-uint32_t Mesh::GetFaceCount() const
+uint32_t Mesh::GetTriangleCount() const
 {
-	return static_cast<uint32_t>(m_Faces.size());
+	return static_cast<uint32_t>(m_Triangles.size());
 }
 
 VertexProxy Mesh::GetVertex(const VertexIndex index)
@@ -45,10 +45,10 @@ VertexProxy Mesh::GetVertex(const VertexIndex index)
 	return VertexProxy(*this, index);
 }
 
-FaceProxy Mesh::GetFace(const FaceIndex index)
+TriangleProxy Mesh::GetTriangle(const TriangleIndex index)
 {
-	assert(index < GetFaceCount() && "Index out of bound");
-	return FaceProxy(*this, index);
+	assert(index < GetTriangleCount() && "Index out of bound");
+	return TriangleProxy(*this, index);
 }
 
 const Vertex& Mesh::GetVertexData(const VertexIndex index) const
@@ -63,16 +63,16 @@ Vertex& Mesh::GetVertexData(const VertexIndex index)
 	return m_Vertices[index];
 }
 
-const Face& Mesh::GetFaceData(const FaceIndex index) const
+const Triangle& Mesh::GetTriangleData(const TriangleIndex index) const
 {
-	assert(index < GetFaceCount() && "Index out of bound");
-	return m_Faces[index];
+	assert(index < GetTriangleCount() && "Index out of bound");
+	return m_Triangles[index];
 }
 
-Face& Mesh::GetFaceData(const FaceIndex index)
+Triangle& Mesh::GetTriangleData(const TriangleIndex index)
 {
-	assert(index < GetFaceCount() && "Index out of bound");
-	return m_Faces[index];
+	assert(index < GetTriangleCount() && "Index out of bound");
+	return m_Triangles[index];
 }
 
 VertexIndex Mesh::AddVertex(const Vertex& vertex)
@@ -84,12 +84,12 @@ VertexIndex Mesh::AddVertex(const Vertex& vertex)
 	return index;
 }
 
-FaceIndex Mesh::AddFace(const Face& face)
+TriangleIndex Mesh::AddTriangle(const Triangle& triangle)
 {
-	FaceIndex index = static_cast<FaceIndex>(m_Faces.size());
-	if(!m_Faces.empty() && m_FacesExtraDataContainer.size() == m_Faces.size())
-		m_FacesExtraDataContainer.emplace_back();
-	m_Faces.emplace_back(face);
+	TriangleIndex index = static_cast<TriangleIndex>(m_Triangles.size());
+	if(!m_Triangles.empty() && m_TrianglesExtraDataContainer.size() == m_Triangles.size())
+		m_TrianglesExtraDataContainer.emplace_back();
+	m_Triangles.emplace_back(triangle);
 	return index;
 }
 
@@ -98,20 +98,20 @@ void Mesh::AddVerticesExtraDataContainer()
 	m_VerticesExtraDataContainer.resize(GetVertexCount());
 }
 
-void Mesh::AddFacesExtraDataContainer()
+void Mesh::AddTrianglesExtraDataContainer()
 {
-	m_FacesExtraDataContainer.resize(GetFaceCount());
+	m_TrianglesExtraDataContainer.resize(GetTriangleCount());
 }
 
 void Mesh::UpdateMeshConnectivity()
 {
-	std::unordered_map<VertexPair, std::pair<FaceIndex, EdgeIndex>> neighborMap;
+	std::unordered_map<VertexPair, std::pair<TriangleIndex, EdgeIndex>> neighborMap;
 
-	for(FaceIndex iFace = 0; iFace < GetFaceCount(); ++iFace)
+	for(TriangleIndex iTriangle = 0; iTriangle < GetTriangleCount(); ++iTriangle)
 	{
-		Face& curFace = m_Faces[iFace];
+		Triangle& curFace = m_Triangles[iTriangle];
 
-		// Set the incident face index for each vertex if it's not already the case.
+		// Set the incident triangle index for each vertex if it's not already the case.
 		for(EdgeIndex iEdge = 0; iEdge < 3; ++iEdge)
 		{
 			int curVertexIdx = curFace.Vertices[iEdge];
@@ -119,8 +119,8 @@ void Mesh::UpdateMeshConnectivity()
 
 			Vertex& curVertex = m_Vertices[curVertexIdx];
 
-			if(curVertex.IncidentFaceIdx == -1)
-				curVertex.IncidentFaceIdx = iFace;
+			if(curVertex.IncidentTriangleIdx == -1)
+				curVertex.IncidentTriangleIdx = iTriangle;
 		}
 
 		// Set neighboring faces using the edges
@@ -128,12 +128,12 @@ void Mesh::UpdateMeshConnectivity()
 		{
 			if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
 			{
-				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iFace, edgeIdx };
+				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iTriangle, edgeIdx };
 			}
 			else // The edge with firstVertex and secondVertex is already registered in map
 			{
 				auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
-				m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iFace;
+				m_Triangles[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iTriangle;
 				curFace.Neighbors[edgeIdx] = faceNeighborIdx;
 			}
 		};
@@ -161,14 +161,14 @@ const std::vector<Data::Primitive::Vertex>& Mesh::GetVertices() const
 	return m_Vertices;
 }
 
-std::vector<Data::Primitive::Face>& Mesh::GetFaces()
+std::vector<Data::Primitive::Triangle>& Mesh::GetTriangles()
 {
-	return m_Faces;
+	return m_Triangles;
 }
 
-const std::vector<Data::Primitive::Face>& Mesh::GetFaces() const
+const std::vector<Data::Primitive::Triangle>& Mesh::GetTriangles() const
 {
-	return m_Faces;
+	return m_Triangles;
 }
 
 bool Mesh::HasVerticesExtraDataContainer() const
@@ -176,22 +176,22 @@ bool Mesh::HasVerticesExtraDataContainer() const
 	return m_VerticesExtraDataContainer.size() > 0;
 }
 
-bool Mesh::HasFacesExtraDataContainer() const
+bool Mesh::HasTrianglesExtraDataContainer() const
 {
-	return m_FacesExtraDataContainer.size() > 0;
+	return m_TrianglesExtraDataContainer.size() > 0;
 }
 
-void Mesh::ComputeFaceNormals(bool computeSmoothVertexNormals)
+void Mesh::ComputeTriangleNormals(bool computeSmoothVertexNormals)
 {
-	if(m_FacesExtraDataContainer.empty())
-		AddFacesExtraDataContainer();
+	if(m_TrianglesExtraDataContainer.empty())
+		AddTrianglesExtraDataContainer();
 
 	if(computeSmoothVertexNormals && m_VerticesExtraDataContainer.empty())
 		AddVerticesExtraDataContainer();
 
-	for(FaceIndex iFace = 0; iFace < GetFaceCount(); ++iFace)
+	for(TriangleIndex iTriangle = 0; iTriangle < GetTriangleCount(); ++iTriangle)
 	{
-		const FaceProxy& curFace = GetFace(iFace);
+		const TriangleProxy& curFace = GetTriangle(iTriangle);
 
 		const Vec3& posA = m_Vertices[curFace.GetVertex(0)].Position;
 		const Vec3& posB = m_Vertices[curFace.GetVertex(1)].Position;
@@ -200,7 +200,7 @@ void Mesh::ComputeFaceNormals(bool computeSmoothVertexNormals)
 		const Vec3 AB = glm::normalize(posB - posA);
 		const Vec3 AC = glm::normalize(posC - posA);
 
-		FaceNormalExtraData& curFaceNormal = curFace.GetOrCreateExtraData<FaceNormalExtraData>();
+		TriangleNormalExtraData& curFaceNormal = curFace.GetOrCreateExtraData<TriangleNormalExtraData>();
 		const Vec3& computedNormal = glm::normalize(glm::cross(AB, AC));
 		curFaceNormal.SetData(computedNormal);
 

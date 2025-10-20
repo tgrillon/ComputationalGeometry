@@ -5,85 +5,85 @@
 
 namespace Data::Primitive
 {
-/// @brief Proxy class for a face in a mesh, providing safe access and extra data storage.
-class FaceProxy
+/// @brief Proxy class for a triangle in a mesh, providing safe access and extra data storage.
+class TriangleProxy
 {
 public:
-	/// @brief Construct a FaceProxy from a mesh and a face.
-	FaceProxy(Data::Surface::Mesh& mesh, const BaseType::FaceIndex index);
+	/// @brief Construct a TriangleProxy from a mesh and a triangle.
+	TriangleProxy(Data::Surface::Mesh& mesh, const BaseType::TriangleIndex index);
 
-	/// @brief Get extra data of type T associated with the face, or nullptr if not found.
+	/// @brief Get extra data of type T associated with the triangle, or nullptr if not found.
 	template<typename T>
 	T* GetExtraData()
 	{
-		assert(m_Mesh->HasFacesExtraDataContainer());
-		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<T>();
+		assert(m_Mesh->HasTrianglesExtraDataContainer());
+		return m_Mesh->m_TrianglesExtraDataContainer[m_Index].Get<T>();
 	}
 
-	/// @brief Get extra data of type T associated with the face, or nullptr if not found.
+	/// @brief Get extra data of type T associated with the triangle, or nullptr if not found.
 	template<typename T>
 	const T* GetExtraData() const
 	{
-		assert(m_Mesh->HasFacesExtraDataContainer());
-		return m_Mesh->m_FacesExtraDataContainer[m_Index].Get<const T>();
+		assert(m_Mesh->HasTrianglesExtraDataContainer());
+		return m_Mesh->m_TrianglesExtraDataContainer[m_Index].Get<const T>();
 	}
 
-	/// @brief Get or create extra data of type T associated with the face.
+	/// @brief Get or create extra data of type T associated with the triangle.
 	template<typename T>
 	T& GetOrCreateExtraData() const
 	{
-		assert(m_Mesh->HasFacesExtraDataContainer());
-		return m_Mesh->m_FacesExtraDataContainer[m_Index].GetOrCreate<T>();
+		assert(m_Mesh->HasTrianglesExtraDataContainer());
+		return m_Mesh->m_TrianglesExtraDataContainer[m_Index].GetOrCreate<T>();
 	}
 
-	/// @brief Set extra data of type T associated with the face.
+	/// @brief Set extra data of type T associated with the triangle.
 	template<typename T>
 	void SetExtraData(T&& data)
 	{
-		assert(m_Mesh->HasFacesExtraDataContainer());
-		return m_Mesh->m_FacesExtraDataContainer[m_Index].Set<T>(data);
+		assert(m_Mesh->HasTrianglesExtraDataContainer());
+		return m_Mesh->m_TrianglesExtraDataContainer[m_Index].Set<T>(data);
 	}
 
-	/// @brief Erase extra data of type T associated with the face.
+	/// @brief Erase extra data of type T associated with the triangle.
 	template<typename T>
 	void EraseExtraData()
 	{
-		assert(m_Mesh->HasFacesExtraDataContainer() && HasExtraData<T>());
-		return m_Mesh->m_FacesExtraDataContainer[m_Index].Erase<T>();
+		assert(m_Mesh->HasTrianglesExtraDataContainer() && HasExtraData<T>());
+		return m_Mesh->m_TrianglesExtraDataContainer[m_Index].Erase<T>();
 	}
 
-	/// @brief Check if extra data of type T is associated with the face.
+	/// @brief Check if extra data of type T is associated with the triangle.
 	template<typename T>
 	bool HasExtraData() const
 	{
-		return m_Mesh->HasFacesExtraDataContainer() && m_Mesh->m_FacesExtraDataContainer[m_Index].Has<T>();
+		return m_Mesh->HasTrianglesExtraDataContainer() && m_Mesh->m_TrianglesExtraDataContainer[m_Index].Has<T>();
 	}
 
-	/// @brief Get the index of the face in the mesh.
-	BaseType::FaceIndex GetIndex() const;
+	/// @brief Get the index of the triangle in the mesh.
+	BaseType::TriangleIndex GetIndex() const;
 
-	/// @brief Get the face being proxied.
-	Face& GetFace();
-	/// @brief Get the face being proxied (const version).
-	const Face& GetFace() const;
+	/// @brief Get the triangle being proxied.
+	Triangle& GetTriangle();
+	/// @brief Get the triangle being proxied (const version).
+	const Triangle& GetTriangle() const;
 
-	/// @brief Get the vertex at the given index of the face.
+	/// @brief Get the vertex at the given index of the triangle.
 	BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const;
 
-	/// @brief Get all vertex indices of the face.
+	/// @brief Get all vertex indices of the triangle.
 	std::array<int, 3> GetVertices() const;
 
-	/// @brief Get the neighbor face at the given index of the face.
+	/// @brief Get the neighbor triangle at the given index of the triangle.
 	int GetNeighbor(const BaseType::EdgeIndex index) const;
 
-	/// @brief Get all neighbor face indices of the face.
+	/// @brief Get all neighbor triangle indices of the triangle.
 	std::array<int, 3> GetNeighbors() const;
 
 private:
-	/// @brief Pointer to the mesh containing the face.
+	/// @brief Pointer to the mesh containing the triangle.
 	mutable Data::Surface::Mesh* m_Mesh;
-	/// @brief Index to the face being proxied.
-	BaseType::FaceIndex m_Index;
+	/// @brief Index to the triangle being proxied.
+	BaseType::TriangleIndex m_Index;
 };
 
 /// @brief Proxy class for a vertex in a mesh, providing safe access and extra data storage.
@@ -154,8 +154,8 @@ public:
 	/// @brief Get the position of the vertex (const version).
 	const BaseType::Vec3& GetPosition() const;
 
-	/// @brief Get the incident face of the vertex.
-	int GetIncidentFace() const;
+	/// @brief Get the incident triangle of the vertex.
+	int GetIncidentTriangle() const;
 
 private:
 	/// @brief Pointer to the mesh containing the vertex.

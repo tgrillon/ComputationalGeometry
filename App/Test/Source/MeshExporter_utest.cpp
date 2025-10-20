@@ -1,3 +1,5 @@
+#include "Application/ExtraDataType.h"
+#include "Application/MathUtils.h"
 #include "Application/MeshExporter.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/TestHelpers.h"
@@ -7,11 +9,14 @@
 
 #include <filesystem>
 #include <fstream>
+#include <sstream>
 #include <string_view>
 
+using namespace Math;
 using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::Primitive;
+using namespace Data::ExtraData;
 using namespace BaseType;
 
 TEST(MeshExporterTest, ValidMesh_ExportOFFShouldSucceed)
@@ -33,7 +38,7 @@ TEST(MeshExporterTest, ValidMesh_ExportOFFShouldSucceed)
 	uint32_t vertexCount, faceCount, edgeCount;
 	file >> vertexCount >> faceCount >> edgeCount;
 	EXPECT_EQ(vertexCount, mesh.GetVertexCount());
-	EXPECT_EQ(faceCount, mesh.GetFaceCount());
+	EXPECT_EQ(faceCount, mesh.GetTriangleCount());
 	EXPECT_EQ(edgeCount, 0);
 
 	// Read and verify vertex positions.
@@ -44,8 +49,8 @@ TEST(MeshExporterTest, ValidMesh_ExportOFFShouldSucceed)
 		EXPECT_EQ(curVertex.Position, position);
 	}
 
-	// Read and verify face definitions.
-	for(auto&& curFace : mesh.GetFaces())
+	// Read and verify triangle definitions.
+	for(auto&& curFace : mesh.GetTriangles())
 	{
 		file >> vertexCount;
 		for(int curVertexIdx : curFace.Vertices)
@@ -83,8 +88,8 @@ TEST(MeshExporterTest, ValidMesh_ExportOBJShouldSucceed)
 		EXPECT_EQ(curVertex.Position, position);
 	}
 
-	// Read and verify face definitions.
-	for(auto&& curFace : mesh.GetFaces())
+	// Read and verify triangle definitions.
+	for(auto&& curFace : mesh.GetTriangles())
 	{
 		char fChar;
 		file >> fChar;
@@ -108,85 +113,13 @@ TEST(MeshExporterTest, ValidMesh_ExportOBJWithEDShouldSucceed)
 	const std::filesystem::path filepath = std::filesystem::relative("TestFiles/Obj/validMeshWithED.obj");
 	MeshExporter::ExportOBJ(mesh, filepath);
 
-	// Read back the file and verify its contents.
-	std::ifstream file(filepath);
-	Debug("Reading from {}", filepath.string());
-	EXPECT_TRUE(file.is_open());
+	std::string expectedFileContent =
+		"v 0 0 0\nv 1 0 0\nv 1 1 0\nv 0 1 0\nvt 0 1\nvt 1 0\nvt 1 1\nvt 0 0\nvn 1 0 0\nf 1/4/1 2/2/1 3/3/1\nf 1/4/1 "
+		"3/3/1 4/1/1\n";
 
-	// Read and verify vertex positions.
-	for(auto&& curVertex : mesh.GetVertices())
-	{
-		char vChar;
-		file >> vChar;
-		EXPECT_EQ(vChar, 'v');
+	std::ifstream t(filepath);
+	std::stringstream buffer;
+	buffer << t.rdbuf();
 
-		Vec3 position;
-		file >> position.x >> position.y >> position.z;
-		EXPECT_EQ(curVertex.Position, position);
-	}
-
-	// Read and verify vertex texCoords.
-	for(VertexIndex iVertex = 0; iVertex < mesh.GetVertexCount(); ++iVertex)
-	{
-		std::string vHead;
-		file >> vHead;
-		EXPECT_EQ(vHead, "vt");
-
-		Vec2 texCoords;
-		file >> texCoords.x >> texCoords.y;
-
-		const VertexProxy& curVertex = mesh.GetVertex(iVertex);
-		const Vec2* curVertexTexCoords = curVertex.GetExtraData<Vec2>();
-		EXPECT_NE(curVertexTexCoords, nullptr);
-		EXPECT_EQ(*curVertexTexCoords, texCoords);
-	}
-
-	// Read and verify vertex normals.
-	for(VertexIndex iVertex = 0; iVertex < mesh.GetVertexCount(); ++iVertex)
-	{
-		std::string vHead;
-		file >> vHead;
-		EXPECT_EQ(vHead, "vn");
-
-		Vec3 normal;
-		file >> normal.x >> normal.y >> normal.z;
-
-		const VertexProxy& curVertex = mesh.GetVertex(iVertex);
-		const Vec3* curVertexNormal = curVertex.GetExtraData<Vec3>();
-		EXPECT_NE(curVertexNormal, nullptr);
-		EXPECT_EQ(*curVertexNormal, normal);
-	}
-
-	// Read and verify face definitions.
-	for(auto&& curFace : mesh.GetFaces())
-	{
-		char fChar;
-		file >> fChar;
-		EXPECT_EQ(fChar, 'f');
-
-		// Read three vertices for the triangle
-		for(int curVertexIdx : curFace.Vertices)
-		{
-			file >> std::ws; // Skip leading whitespace
-			for(int ii = 0; ii < 3; ++ii)
-			{
-				char buffer[16];
-
-				// Read until first '/' or whitespace
-				int i = 0;
-				while(file.peek() != EOF && !std::isspace(file.peek()) && file.peek() != '/')
-				{
-					buffer[i++] = file.get();
-				}
-				buffer[i] = '\0';
-
-				// Convert string to index
-				int vertexIdx = std::stoi(buffer);
-				EXPECT_EQ(curVertexIdx + 1, vertexIdx);
-				file.ignore(1);
-			}
-		}
-	}
-
-	file.close();
+	EXPECT_EQ(buffer.str(), expectedFileContent);
 }

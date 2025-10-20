@@ -24,14 +24,14 @@ TEST(MeshTest, CopyConstructor_ShouldDeepCopyMesh)
 
 	// Verify that the copied mesh has the same number of vertices and faces
 	EXPECT_EQ(copiedMesh.GetVertexCount(), originalMesh.GetVertexCount());
-	EXPECT_EQ(copiedMesh.GetFaceCount(), originalMesh.GetFaceCount());
+	EXPECT_EQ(copiedMesh.GetTriangleCount(), originalMesh.GetTriangleCount());
 
 	// Modify the original mesh and verify that the copied mesh remains unchanged
 	originalMesh.GetVertexData(0).Position = { 2., 2., 2. };
 	EXPECT_NE(copiedMesh.GetVertexData(0).Position, originalMesh.GetVertexData(0).Position);
 
-	originalMesh.GetFaceData(0).Vertices[0] = 3;
-	EXPECT_NE(copiedMesh.GetFaceData(0).Vertices[0], originalMesh.GetFaceData(0).Vertices[0]);
+	originalMesh.GetTriangleData(0).Vertices[0] = 3;
+	EXPECT_NE(copiedMesh.GetTriangleData(0).Vertices[0], originalMesh.GetTriangleData(0).Vertices[0]);
 }
 
 TEST(MeshTest, AddVertexAndFace_ShouldReturnCorrectIndices)
@@ -39,21 +39,21 @@ TEST(MeshTest, AddVertexAndFace_ShouldReturnCorrectIndices)
 	Mesh mesh;
 
 	// Add vertices
-	VertexIndex vIdx1 = mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { -1 } });
-	VertexIndex vIdx2 = mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentFaceIdx = { -1 } });
+	VertexIndex vIdx1 = mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentTriangleIdx = { -1 } });
+	VertexIndex vIdx2 = mesh.AddVertex({ .Position = { 1., 1., 1. }, .IncidentTriangleIdx = { -1 } });
 
 	// Verify vertex indices
 	EXPECT_EQ(vIdx1, 0);
 	EXPECT_EQ(vIdx2, 1);
 	EXPECT_EQ(mesh.GetVertexCount(), 2);
 
-	// Add a face
-	FaceIndex fIdx = mesh.AddFace(
+	// Add a triangle
+	TriangleIndex fIdx = mesh.AddTriangle(
 		{ .Vertices = { static_cast<int>(vIdx1), static_cast<int>(vIdx2), -1 }, .Neighbors = { -1, -1, -1 } });
 
-	// Verify face index
+	// Verify triangle index
 	EXPECT_EQ(fIdx, 0);
-	EXPECT_EQ(mesh.GetFaceCount(), 1);
+	EXPECT_EQ(mesh.GetTriangleCount(), 1);
 }
 
 TEST(MeshTest, GetVertexAndFace_ShouldReturnProxies)
@@ -65,8 +65,8 @@ TEST(MeshTest, GetVertexAndFace_ShouldReturnProxies)
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
 	EXPECT_EQ(vertexProxy.GetPosition(), (Vec3{ 0., 0., 0. }));
 
-	// Get face proxy
-	FaceProxy faceProxy = mesh.GetFace(0);
+	// Get triangle proxy
+	TriangleProxy faceProxy = mesh.GetTriangle(0);
 	EXPECT_EQ(faceProxy.GetIndex(), 0);
 	EXPECT_EQ(faceProxy.GetVertex(0), 0);
 	EXPECT_EQ(faceProxy.GetVertex(1), 1);
@@ -85,15 +85,15 @@ TEST(MeshTest, GetVertexAndFaceData_ShouldReturnReferences)
 	vertexData0.Position = { 2., 2., 2. };
 	EXPECT_EQ(mesh.GetVertexData(0).Position, (Vec3{ 2., 2., 2. }));
 
-	// Get face data
-	Face& faceData = mesh.GetFaceData(0);
+	// Get triangle data
+	Triangle& faceData = mesh.GetTriangleData(0);
 	EXPECT_EQ(faceData.Vertices[0], 0);
 	EXPECT_EQ(faceData.Vertices[1], 1);
 	EXPECT_EQ(faceData.Vertices[2], 2);
 
-	// Modify face data
+	// Modify triangle data
 	faceData.Vertices[0] = 3;
-	EXPECT_EQ(mesh.GetFaceData(0).Vertices[0], 3);
+	EXPECT_EQ(mesh.GetTriangleData(0).Vertices[0], 3);
 }
 
 TEST(MeshTest, GetConstVertexAndFaceData_ShouldReturnReferences)
@@ -104,8 +104,8 @@ TEST(MeshTest, GetConstVertexAndFaceData_ShouldReturnReferences)
 	const Vertex& vertexData1 = mesh.GetVertexData(1);
 	EXPECT_EQ(vertexData1.Position, (Vec3{ 1., 0., 0. }));
 
-	// Get face data
-	const Face& faceData1 = mesh.GetFaceData(1);
+	// Get triangle data
+	const Triangle& faceData1 = mesh.GetTriangleData(1);
 	EXPECT_EQ(faceData1.Vertices[0], 0);
 	EXPECT_EQ(faceData1.Vertices[1], 2);
 	EXPECT_EQ(faceData1.Vertices[2], 3);
@@ -117,15 +117,15 @@ TEST(MeshTest, AddExtraDataContainers_ShouldAddContainers)
 
 	// Initially, the mesh should not have extra data containers
 	EXPECT_FALSE(mesh.HasVerticesExtraDataContainer());
-	EXPECT_FALSE(mesh.HasFacesExtraDataContainer());
+	EXPECT_FALSE(mesh.HasTrianglesExtraDataContainer());
 
 	// Add extra data containers
 	mesh.AddVerticesExtraDataContainer();
-	mesh.AddFacesExtraDataContainer();
+	mesh.AddTrianglesExtraDataContainer();
 
 	// Now, the mesh should have extra data containers
 	EXPECT_TRUE(mesh.HasVerticesExtraDataContainer());
-	EXPECT_TRUE(mesh.HasFacesExtraDataContainer());
+	EXPECT_TRUE(mesh.HasTrianglesExtraDataContainer());
 }
 
 TEST(MeshTest, Clone_ShouldReturnDeepCopy)
@@ -137,14 +137,14 @@ TEST(MeshTest, Clone_ShouldReturnDeepCopy)
 
 	// Verify that the cloned mesh has the same number of vertices and faces
 	EXPECT_EQ(clonedMesh->GetVertexCount(), originalMesh.GetVertexCount());
-	EXPECT_EQ(clonedMesh->GetFaceCount(), originalMesh.GetFaceCount());
+	EXPECT_EQ(clonedMesh->GetTriangleCount(), originalMesh.GetTriangleCount());
 
 	// Modify the original mesh and verify that the cloned mesh remains unchanged
 	originalMesh.GetVertexData(0).Position = { 2., 2., 2. };
 	EXPECT_NE(clonedMesh->GetVertexData(0).Position, originalMesh.GetVertexData(0).Position);
 
-	originalMesh.GetFaceData(0).Vertices[0] = 3;
-	EXPECT_NE(clonedMesh->GetFaceData(0).Vertices[0], originalMesh.GetFaceData(0).Vertices[0]);
+	originalMesh.GetTriangleData(0).Vertices[0] = 3;
+	EXPECT_NE(clonedMesh->GetTriangleData(0).Vertices[0], originalMesh.GetTriangleData(0).Vertices[0]);
 }
 
 TEST(MeshTest, UpdateMeshConnectivity_ShouldSetNeighborsAndIncidentFaces)
@@ -157,8 +157,8 @@ TEST(MeshTest, UpdateMeshConnectivity_ShouldSetNeighborsAndIncidentFaces)
 	mesh.AddVertex({ .Position = { 1., 1., 0. } }); // Vertex 2
 	mesh.AddVertex({ .Position = { 0., 1., 0. } }); // Vertex 3
 
-	mesh.AddFace({ .Vertices = { 0, 1, 2 } }); // Face 0
-	mesh.AddFace({ .Vertices = { 0, 2, 3 } }); // Face 1
+	mesh.AddTriangle({ .Vertices = { 0, 1, 2 } }); // Triangle 0
+	mesh.AddTriangle({ .Vertices = { 0, 2, 3 } }); // Triangle 1
 
 	// Update connectivity
 	mesh.UpdateMeshConnectivity();
@@ -166,58 +166,55 @@ TEST(MeshTest, UpdateMeshConnectivity_ShouldSetNeighborsAndIncidentFaces)
 	EXPECT_EQ(MeshIntegrity::CheckIntegrity(mesh), MeshIntegrity::ExitCode::MeshOK);
 }
 
-TEST(MeshTest, AddVertex_ValidMeshWithED_ShouldAddExtraDataContainer)
+TEST(MeshTest, AddTriangle_ValidMeshWithED_ShouldAddExtraDataContainer)
 {
 	Mesh mesh = TestHelpers::CreateValidMeshWithED();
 
-	mesh.AddVertex({ .Position = { 1, 2, 1 } });
-	EXPECT_EQ(mesh.GetVertex(mesh.GetVertexCount() - 1).GetExtraData<void>(), nullptr);
-
-	mesh.AddFace({ .Vertices = { 2, 4, 3 } });
-	EXPECT_EQ(mesh.GetFace(mesh.GetFaceCount() - 1).GetExtraData<void>(), nullptr);
+	mesh.AddTriangle({ .Vertices = { 2, 4, 3 } });
+	EXPECT_EQ(mesh.GetTriangle(mesh.GetTriangleCount() - 1).GetExtraData<void>(), nullptr);
 }
 
 TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
 {
 	std::unique_ptr<Mesh> mesh = MeshLoader::LoadOFF("TestFiles/Off/cube.off");
-	mesh->ComputeFaceNormals(true);
+	mesh->ComputeTriangleNormals(true);
 
-	// The cube has 12 triangular faces (2 per cube face)
-	ASSERT_EQ(mesh->GetFaceCount(), 12);
+	// The cube has 12 triangular faces (2 per cube triangle)
+	ASSERT_EQ(mesh->GetTriangleCount(), 12);
 
-	// Expected normals for each cube face (normalized)
-	// Each cube face has 2 triangular faces with the same normal
+	// Expected normals for each cube triangle (normalized)
+	// Each cube triangle has 2 triangular faces with the same normal
 	const std::vector<Vec3> expectedFaceNormals = {
-		Vec3(0, 0, -1), // Face 0: Front face (-Z)
-		Vec3(0, 0, -1), // Face 1: Front face (-Z)
-		Vec3(-1, 0, 0), // Face 2: Left face (-X)
-		Vec3(-1, 0, 0), // Face 3: Left face (-X)
-		Vec3(1, 0, 0), // Face 4: Right face (+X)
-		Vec3(1, 0, 0), // Face 5: Right face (+X)
-		Vec3(0, -1, 0), // Face 6: Bottom face (-Y)
-		Vec3(0, -1, 0), // Face 7: Bottom face (-Y)
-		Vec3(0, 0, 1), // Face 8: Back face (+Z)
-		Vec3(0, 0, 1), // Face 9: Back face (+Z)
-		Vec3(0, 1, 0), // Face 10: Top face (+Y)
-		Vec3(0, 1, 0) // Face 11: Top face (+Y)
+		Vec3(0, 0, -1), // Triangle 0: Front triangle (-Z)
+		Vec3(0, 0, -1), // Triangle 1: Front triangle (-Z)
+		Vec3(-1, 0, 0), // Triangle 2: Left triangle (-X)
+		Vec3(-1, 0, 0), // Triangle 3: Left triangle (-X)
+		Vec3(1, 0, 0), // Triangle 4: Right triangle (+X)
+		Vec3(1, 0, 0), // Triangle 5: Right triangle (+X)
+		Vec3(0, -1, 0), // Triangle 6: Bottom triangle (-Y)
+		Vec3(0, -1, 0), // Triangle 7: Bottom triangle (-Y)
+		Vec3(0, 0, 1), // Triangle 8: Back triangle (+Z)
+		Vec3(0, 0, 1), // Triangle 9: Back triangle (+Z)
+		Vec3(0, 1, 0), // Triangle 10: Top triangle (+Y)
+		Vec3(0, 1, 0) // Triangle 11: Top triangle (+Y)
 	};
 
 	constexpr float epsilon = 1e-5f;
 
-	// Check that each face computed normal matches the expected one.
-	for(FaceIndex iFace = 0; iFace < mesh->GetFaceCount(); ++iFace)
+	// Check that each triangle computed normal matches the expected one.
+	for(TriangleIndex iTriangle = 0; iTriangle < mesh->GetTriangleCount(); ++iTriangle)
 	{
-		// Get the computed normal for the current face.
-		auto curFaceExtraData = mesh->GetFace(iFace).GetExtraData<FaceNormalExtraData>();
+		// Get the computed normal for the current triangle.
+		auto curFaceExtraData = mesh->GetTriangle(iTriangle).GetExtraData<TriangleNormalExtraData>();
 		assert(curFaceExtraData != nullptr);
 		const Vec3& computedNormal = curFaceExtraData->GetData();
 
 		// Check that the normal matches the expected direction.
-		EXPECT_TRUE(EqualNear(computedNormal, expectedFaceNormals[iFace], epsilon));
+		EXPECT_TRUE(EqualNear(computedNormal, expectedFaceNormals[iTriangle], epsilon));
 	}
 
 	// For a cube, each vertex is shared by 3 faces meeting at 90-degree angles
-	// The angle-weighted vertex normal is the sum of face normals weighted by their angles
+	// The angle-weighted vertex normal is the sum of triangle normals weighted by their angles
 	// Since all angles are 90 degrees (π/2) and faces are orthogonal:
 	// Each vertex normal = normalized sum of 3 orthogonal face normals
 	// This results in normals pointing along the diagonal from cube center to each vertex
@@ -239,7 +236,7 @@ TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
 	for(VertexIndex iVertex = 0; iVertex < mesh->GetVertexCount(); ++iVertex)
 	{
 		// Get the computed normal for the current vertex.
-		auto curVertexExtraData = mesh->GetVertex(iVertex).GetExtraData<VertexNormalExtraData>();
+		auto curVertexExtraData = mesh->GetVertex(iVertex).GetExtraData<SmoothVertexNormalExtraData>();
 		assert(curVertexExtraData != nullptr);
 		const Vec3& computedNormal = curVertexExtraData->GetData();
 

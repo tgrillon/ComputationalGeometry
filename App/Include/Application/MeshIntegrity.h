@@ -13,15 +13,15 @@ struct MeshIntegrity
 	enum struct ExitCode : uint8_t
 	{
 		MeshOK = 0,
-		VertexHasNullIncidentFace,
-		VertexNotInFace,
-		FaceHasNullVertex,
-		FaceNeighborNotReciprocal,
-		FaceHasDuplicatedVertices,
-		FaceIsItsOwnNeighbor,
+		VertexHasNullIncidentTriangle,
+		VertexNotInTriangle,
+		TriangleHasNullVertex,
+		TriangleNeighborNotReciprocal,
+		TriangleHasDuplicatedVertices,
+		TriangleIsItsOwnNeighbor,
 		InvalidVertexIndex,
-		InvalidIncidentFaceIndex,
-		InvalidNeighborFaceIndex,
+		InvalidIncidentTriangleIndex,
+		InvalidNeighborTriangleIndex,
 	};
 
 	/// @brief Check the integrity of the mesh.

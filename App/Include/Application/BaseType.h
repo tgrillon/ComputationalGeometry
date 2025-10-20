@@ -8,7 +8,7 @@ namespace BaseType
 {
 using EdgeIndex = uint8_t;
 using VertexIndex = uint32_t;
-using FaceIndex = uint32_t;
+using TriangleIndex = uint32_t;
 using ScalarType = double;
 
 using iVec2 = glm::ivec2;

@@ -13,16 +13,16 @@ Mesh::VerticesAroundVertexCirculator::VerticesAroundVertexCirculator(const Mesh&
 {
 	// Get the vertex data of the central vertex.
 	const Vertex& curVertex = m_Mesh.GetVertexData(m_CentralVertexIdx);
-	assert(curVertex.IncidentFaceIdx != -1); // Its incident face index must be set.
+	assert(curVertex.IncidentTriangleIdx != -1); // Its incident triangle index must be set.
 
-	// Set the current face index.
-	m_CurFaceIdx = curVertex.IncidentFaceIdx;
+	// Set the current triangle index.
+	m_CurTriangleIdx = curVertex.IncidentTriangleIdx;
 
-	// Get the current face data.
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-	// Get the local index of the central mesh in the current face.
+	// Get the current triangle data.
+	const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
+	// Get the local index of the central mesh in the current triangle.
 	int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
-	assert(localIdx != -1); // The current face must contains the central vertex.
+	assert(localIdx != -1); // The current triangle must contains the central vertex.
 
 	//  Set the current vertex index.
 	m_CurVertexLocalIdx = IndexHelpers::Previous[localIdx];
@@ -34,7 +34,7 @@ bool Mesh::VerticesAroundVertexCirculator::operator==(const Mesh::VerticesAround
 	// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)
 	bool hasCompletedFullCirculation = m_IsInCCWOrder && m_IsActive && m_CurVertexIdx == rhs.m_CurVertexIdx;
 	// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)
-	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurFaceIdx == -1;
+	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurTriangleIdx == -1;
 	return hasCompletedFullCirculation || hasReachedBoundaryEnd;
 }
 
@@ -51,18 +51,18 @@ Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::oper
 	{
 		int neighborFaceIdx;
 		{
-			const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+			const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 			neighborFaceIdx = curFace.Neighbors[IndexHelpers::Previous[m_CurVertexLocalIdx]];
 		}
 		if(neighborFaceIdx == -1)
-		{ // If there is no next face, we reached a boundary.
+		{ // If there is no next triangle, we reached a boundary.
 			while(m_JumpCount > 0)
-			{ // We need to go back to the previous face and start going in the opposite direction.
-				const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+			{ // We need to go back to the previous triangle and start going in the opposite direction.
+				const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 				int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
 				assert(localIdx != -1);
-				m_PrevFaceIdx = m_CurFaceIdx;
-				m_CurFaceIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
+				m_PrevTriangleIdx = m_CurTriangleIdx;
+				m_CurTriangleIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
 				m_JumpCount--;
 			}
 
@@ -74,19 +74,19 @@ Mesh::VerticesAroundVertexCirculator& Mesh::VerticesAroundVertexCirculator::oper
 		{
 			// Update the jump count.
 			m_JumpCount++;
-			m_PrevFaceIdx = m_CurFaceIdx;
-			m_CurFaceIdx = neighborFaceIdx;
+			m_PrevTriangleIdx = m_CurTriangleIdx;
+			m_CurTriangleIdx = neighborFaceIdx;
 
 			UpdateCurVertexIndexInCCWOrder();
 		}
 	}
 	else // We are going in the clock-wise direction.
 	{
-		m_PrevFaceIdx = m_CurFaceIdx;
-		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
-		m_CurFaceIdx = prevFace.Neighbors[IndexHelpers::Next[m_CurVertexLocalIdx]];
+		m_PrevTriangleIdx = m_CurTriangleIdx;
+		const Triangle& prevFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
+		m_CurTriangleIdx = prevFace.Neighbors[IndexHelpers::Next[m_CurVertexLocalIdx]];
 
-		if(m_CurFaceIdx == -1)
+		if(m_CurTriangleIdx == -1)
 			return *this; // We reached a boundary, we stop here.
 
 		UpdateCurVertexIndexInCWOrder();
@@ -107,22 +107,22 @@ void Mesh::VerticesAroundVertexCirculator::SetIsActive(bool value)
 
 void Mesh::VerticesAroundVertexCirculator::UpdateCurVertexIndexInCWOrder()
 {
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+	const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 	int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
 	assert(localIdx != -1);
 
-	// Update the vertex and face informations.
+	// Update the vertex and triangle informations.
 	m_CurVertexLocalIdx = IndexHelpers::Next[localIdx];
 	m_CurVertexIdx = curFace.Vertices[m_CurVertexLocalIdx];
 }
 
 void Mesh::VerticesAroundVertexCirculator::UpdateCurVertexIndexInCCWOrder()
 {
-	const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+	const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 	int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
 	assert(localIdx != -1);
 
-	// Update the vertex and face informations.
+	// Update the vertex and triangle informations.
 	m_CurVertexLocalIdx = IndexHelpers::Previous[localIdx];
 	m_CurVertexIdx = curFace.Vertices[m_CurVertexLocalIdx];
 }
@@ -152,42 +152,42 @@ Mesh::VerticesAroundVertexRange Mesh::GetVerticesAroundVertex(const VertexIndex 
 	return VerticesAroundVertexRange(*this, index);
 }
 
-//==========================FacesAroundVertexCirculator==========================//
-Mesh::FacesAroundVertexCirculator::FacesAroundVertexCirculator(const Mesh& mesh, const VertexIndex index)
+//==========================TrianglesAroundVertexCirculator==========================//
+Mesh::TrianglesAroundVertexCirculator::TrianglesAroundVertexCirculator(const Mesh& mesh, const VertexIndex index)
 	: m_Mesh(mesh)
 	, m_CentralVertexIdx(index)
 {
 	// Get the vertex data of the central vertex.
 	const Vertex& curVertex = m_Mesh.GetVertexData(m_CentralVertexIdx);
-	assert(curVertex.IncidentFaceIdx != -1); // Its incident face index must be set.
+	assert(curVertex.IncidentTriangleIdx != -1); // Its incident triangle index must be set.
 
-	// Set the current face index.
-	m_CurFaceIdx = curVertex.IncidentFaceIdx;
-	m_PrevFaceIdx = -1;
+	// Set the current triangle index.
+	m_CurTriangleIdx = curVertex.IncidentTriangleIdx;
+	m_PrevTriangleIdx = -1;
 	m_JumpCount++;
 }
 
-bool Mesh::FacesAroundVertexCirculator::operator==(const Mesh::FacesAroundVertexCirculator& rhs) const
+bool Mesh::TrianglesAroundVertexCirculator::operator==(const Mesh::TrianglesAroundVertexCirculator& rhs) const
 {
 	// Exit for counter clock-wise travel (case where the vertex neighborhood form a ring)
-	bool hasCompletedFullCirculation = m_IsInCCWOrder && m_IsActive && m_CurFaceIdx == rhs.m_CurFaceIdx;
+	bool hasCompletedFullCirculation = m_IsInCCWOrder && m_IsActive && m_CurTriangleIdx == rhs.m_CurTriangleIdx;
 	// Exit for clock-wise travel (case where the vertex neighborhood is open and has a boundary)
-	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurFaceIdx == -1;
+	bool hasReachedBoundaryEnd = !m_IsInCCWOrder && m_CurTriangleIdx == -1;
 	return hasCompletedFullCirculation || hasReachedBoundaryEnd;
 }
 
-bool Mesh::FacesAroundVertexCirculator::operator!=(const Mesh::FacesAroundVertexCirculator& rhs) const
+bool Mesh::TrianglesAroundVertexCirculator::operator!=(const Mesh::TrianglesAroundVertexCirculator& rhs) const
 {
 	return !operator==(rhs);
 }
 
-Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++()
+Mesh::TrianglesAroundVertexCirculator& Mesh::TrianglesAroundVertexCirculator::operator++()
 {
 	m_IsActive = true;
 
 	int neighborFaceIdx;
 	{
-		const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+		const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 		int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
 		assert(localIdx != -1);
 		neighborFaceIdx = curFace.Neighbors[IndexHelpers::Next[localIdx]];
@@ -196,14 +196,14 @@ Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++
 	if(m_IsInCCWOrder)
 	{
 		if(neighborFaceIdx == -1)
-		{ // If there is no next face, we reached a boundary.
+		{ // If there is no next triangle, we reached a boundary.
 			while(m_JumpCount > 0)
-			{ // We need to go back to the previous face and start going in the opposite direction.
-				const Face& curFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+			{ // We need to go back to the previous triangle and start going in the opposite direction.
+				const Triangle& curFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 				int localIdx = GetVertexLocalIndex(curFace, m_CentralVertexIdx);
 				assert(localIdx != -1);
-				m_PrevFaceIdx = m_CurFaceIdx;
-				m_CurFaceIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
+				m_PrevTriangleIdx = m_CurTriangleIdx;
+				m_CurTriangleIdx = curFace.Neighbors[IndexHelpers::Previous[localIdx]];
 				m_JumpCount--;
 			}
 
@@ -214,54 +214,54 @@ Mesh::FacesAroundVertexCirculator& Mesh::FacesAroundVertexCirculator::operator++
 		{
 			// Update the jump count.
 			m_JumpCount++;
-			m_PrevFaceIdx = m_CurFaceIdx;
-			m_CurFaceIdx = neighborFaceIdx;
+			m_PrevTriangleIdx = m_CurTriangleIdx;
+			m_CurTriangleIdx = neighborFaceIdx;
 		}
 	}
 	else // We are going in the clock-wise direction.
 	{
-		m_PrevFaceIdx = m_CurFaceIdx;
-		const Face& prevFace = m_Mesh.GetFaceData(m_CurFaceIdx);
+		m_PrevTriangleIdx = m_CurTriangleIdx;
+		const Triangle& prevFace = m_Mesh.GetTriangleData(m_CurTriangleIdx);
 		int localIdx = GetVertexLocalIndex(prevFace, m_CentralVertexIdx);
 		assert(localIdx != -1);
-		m_CurFaceIdx = prevFace.Neighbors[IndexHelpers::Previous[localIdx]];
+		m_CurTriangleIdx = prevFace.Neighbors[IndexHelpers::Previous[localIdx]];
 	}
 
 	return *this;
 }
 
-FaceIndex Mesh::FacesAroundVertexCirculator::operator*() const
+TriangleIndex Mesh::TrianglesAroundVertexCirculator::operator*() const
 {
-	return m_CurFaceIdx;
+	return m_CurTriangleIdx;
 }
 
-void Mesh::FacesAroundVertexCirculator::SetIsActive(bool value)
+void Mesh::TrianglesAroundVertexCirculator::SetIsActive(bool value)
 {
 	m_IsActive = value;
 }
 
-//==========================FacesAroundVertexRange==========================//
-Mesh::FacesAroundVertexRange::FacesAroundVertexRange(const Mesh& mesh, const VertexIndex index)
+//==========================TrianglesAroundVertexRange==========================//
+Mesh::TrianglesAroundVertexRange::TrianglesAroundVertexRange(const Mesh& mesh, const VertexIndex index)
 	: m_Mesh(mesh)
 	, m_VertexIdx(index)
 {}
 
-Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexRange::begin() const
+Mesh::TrianglesAroundVertexCirculator Mesh::TrianglesAroundVertexRange::begin() const
 {
-	Mesh::FacesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
+	Mesh::TrianglesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
 	circ.SetIsActive(false);
 	return circ;
 }
 
-Mesh::FacesAroundVertexCirculator Mesh::FacesAroundVertexRange::end() const
+Mesh::TrianglesAroundVertexCirculator Mesh::TrianglesAroundVertexRange::end() const
 {
-	Mesh::FacesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
+	Mesh::TrianglesAroundVertexCirculator circ(m_Mesh, m_VertexIdx);
 	circ.SetIsActive(true);
 	return circ;
 }
 
-Mesh::FacesAroundVertexRange Mesh::GetFacesAroundVertex(const VertexIndex index) const
+Mesh::TrianglesAroundVertexRange Mesh::GetTrianglesAroundVertex(const VertexIndex index) const
 {
-	return FacesAroundVertexRange(*this, index);
+	return TrianglesAroundVertexRange(*this, index);
 }
 } // namespace Data::Surface

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Application/ExtraDataType.h"
 #include "Application/Mesh.h"
 #include "Application/PrimitiveProxy.h"
 
@@ -11,14 +12,14 @@ inline Data::Surface::Mesh CreateValidMesh()
 	Data::Surface::Mesh mesh;
 
 	// Add vertices
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentFaceIdx = { 1 } });
+	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentTriangleIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentTriangleIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentTriangleIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentTriangleIdx = { 1 } });
 
 	// Add faces
-	mesh.AddFace({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
-	mesh.AddFace({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
+	mesh.AddTriangle({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
+	mesh.AddTriangle({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
 
 	return mesh;
 }
@@ -29,46 +30,37 @@ inline Data::Surface::Mesh CreateValidMeshWithED()
 	Data::Surface::Mesh mesh;
 
 	// Add vertices
-	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentFaceIdx = { 0 } });
-	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentFaceIdx = { 1 } });
+	mesh.AddVertex({ .Position = { 0., 0., 0. }, .IncidentTriangleIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 1., 0., 0. }, .IncidentTriangleIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 1., 1., 0. }, .IncidentTriangleIdx = { 0 } });
+	mesh.AddVertex({ .Position = { 0., 1., 0. }, .IncidentTriangleIdx = { 1 } });
 
-	// Add extra data containers for each vertex.
-	mesh.AddVerticesExtraDataContainer();
+	// Add triangles
+	mesh.AddTriangle({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
+	mesh.AddTriangle({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
 
-	// Get Vertex proxies to add extra data.
-	Data::Primitive::VertexProxy v0 = mesh.GetVertex(0);
-	Data::Primitive::VertexProxy v1 = mesh.GetVertex(1);
-	Data::Primitive::VertexProxy v2 = mesh.GetVertex(2);
-	Data::Primitive::VertexProxy v3 = mesh.GetVertex(3);
+	// Add extra data containers for each triangle.
+	mesh.AddTrianglesExtraDataContainer();
 
-	// Add vertices texCoords
-	v0.GetOrCreateExtraData<BaseType::Vec2>() = { 0, 0 };
-	v1.GetOrCreateExtraData<BaseType::Vec2>() = { 1, 0 };
-	v2.GetOrCreateExtraData<BaseType::Vec2>() = { 1, 1 };
-	v3.GetOrCreateExtraData<BaseType::Vec2>() = { 0, 1 };
+	{ // Add vertices texCoords and normal for the first triangle
+		Data::Primitive::TriangleProxy triangle = mesh.GetTriangle(0);
+		auto& texCoords = triangle.GetOrCreateExtraData<Data::ExtraData::VerticesTexCoordsExtraData>();
+		texCoords.SetVertexTexCoords(BaseType::Vec2{ 0.0, 0.0 }, 0);
+		texCoords.SetVertexTexCoords(BaseType::Vec2{ 1.0, 0.0 }, 1);
+		texCoords.SetVertexTexCoords(BaseType::Vec2{ 1.0, 1.0 }, 2);
+		auto& triangleNormal = triangle.GetOrCreateExtraData<Data::ExtraData::TriangleNormalExtraData>();
+		triangleNormal.GetData() = BaseType::Vec3{ 1.0, 0.0, 0.0 };
+	}
 
-	// Add vertices normal
-	v0.GetOrCreateExtraData<BaseType::Vec3>() = { 0, 0, 1 };
-	v1.GetOrCreateExtraData<BaseType::Vec3>() = { 0, 0, 1 };
-	v2.GetOrCreateExtraData<BaseType::Vec3>() = { 0, 0, 1 };
-	v3.GetOrCreateExtraData<BaseType::Vec3>() = { 0, 0, 1 };
-
-	// Add faces
-	mesh.AddFace({ .Vertices = { 0, 1, 2 }, .Neighbors = { -1, 1, -1 } });
-	mesh.AddFace({ .Vertices = { 0, 2, 3 }, .Neighbors = { -1, -1, 0 } });
-
-	// Add extra data containers for each face.
-	mesh.AddFacesExtraDataContainer();
-
-	// Get Face proxies to add extra data.
-	Data::Primitive::FaceProxy f0 = mesh.GetFace(0);
-	Data::Primitive::FaceProxy f1 = mesh.GetFace(1);
-
-	// Add face normals
-	f0.GetOrCreateExtraData<BaseType::Vec3>() = { 0, 0, 1 };
-	f1.GetOrCreateExtraData<BaseType::Vec3>() = { 0, 0, 1 };
+	{ // Add vertices texCoords and normal for the second triangle
+		Data::Primitive::TriangleProxy triangle = mesh.GetTriangle(1);
+		auto& texCoords = triangle.GetOrCreateExtraData<Data::ExtraData::VerticesTexCoordsExtraData>();
+		texCoords.SetVertexTexCoords(BaseType::Vec2{ 0.0, 0.0 }, 0);
+		texCoords.SetVertexTexCoords(BaseType::Vec2{ 1.0, 1.0 }, 1);
+		texCoords.SetVertexTexCoords(BaseType::Vec2{ 0.0, 1.0 }, 2);
+		auto& triangleNormal = triangle.GetOrCreateExtraData<Data::ExtraData::TriangleNormalExtraData>();
+		triangleNormal.GetData() = BaseType::Vec3{ 1.0, 0.0, 0.0 };
+	}
 
 	return mesh;
 }
@@ -95,12 +87,12 @@ inline Data::Surface::Mesh CreateGridMesh(int nRow = 1, int nCol = 1)
 				int prevRow = iRow - 1;
 				int prevCol = iCol - 1;
 				int nVertexCol = nCol + 1;
-				mesh.AddFace({ .Vertices = { prevRow * nVertexCol + prevCol,
-											 prevRow * nVertexCol + iCol,
-											 iRow * nVertexCol + iCol } });
-				mesh.AddFace({ .Vertices = { prevRow * nVertexCol + prevCol,
-											 iRow * nVertexCol + iCol,
-											 iRow * nVertexCol + prevCol } });
+				mesh.AddTriangle({ .Vertices = { prevRow * nVertexCol + prevCol,
+												 prevRow * nVertexCol + iCol,
+												 iRow * nVertexCol + iCol } });
+				mesh.AddTriangle({ .Vertices = { prevRow * nVertexCol + prevCol,
+												 iRow * nVertexCol + iCol,
+												 iRow * nVertexCol + prevCol } });
 			}
 		}
 	}
