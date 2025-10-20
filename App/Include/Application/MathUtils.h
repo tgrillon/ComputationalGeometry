@@ -7,22 +7,25 @@
 
 namespace Math
 {
-constexpr bool EqualNear(float a, float b, float eps = 1e-6)
+/// @brief Helper function to compare two floating point variables.
+constexpr bool EqualNear(float lhs, float rhs, float eps = 1e-6)
 {
-	float diff = std::fabs(a - b);
+	float diff = std::fabs(lhs - rhs);
 	if(diff <= eps)
 		return true;
 
-	return diff <= (std::max(std::fabs(a), std::fabs(b)) * eps);
+	return diff <= (std::max(std::fabs(lhs), std::fabs(rhs)) * eps);
 }
 
-constexpr bool EqualNear(BaseType::Vec2 a, BaseType::Vec2 b, float eps = 1e-6)
+/// @brief Helper function to compare two Vec2 variables .
+constexpr bool EqualNear(BaseType::Vec2 lhs, BaseType::Vec2 rhs, float eps = 1e-6)
 {
-	return EqualNear(a.x, b.x, eps) && EqualNear(a.y, b.y, eps);
+	return EqualNear(lhs.x, rhs.x, eps) && EqualNear(lhs.y, rhs.y, eps);
 }
 
-constexpr bool EqualNear(BaseType::Vec3 a, BaseType::Vec3 b, float eps = 1e-6)
+/// @brief Helper function to compare two Vec3 variables.
+constexpr bool EqualNear(BaseType::Vec3 lhs, BaseType::Vec3 rhs, float eps = 1e-6)
 {
-	return EqualNear(a.x, b.x, eps) && EqualNear(a.y, b.y, eps) && EqualNear(a.z, b.z, eps);
+	return EqualNear(lhs.x, rhs.x, eps) && EqualNear(lhs.y, rhs.y, eps) && EqualNear(lhs.z, rhs.z, eps);
 }
 } // namespace Math
