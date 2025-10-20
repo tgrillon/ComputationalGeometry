@@ -240,7 +240,7 @@ void Mesh::ComputeTriangleNormals(bool computeSmoothVertexNormals)
 		{
 			// Get the current vertex and create the extra data that will handle the smooth vertex normal.
 			const VertexProxy& curVertex = GetVertex(iVertex);
-			VertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<VertexNormalExtraData>();
+			SmoothVertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<SmoothVertexNormalExtraData>();
 
 			// Get the precomputed flat vertex normals.
 			auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();

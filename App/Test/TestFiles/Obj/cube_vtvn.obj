@@ -13,9 +13,6 @@
 #                                           6
 #                                        bottom
 
-# Material defined in separate file.
-mtllib cube.mtl
-
 g cube
 
 # Vertices
@@ -62,9 +59,6 @@ vt 0.25 0.25  # 11 b(3,6)
 vt 0.50 0.25  # 12 c(3,6)
 vt 0.25 0     # 13 f(3)
 vt 0.50 0     # 14 g(3)
-
-# Define material for the following faces
-usemtl texture
 
 # Faces v/vt/vn
 #   3-------2

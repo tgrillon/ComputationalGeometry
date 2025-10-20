@@ -2,11 +2,13 @@
 
 #include "glm/glm.hpp"
 
+#include <bitset>
 #include <cstdint>
 
 namespace BaseType
 {
 using EdgeIndex = uint8_t;
+using VertexLocalIndex = uint8_t;
 using VertexIndex = uint32_t;
 using TriangleIndex = uint32_t;
 using ScalarType = double;

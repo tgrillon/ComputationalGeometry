@@ -2,16 +2,21 @@
 
 #include "Application/BaseType.h"
 #include "Application/ExtraDataContainer.h"
+#include "Application/ExtraDataType.h"
+#include "Application/PrimitiveProxy.h"
 #include "Core/PrintHelpers.h"
 
 using namespace Data::Surface;
 using namespace Data::Primitive;
 using namespace Data::ExtraData;
+using namespace Utilitary::Primitive;
 using namespace BaseType;
 
+#include <algorithm>
 #include <cassert>
 #include <fstream>
 #include <iostream>
+#include <unordered_set>
 
 namespace Utilitary::Surface
 {
@@ -51,54 +56,102 @@ void MeshExporter::ExportOBJ(const Mesh& mesh, const std::filesystem::path& file
 		file << 'v' << ' ' << curVertex.Position.x << ' ' << curVertex.Position.y << ' ' << curVertex.Position.z << '\n';
 
 	// Write texture coordinates if available.
-	// Assuming texture coordinates are stored as Vec2 in the ExtraDataContainer of each vertex.
-	if(mesh.HasVerticesExtraDataContainer() && mesh.m_VerticesExtraDataContainer[0].Has<Vec2>())
+
+	std::vector<Vec2> uniqueTexCoords;
+	if(mesh.HasTrianglesExtraDataContainer() && mesh.m_TrianglesExtraDataContainer[0].Has<VerticesTexCoordsExtraData>())
 	{
-		for(auto&& curVertexED : mesh.m_VerticesExtraDataContainer)
+		std::unordered_set<Vec2> texCoords;
+		for(auto&& curTriangleED : mesh.m_TrianglesExtraDataContainer)
 		{
-			const Vec2* texCoords = curVertexED.Get<Vec2>();
-			assert(texCoords != nullptr && "All vertices must have texture coordinates if one has it");
-			file << "vt" << ' ' << texCoords->x << ' ' << texCoords->y << '\n';
+			auto texCoordsED = curTriangleED.Get<VerticesTexCoordsExtraData>();
+			assert(texCoordsED != nullptr && "All vertices must have texture coordinates if one has it");
+			for(auto&& curTexCoords : texCoordsED->GetData())
+			{
+				texCoords.insert(curTexCoords);
+			}
+		}
+
+		uniqueTexCoords.insert(uniqueTexCoords.begin(), texCoords.begin(), texCoords.end());
+		for(auto&& curTexCoords : uniqueTexCoords)
+		{
+			file << "vt" << ' ' << curTexCoords.x << ' ' << curTexCoords.y << '\n';
 		}
 	}
 
-	// Write vertex normals if available.
-	// Assuming normals are stored as Vec3 in the ExtraDataContainer of each vertex.
-	if(mesh.HasVerticesExtraDataContainer() && mesh.m_VerticesExtraDataContainer[0].Has<Vec3>())
+	bool hasTexCoords = !uniqueTexCoords.empty();
+
+	// Write face normals if available.
+	std::vector<Vec3> uniqueTriangleNormals;
+	if(mesh.HasTrianglesExtraDataContainer() && mesh.m_TrianglesExtraDataContainer[0].Has<TriangleNormalExtraData>())
 	{
-		for(auto&& curVertexED : mesh.m_VerticesExtraDataContainer)
+		std::unordered_set<Vec3> triangleNormals;
+		for(auto&& curTriangleED : mesh.m_TrianglesExtraDataContainer)
 		{
-			const Vec3* vertexNormal = curVertexED.Get<Vec3>();
-			assert(vertexNormal != nullptr && "All vertices must have a vertex normal if one has it");
-			file << "vn" << ' ' << vertexNormal->x << ' ' << vertexNormal->y << ' ' << vertexNormal->z << '\n';
+			auto triangleNormalED = curTriangleED.Get<TriangleNormalExtraData>();
+			assert(triangleNormalED != nullptr && "All vertices must have a triangle normal if one has it");
+			const Vec3& triangleNormal = triangleNormalED->GetData();
+			triangleNormals.insert(triangleNormal);
+		}
+
+		uniqueTriangleNormals.insert(uniqueTriangleNormals.begin(), triangleNormals.begin(), triangleNormals.end());
+		for(auto&& curTriangleNormal : uniqueTriangleNormals)
+		{
+			file << "vn" << ' ' << curTriangleNormal.x << ' ' << curTriangleNormal.y << ' ' << curTriangleNormal.z
+				 << '\n';
 		}
 	}
 
-	for(auto&& curFace : mesh.m_Faces)
+	bool hasNormals = !uniqueTriangleNormals.empty();
+
+	for(TriangleIndex iTriangle = 0; iTriangle < mesh.GetTriangleCount(); ++iTriangle)
 	{
+		const Triangle& curTriangle = mesh.m_Triangles[iTriangle];
+		auto&& curContainer = mesh.m_TrianglesExtraDataContainer[iTriangle];
 		file << 'f';
-		for(auto vertexIdx : curFace.Vertices)
+		for(auto curVertexIdx : curTriangle.Vertices)
 		{
 			// OBJ format uses 1-based indexing
-			file << ' ' << (vertexIdx + 1);
+			file << ' ' << (curVertexIdx + 1);
 
 			// Check if texture coordinates and normals are available
-			bool hasTexCoords = mesh.HasVerticesExtraDataContainer() && mesh.m_VerticesExtraDataContainer[0].Has<Vec2>();
-			bool hasNormals = mesh.HasVerticesExtraDataContainer() && mesh.m_VerticesExtraDataContainer[0].Has<Vec3>();
-
 			if(hasTexCoords || hasNormals)
 			{
 				file << '/';
 				if(hasTexCoords)
 				{
-					// Texture coordinate index is the same as vertex index in this case
-					file << (vertexIdx + 1);
+					auto texCoordsED = curContainer.Get<VerticesTexCoordsExtraData>();
+					assert(texCoordsED != nullptr);
+					int curVertexLocalIdx = GetVertexLocalIndex(curTriangle, curVertexIdx);
+					assert(curVertexLocalIdx != -1);
+					const Vec2& curTexCoods = texCoordsED->GetVertexTexCoords(curVertexLocalIdx);
+					ptrdiff_t position = std::find_if(
+											 std::begin(uniqueTexCoords),
+											 std::end(uniqueTexCoords),
+											 [curTexCoods](const Vec2& rhs)
+											 {
+												 return curTexCoods == rhs;
+											 })
+						- std::begin(uniqueTexCoords);
+					assert(static_cast<size_t>(position) < uniqueTexCoords.size());
+					file << static_cast<int>(position + 1);
 				}
+
 				if(hasNormals)
 				{
+					auto triangleNormalED = curContainer.Get<TriangleNormalExtraData>();
+					assert(triangleNormalED != nullptr);
+					const Vec3& triangleNormal = triangleNormalED->GetData();
 					file << '/';
-					// Normal index is the same as vertex index in this case
-					file << (vertexIdx + 1);
+					ptrdiff_t position = std::find_if(
+											 std::begin(uniqueTriangleNormals),
+											 std::end(uniqueTriangleNormals),
+											 [triangleNormal](const Vec3& rhs)
+											 {
+												 return triangleNormal == rhs;
+											 })
+						- std::begin(uniqueTriangleNormals);
+					assert(static_cast<size_t>(position) < uniqueTriangleNormals.size());
+					file << static_cast<int>(position + 1);
 				}
 			}
 		}

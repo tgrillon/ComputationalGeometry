@@ -1,5 +1,6 @@
 #include "Application/MeshLoader.h"
 
+#include "Application/ExtraDataType.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/VertexPair.h"
 #include "Core/PrintHelpers.h"
@@ -12,14 +13,15 @@
 
 using namespace Data::Surface;
 using namespace Data::Primitive;
+using namespace Data::ExtraData;
 using namespace BaseType;
 
 namespace
 {
-// Helper lambda to skip comments and empty lines
+/// @brief Helper function to skip comments and empty lines.
 void SkipCommentsAndWhitespace(std::ifstream& file)
 {
-	while(file.peek() == '#' || file.peek() == '\n' || file.peek() == '\r')
+	while(file.peek() == '#' || file.peek() == '\n' || file.peek() == '\r' || file.peek() == ' ')
 	{
 		if(file.peek() == '#')
 		{
@@ -32,6 +34,26 @@ void SkipCommentsAndWhitespace(std::ifstream& file)
 			file.get();
 		}
 	}
+}
+
+/// @brief Helper function to read the next integer within a file.
+int ReadNextInteger(std::ifstream& file)
+{
+	char buffer[16];
+	file >> std::ws; // Skip leading whitespace
+
+	// Read until first '/' or whitespace
+	int i = 0;
+	while(file.peek() != EOF && !std::isspace(file.peek()) && file.peek() != '/')
+	{
+		buffer[i++] = file.get();
+	}
+	buffer[i] = '\0';
+	if(buffer[0] == '\0')
+		return -1;
+
+	// Convert string to index
+	return std::stoi(buffer) - 1;
 }
 } // namespace
 
@@ -73,17 +95,33 @@ std::unique_ptr<Mesh> MeshLoader::LoadOFF(const std::filesystem::path& filepath)
 		file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
 	}
 
-	// Map to store edges and their corresponding face and edge index
-	std::unordered_map<VertexPair, std::pair<FaceIndex, EdgeIndex>> neighborMap;
+	// Map to store edges and their corresponding triangle and edge index
+	std::unordered_map<VertexPair, std::pair<TriangleIndex, EdgeIndex>> neighborMap;
 
-	mesh->m_Faces.resize(faceCount);
-	for(int iFace = 0; iFace < faceCount; ++iFace)
+	// Set neighboring faces using the edges
+	auto SetFacesNeigbhor =
+		[&](TriangleIndex faceIdx, VertexIndex firstVertexIdx, VertexIndex secondVertexIdx, EdgeIndex edgeIdx)
 	{
-		Face& curFace = mesh->m_Faces[iFace];
+		if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
+		{
+			neighborMap[{ firstVertexIdx, secondVertexIdx }] = { faceIdx, edgeIdx };
+		}
+		else // The edge with firstVertex and secondVertex is already registered in map
+		{
+			auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
+			mesh->m_Triangles[faceNeighborIdx].Neighbors[neighborEdgeIdx] = faceIdx;
+			mesh->m_Triangles[faceIdx].Neighbors[edgeIdx] = faceNeighborIdx;
+		}
+	};
+
+	mesh->m_Triangles.resize(faceCount);
+	for(int iTriangle = 0; iTriangle < faceCount; ++iTriangle)
+	{
+		Triangle& curFace = mesh->m_Triangles[iTriangle];
 
 		SkipCommentsAndWhitespace(file);
 
-		// Set the face index
+		// Set the triangle index
 		file >> vertexCount;
 
 		for(int iEdge = 0; iEdge < vertexCount; ++iEdge)
@@ -94,39 +132,24 @@ std::unique_ptr<Mesh> MeshLoader::LoadOFF(const std::filesystem::path& filepath)
 			// Get pointers to the vertex.
 			Vertex& curVertex = mesh->m_Vertices[curVertexIdx];
 
-			// Set IncidentFaceIdx for the vertex if it's not already the case.
-			if(curVertex.IncidentFaceIdx == -1)
-				curVertex.IncidentFaceIdx = iFace;
+			// Set IncidentTriangleIdx for the vertex if it's not already the case.
+			if(curVertex.IncidentTriangleIdx == -1)
+				curVertex.IncidentTriangleIdx = iTriangle;
 
-			// Set vertices of the face.
+			// Set vertices of the triangle.
 			curFace.Vertices[iEdge] = curVertexIdx;
 		}
 
-		// Set neighboring faces using the edges
-		auto SetFacesNeigbhor = [&](VertexIndex firstVertexIdx, VertexIndex secondVertexIdx, uint8_t edgeIdx)
-		{
-			if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
-			{
-				neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iFace, edgeIdx };
-			}
-			else // The edge with firstVertex and secondVertex is already registered in map
-			{
-				auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
-				mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iFace;
-				curFace.Neighbors[edgeIdx] = faceNeighborIdx;
-			}
-		};
-
-		const VertexIndex v0Idx = static_cast<VertexIndex>(curFace.Vertices[0]);
-		const VertexIndex v1Idx = static_cast<VertexIndex>(curFace.Vertices[1]);
-		const VertexIndex v2Idx = static_cast<VertexIndex>(curFace.Vertices[2]);
+		const VertexIndex iVertex0 = static_cast<VertexIndex>(curFace.Vertices[0]);
+		const VertexIndex iVertex1 = static_cast<VertexIndex>(curFace.Vertices[1]);
+		const VertexIndex iVertex2 = static_cast<VertexIndex>(curFace.Vertices[2]);
 
 		// Edge v0-v1
-		SetFacesNeigbhor(v0Idx, v1Idx, 2);
+		SetFacesNeigbhor(iTriangle, iVertex0, iVertex1, 2);
 		// Edge v1-v2
-		SetFacesNeigbhor(v1Idx, v2Idx, 0);
+		SetFacesNeigbhor(iTriangle, iVertex1, iVertex2, 0);
 		// Edge v2-v0
-		SetFacesNeigbhor(v2Idx, v0Idx, 1);
+		SetFacesNeigbhor(iTriangle, iVertex2, iVertex0, 1);
 	}
 
 	file.close();
@@ -153,12 +176,31 @@ std::unique_ptr<Mesh> MeshLoader::LoadOBJ(const std::filesystem::path& filepath)
 
 	auto mesh = std::make_unique<Mesh>();
 
-	// Map to store edges and their corresponding face and edge index
-	std::unordered_map<VertexPair, std::pair<FaceIndex, EdgeIndex>> neighborMap;
+	// Map to store edges and their corresponding triangle and edge index.
+	std::unordered_map<VertexPair, std::pair<TriangleIndex, EdgeIndex>> neighborMap;
+
+	// While store texture coordinates informations.
+	std::vector<Vec2> texCoords;
+	// While store triangle (flat) normal informations.
+	std::vector<Vec3> flatNormals;
+
+	// Set neighboring faces using the edges
+	auto SetFacesNeigbhor =
+		[&](TriangleIndex faceIdx, VertexIndex firstVertexIdx, VertexIndex secondVertexIdx, EdgeIndex edgeIdx)
+	{
+		if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
+		{
+			neighborMap[{ firstVertexIdx, secondVertexIdx }] = { faceIdx, edgeIdx };
+		}
+		else // The edge with firstVertex and secondVertex is already registered in map
+		{
+			auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
+			mesh->m_Triangles[faceNeighborIdx].Neighbors[neighborEdgeIdx] = faceIdx;
+			mesh->m_Triangles[faceIdx].Neighbors[edgeIdx] = faceNeighborIdx;
+		}
+	};
 
 	std::string type;
-	VertexIndex curIndexVt = 0;
-	VertexIndex curIndexVn = 0;
 	while(file.peek() != EOF)
 	{
 		SkipCommentsAndWhitespace(file);
@@ -168,86 +210,99 @@ std::unique_ptr<Mesh> MeshLoader::LoadOBJ(const std::filesystem::path& filepath)
 
 		file >> type;
 		// Process line based on its type
-		if(type == "v")
+		if(type == "mtllib") // Ignore this for now.
+		{
+			std::string ignoreMtlFile;
+			std::getline(file, ignoreMtlFile);
+		}
+		else if(type == "g")
+		{
+			std::string objName;
+			file >> objName;
+			Info("Loading {} object from {} file...", objName, filepath.string());
+
+			SkipCommentsAndWhitespace(file);
+		}
+		else if(type == "v")
 		{ // Vertex position
 			Vertex curVertex;
 			file >> curVertex.Position.x >> curVertex.Position.y >> curVertex.Position.z;
 			mesh->m_Vertices.emplace_back(curVertex);
-			mesh->m_VerticesExtraDataContainer.emplace_back();
+
+			SkipCommentsAndWhitespace(file);
 		}
 		else if(type == "vt")
 		{ // Vertex texture coordinate
-			VertexProxy curVertex = mesh->GetVertex(curIndexVt++);
-			auto texCoordED = curVertex.GetOrCreateExtraData<Vec2>();
-			file >> texCoordED.x >> texCoordED.y;
+			Vec2 vertexTexCoords;
+			file >> vertexTexCoords.x >> vertexTexCoords.y;
+			texCoords.emplace_back(vertexTexCoords);
+
+			SkipCommentsAndWhitespace(file);
 		}
 		else if(type == "vn")
-		{ // Vertex normal
-			VertexProxy curVertex = mesh->GetVertex(curIndexVn++);
-			auto normalED = curVertex.GetOrCreateExtraData<Vec3>();
-			file >> normalED.x >> normalED.y >> normalED.z;
+		{ // Normal vector
+			Vec3 normal;
+			file >> normal.x >> normal.y >> normal.z;
+			flatNormals.emplace_back(normal);
+
+			SkipCommentsAndWhitespace(file);
+		}
+		else if(type == "usemtl") // Ignore this for now.
+		{
+			std::string ignoreMaterialName;
+			std::getline(file, ignoreMaterialName);
 		}
 		else if(type == "f")
-		{ // Face (triangle)
-			FaceIndex curFaceIdx = mesh->GetFaceCount();
-			Face& curFace = mesh->m_Faces.emplace_back();
+		{ // Triangle (triangle)
+			const TriangleIndex curTriangleIdx = mesh->GetTriangleCount();
+			Triangle& curFace = mesh->m_Triangles.emplace_back();
+			auto& curContainer = mesh->m_TrianglesExtraDataContainer.emplace_back();
 
 			// Read three vertices for the triangle
-			for(int iEdge = 0; iEdge < 3; ++iEdge)
+			for(VertexLocalIndex iVertex = 0; iVertex < 3; ++iVertex)
 			{
-				VertexIndex curVertexIdx;
-				char buffer[16];
-				file >> std::ws; // Skip leading whitespace
-
-				// Read until first '/' or whitespace
-				int i = 0;
-				while(file.peek() != EOF && !std::isspace(file.peek()) && file.peek() != '/')
-				{
-					buffer[i++] = file.get();
-				}
-				buffer[i] = '\0';
-
-				// Convert string to index
-				curVertexIdx = std::stoi(buffer) - 1;
-
+				int curVertexIdx = ReadNextInteger(file);
+				assert(curVertexIdx != -1);
 				Vertex& curVertex = mesh->m_Vertices[curVertexIdx];
-				if(curVertex.IncidentFaceIdx == -1)
-					curVertex.IncidentFaceIdx = curFaceIdx;
+				if(curVertex.IncidentTriangleIdx == -1)
+					curVertex.IncidentTriangleIdx = curTriangleIdx;
 
-				curFace.Vertices[iEdge] = curVertexIdx;
+				curFace.Vertices[iVertex] = curVertexIdx;
 
-				// Skip texture/normal indices until next vertex or whitespace
-				while(file.peek() != EOF && !std::isspace(file.peek()))
-				{
-					file.ignore(1);
+				// Skip '/' character.
+				file.ignore(1);
+
+				int texCoordsIdx = ReadNextInteger(file);
+				if(texCoordsIdx != -1)
+				{ // Vertex texCoords index.
+					auto& verticesTexCoords = curContainer.GetOrCreate<VerticesTexCoordsExtraData>();
+					verticesTexCoords.SetVertexTexCoords(texCoords[texCoordsIdx], iVertex);
+				}
+
+				if(file.peek() != '/')
+					continue;
+
+				// Skip '/' character.
+				file.ignore(1);
+
+				int flatNormalIdx = ReadNextInteger(file);
+				if(flatNormalIdx != -1)
+				{ // Flat normal index.
+					auto& faceNormal = curContainer.GetOrCreate<TriangleNormalExtraData>();
+					faceNormal.SetData(flatNormals[flatNormalIdx]);
 				}
 			}
 
-			// Set neighboring faces using the edges
-			auto SetFacesNeigbhor = [&](VertexIndex firstVertexIdx, VertexIndex secondVertexIdx, EdgeIndex edgeIdx)
-			{
-				if(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())
-				{
-					neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFaceIdx, edgeIdx };
-				}
-				else // The edge with firstVertex and secondVertex is already registered in map
-				{
-					auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
-					mesh->m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFaceIdx;
-					curFace.Neighbors[edgeIdx] = faceNeighborIdx;
-				}
-			};
-
-			const VertexIndex v0Idx = static_cast<VertexIndex>(curFace.Vertices[0]);
-			const VertexIndex v1Idx = static_cast<VertexIndex>(curFace.Vertices[1]);
-			const VertexIndex v2Idx = static_cast<VertexIndex>(curFace.Vertices[2]);
+			const VertexIndex iVertex0 = static_cast<VertexIndex>(curFace.Vertices[0]);
+			const VertexIndex iVertex1 = static_cast<VertexIndex>(curFace.Vertices[1]);
+			const VertexIndex iVertex2 = static_cast<VertexIndex>(curFace.Vertices[2]);
 
 			// Edge v0-v1
-			SetFacesNeigbhor(v0Idx, v1Idx, 2);
+			SetFacesNeigbhor(curTriangleIdx, iVertex0, iVertex1, 2);
 			// Edge v1-v2
-			SetFacesNeigbhor(v1Idx, v2Idx, 0);
+			SetFacesNeigbhor(curTriangleIdx, iVertex1, iVertex2, 0);
 			// Edge v2-v0
-			SetFacesNeigbhor(v2Idx, v0Idx, 1);
+			SetFacesNeigbhor(curTriangleIdx, iVertex2, iVertex0, 1);
 		}
 	}
 
