@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sandbox_0',['SandBox',['../index.html',1,'']]]
+  ['meshtoolbox_0',['MeshToolbox',['../index.html',1,'']]]
 ];

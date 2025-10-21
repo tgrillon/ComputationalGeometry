@@ -1,1 +1,1 @@
-genhtml -o /home/runner/work/SandBox/SandBox/build/coverage-AppUnitTests filtered.info --legend
+genhtml -o /home/runner/work/MeshToolBox/MeshToolBox/build/coverage-AppUnitTests filtered.info --legend

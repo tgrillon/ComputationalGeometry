@@ -7,5 +7,5 @@ var searchData=
   ['blitframebuffertoswapchain_4',['BlitFramebufferToSwapchain',['../namespaceRenderer.html#aa14b819ddb2596867be3f191fdaf3f6f',1,'Renderer']]],
   ['blue_5',['Blue',['../namespacePrintHelpers_1_1Color.html#a0480a1522b2ccb3606a3e7acab11c229',1,'PrintHelpers::Color']]],
   ['brightred_6',['BrightRed',['../namespacePrintHelpers_1_1Color.html#a2866067f6d68b99ee320809f8cebcf1d',1,'PrintHelpers::Color']]],
-  ['build_7',['Installation &amp; Build',['../index.html#autotoc_md7',1,'']]]
+  ['build_7',['Installation &amp; Build',['../index.html#autotoc_md9',1,'']]]
 ];
