@@ -84,8 +84,20 @@ public:
 	}
 };
 
+/// @brief Extra data type to store a boolean that tells if the vertex is ona boundary of the mesh.
+class IsBoundaryVertexExtraData : public SingleDataExtraData<bool>
+{
+public:
+	/// @brief Returns the name of the extra data.
+	std::string GetName() override { return "VertexFreeAttrib"; }
+
+	/// @brief Returns true if the vertex is on a boundary, false otherwise.
+	bool IsBoundary() const { return GetData(); }
+};
+
 /// @brief Extra data type to store a triangle material name.
 class TriangleMaterialName : public SingleDataExtraData<std::string>
+
 {
 public:
 	/// @brief Returns the name of the extra data.

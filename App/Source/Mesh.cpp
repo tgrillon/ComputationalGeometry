@@ -186,16 +186,15 @@ bool Mesh::HasTrianglesExtraDataContainer() const
 
 void Mesh::ComputeTriangleNormals(bool normalize)
 {
+	// Add extra data containers for triangles if necessary.
 	if(!HasTrianglesExtraDataContainer())
 		AddTrianglesExtraDataContainer();
-
-	// if(computeSmoothVertexNormals && m_VerticesExtraDataContainer.empty())
-	// 	AddVerticesExtraDataContainer();
 
 	for(TriangleIndex iTriangle = 0; iTriangle < GetTriangleCount(); ++iTriangle)
 	{
 		const TriangleProxy& curTriangle = GetTriangle(iTriangle);
 
+		// Get each vertex position.
 		const Vec3& posA = m_Vertices[curTriangle.GetVertex(0)].Position;
 		const Vec3& posB = m_Vertices[curTriangle.GetVertex(1)].Position;
 		const Vec3& posC = m_Vertices[curTriangle.GetVertex(2)].Position;
@@ -203,72 +202,22 @@ void Mesh::ComputeTriangleNormals(bool normalize)
 		const Vec3 AB = Normalize(posB - posA);
 		const Vec3 AC = Normalize(posC - posA);
 
+		// Compute and store the normal as an extra data to the current triangle.
 		TriangleNormalExtraData& curTriangleNormal = curTriangle.GetOrCreateExtraData<TriangleNormalExtraData>();
 		Vec3 computedNormal = Cross(AB, AC);
 		if(normalize)
 			computedNormal = Normalize(computedNormal);
 		curTriangleNormal.SetData(computedNormal);
-
-		// if(computeSmoothVertexNormals)
-		// {
-		// 	// Compute the remaining vectors of the triangle.
-		// 	const Vec3 BC = glm::normalize(posC - posB);
-		// 	const Vec3 BA = glm::normalize(posA - posB);
-
-		// 	const Vec3 CA = glm::normalize(posA - posC);
-		// 	const Vec3 CB = glm::normalize(posB - posC);
-
-		// 	// Compute each angle (in randian).
-		// 	const float angleA = glm::angle(AB, AC);
-		// 	const float angleB = glm::angle(BC, BA);
-		// 	const float angleC = glm::angle(CA, CB);
-
-		// 	// Get a proxy on each vertex of the triangle.
-		// 	const VertexProxy& vertexA = GetVertex(curTriangle.GetVertex(0));
-		// 	const VertexProxy& vertexB = GetVertex(curTriangle.GetVertex(1));
-		// 	const VertexProxy& vertexC = GetVertex(curTriangle.GetVertex(2));
-
-		// 	// Add the normal weighted by the related angle as an extra data to each vertex.
-		// 	FlatVertexNormalsExtraData& vertexAExtraData = vertexA.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
-		// 	vertexAExtraData.GetData().emplace_back(computedNormal * angleA);
-		// 	FlatVertexNormalsExtraData& vertexBExtraData = vertexB.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
-		// 	vertexBExtraData.GetData().emplace_back(computedNormal * angleB);
-		// 	FlatVertexNormalsExtraData& vertexCExtraData = vertexC.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
-		// 	vertexCExtraData.GetData().emplace_back(computedNormal * angleC);
-		// }
 	}
-
-	// if(computeSmoothVertexNormals)
-	// {
-	// 	// Compute the smooth normal for each vertex of the mesh.
-	// 	for(VertexIndex iVertex = 0; iVertex < GetVertexCount(); ++iVertex)
-	// 	{
-	// 		// Get the current vertex and create the extra data that will handle the smooth vertex normal.
-	// 		const VertexProxy& curVertex = GetVertex(iVertex);
-	// 		SmoothVertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<SmoothVertexNormalExtraData>();
-
-	// 		// Get the precomputed flat vertex normals.
-	// 		auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();
-	// 		assert(vertexFlatNormals != nullptr);
-
-	// 		// Accumulate the flat vertex normals.
-	// 		Vec3 computedNormal = std::accumulate(
-	// 			vertexFlatNormals->GetData().begin(),
-	// 			vertexFlatNormals->GetData().end(),
-	// 			Vec3{ 0., 0., 0. },
-	// 			std::plus<Vec3>());
-
-	// 		curVertexNormal.SetData(glm::normalize(computedNormal));
-	// 		curVertex.EraseExtraData<FlatVertexNormalsExtraData>();
-	// 	}
-	// }
 }
 
 void Mesh::ComputeSmoothVertexNormals(bool normalize)
 {
+	// Add extra data containers for triangles if necessary.
 	if(!HasTrianglesExtraDataContainer())
 		AddTrianglesExtraDataContainer();
 
+	// Add extra data containers for vertices if necessary.
 	if(!HasVerticesExtraDataContainer())
 		AddVerticesExtraDataContainer();
 
@@ -276,6 +225,7 @@ void Mesh::ComputeSmoothVertexNormals(bool normalize)
 	{
 		const TriangleProxy& curTriangle = GetTriangle(iTriangle);
 
+		// Get each vertex position.
 		const Vec3& posA = m_Vertices[curTriangle.GetVertex(0)].Position;
 		const Vec3& posB = m_Vertices[curTriangle.GetVertex(1)].Position;
 		const Vec3& posC = m_Vertices[curTriangle.GetVertex(2)].Position;
@@ -283,12 +233,7 @@ void Mesh::ComputeSmoothVertexNormals(bool normalize)
 		const Vec3 AB = Normalize(posB - posA);
 		const Vec3 AC = Normalize(posC - posA);
 
-		const Vec3 BC = glm::normalize(posC - posB);
-		const Vec3 BA = glm::normalize(posA - posB);
-
-		const Vec3 CA = glm::normalize(posA - posC);
-		const Vec3 CB = glm::normalize(posB - posC);
-
+		// Get or compute the current triangle normal.
 		Vec3 curTriangleNormal;
 		if(curTriangle.HasExtraData<TriangleNormalExtraData>())
 		{
@@ -300,6 +245,13 @@ void Mesh::ComputeSmoothVertexNormals(bool normalize)
 		}
 
 		curTriangleNormal = Normalize(curTriangleNormal);
+
+		// Compute the remaining vectors of the triangle.
+		const Vec3 BC = glm::normalize(posC - posB);
+		const Vec3 BA = glm::normalize(posA - posB);
+
+		const Vec3 CA = glm::normalize(posA - posC);
+		const Vec3 CB = glm::normalize(posB - posC);
 
 		// Compute each angle (in randian).
 		const float angleA = Angle(AB, AC);
@@ -327,11 +279,11 @@ void Mesh::ComputeSmoothVertexNormals(bool normalize)
 		const VertexProxy& curVertex = GetVertex(iVertex);
 		SmoothVertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<SmoothVertexNormalExtraData>();
 
-		// Get the precomputed flat vertex normals.
+		// Get the precomputed flat vertex normals weighted by the angles.
 		auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();
 		assert(vertexFlatNormals != nullptr);
 
-		// Accumulate the flat vertex normals.
+		// Accumulate the weighted flat vertex normals.
 		Vec3 computedNormal = std::accumulate(
 			vertexFlatNormals->GetData().begin(),
 			vertexFlatNormals->GetData().end(),
@@ -341,7 +293,42 @@ void Mesh::ComputeSmoothVertexNormals(bool normalize)
 		if(normalize)
 			computedNormal = Normalize(computedNormal);
 		curVertexNormal.SetData(computedNormal);
+
+		// Erase extra data that is used to compute smooth vertex normal.
 		curVertex.EraseExtraData<FlatVertexNormalsExtraData>();
+	}
+}
+
+void Mesh::UpdateVerticesBoundaryStatus()
+{
+	// Add extra data containers for vertices if necessary.
+	if(!HasVerticesExtraDataContainer())
+		AddVerticesExtraDataContainer();
+
+	for(VertexIndex iVertex = 0; iVertex < GetVertexCount(); ++iVertex)
+	{
+		VertexProxy curVertex = GetVertex(iVertex);
+		auto& curBoundaryStatus = curVertex.GetOrCreateExtraData<IsBoundaryVertexExtraData>();
+		curBoundaryStatus.SetData(false);
+	}
+
+	for(auto&& curTriangle : m_Triangles)
+	{
+		for(EdgeIndex iEdge = 0; iEdge < 3; ++iEdge)
+		{
+			// If the edge opposite to the current vertex is a boundary edge,
+			// set the boundary status on the two incident vertices.
+			if(curTriangle.Neighbors[iEdge] == -1)
+			{
+				VertexProxy nextVertex = GetVertex(curTriangle.Vertices[IndexHelpers::Next[iEdge]]);
+				auto& nextBoundaryStatus = nextVertex.GetOrCreateExtraData<IsBoundaryVertexExtraData>();
+				nextBoundaryStatus.SetData(true);
+
+				VertexProxy previousVertex = GetVertex(curTriangle.Vertices[IndexHelpers::Previous[iEdge]]);
+				auto& previousBoundaryStatus = previousVertex.GetOrCreateExtraData<IsBoundaryVertexExtraData>();
+				previousBoundaryStatus.SetData(true);
+			}
+		}
 	}
 }
 } // namespace Data::Surface

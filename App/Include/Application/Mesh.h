@@ -101,6 +101,9 @@ public:
 	/// @note The computed normals are stored as extra data on each vertex.
 	void ComputeSmoothVertexNormals(bool normalize = false);
 
+	/// @brief Update the boundary status stored on each vertex as an extra data (true = boundary vertex, false = interrior vertex)
+	void UpdateVerticesBoundaryStatus();
+
 public:
 	/// @brief Circulator to iterate over the vertices around a given vertex.
 	/// @note The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.

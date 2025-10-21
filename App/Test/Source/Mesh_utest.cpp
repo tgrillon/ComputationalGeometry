@@ -255,3 +255,20 @@ TEST(MeshTest, ComputeSmoothVertexNormals_ShouldComputeEachSmoothVertexNormal)
 		EXPECT_TRUE(EqualNear(computedNormal, expectedVertexNormals[iVertex], epsilon));
 	}
 }
+
+TEST(MeshTest, UpdateVerticesBoudaryStatus_ShouldUpdateEachVertexBoundaryStatus)
+{
+	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
+
+	mesh.UpdateVerticesBoundaryStatus();
+
+	EXPECT_TRUE(mesh.GetVertex(0).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(1).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(2).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(3).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_FALSE(mesh.GetVertex(4).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(5).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(6).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(7).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+	EXPECT_TRUE(mesh.GetVertex(8).GetExtraData<IsBoundaryVertexExtraData>()->IsBoundary());
+}
