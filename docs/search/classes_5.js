@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layer_0',['Layer',['../classCore_1_1Layer.html',1,'Core']]]
+  ['isboundaryvertexextradata_0',['IsBoundaryVertexExtraData',['../classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html',1,'Data::ExtraData']]]
 ];

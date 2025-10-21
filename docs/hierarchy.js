@@ -6,6 +6,9 @@ var hierarchy =
       [ "Data::ExtraData::SingleDataExtraData< std::vector< BaseType::Vec3 > >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::FlatVertexNormalsExtraData", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html", null ]
       ] ],
+      [ "Data::ExtraData::SingleDataExtraData< bool >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
+        [ "Data::ExtraData::IsBoundaryVertexExtraData", "classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html", null ]
+      ] ],
       [ "Data::ExtraData::SingleDataExtraData< BaseType::Vec3 >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::SmoothVertexNormalExtraData", "classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html", null ],
         [ "Data::ExtraData::TriangleNormalExtraData", "classData_1_1ExtraData_1_1TriangleNormalExtraData.html", null ]

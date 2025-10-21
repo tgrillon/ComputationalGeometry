@@ -31,6 +31,7 @@ var classData_1_1Surface_1_1Mesh =
     [ "HasTrianglesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a", null ],
     [ "HasVerticesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962", null ],
     [ "UpdateMeshConnectivity", "classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88", null ],
+    [ "UpdateVerticesBoundaryStatus", "classData_1_1Surface_1_1Mesh.html#a94c9430f7d1179b2d5c2008db787adc8", null ],
     [ "m_Triangles", "classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61", null ],
     [ "m_TrianglesExtraDataContainer", "classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e", null ],
     [ "m_Vertices", "classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31", null ],

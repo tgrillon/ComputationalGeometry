@@ -10,9 +10,11 @@ var searchData=
   ['invalidincidenttriangleindex_7',['InvalidIncidentTriangleIndex',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acaaba7dabea858a91fd58714a95b923060',1,'Utilitary::Surface::MeshIntegrity']]],
   ['invalidneighbortriangleindex_8',['InvalidNeighborTriangleIndex',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acad3d7ef12441c89e921109b82ed190f11',1,'Utilitary::Surface::MeshIntegrity']]],
   ['invalidvertexindex_9',['InvalidVertexIndex',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125aca57c4f5845e628560cd9b9759d42e3916',1,'Utilitary::Surface::MeshIntegrity']]],
-  ['isdarkmodeenabled_10',['IsDarkModeEnabled',['../classCore_1_1Application.html#a1b5b50442d3986a5009e364739147e9c',1,'Core::Application']]],
-  ['isempty_11',['IsEmpty',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#ad181c51f17aa753e8f8f88ae2e4c6093',1,'Data::ExtraData::ExtraDataContainer']]],
-  ['isresizeable_12',['IsResizeable',['../structCore_1_1WindowSpecification.html#a626608e069747c6727735b7d75d34976',1,'Core::WindowSpecification']]],
-  ['iterator_5fcategory_13',['iterator_category',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a670bb8987db11ff0167b332e4a7dbe1e',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::iterator_category'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#a835d4270c3e9ffcf6bf90379763b0a2a',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::iterator_category']]],
-  ['ivec2_14',['iVec2',['../namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243',1,'BaseType']]]
+  ['isboundary_10',['IsBoundary',['../classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html#a866d62a28fceb66fef658e1f4dc337b8',1,'Data::ExtraData::IsBoundaryVertexExtraData']]],
+  ['isboundaryvertexextradata_11',['IsBoundaryVertexExtraData',['../classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html',1,'Data::ExtraData']]],
+  ['isdarkmodeenabled_12',['IsDarkModeEnabled',['../classCore_1_1Application.html#a1b5b50442d3986a5009e364739147e9c',1,'Core::Application']]],
+  ['isempty_13',['IsEmpty',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#ad181c51f17aa753e8f8f88ae2e4c6093',1,'Data::ExtraData::ExtraDataContainer']]],
+  ['isresizeable_14',['IsResizeable',['../structCore_1_1WindowSpecification.html#a626608e069747c6727735b7d75d34976',1,'Core::WindowSpecification']]],
+  ['iterator_5fcategory_15',['iterator_category',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a670bb8987db11ff0167b332e4a7dbe1e',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::iterator_category'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#a835d4270c3e9ffcf6bf90379763b0a2a',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::iterator_category']]],
+  ['ivec2_16',['iVec2',['../namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243',1,'BaseType']]]
 ];
