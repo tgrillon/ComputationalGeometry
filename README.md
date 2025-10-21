@@ -40,6 +40,7 @@ All changes are automatically validated through the CI pipeline, which runs:
 
 ### Prerequisites
 
+- Env : Linux (Windows and MacOS not supported yet)
 - Compiler: GCC C++20 or later
 - CMake 3.15+
 - Doxygen
