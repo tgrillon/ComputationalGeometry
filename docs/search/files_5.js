@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['mathutils_2eh_0',['MathUtils.h',['../MathUtils_8h.html',1,'']]],
-  ['mathutils_5futest_2ecpp_1',['MathUtils_utest.cpp',['../MathUtils__utest_8cpp.html',1,'']]],
+  ['mathhelpers_2eh_0',['MathHelpers.h',['../MathHelpers_8h.html',1,'']]],
+  ['mathhelpers_5futest_2ecpp_1',['MathHelpers_utest.cpp',['../MathHelpers__utest_8cpp.html',1,'']]],
   ['mesh_2ecpp_2',['Mesh.cpp',['../Mesh_8cpp.html',1,'']]],
   ['mesh_2eh_3',['Mesh.h',['../Mesh_8h.html',1,'']]],
   ['mesh_5futest_2ecpp_4',['Mesh_utest.cpp',['../Mesh__utest_8cpp.html',1,'']]],

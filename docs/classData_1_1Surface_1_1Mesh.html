@@ -200,9 +200,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac47c66a581bcb05e0bb0fa026dc5849a" id="r_ac47c66a581bcb05e0bb0fa026dc5849a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a> () const</td></tr>
 <tr class="memdesc:ac47c66a581bcb05e0bb0fa026dc5849a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the mesh has extra data containers for triangles.  <br /></td></tr>
 <tr class="separator:ac47c66a581bcb05e0bb0fa026dc5849a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96e556c02aaf5f7f1b29d7e1b8030b47" id="r_a96e556c02aaf5f7f1b29d7e1b8030b47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh.html#a96e556c02aaf5f7f1b29d7e1b8030b47">ComputeTriangleNormals</a> (bool computeSmoothVertexNormals=false)</td></tr>
-<tr class="memdesc:a96e556c02aaf5f7f1b29d7e1b8030b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute normal for each triangle of the mesh (Normalized).  <br /></td></tr>
-<tr class="separator:a96e556c02aaf5f7f1b29d7e1b8030b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b55749521e3153afc6b300f14b821be" id="r_a7b55749521e3153afc6b300f14b821be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh.html#a7b55749521e3153afc6b300f14b821be">ComputeTriangleNormals</a> (bool normalize=false)</td></tr>
+<tr class="memdesc:a7b55749521e3153afc6b300f14b821be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute normal for each triangle of the mesh.  <br /></td></tr>
+<tr class="separator:a7b55749521e3153afc6b300f14b821be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98572b6dfcd272c716cec3ba7066d399" id="r_a98572b6dfcd272c716cec3ba7066d399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh.html#a98572b6dfcd272c716cec3ba7066d399">ComputeSmoothVertexNormals</a> (bool normalize=false)</td></tr>
+<tr class="memdesc:a98572b6dfcd272c716cec3ba7066d399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute smooth normal for each vertex of the mesh.  <br /></td></tr>
+<tr class="separator:a98572b6dfcd272c716cec3ba7066d399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068d9fb90cd43f53764d30690ddbeaa4" id="r_a068d9fb90cd43f53764d30690ddbeaa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html">VerticesAroundVertexRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1Surface_1_1Mesh.html#a068d9fb90cd43f53764d30690ddbeaa4">GetVerticesAroundVertex</a> (const <a class="el" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a> index) const</td></tr>
 <tr class="memdesc:a068d9fb90cd43f53764d30690ddbeaa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a range to iterate over the vertices around a given vertex.  <br /></td></tr>
 <tr class="separator:a068d9fb90cd43f53764d30690ddbeaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -275,16 +278,16 @@ Private Attributes</h2></td></tr>
 
 <p>Copy ctor. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00019">19</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>    : <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>(other.m_Vertices)</div>
-<div class="line"><span class="lineno">   21</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>(other.m_Triangles)</div>
-<div class="line"><span class="lineno">   22</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>(other.m_VerticesExtraDataContainer)</div>
-<div class="line"><span class="lineno">   23</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>(other.m_TrianglesExtraDataContainer)</div>
-<div class="line"><span class="lineno">   24</span>{}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a5343f7c967d81b33553399f994736b31"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">Data::Surface::Mesh::m_Vertices</a></div><div class="ttdeci">std::vector&lt; Data::Primitive::Vertex &gt; m_Vertices</div><div class="ttdoc">List of vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00279">Mesh.h:279</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a67d1ca0c36c2ab0fbf490f4ae5087f61"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">Data::Surface::Mesh::m_Triangles</a></div><div class="ttdeci">std::vector&lt; Data::Primitive::Triangle &gt; m_Triangles</div><div class="ttdoc">List of triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00282">Mesh.h:282</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9da29f4c8f56514e77e7354befe36ed0"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">Data::Surface::Mesh::m_VerticesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::ExtraData::ExtraDataContainer &gt; m_VerticesExtraDataContainer</div><div class="ttdoc">Extra data containers for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00285">Mesh.h:285</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac956e15803ff70da0237bc2fa8f5445e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">Data::Surface::Mesh::m_TrianglesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::ExtraData::ExtraDataContainer &gt; m_TrianglesExtraDataContainer</div><div class="ttdoc">Extra data containers for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00287">Mesh.h:287</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00018">18</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>    : <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>(other.m_Vertices)</div>
+<div class="line"><span class="lineno">   20</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>(other.m_Triangles)</div>
+<div class="line"><span class="lineno">   21</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>(other.m_VerticesExtraDataContainer)</div>
+<div class="line"><span class="lineno">   22</span>    , <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>(other.m_TrianglesExtraDataContainer)</div>
+<div class="line"><span class="lineno">   23</span>{}</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a5343f7c967d81b33553399f994736b31"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">Data::Surface::Mesh::m_Vertices</a></div><div class="ttdeci">std::vector&lt; Data::Primitive::Vertex &gt; m_Vertices</div><div class="ttdoc">List of vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00284">Mesh.h:284</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a67d1ca0c36c2ab0fbf490f4ae5087f61"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">Data::Surface::Mesh::m_Triangles</a></div><div class="ttdeci">std::vector&lt; Data::Primitive::Triangle &gt; m_Triangles</div><div class="ttdoc">List of triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00286">Mesh.h:286</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9da29f4c8f56514e77e7354befe36ed0"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">Data::Surface::Mesh::m_VerticesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::ExtraData::ExtraDataContainer &gt; m_VerticesExtraDataContainer</div><div class="ttdoc">Extra data containers for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00289">Mesh.h:289</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac956e15803ff70da0237bc2fa8f5445e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">Data::Surface::Mesh::m_TrianglesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::ExtraData::ExtraDataContainer &gt; m_TrianglesExtraDataContainer</div><div class="ttdoc">Extra data containers for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00291">Mesh.h:291</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -332,15 +335,15 @@ Private Attributes</h2></td></tr>
 
 <p>Add a triangle to the mesh and return its index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00087">87</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>    <a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> index = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.size());</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.empty() &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.size() == <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.size())</div>
-<div class="line"><span class="lineno">   91</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.emplace_back();</div>
-<div class="line"><span class="lineno">   92</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.emplace_back(triangle);</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> index;</div>
-<div class="line"><span class="lineno">   94</span>}</div>
-<div class="ttc" id="anamespaceBaseType_html_ab0b9b1309a54bf96aea7b2acdfa8e4f5"><div class="ttname"><a href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">BaseType::TriangleIndex</a></div><div class="ttdeci">uint32_t TriangleIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00013">BaseType.h:13</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00086">86</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> index = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.size());</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.empty() &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.size() == <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.size())</div>
+<div class="line"><span class="lineno">   90</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.emplace_back();</div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.emplace_back(triangle);</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> index;</div>
+<div class="line"><span class="lineno">   93</span>}</div>
+<div class="ttc" id="anamespaceBaseType_html_ab0b9b1309a54bf96aea7b2acdfa8e4f5"><div class="ttname"><a href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">BaseType::TriangleIndex</a></div><div class="ttdeci">uint32_t TriangleIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00016">BaseType.h:16</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -361,11 +364,13 @@ Private Attributes</h2></td></tr>
 
 <p>Add extra data container for each triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00101">101</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
-<div class="line"><span class="lineno">  103</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.resize(<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>());</div>
-<div class="line"><span class="lineno">  104</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9d4db90c57313ad2dc6662a765660b6c"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">Data::Surface::Mesh::GetTriangleCount</a></div><div class="ttdeci">uint32_t GetTriangleCount() const</div><div class="ttdoc">Get the number of triangles in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00037">Mesh.cpp:37</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00102">102</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.empty())</div>
+<div class="line"><span class="lineno">  105</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.clear();</div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.resize(<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>());</div>
+<div class="line"><span class="lineno">  107</span>}</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9d4db90c57313ad2dc6662a765660b6c"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">Data::Surface::Mesh::GetTriangleCount</a></div><div class="ttdeci">uint32_t GetTriangleCount() const</div><div class="ttdoc">Get the number of triangles in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00036">Mesh.cpp:36</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -387,15 +392,15 @@ Private Attributes</h2></td></tr>
 
 <p>Add a vertex to the mesh and return its index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00078">78</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
-<div class="line"><span class="lineno">   80</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> index = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.size());</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.empty() &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.size() == <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.size())</div>
-<div class="line"><span class="lineno">   82</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.emplace_back();</div>
-<div class="line"><span class="lineno">   83</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.emplace_back(vertex);</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> index;</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00012">BaseType.h:12</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00077">77</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> index = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.size());</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.empty() &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.size() == <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.size())</div>
+<div class="line"><span class="lineno">   81</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.emplace_back();</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.emplace_back(vertex);</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> index;</div>
+<div class="line"><span class="lineno">   84</span>}</div>
+<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00015">BaseType.h:15</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,11 +421,13 @@ Private Attributes</h2></td></tr>
 
 <p>Add extra data container for each vertex. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00096">96</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
-<div class="line"><span class="lineno">   98</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.resize(<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>());</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00032">Mesh.cpp:32</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00095">95</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>{</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.empty())</div>
+<div class="line"><span class="lineno">   98</span>        <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.clear();</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.resize(<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>());</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00031">Mesh.cpp:31</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -442,15 +449,146 @@ Private Attributes</h2></td></tr>
 <p>Deep clone of the mesh. </p>
 <p>Get the number of faces in the mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00027">27</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span> std::make_unique&lt;Mesh&gt;(*<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   30</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00026">26</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> std::make_unique&lt;Mesh&gt;(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   29</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a96e556c02aaf5f7f1b29d7e1b8030b47" name="a96e556c02aaf5f7f1b29d7e1b8030b47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96e556c02aaf5f7f1b29d7e1b8030b47">&#9670;&#160;</a></span>ComputeTriangleNormals()</h2>
+<a id="a98572b6dfcd272c716cec3ba7066d399" name="a98572b6dfcd272c716cec3ba7066d399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98572b6dfcd272c716cec3ba7066d399">&#9670;&#160;</a></span>ComputeSmoothVertexNormals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Data::Surface::Mesh::ComputeSmoothVertexNormals </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>normalize</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute smooth normal for each vertex of the mesh. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">normalize</td><td>If true, compute normalized smooth vertex normals. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The computed normals are stored as extra data on each vertex. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00267">267</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>{</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>())</div>
+<div class="line"><span class="lineno">  270</span>        <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">AddTrianglesExtraDataContainer</a>();</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">HasVerticesExtraDataContainer</a>())</div>
+<div class="line"><span class="lineno">  273</span>        <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">AddVerticesExtraDataContainer</a>();</div>
+<div class="line"><span class="lineno">  274</span> </div>
+<div class="line"><span class="lineno">  275</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> iTriangle = 0; iTriangle &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>(); ++iTriangle)</div>
+<div class="line"><span class="lineno">  276</span>    {</div>
+<div class="line"><span class="lineno">  277</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1TriangleProxy.html">TriangleProxy</a>&amp; curTriangle = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">GetTriangle</a>(iTriangle);</div>
+<div class="line"><span class="lineno">  278</span> </div>
+<div class="line"><span class="lineno">  279</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posA = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(0)].Position;</div>
+<div class="line"><span class="lineno">  280</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posB = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(1)].Position;</div>
+<div class="line"><span class="lineno">  281</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posC = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(2)].Position;</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> AB = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(posB - posA);</div>
+<div class="line"><span class="lineno">  284</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> AC = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(posC - posA);</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> BC = glm::normalize(posC - posB);</div>
+<div class="line"><span class="lineno">  287</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> BA = glm::normalize(posA - posB);</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> CA = glm::normalize(posA - posC);</div>
+<div class="line"><span class="lineno">  290</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> CB = glm::normalize(posB - posC);</div>
+<div class="line"><span class="lineno">  291</span> </div>
+<div class="line"><span class="lineno">  292</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> curTriangleNormal;</div>
+<div class="line"><span class="lineno">  293</span>        <span class="keywordflow">if</span>(curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">HasExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;())</div>
+<div class="line"><span class="lineno">  294</span>        {</div>
+<div class="line"><span class="lineno">  295</span>            curTriangleNormal = curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#ae71a61b6395d95e9f6a91d9548de3611">GetExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;()-&gt;GetData();</div>
+<div class="line"><span class="lineno">  296</span>        }</div>
+<div class="line"><span class="lineno">  297</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  298</span>        {</div>
+<div class="line"><span class="lineno">  299</span>            curTriangleNormal = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#afbf5df5321a788220ed23ff8f243a15f">Cross</a>(AB, AC);</div>
+<div class="line"><span class="lineno">  300</span>        }</div>
+<div class="line"><span class="lineno">  301</span> </div>
+<div class="line"><span class="lineno">  302</span>        curTriangleNormal = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(curTriangleNormal);</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>        <span class="comment">// Compute each angle (in randian).</span></div>
+<div class="line"><span class="lineno">  305</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> angleA = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#a4376274a2a37fa0e97f804e38c28e114">Angle</a>(AB, AC);</div>
+<div class="line"><span class="lineno">  306</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> angleB = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#a4376274a2a37fa0e97f804e38c28e114">Angle</a>(BC, BA);</div>
+<div class="line"><span class="lineno">  307</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> angleC = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#a4376274a2a37fa0e97f804e38c28e114">Angle</a>(CA, CB);</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>        <span class="comment">// Get a proxy on each vertex of the triangle.</span></div>
+<div class="line"><span class="lineno">  310</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; vertexA = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(0));</div>
+<div class="line"><span class="lineno">  311</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; vertexB = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(1));</div>
+<div class="line"><span class="lineno">  312</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; vertexC = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(2));</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>        <span class="comment">// Add the normal weighted by the related angle as an extra data to each vertex.</span></div>
+<div class="line"><span class="lineno">  315</span>        <a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&amp; vertexAExtraData = vertexA.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  316</span>        vertexAExtraData.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().emplace_back(curTriangleNormal * angleA);</div>
+<div class="line"><span class="lineno">  317</span>        <a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&amp; vertexBExtraData = vertexB.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  318</span>        vertexBExtraData.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().emplace_back(curTriangleNormal * angleB);</div>
+<div class="line"><span class="lineno">  319</span>        <a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&amp; vertexCExtraData = vertexC.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  320</span>        vertexCExtraData.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().emplace_back(curTriangleNormal * angleC);</div>
+<div class="line"><span class="lineno">  321</span>    }</div>
+<div class="line"><span class="lineno">  322</span> </div>
+<div class="line"><span class="lineno">  323</span>    <span class="comment">// Compute the smooth normal for each vertex of the mesh.</span></div>
+<div class="line"><span class="lineno">  324</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex = 0; iVertex &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>(); ++iVertex)</div>
+<div class="line"><span class="lineno">  325</span>    {</div>
+<div class="line"><span class="lineno">  326</span>        <span class="comment">// Get the current vertex and create the extra data that will handle the smooth vertex normal.</span></div>
+<div class="line"><span class="lineno">  327</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; curVertex = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(iVertex);</div>
+<div class="line"><span class="lineno">  328</span>        <a class="code hl_class" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">SmoothVertexNormalExtraData</a>&amp; curVertexNormal = curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">SmoothVertexNormalExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  329</span> </div>
+<div class="line"><span class="lineno">  330</span>        <span class="comment">// Get the precomputed flat vertex normals.</span></div>
+<div class="line"><span class="lineno">  331</span>        <span class="keyword">auto</span> vertexFlatNormals = curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">GetExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  332</span>        assert(vertexFlatNormals != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  333</span> </div>
+<div class="line"><span class="lineno">  334</span>        <span class="comment">// Accumulate the flat vertex normals.</span></div>
+<div class="line"><span class="lineno">  335</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> computedNormal = std::accumulate(</div>
+<div class="line"><span class="lineno">  336</span>            vertexFlatNormals-&gt;<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().begin(),</div>
+<div class="line"><span class="lineno">  337</span>            vertexFlatNormals-&gt;<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().end(),</div>
+<div class="line"><span class="lineno">  338</span>            <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 0., 0., 0. },</div>
+<div class="line"><span class="lineno">  339</span>            std::plus&lt;Vec3&gt;());</div>
+<div class="line"><span class="lineno">  340</span> </div>
+<div class="line"><span class="lineno">  341</span>        <span class="keywordflow">if</span>(normalize)</div>
+<div class="line"><span class="lineno">  342</span>            computedNormal = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(computedNormal);</div>
+<div class="line"><span class="lineno">  343</span>        curVertexNormal.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">SetData</a>(computedNormal);</div>
+<div class="line"><span class="lineno">  344</span>        curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed">EraseExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  345</span>    }</div>
+<div class="line"><span class="lineno">  346</span>}</div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1FlatVertexNormalsExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">Data::ExtraData::FlatVertexNormalsExtraData</a></div><div class="ttdoc">Extra data type to store vertex flat normals.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00063">ExtraDataType.h:64</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1SingleDataExtraData_html_a119a326e97805eae104c429deaf93da1"><div class="ttname"><a href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">Data::ExtraData::SingleDataExtraData::GetData</a></div><div class="ttdeci">T const &amp; GetData() const</div><div class="ttdoc">Getter on the data stored (const version).</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00031">ExtraDataType.h:31</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1SingleDataExtraData_html_a83e96105ae9c358999bf222a4546085c"><div class="ttname"><a href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">Data::ExtraData::SingleDataExtraData::SetData</a></div><div class="ttdeci">void SetData(T const &amp;value)</div><div class="ttdoc">Setter on the data stored.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00037">ExtraDataType.h:37</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1SmoothVertexNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">Data::ExtraData::SmoothVertexNormalExtraData</a></div><div class="ttdoc">Extra data type to store a smooth vertex normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00055">ExtraDataType.h:56</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1TriangleNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">Data::ExtraData::TriangleNormalExtraData</a></div><div class="ttdoc">Extra data type to store a triangle normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00047">ExtraDataType.h:48</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html">Data::Primitive::TriangleProxy</a></div><div class="ttdoc">Proxy class for a triangle in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00009">PrimitiveProxy.h:10</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a5df8a7acf679eedfe88635f68d317b87"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">Data::Primitive::TriangleProxy::GetVertex</a></div><div class="ttdeci">BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const</div><div class="ttdoc">Get the vertex at the given index of the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00030">PrimitiveProxy.cpp:30</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a99f94cd9a0331815d9e452dab934d270"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">Data::Primitive::TriangleProxy::HasExtraData</a></div><div class="ttdeci">bool HasExtraData() const</div><div class="ttdoc">Check if extra data of type T is associated with the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00058">PrimitiveProxy.h:58</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_ae71a61b6395d95e9f6a91d9548de3611"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#ae71a61b6395d95e9f6a91d9548de3611">Data::Primitive::TriangleProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the triangle, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00017">PrimitiveProxy.h:17</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00091">PrimitiveProxy.h:92</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a1aec63e9f93d7d6d952b44ec4bae497d"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">Data::Primitive::VertexProxy::GetOrCreateExtraData</a></div><div class="ttdeci">T &amp; GetOrCreateExtraData() const</div><div class="ttdoc">Get or create extra data of type T associated with the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00116">PrimitiveProxy.h:116</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a4fc9bd2fe9345aeb2d6e78745456f04b"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">Data::Primitive::VertexProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the vertex, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00099">PrimitiveProxy.h:99</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a9b46dcf86adb6ee9944d94f99fcba6ed"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed">Data::Primitive::VertexProxy::EraseExtraData</a></div><div class="ttdeci">void EraseExtraData() const</div><div class="ttdoc">Erase extra data of type T associated with the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00139">PrimitiveProxy.h:139</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a1bc176e83cbe01f7f9f31d2749d2cab2"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">Data::Surface::Mesh::GetTriangle</a></div><div class="ttdeci">Data::Primitive::TriangleProxy GetTriangle(const BaseType::TriangleIndex index)</div><div class="ttdoc">Get a proxy to the triangle at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00047">Mesh.cpp:47</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a6898dfd93edbe132daa22781cce59ec6"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">Data::Surface::Mesh::AddVerticesExtraDataContainer</a></div><div class="ttdeci">void AddVerticesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00095">Mesh.cpp:95</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a7c25e22f9f5bb5216fbe039fef6dd962"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">Data::Surface::Mesh::HasVerticesExtraDataContainer</a></div><div class="ttdeci">bool HasVerticesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00177">Mesh.cpp:177</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a884cafda4dde383690fca778774e7da5"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">Data::Surface::Mesh::GetVertex</a></div><div class="ttdeci">Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index)</div><div class="ttdoc">Get a proxy to the vertex at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00041">Mesh.cpp:41</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac47c66a581bcb05e0bb0fa026dc5849a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">Data::Surface::Mesh::HasTrianglesExtraDataContainer</a></div><div class="ttdeci">bool HasTrianglesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00182">Mesh.cpp:182</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad89c901d33c3e1eed3723e59606d30c0"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">Data::Surface::Mesh::AddTrianglesExtraDataContainer</a></div><div class="ttdeci">void AddTrianglesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00102">Mesh.cpp:102</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00022">BaseType.h:22</a></div></div>
+<div class="ttc" id="anamespaceMath_1_1Geometry_html_a4376274a2a37fa0e97f804e38c28e114"><div class="ttname"><a href="namespaceMath_1_1Geometry.html#a4376274a2a37fa0e97f804e38c28e114">Math::Geometry::Angle</a></div><div class="ttdeci">BaseType::ScalarValue Angle(const BaseType::Vec3 &amp;u, const BaseType::Vec3 &amp;v)</div><div class="ttdoc">Angle (in randians) between u and v.</div><div class="ttdef"><b>Definition</b> <a href="MathHelpers_8h_source.html#l00060">MathHelpers.h:60</a></div></div>
+<div class="ttc" id="anamespaceMath_1_1Geometry_html_ad6680884a9cb32841e383cb463b26b17"><div class="ttname"><a href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Math::Geometry::Normalize</a></div><div class="ttdeci">BaseType::Vec3 Normalize(const BaseType::Vec3 &amp;v)</div><div class="ttdoc">Returns the normalized version of v.</div><div class="ttdef"><b>Definition</b> <a href="MathHelpers_8h_source.html#l00036">MathHelpers.h:36</a></div></div>
+<div class="ttc" id="anamespaceMath_1_1Geometry_html_afbf5df5321a788220ed23ff8f243a15f"><div class="ttname"><a href="namespaceMath_1_1Geometry.html#afbf5df5321a788220ed23ff8f243a15f">Math::Geometry::Cross</a></div><div class="ttdeci">BaseType::Vec3 Cross(const BaseType::Vec3 &amp;u, const BaseType::Vec3 &amp;v)</div><div class="ttdoc">Cross product of u and v.</div><div class="ttdef"><b>Definition</b> <a href="MathHelpers_8h_source.html#l00048">MathHelpers.h:48</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7b55749521e3153afc6b300f14b821be" name="a7b55749521e3153afc6b300f14b821be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b55749521e3153afc6b300f14b821be">&#9670;&#160;</a></span>ComputeTriangleNormals()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,115 +597,101 @@ Private Attributes</h2></td></tr>
           <td class="memname">void Data::Surface::Mesh::ComputeTriangleNormals </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>computeSmoothVertexNormals</em> = <code>false</code></td><td>)</td>
+          <td class="paramname"><em>normalize</em> = <code>false</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Compute normal for each triangle of the mesh (Normalized). </p>
+<p>Compute normal for each triangle of the mesh. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">computeSmoothVertexNormals</td><td>If true, compute smooth vertex normals (Normalized). </td></tr>
+    <tr><td class="paramname">normalize</td><td>If true, compute normalized triangle normals. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>The computed normals are stored as extra data on the triangles and vertices. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The computed normals are stored as extra data on each triangle. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00184">184</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  185</span>{</div>
-<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.empty())</div>
-<div class="line"><span class="lineno">  187</span>        <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">AddTrianglesExtraDataContainer</a>();</div>
-<div class="line"><span class="lineno">  188</span> </div>
-<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">if</span>(computeSmoothVertexNormals &amp;&amp; <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.empty())</div>
-<div class="line"><span class="lineno">  190</span>        <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">AddVerticesExtraDataContainer</a>();</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00187">187</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
+<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>())</div>
+<div class="line"><span class="lineno">  190</span>        <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">AddTrianglesExtraDataContainer</a>();</div>
 <div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> iTriangle = 0; iTriangle &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>(); ++iTriangle)</div>
-<div class="line"><span class="lineno">  193</span>    {</div>
-<div class="line"><span class="lineno">  194</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1TriangleProxy.html">TriangleProxy</a>&amp; curFace = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">GetTriangle</a>(iTriangle);</div>
-<div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posA = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(0)].Position;</div>
-<div class="line"><span class="lineno">  197</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posB = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(1)].Position;</div>
-<div class="line"><span class="lineno">  198</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posC = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(2)].Position;</div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> AB = glm::normalize(posB - posA);</div>
-<div class="line"><span class="lineno">  201</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> AC = glm::normalize(posC - posA);</div>
+<div class="line"><span class="lineno">  192</span>    <span class="comment">// if(computeSmoothVertexNormals &amp;&amp; m_VerticesExtraDataContainer.empty())</span></div>
+<div class="line"><span class="lineno">  193</span>    <span class="comment">//  AddVerticesExtraDataContainer();</span></div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> iTriangle = 0; iTriangle &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>(); ++iTriangle)</div>
+<div class="line"><span class="lineno">  196</span>    {</div>
+<div class="line"><span class="lineno">  197</span>        <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1TriangleProxy.html">TriangleProxy</a>&amp; curTriangle = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">GetTriangle</a>(iTriangle);</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posA = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(0)].Position;</div>
+<div class="line"><span class="lineno">  200</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posB = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(1)].Position;</div>
+<div class="line"><span class="lineno">  201</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; posC = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(2)].Position;</div>
 <div class="line"><span class="lineno">  202</span> </div>
-<div class="line"><span class="lineno">  203</span>        <a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&amp; curFaceNormal = curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#ab457936dbdb1440d5f0649349aceaa13">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  204</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = glm::normalize(glm::cross(AB, AC));</div>
-<div class="line"><span class="lineno">  205</span>        curFaceNormal.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">SetData</a>(computedNormal);</div>
-<div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span>        <span class="keywordflow">if</span>(computeSmoothVertexNormals)</div>
-<div class="line"><span class="lineno">  208</span>        {</div>
-<div class="line"><span class="lineno">  209</span>            <span class="comment">// Compute the remaining vectors of the triangle.</span></div>
-<div class="line"><span class="lineno">  210</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> BC = glm::normalize(posC - posB);</div>
-<div class="line"><span class="lineno">  211</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> BA = glm::normalize(posA - posB);</div>
-<div class="line"><span class="lineno">  212</span> </div>
-<div class="line"><span class="lineno">  213</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> CA = glm::normalize(posA - posC);</div>
-<div class="line"><span class="lineno">  214</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> CB = glm::normalize(posB - posC);</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>            <span class="comment">// Compute each angle (in randian).</span></div>
-<div class="line"><span class="lineno">  217</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> angleA = glm::angle(AB, AC);</div>
-<div class="line"><span class="lineno">  218</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> angleB = glm::angle(BC, BA);</div>
-<div class="line"><span class="lineno">  219</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> angleC = glm::angle(CA, CB);</div>
+<div class="line"><span class="lineno">  203</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> AB = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(posB - posA);</div>
+<div class="line"><span class="lineno">  204</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> AC = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(posC - posA);</div>
+<div class="line"><span class="lineno">  205</span> </div>
+<div class="line"><span class="lineno">  206</span>        <a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&amp; curTriangleNormal = curTriangle.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#ab457936dbdb1440d5f0649349aceaa13">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  207</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> computedNormal = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#afbf5df5321a788220ed23ff8f243a15f">Cross</a>(AB, AC);</div>
+<div class="line"><span class="lineno">  208</span>        <span class="keywordflow">if</span>(normalize)</div>
+<div class="line"><span class="lineno">  209</span>            computedNormal = <a class="code hl_function" href="namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17">Normalize</a>(computedNormal);</div>
+<div class="line"><span class="lineno">  210</span>        curTriangleNormal.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">SetData</a>(computedNormal);</div>
+<div class="line"><span class="lineno">  211</span> </div>
+<div class="line"><span class="lineno">  212</span>        <span class="comment">// if(computeSmoothVertexNormals)</span></div>
+<div class="line"><span class="lineno">  213</span>        <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">  214</span>        <span class="comment">//  // Compute the remaining vectors of the triangle.</span></div>
+<div class="line"><span class="lineno">  215</span>        <span class="comment">//  const Vec3 BC = glm::normalize(posC - posB);</span></div>
+<div class="line"><span class="lineno">  216</span>        <span class="comment">//  const Vec3 BA = glm::normalize(posA - posB);</span></div>
+<div class="line"><span class="lineno">  217</span> </div>
+<div class="line"><span class="lineno">  218</span>        <span class="comment">//  const Vec3 CA = glm::normalize(posA - posC);</span></div>
+<div class="line"><span class="lineno">  219</span>        <span class="comment">//  const Vec3 CB = glm::normalize(posB - posC);</span></div>
 <div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span>            <span class="comment">// Get a proxy on each vertex of the triangle.</span></div>
-<div class="line"><span class="lineno">  222</span>            <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; vertexA = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(0));</div>
-<div class="line"><span class="lineno">  223</span>            <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; vertexB = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(1));</div>
-<div class="line"><span class="lineno">  224</span>            <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; vertexC = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(curFace.<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">GetVertex</a>(2));</div>
+<div class="line"><span class="lineno">  221</span>        <span class="comment">//  // Compute each angle (in randian).</span></div>
+<div class="line"><span class="lineno">  222</span>        <span class="comment">//  const float angleA = glm::angle(AB, AC);</span></div>
+<div class="line"><span class="lineno">  223</span>        <span class="comment">//  const float angleB = glm::angle(BC, BA);</span></div>
+<div class="line"><span class="lineno">  224</span>        <span class="comment">//  const float angleC = glm::angle(CA, CB);</span></div>
 <div class="line"><span class="lineno">  225</span> </div>
-<div class="line"><span class="lineno">  226</span>            <span class="comment">// Add the normal weighted by the related angle as an extra data to each vertex.</span></div>
-<div class="line"><span class="lineno">  227</span>            <a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&amp; vertexAExtraData = vertexA.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  228</span>            vertexAExtraData.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().emplace_back(computedNormal * angleA);</div>
-<div class="line"><span class="lineno">  229</span>            <a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&amp; vertexBExtraData = vertexB.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  230</span>            vertexBExtraData.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().emplace_back(computedNormal * angleB);</div>
-<div class="line"><span class="lineno">  231</span>            <a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&amp; vertexCExtraData = vertexC.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  232</span>            vertexCExtraData.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().emplace_back(computedNormal * angleC);</div>
-<div class="line"><span class="lineno">  233</span>        }</div>
-<div class="line"><span class="lineno">  234</span>    }</div>
-<div class="line"><span class="lineno">  235</span> </div>
-<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">if</span>(computeSmoothVertexNormals)</div>
-<div class="line"><span class="lineno">  237</span>    {</div>
-<div class="line"><span class="lineno">  238</span>        <span class="comment">// Compute the smooth normal for each vertex of the mesh.</span></div>
-<div class="line"><span class="lineno">  239</span>        <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex = 0; iVertex &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>(); ++iVertex)</div>
-<div class="line"><span class="lineno">  240</span>        {</div>
-<div class="line"><span class="lineno">  241</span>            <span class="comment">// Get the current vertex and create the extra data that will handle the smooth vertex normal.</span></div>
-<div class="line"><span class="lineno">  242</span>            <span class="keyword">const</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>&amp; curVertex = <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">GetVertex</a>(iVertex);</div>
-<div class="line"><span class="lineno">  243</span>            <a class="code hl_class" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">SmoothVertexNormalExtraData</a>&amp; curVertexNormal = curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">SmoothVertexNormalExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>            <span class="comment">// Get the precomputed flat vertex normals.</span></div>
-<div class="line"><span class="lineno">  246</span>            <span class="keyword">auto</span> vertexFlatNormals = curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">GetExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  247</span>            assert(vertexFlatNormals != <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  248</span> </div>
-<div class="line"><span class="lineno">  249</span>            <span class="comment">// Accumulate the flat vertex normals.</span></div>
-<div class="line"><span class="lineno">  250</span>            <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> computedNormal = std::accumulate(</div>
-<div class="line"><span class="lineno">  251</span>                vertexFlatNormals-&gt;<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().begin(),</div>
-<div class="line"><span class="lineno">  252</span>                vertexFlatNormals-&gt;<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">GetData</a>().end(),</div>
-<div class="line"><span class="lineno">  253</span>                <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>{ 0., 0., 0. },</div>
-<div class="line"><span class="lineno">  254</span>                std::plus&lt;Vec3&gt;());</div>
-<div class="line"><span class="lineno">  255</span> </div>
-<div class="line"><span class="lineno">  256</span>            curVertexNormal.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">SetData</a>(glm::normalize(computedNormal));</div>
-<div class="line"><span class="lineno">  257</span>            curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed">EraseExtraData</a>&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">FlatVertexNormalsExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  258</span>        }</div>
-<div class="line"><span class="lineno">  259</span>    }</div>
-<div class="line"><span class="lineno">  260</span>}</div>
-<div class="ttc" id="aclassData_1_1ExtraData_1_1FlatVertexNormalsExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html">Data::ExtraData::FlatVertexNormalsExtraData</a></div><div class="ttdoc">Extra data type to store vertex flat normals.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00063">ExtraDataType.h:64</a></div></div>
-<div class="ttc" id="aclassData_1_1ExtraData_1_1SingleDataExtraData_html_a119a326e97805eae104c429deaf93da1"><div class="ttname"><a href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a119a326e97805eae104c429deaf93da1">Data::ExtraData::SingleDataExtraData::GetData</a></div><div class="ttdeci">T const &amp; GetData() const</div><div class="ttdoc">Getter on the data stored (const version).</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00031">ExtraDataType.h:31</a></div></div>
-<div class="ttc" id="aclassData_1_1ExtraData_1_1SingleDataExtraData_html_a83e96105ae9c358999bf222a4546085c"><div class="ttname"><a href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">Data::ExtraData::SingleDataExtraData::SetData</a></div><div class="ttdeci">void SetData(T const &amp;value)</div><div class="ttdoc">Setter on the data stored.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00037">ExtraDataType.h:37</a></div></div>
-<div class="ttc" id="aclassData_1_1ExtraData_1_1SmoothVertexNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">Data::ExtraData::SmoothVertexNormalExtraData</a></div><div class="ttdoc">Extra data type to store a smooth vertex normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00055">ExtraDataType.h:56</a></div></div>
-<div class="ttc" id="aclassData_1_1ExtraData_1_1TriangleNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">Data::ExtraData::TriangleNormalExtraData</a></div><div class="ttdoc">Extra data type to store a triangle normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00047">ExtraDataType.h:48</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html">Data::Primitive::TriangleProxy</a></div><div class="ttdoc">Proxy class for a triangle in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00009">PrimitiveProxy.h:10</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a5df8a7acf679eedfe88635f68d317b87"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">Data::Primitive::TriangleProxy::GetVertex</a></div><div class="ttdeci">BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const</div><div class="ttdoc">Get the vertex at the given index of the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00030">PrimitiveProxy.cpp:30</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_ab457936dbdb1440d5f0649349aceaa13"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#ab457936dbdb1440d5f0649349aceaa13">Data::Primitive::TriangleProxy::GetOrCreateExtraData</a></div><div class="ttdeci">T &amp; GetOrCreateExtraData() const</div><div class="ttdoc">Get or create extra data of type T associated with the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00033">PrimitiveProxy.h:33</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00090">PrimitiveProxy.h:91</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a1aec63e9f93d7d6d952b44ec4bae497d"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">Data::Primitive::VertexProxy::GetOrCreateExtraData</a></div><div class="ttdeci">T &amp; GetOrCreateExtraData() const</div><div class="ttdoc">Get or create extra data of type T associated with the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00114">PrimitiveProxy.h:114</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a4fc9bd2fe9345aeb2d6e78745456f04b"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b">Data::Primitive::VertexProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the vertex, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00098">PrimitiveProxy.h:98</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a9b46dcf86adb6ee9944d94f99fcba6ed"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed">Data::Primitive::VertexProxy::EraseExtraData</a></div><div class="ttdeci">void EraseExtraData() const</div><div class="ttdoc">Erase extra data of type T associated with the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00137">PrimitiveProxy.h:137</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a1bc176e83cbe01f7f9f31d2749d2cab2"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">Data::Surface::Mesh::GetTriangle</a></div><div class="ttdeci">Data::Primitive::TriangleProxy GetTriangle(const BaseType::TriangleIndex index)</div><div class="ttdoc">Get a proxy to the triangle at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00048">Mesh.cpp:48</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a6898dfd93edbe132daa22781cce59ec6"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">Data::Surface::Mesh::AddVerticesExtraDataContainer</a></div><div class="ttdeci">void AddVerticesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00096">Mesh.cpp:96</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a884cafda4dde383690fca778774e7da5"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">Data::Surface::Mesh::GetVertex</a></div><div class="ttdeci">Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index)</div><div class="ttdoc">Get a proxy to the vertex at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00042">Mesh.cpp:42</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad89c901d33c3e1eed3723e59606d30c0"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">Data::Surface::Mesh::AddTrianglesExtraDataContainer</a></div><div class="ttdeci">void AddTrianglesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00101">Mesh.cpp:101</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00019">BaseType.h:19</a></div></div>
+<div class="line"><span class="lineno">  226</span>        <span class="comment">//  // Get a proxy on each vertex of the triangle.</span></div>
+<div class="line"><span class="lineno">  227</span>        <span class="comment">//  const VertexProxy&amp; vertexA = GetVertex(curTriangle.GetVertex(0));</span></div>
+<div class="line"><span class="lineno">  228</span>        <span class="comment">//  const VertexProxy&amp; vertexB = GetVertex(curTriangle.GetVertex(1));</span></div>
+<div class="line"><span class="lineno">  229</span>        <span class="comment">//  const VertexProxy&amp; vertexC = GetVertex(curTriangle.GetVertex(2));</span></div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>        <span class="comment">//  // Add the normal weighted by the related angle as an extra data to each vertex.</span></div>
+<div class="line"><span class="lineno">  232</span>        <span class="comment">//  FlatVertexNormalsExtraData&amp; vertexAExtraData = vertexA.GetOrCreateExtraData&lt;FlatVertexNormalsExtraData&gt;();</span></div>
+<div class="line"><span class="lineno">  233</span>        <span class="comment">//  vertexAExtraData.GetData().emplace_back(computedNormal * angleA);</span></div>
+<div class="line"><span class="lineno">  234</span>        <span class="comment">//  FlatVertexNormalsExtraData&amp; vertexBExtraData = vertexB.GetOrCreateExtraData&lt;FlatVertexNormalsExtraData&gt;();</span></div>
+<div class="line"><span class="lineno">  235</span>        <span class="comment">//  vertexBExtraData.GetData().emplace_back(computedNormal * angleB);</span></div>
+<div class="line"><span class="lineno">  236</span>        <span class="comment">//  FlatVertexNormalsExtraData&amp; vertexCExtraData = vertexC.GetOrCreateExtraData&lt;FlatVertexNormalsExtraData&gt;();</span></div>
+<div class="line"><span class="lineno">  237</span>        <span class="comment">//  vertexCExtraData.GetData().emplace_back(computedNormal * angleC);</span></div>
+<div class="line"><span class="lineno">  238</span>        <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  239</span>    }</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>    <span class="comment">// if(computeSmoothVertexNormals)</span></div>
+<div class="line"><span class="lineno">  242</span>    <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">  243</span>    <span class="comment">//  // Compute the smooth normal for each vertex of the mesh.</span></div>
+<div class="line"><span class="lineno">  244</span>    <span class="comment">//  for(VertexIndex iVertex = 0; iVertex &lt; GetVertexCount(); ++iVertex)</span></div>
+<div class="line"><span class="lineno">  245</span>    <span class="comment">//  {</span></div>
+<div class="line"><span class="lineno">  246</span>    <span class="comment">//      // Get the current vertex and create the extra data that will handle the smooth vertex normal.</span></div>
+<div class="line"><span class="lineno">  247</span>    <span class="comment">//      const VertexProxy&amp; curVertex = GetVertex(iVertex);</span></div>
+<div class="line"><span class="lineno">  248</span>    <span class="comment">//      SmoothVertexNormalExtraData&amp; curVertexNormal = curVertex.GetOrCreateExtraData&lt;SmoothVertexNormalExtraData&gt;();</span></div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>    <span class="comment">//      // Get the precomputed flat vertex normals.</span></div>
+<div class="line"><span class="lineno">  251</span>    <span class="comment">//      auto vertexFlatNormals = curVertex.GetExtraData&lt;FlatVertexNormalsExtraData&gt;();</span></div>
+<div class="line"><span class="lineno">  252</span>    <span class="comment">//      assert(vertexFlatNormals != nullptr);</span></div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>    <span class="comment">//      // Accumulate the flat vertex normals.</span></div>
+<div class="line"><span class="lineno">  255</span>    <span class="comment">//      Vec3 computedNormal = std::accumulate(</span></div>
+<div class="line"><span class="lineno">  256</span>    <span class="comment">//          vertexFlatNormals-&gt;GetData().begin(),</span></div>
+<div class="line"><span class="lineno">  257</span>    <span class="comment">//          vertexFlatNormals-&gt;GetData().end(),</span></div>
+<div class="line"><span class="lineno">  258</span>    <span class="comment">//          Vec3{ 0., 0., 0. },</span></div>
+<div class="line"><span class="lineno">  259</span>    <span class="comment">//          std::plus&lt;Vec3&gt;());</span></div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>    <span class="comment">//      curVertexNormal.SetData(glm::normalize(computedNormal));</span></div>
+<div class="line"><span class="lineno">  262</span>    <span class="comment">//      curVertex.EraseExtraData&lt;FlatVertexNormalsExtraData&gt;();</span></div>
+<div class="line"><span class="lineno">  263</span>    <span class="comment">//  }</span></div>
+<div class="line"><span class="lineno">  264</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  265</span>}</div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_ab457936dbdb1440d5f0649349aceaa13"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#ab457936dbdb1440d5f0649349aceaa13">Data::Primitive::TriangleProxy::GetOrCreateExtraData</a></div><div class="ttdeci">T &amp; GetOrCreateExtraData() const</div><div class="ttdoc">Get or create extra data of type T associated with the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00034">PrimitiveProxy.h:34</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -589,11 +713,11 @@ Private Attributes</h2></td></tr>
 
 <p>Get a proxy to the triangle at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00048">48</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
-<div class="line"><span class="lineno">   50</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classData_1_1Primitive_1_1TriangleProxy.html">TriangleProxy</a>(*<span class="keyword">this</span>, index);</div>
-<div class="line"><span class="lineno">   52</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00047">47</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
+<div class="line"><span class="lineno">   49</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classData_1_1Primitive_1_1TriangleProxy.html">TriangleProxy</a>(*<span class="keyword">this</span>, index);</div>
+<div class="line"><span class="lineno">   51</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -614,10 +738,10 @@ Private Attributes</h2></td></tr>
 
 <p>Get the number of triangles in the mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00037">37</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.size());</div>
-<div class="line"><span class="lineno">   40</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00036">36</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>.size());</div>
+<div class="line"><span class="lineno">   39</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -639,11 +763,11 @@ Private Attributes</h2></td></tr>
 
 <p>Get the triangle data at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00072">72</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
-<div class="line"><span class="lineno">   74</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[index];</div>
-<div class="line"><span class="lineno">   76</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00071">71</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[index];</div>
+<div class="line"><span class="lineno">   75</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -665,11 +789,11 @@ Private Attributes</h2></td></tr>
 
 <p>Get the triangle data at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00066">66</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
-<div class="line"><span class="lineno">   68</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[index];</div>
-<div class="line"><span class="lineno">   70</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00065">65</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
+<div class="line"><span class="lineno">   67</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[index];</div>
+<div class="line"><span class="lineno">   69</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -690,10 +814,10 @@ Private Attributes</h2></td></tr>
 
 <p>Get the triangles data. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00164">164</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>;</div>
-<div class="line"><span class="lineno">  167</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00167">167</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>{</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>;</div>
+<div class="line"><span class="lineno">  170</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -714,10 +838,10 @@ Private Attributes</h2></td></tr>
 
 <p>Get the triangles data. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00169">169</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  170</span>{</div>
-<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>;</div>
-<div class="line"><span class="lineno">  172</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00172">172</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  173</span>{</div>
+<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>;</div>
+<div class="line"><span class="lineno">  175</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -771,11 +895,11 @@ Private Attributes</h2></td></tr>
 
 <p>Get a proxy to the vertex at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00042">42</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
-<div class="line"><span class="lineno">   44</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>(*<span class="keyword">this</span>, index);</div>
-<div class="line"><span class="lineno">   46</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00041">41</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a>(*<span class="keyword">this</span>, index);</div>
+<div class="line"><span class="lineno">   45</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -796,10 +920,10 @@ Private Attributes</h2></td></tr>
 
 <p>Get the number of vertices in the mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00032">32</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.size());</div>
-<div class="line"><span class="lineno">   35</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00031">31</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>.size());</div>
+<div class="line"><span class="lineno">   34</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -821,11 +945,11 @@ Private Attributes</h2></td></tr>
 
 <p>Get the vertex data at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00060">60</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[index];</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00059">59</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[index];</div>
+<div class="line"><span class="lineno">   63</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -847,11 +971,11 @@ Private Attributes</h2></td></tr>
 
 <p>Get the vertex data at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00054">54</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[index];</div>
-<div class="line"><span class="lineno">   58</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00053">53</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
+<div class="line"><span class="lineno">   55</span>    assert(index &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">GetVertexCount</a>() &amp;&amp; <span class="stringliteral">&quot;Index out of bound&quot;</span>);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[index];</div>
+<div class="line"><span class="lineno">   57</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -872,10 +996,10 @@ Private Attributes</h2></td></tr>
 
 <p>Get the vertices data. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00154">154</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  155</span>{</div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>;</div>
-<div class="line"><span class="lineno">  157</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00157">157</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>{</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>;</div>
+<div class="line"><span class="lineno">  160</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -896,10 +1020,10 @@ Private Attributes</h2></td></tr>
 
 <p>Get the vertices data. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00159">159</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>;</div>
-<div class="line"><span class="lineno">  162</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00162">162</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>;</div>
+<div class="line"><span class="lineno">  165</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -952,10 +1076,10 @@ Private Attributes</h2></td></tr>
 
 <p>Check if the mesh has extra data containers for triangles. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00179">179</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  180</span>{</div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.size() &gt; 0;</div>
-<div class="line"><span class="lineno">  182</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00182">182</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>{</div>
+<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>.size() &gt; 0;</div>
+<div class="line"><span class="lineno">  185</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -976,10 +1100,10 @@ Private Attributes</h2></td></tr>
 
 <p>Check if the mesh has extra data containers for vertices. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00174">174</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  175</span>{</div>
-<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.size() &gt; 0;</div>
-<div class="line"><span class="lineno">  177</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00177">177</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  178</span>{</div>
+<div class="line"><span class="lineno">  179</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a9da29f4c8f56514e77e7354befe36ed0">m_VerticesExtraDataContainer</a>.size() &gt; 0;</div>
+<div class="line"><span class="lineno">  180</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1000,54 +1124,54 @@ Private Attributes</h2></td></tr>
 
 <p>Update neighbor informations on each triangle and incident triangle for each vertex. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00106">106</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>{</div>
-<div class="line"><span class="lineno">  108</span>    std::unordered_map&lt;VertexPair, std::pair&lt;TriangleIndex, EdgeIndex&gt;&gt; neighborMap;</div>
-<div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> iTriangle = 0; iTriangle &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>(); ++iTriangle)</div>
-<div class="line"><span class="lineno">  111</span>    {</div>
-<div class="line"><span class="lineno">  112</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a>&amp; curFace = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[iTriangle];</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>        <span class="comment">// Set the incident triangle index for each vertex if it&#39;s not already the case.</span></div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">EdgeIndex</a> iEdge = 0; iEdge &lt; 3; ++iEdge)</div>
-<div class="line"><span class="lineno">  116</span>        {</div>
-<div class="line"><span class="lineno">  117</span>            <span class="keywordtype">int</span> curVertexIdx = curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[iEdge];</div>
-<div class="line"><span class="lineno">  118</span>            assert(curVertexIdx != -1);</div>
-<div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curVertexIdx];</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>            <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> == -1)</div>
-<div class="line"><span class="lineno">  123</span>                curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> = iTriangle;</div>
-<div class="line"><span class="lineno">  124</span>        }</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>        <span class="comment">// Set neighboring faces using the edges</span></div>
-<div class="line"><span class="lineno">  127</span>        <span class="keyword">auto</span> SetFacesNeigbhor = [&amp;](<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> firstVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> secondVertexIdx, uint8_t edgeIdx)</div>
-<div class="line"><span class="lineno">  128</span>        {</div>
-<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span>(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())</div>
-<div class="line"><span class="lineno">  130</span>            {</div>
-<div class="line"><span class="lineno">  131</span>                neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iTriangle, edgeIdx };</div>
-<div class="line"><span class="lineno">  132</span>            }</div>
-<div class="line"><span class="lineno">  133</span>            <span class="keywordflow">else</span> <span class="comment">// The edge with firstVertex and secondVertex is already registered in map</span></div>
-<div class="line"><span class="lineno">  134</span>            {</div>
-<div class="line"><span class="lineno">  135</span>                <span class="keyword">auto</span> [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];</div>
-<div class="line"><span class="lineno">  136</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iTriangle;</div>
-<div class="line"><span class="lineno">  137</span>                curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a00acb503b88d56642e52f8b853c698d7">Neighbors</a>[edgeIdx] = faceNeighborIdx;</div>
-<div class="line"><span class="lineno">  138</span>            }</div>
-<div class="line"><span class="lineno">  139</span>        };</div>
-<div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v0Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[0]);</div>
-<div class="line"><span class="lineno">  142</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v1Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[1]);</div>
-<div class="line"><span class="lineno">  143</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v2Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[2]);</div>
-<div class="line"><span class="lineno">  144</span> </div>
-<div class="line"><span class="lineno">  145</span>        <span class="comment">// Edge v0-v1</span></div>
-<div class="line"><span class="lineno">  146</span>        SetFacesNeigbhor(v0Idx, v1Idx, 2);</div>
-<div class="line"><span class="lineno">  147</span>        <span class="comment">// Edge v1-v2</span></div>
-<div class="line"><span class="lineno">  148</span>        SetFacesNeigbhor(v1Idx, v2Idx, 0);</div>
-<div class="line"><span class="lineno">  149</span>        <span class="comment">// Edge v2-v0</span></div>
-<div class="line"><span class="lineno">  150</span>        SetFacesNeigbhor(v2Idx, v0Idx, 1);</div>
-<div class="line"><span class="lineno">  151</span>    }</div>
-<div class="line"><span class="lineno">  152</span>}</div>
-<div class="ttc" id="anamespaceBaseType_html_a224b60c39fa5c7e8cc8b428730d74ba6"><div class="ttname"><a href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">BaseType::EdgeIndex</a></div><div class="ttdeci">uint8_t EdgeIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00010">BaseType.h:10</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8cpp_source.html#l00109">109</a> of file <a class="el" href="Mesh_8cpp_source.html">Mesh.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    std::unordered_map&lt;VertexPair, std::pair&lt;TriangleIndex, EdgeIndex&gt;&gt; neighborMap;</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> iTriangle = 0; iTriangle &lt; <a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>(); ++iTriangle)</div>
+<div class="line"><span class="lineno">  114</span>    {</div>
+<div class="line"><span class="lineno">  115</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a>&amp; curTriangle = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[iTriangle];</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>        <span class="comment">// Set the incident triangle index for each vertex if it&#39;s not already the case.</span></div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">EdgeIndex</a> iEdge = 0; iEdge &lt; 3; ++iEdge)</div>
+<div class="line"><span class="lineno">  119</span>        {</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordtype">int</span> curVertexIdx = curTriangle.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[iEdge];</div>
+<div class="line"><span class="lineno">  121</span>            assert(curVertexIdx != -1);</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a5343f7c967d81b33553399f994736b31">m_Vertices</a>[curVertexIdx];</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>            <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> == -1)</div>
+<div class="line"><span class="lineno">  126</span>                curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> = iTriangle;</div>
+<div class="line"><span class="lineno">  127</span>        }</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>        <span class="comment">// Set neighboring faces using the edges</span></div>
+<div class="line"><span class="lineno">  130</span>        <span class="keyword">auto</span> SetFacesNeigbhor = [&amp;](<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> firstVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> secondVertexIdx, uint8_t edgeIdx)</div>
+<div class="line"><span class="lineno">  131</span>        {</div>
+<div class="line"><span class="lineno">  132</span>            <span class="keywordflow">if</span>(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())</div>
+<div class="line"><span class="lineno">  133</span>            {</div>
+<div class="line"><span class="lineno">  134</span>                neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iTriangle, edgeIdx };</div>
+<div class="line"><span class="lineno">  135</span>            }</div>
+<div class="line"><span class="lineno">  136</span>            <span class="keywordflow">else</span> <span class="comment">// The edge with firstVertex and secondVertex is already registered in map</span></div>
+<div class="line"><span class="lineno">  137</span>            {</div>
+<div class="line"><span class="lineno">  138</span>                <span class="keyword">auto</span> [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];</div>
+<div class="line"><span class="lineno">  139</span>                <a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iTriangle;</div>
+<div class="line"><span class="lineno">  140</span>                curTriangle.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a00acb503b88d56642e52f8b853c698d7">Neighbors</a>[edgeIdx] = faceNeighborIdx;</div>
+<div class="line"><span class="lineno">  141</span>            }</div>
+<div class="line"><span class="lineno">  142</span>        };</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v0Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curTriangle.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[0]);</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v1Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curTriangle.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[1]);</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v2Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curTriangle.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[2]);</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>        <span class="comment">// Edge v0-v1</span></div>
+<div class="line"><span class="lineno">  149</span>        SetFacesNeigbhor(v0Idx, v1Idx, 2);</div>
+<div class="line"><span class="lineno">  150</span>        <span class="comment">// Edge v1-v2</span></div>
+<div class="line"><span class="lineno">  151</span>        SetFacesNeigbhor(v1Idx, v2Idx, 0);</div>
+<div class="line"><span class="lineno">  152</span>        <span class="comment">// Edge v2-v0</span></div>
+<div class="line"><span class="lineno">  153</span>        SetFacesNeigbhor(v2Idx, v0Idx, 1);</div>
+<div class="line"><span class="lineno">  154</span>    }</div>
+<div class="line"><span class="lineno">  155</span>}</div>
+<div class="ttc" id="anamespaceBaseType_html_a224b60c39fa5c7e8cc8b428730d74ba6"><div class="ttname"><a href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">BaseType::EdgeIndex</a></div><div class="ttdeci">uint8_t EdgeIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00013">BaseType.h:13</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html">Data::Primitive::Triangle</a></div><div class="ttdoc">Structure holding the informations relative to a triangular triangle primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00034">Primitive.h:35</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html_a00acb503b88d56642e52f8b853c698d7"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html#a00acb503b88d56642e52f8b853c698d7">Data::Primitive::Triangle::Neighbors</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Neighbors</div><div class="ttdoc">Triangle neighboring triangle indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00044">Primitive.h:44</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html_a09b28d462d786661d18ff716d0764ae9"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Data::Primitive::Triangle::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Triangle vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00039">Primitive.h:39</a></div></div>
@@ -1079,8 +1203,8 @@ Private Attributes</h2></td></tr>
 
 <p>List of triangles. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00282">282</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  282</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00286">286</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  286</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1106,8 +1230,8 @@ Private Attributes</h2></td></tr>
 
 <p>Extra data containers for each triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00287">287</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  287</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00291">291</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  291</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1133,8 +1257,8 @@ Private Attributes</h2></td></tr>
 
 <p>List of vertices. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00279">279</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  279</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00284">284</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  284</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1160,8 +1284,8 @@ Private Attributes</h2></td></tr>
 
 <p>Extra data containers for each vertex. </p>
 
-<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00285">285</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  285</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="Mesh_8h_source.html#l00289">289</a> of file <a class="el" href="Mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  289</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

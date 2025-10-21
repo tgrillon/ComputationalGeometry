@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MeshToolBox: App/Test/Source/MathUtils_utest.cpp File Reference</title>
+<title>MeshToolBox: App/Test/Source/MathHelpers_utest.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,7 +75,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('MathUtils__utest_8cpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('MathHelpers__utest_8cpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -103,22 +103,22 @@ $(document).ready(function(){initNavTree('MathUtils__utest_8cpp.html',''); initR
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">MathUtils_utest.cpp File Reference</div></div>
+  <div class="headertitle"><div class="title">MathHelpers_utest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="MathUtils_8h_source.html">Application/MathUtils.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="MathHelpers_8h_source.html">Application/MathHelpers.h</a>&quot;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for MathUtils_utest.cpp:</div>
+Include dependency graph for MathHelpers_utest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="MathUtils__utest_8cpp__incl.svg" width="527" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="MathHelpers__utest_8cpp__incl.svg" width="675" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<p><a href="MathUtils__utest_8cpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="MathHelpers__utest_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a982d240e6c652b4f060030c4cde21dcf" id="r_a982d240e6c652b4f060030c4cde21dcf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MathUtils__utest_8cpp.html#a982d240e6c652b4f060030c4cde21dcf">TEST</a> (MathUtilsTest, EqualNear_ShouldHaveTheExpectedResults)</td></tr>
+<tr class="memitem:a982d240e6c652b4f060030c4cde21dcf" id="r_a982d240e6c652b4f060030c4cde21dcf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MathHelpers__utest_8cpp.html#a982d240e6c652b4f060030c4cde21dcf">TEST</a> (MathUtilsTest, EqualNear_ShouldHaveTheExpectedResults)</td></tr>
 <tr class="separator:a982d240e6c652b4f060030c4cde21dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -148,47 +148,47 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MathUtils__utest_8cpp_source.html#l00008">8</a> of file <a class="el" href="MathUtils__utest_8cpp_source.html">MathUtils_utest.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MathHelpers__utest_8cpp_source.html#l00008">8</a> of file <a class="el" href="MathHelpers__utest_8cpp_source.html">MathHelpers_utest.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
 <div class="line"><span class="lineno">   10</span>    { <span class="comment">// Float comparisons</span></div>
 <div class="line"><span class="lineno">   11</span>        <span class="keywordtype">float</span> a = 4.25;</div>
-<div class="line"><span class="lineno">   12</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(a, 4.25));</div>
-<div class="line"><span class="lineno">   13</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(a, 4.26));</div>
+<div class="line"><span class="lineno">   12</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(a, 4.25));</div>
+<div class="line"><span class="lineno">   13</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(a, 4.26));</div>
 <div class="line"><span class="lineno">   14</span>        <span class="keywordtype">float</span> b = 0.001;</div>
-<div class="line"><span class="lineno">   15</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(b, 0.001));</div>
-<div class="line"><span class="lineno">   16</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(b, 0.002));</div>
+<div class="line"><span class="lineno">   15</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(b, 0.001));</div>
+<div class="line"><span class="lineno">   16</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(b, 0.002));</div>
 <div class="line"><span class="lineno">   17</span>        <span class="keywordtype">float</span> c = 100025;</div>
-<div class="line"><span class="lineno">   18</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(c, 100025));</div>
-<div class="line"><span class="lineno">   19</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(c, 100026));</div>
+<div class="line"><span class="lineno">   18</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(c, 100025));</div>
+<div class="line"><span class="lineno">   19</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(c, 100026));</div>
 <div class="line"><span class="lineno">   20</span>    }</div>
 <div class="line"><span class="lineno">   21</span> </div>
 <div class="line"><span class="lineno">   22</span>    { <span class="comment">// Vec2 comparison returning true</span></div>
 <div class="line"><span class="lineno">   23</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a> a = { 0.5, 0.35 };</div>
-<div class="line"><span class="lineno">   24</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(a, { 0.5, 0.35 }));</div>
-<div class="line"><span class="lineno">   25</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(a, { 0.52, 0.37 }));</div>
+<div class="line"><span class="lineno">   24</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(a, { 0.5, 0.35 }));</div>
+<div class="line"><span class="lineno">   25</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(a, { 0.52, 0.37 }));</div>
 <div class="line"><span class="lineno">   26</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a> b = { 0.004, 0.0056 };</div>
-<div class="line"><span class="lineno">   27</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(b, { 0.004, 0.0056 }));</div>
-<div class="line"><span class="lineno">   28</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(b, { 0.005, 0.0053 }));</div>
+<div class="line"><span class="lineno">   27</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(b, { 0.004, 0.0056 }));</div>
+<div class="line"><span class="lineno">   28</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(b, { 0.005, 0.0053 }));</div>
 <div class="line"><span class="lineno">   29</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a> c = { 22450, 660001 };</div>
-<div class="line"><span class="lineno">   30</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(c, { 22450, 660001 }));</div>
-<div class="line"><span class="lineno">   31</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(c, { 22451, 660002 }));</div>
+<div class="line"><span class="lineno">   30</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(c, { 22450, 660001 }));</div>
+<div class="line"><span class="lineno">   31</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(c, { 22451, 660002 }));</div>
 <div class="line"><span class="lineno">   32</span>    }</div>
 <div class="line"><span class="lineno">   33</span> </div>
 <div class="line"><span class="lineno">   34</span>    { <span class="comment">// Vec3 comparison returning true</span></div>
 <div class="line"><span class="lineno">   35</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> a = { 0.5, 0.35, 0.08 };</div>
-<div class="line"><span class="lineno">   36</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(a, { 0.5, 0.35, 0.08 }));</div>
-<div class="line"><span class="lineno">   37</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(a, { 0.55, 0.38, 0.06 }));</div>
+<div class="line"><span class="lineno">   36</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(a, { 0.5, 0.35, 0.08 }));</div>
+<div class="line"><span class="lineno">   37</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(a, { 0.55, 0.38, 0.06 }));</div>
 <div class="line"><span class="lineno">   38</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> b = { 0.004, 0.0056, 0.00012 };</div>
-<div class="line"><span class="lineno">   39</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(b, { 0.004, 0.0056, 0.00012 }));</div>
-<div class="line"><span class="lineno">   40</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(b, { 0.003, 0.0058, 0.00014 }));</div>
+<div class="line"><span class="lineno">   39</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(b, { 0.004, 0.0056, 0.00012 }));</div>
+<div class="line"><span class="lineno">   40</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(b, { 0.003, 0.0058, 0.00014 }));</div>
 <div class="line"><span class="lineno">   41</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> c = { 22450, 660001, 55142 };</div>
-<div class="line"><span class="lineno">   42</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(c, { 22450, 660001, 55142 }));</div>
-<div class="line"><span class="lineno">   43</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(c, { 22451, 660000, 55141 }));</div>
+<div class="line"><span class="lineno">   42</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(c, { 22450, 660001, 55142 }));</div>
+<div class="line"><span class="lineno">   43</span>        EXPECT_FALSE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(c, { 22451, 660000, 55141 }));</div>
 <div class="line"><span class="lineno">   44</span>    }</div>
 <div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00019">BaseType.h:19</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00018">BaseType.h:18</a></div></div>
-<div class="ttc" id="anamespaceMath_html_adfdafc5a22fd8b7dafbbf5d1ff6d8604"><div class="ttname"><a href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">Math::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float lhs, float rhs, float eps=1e-6)</div><div class="ttdoc">Helper function to compare two floating point variables.</div><div class="ttdef"><b>Definition</b> <a href="MathUtils_8h_source.html#l00011">MathUtils.h:11</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00022">BaseType.h:22</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00021">BaseType.h:21</a></div></div>
+<div class="ttc" id="anamespaceMath_1_1Compare_html_aaf09643b73e276e2ca121b9e21d844d8"><div class="ttname"><a href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">Math::Compare::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float lhs, float rhs, float eps=1e-6)</div><div class="ttdoc">Helper function to compare two floating point variables.</div><div class="ttdef"><b>Definition</b> <a href="MathHelpers_8h_source.html#l00011">MathHelpers.h:11</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -197,7 +197,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_b1617d756d2224e91d37255e84e89ba2.html">App</a></li><li class="navelem"><a class="el" href="dir_5e289734afcfea783635eece142cb070.html">Test</a></li><li class="navelem"><a class="el" href="dir_8e86fe097a34bad52a8ab5cc81cd4832.html">Source</a></li><li class="navelem"><a class="el" href="MathUtils__utest_8cpp.html">MathUtils_utest.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_b1617d756d2224e91d37255e84e89ba2.html">App</a></li><li class="navelem"><a class="el" href="dir_5e289734afcfea783635eece142cb070.html">Test</a></li><li class="navelem"><a class="el" href="dir_8e86fe097a34bad52a8ab5cc81cd4832.html">Source</a></li><li class="navelem"><a class="el" href="MathHelpers__utest_8cpp.html">MathHelpers_utest.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

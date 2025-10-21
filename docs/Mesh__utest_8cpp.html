@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('Mesh__utest_8cpp.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="ExtraDataType_8h_source.html">Application/ExtraDataType.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="MathUtils_8h_source.html">Application/MathUtils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MathHelpers_8h_source.html">Application/MathHelpers.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Mesh_8h_source.html">Application/Mesh.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MeshIntegrity_8h_source.html">Application/MeshIntegrity.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MeshLoader_8h_source.html">Application/MeshLoader.h</a>&quot;</code><br />
@@ -142,12 +142,14 @@ Functions</h2></td></tr>
 <tr class="separator:a8a12a72d38b579f04cd168a7fe372ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a658082aa68cd3a7f118748e4f215931f" id="r_a658082aa68cd3a7f118748e4f215931f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Mesh__utest_8cpp.html#a658082aa68cd3a7f118748e4f215931f">TEST</a> (MeshTest, AddTriangle_ValidMeshWithED_ShouldAddExtraDataContainer)</td></tr>
 <tr class="separator:a658082aa68cd3a7f118748e4f215931f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adddae56dc77d10223c61543e485692f0" id="r_adddae56dc77d10223c61543e485692f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Mesh__utest_8cpp.html#adddae56dc77d10223c61543e485692f0">TEST</a> (MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)</td></tr>
-<tr class="separator:adddae56dc77d10223c61543e485692f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f4a7dbe1c92a6acbe495eecec9abad" id="r_a85f4a7dbe1c92a6acbe495eecec9abad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Mesh__utest_8cpp.html#a85f4a7dbe1c92a6acbe495eecec9abad">TEST</a> (MeshTest, ComputeTriangleNormals_ShouldComputeEachTriangleNormal)</td></tr>
+<tr class="separator:a85f4a7dbe1c92a6acbe495eecec9abad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35fd336ee16783084d0f4516c563f9f8" id="r_a35fd336ee16783084d0f4516c563f9f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Mesh__utest_8cpp.html#a35fd336ee16783084d0f4516c563f9f8">TEST</a> (MeshTest, ComputeSmoothVertexNormals_ShouldComputeEachSmoothVertexNormal)</td></tr>
+<tr class="separator:a35fd336ee16783084d0f4516c563f9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="afc03289f31bc3b59a44b869b126d5d28" name="afc03289f31bc3b59a44b869b126d5d28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc03289f31bc3b59a44b869b126d5d28">&#9670;&#160;</a></span>TEST() <span class="overload">[1/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afc03289f31bc3b59a44b869b126d5d28">&#9670;&#160;</a></span>TEST() <span class="overload">[1/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,16 +191,16 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  128</span>    EXPECT_TRUE(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>());</div>
 <div class="line"><span class="lineno">  129</span>}</div>
 <div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html">Data::Surface::Mesh</a></div><div class="ttdoc">Class representing a 3D triangular mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00027">Mesh.h:28</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a6898dfd93edbe132daa22781cce59ec6"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">Data::Surface::Mesh::AddVerticesExtraDataContainer</a></div><div class="ttdeci">void AddVerticesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00096">Mesh.cpp:96</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a7c25e22f9f5bb5216fbe039fef6dd962"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">Data::Surface::Mesh::HasVerticesExtraDataContainer</a></div><div class="ttdeci">bool HasVerticesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00174">Mesh.cpp:174</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac47c66a581bcb05e0bb0fa026dc5849a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">Data::Surface::Mesh::HasTrianglesExtraDataContainer</a></div><div class="ttdeci">bool HasTrianglesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00179">Mesh.cpp:179</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad89c901d33c3e1eed3723e59606d30c0"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">Data::Surface::Mesh::AddTrianglesExtraDataContainer</a></div><div class="ttdeci">void AddTrianglesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00101">Mesh.cpp:101</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a6898dfd93edbe132daa22781cce59ec6"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6">Data::Surface::Mesh::AddVerticesExtraDataContainer</a></div><div class="ttdeci">void AddVerticesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00095">Mesh.cpp:95</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a7c25e22f9f5bb5216fbe039fef6dd962"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a7c25e22f9f5bb5216fbe039fef6dd962">Data::Surface::Mesh::HasVerticesExtraDataContainer</a></div><div class="ttdeci">bool HasVerticesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for vertices.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00177">Mesh.cpp:177</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac47c66a581bcb05e0bb0fa026dc5849a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">Data::Surface::Mesh::HasTrianglesExtraDataContainer</a></div><div class="ttdeci">bool HasTrianglesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00182">Mesh.cpp:182</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ad89c901d33c3e1eed3723e59606d30c0"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0">Data::Surface::Mesh::AddTrianglesExtraDataContainer</a></div><div class="ttdeci">void AddTrianglesExtraDataContainer()</div><div class="ttdoc">Add extra data container for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00102">Mesh.cpp:102</a></div></div>
 <div class="ttc" id="anamespaceTestHelpers_html_aa550fac9559f4f09371354d6fcdc4a34"><div class="ttname"><a href="namespaceTestHelpers.html#aa550fac9559f4f09371354d6fcdc4a34">TestHelpers::CreateValidMesh</a></div><div class="ttdeci">Data::Surface::Mesh CreateValidMesh()</div><div class="ttdoc">Create a valid mesh with 4 vertices and 2 faces, and add extra data to vertices.</div><div class="ttdef"><b>Definition</b> <a href="TestHelpers_8h_source.html#l00010">TestHelpers.h:10</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a658082aa68cd3a7f118748e4f215931f" name="a658082aa68cd3a7f118748e4f215931f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a658082aa68cd3a7f118748e4f215931f">&#9670;&#160;</a></span>TEST() <span class="overload">[2/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a658082aa68cd3a7f118748e4f215931f">&#9670;&#160;</a></span>TEST() <span class="overload">[2/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,15 +233,15 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  174</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">GetTriangle</a>(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>() - 1).<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#ae71a61b6395d95e9f6a91d9548de3611">GetExtraData</a>&lt;<span class="keywordtype">void</span>&gt;(), <span class="keyword">nullptr</span>);</div>
 <div class="line"><span class="lineno">  175</span>}</div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_ae71a61b6395d95e9f6a91d9548de3611"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#ae71a61b6395d95e9f6a91d9548de3611">Data::Primitive::TriangleProxy::GetExtraData</a></div><div class="ttdeci">T * GetExtraData()</div><div class="ttdoc">Get extra data of type T associated with the triangle, or nullptr if not found.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00017">PrimitiveProxy.h:17</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a02ddd1f882a72a6ca6cd34863b79c633"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a02ddd1f882a72a6ca6cd34863b79c633">Data::Surface::Mesh::AddTriangle</a></div><div class="ttdeci">BaseType::TriangleIndex AddTriangle(const Data::Primitive::Triangle &amp;triangle)</div><div class="ttdoc">Add a triangle to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00087">Mesh.cpp:87</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a1bc176e83cbe01f7f9f31d2749d2cab2"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">Data::Surface::Mesh::GetTriangle</a></div><div class="ttdeci">Data::Primitive::TriangleProxy GetTriangle(const BaseType::TriangleIndex index)</div><div class="ttdoc">Get a proxy to the triangle at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00048">Mesh.cpp:48</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9d4db90c57313ad2dc6662a765660b6c"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">Data::Surface::Mesh::GetTriangleCount</a></div><div class="ttdeci">uint32_t GetTriangleCount() const</div><div class="ttdoc">Get the number of triangles in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00037">Mesh.cpp:37</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a02ddd1f882a72a6ca6cd34863b79c633"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a02ddd1f882a72a6ca6cd34863b79c633">Data::Surface::Mesh::AddTriangle</a></div><div class="ttdeci">BaseType::TriangleIndex AddTriangle(const Data::Primitive::Triangle &amp;triangle)</div><div class="ttdoc">Add a triangle to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00086">Mesh.cpp:86</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a1bc176e83cbe01f7f9f31d2749d2cab2"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a1bc176e83cbe01f7f9f31d2749d2cab2">Data::Surface::Mesh::GetTriangle</a></div><div class="ttdeci">Data::Primitive::TriangleProxy GetTriangle(const BaseType::TriangleIndex index)</div><div class="ttdoc">Get a proxy to the triangle at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00047">Mesh.cpp:47</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9d4db90c57313ad2dc6662a765660b6c"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">Data::Surface::Mesh::GetTriangleCount</a></div><div class="ttdeci">uint32_t GetTriangleCount() const</div><div class="ttdoc">Get the number of triangles in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00036">Mesh.cpp:36</a></div></div>
 <div class="ttc" id="anamespaceTestHelpers_html_a0d5d69934fe21d1a358de3d0cd7c1b0a"><div class="ttname"><a href="namespaceTestHelpers.html#a0d5d69934fe21d1a358de3d0cd7c1b0a">TestHelpers::CreateValidMeshWithED</a></div><div class="ttdeci">Data::Surface::Mesh CreateValidMeshWithED()</div><div class="ttdoc">Create a valid mesh with extra data for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="TestHelpers_8h_source.html#l00028">TestHelpers.h:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="aba4af5dda55fbe414c34fc4747acb0c7" name="aba4af5dda55fbe414c34fc4747acb0c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba4af5dda55fbe414c34fc4747acb0c7">&#9670;&#160;</a></span>TEST() <span class="overload">[3/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aba4af5dda55fbe414c34fc4747acb0c7">&#9670;&#160;</a></span>TEST() <span class="overload">[3/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -285,15 +287,15 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   55</span>    EXPECT_EQ(fIdx, 0);</div>
 <div class="line"><span class="lineno">   56</span>    EXPECT_EQ(mesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a9d4db90c57313ad2dc6662a765660b6c">GetTriangleCount</a>(), 1);</div>
 <div class="line"><span class="lineno">   57</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00032">Mesh.cpp:32</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aca551211639d9b221c89683667548d0e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">Data::Surface::Mesh::AddVertex</a></div><div class="ttdeci">BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex &amp;vertex)</div><div class="ttdoc">Add a vertex to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00078">Mesh.cpp:78</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00012">BaseType.h:12</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_ab0b9b1309a54bf96aea7b2acdfa8e4f5"><div class="ttname"><a href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">BaseType::TriangleIndex</a></div><div class="ttdeci">uint32_t TriangleIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00013">BaseType.h:13</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac45d138c12dba0c9350b2f48a9597ec8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac45d138c12dba0c9350b2f48a9597ec8">Data::Surface::Mesh::GetVertexCount</a></div><div class="ttdeci">uint32_t GetVertexCount() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00031">Mesh.cpp:31</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aca551211639d9b221c89683667548d0e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e">Data::Surface::Mesh::AddVertex</a></div><div class="ttdeci">BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex &amp;vertex)</div><div class="ttdoc">Add a vertex to the mesh and return its index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00077">Mesh.cpp:77</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00015">BaseType.h:15</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_ab0b9b1309a54bf96aea7b2acdfa8e4f5"><div class="ttname"><a href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">BaseType::TriangleIndex</a></div><div class="ttdeci">uint32_t TriangleIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00016">BaseType.h:16</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a12ded1d464c6b8bb17ca32b2f9a67f6e" name="a12ded1d464c6b8bb17ca32b2f9a67f6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12ded1d464c6b8bb17ca32b2f9a67f6e">&#9670;&#160;</a></span>TEST() <span class="overload">[4/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ded1d464c6b8bb17ca32b2f9a67f6e">&#9670;&#160;</a></span>TEST() <span class="overload">[4/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -336,16 +338,16 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  146</span>    originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a3ecad8107dab3b71b4a67799bf75949a">GetTriangleData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[0] = 3;</div>
 <div class="line"><span class="lineno">  147</span>    EXPECT_NE(clonedMesh-&gt;GetTriangleData(0).Vertices[0], originalMesh.<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#a3ecad8107dab3b71b4a67799bf75949a">GetTriangleData</a>(0).<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[0]);</div>
 <div class="line"><span class="lineno">  148</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a3ecad8107dab3b71b4a67799bf75949a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a3ecad8107dab3b71b4a67799bf75949a">Data::Surface::Mesh::GetTriangleData</a></div><div class="ttdeci">Data::Primitive::Triangle &amp; GetTriangleData(const BaseType::TriangleIndex index)</div><div class="ttdoc">Get the triangle data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00072">Mesh.cpp:72</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9126b1520d0f2385c8e692e531527ad8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">Data::Surface::Mesh::GetVertexData</a></div><div class="ttdeci">Data::Primitive::Vertex &amp; GetVertexData(const BaseType::VertexIndex index)</div><div class="ttdoc">Get the vertex data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00060">Mesh.cpp:60</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aaa536140f461bc514bef21971c627e87"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87">Data::Surface::Mesh::Clone</a></div><div class="ttdeci">std::unique_ptr&lt; Mesh &gt; Clone() const</div><div class="ttdoc">Deep clone of the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00027">Mesh.cpp:27</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a3ecad8107dab3b71b4a67799bf75949a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a3ecad8107dab3b71b4a67799bf75949a">Data::Surface::Mesh::GetTriangleData</a></div><div class="ttdeci">Data::Primitive::Triangle &amp; GetTriangleData(const BaseType::TriangleIndex index)</div><div class="ttdoc">Get the triangle data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00071">Mesh.cpp:71</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9126b1520d0f2385c8e692e531527ad8"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9126b1520d0f2385c8e692e531527ad8">Data::Surface::Mesh::GetVertexData</a></div><div class="ttdeci">Data::Primitive::Vertex &amp; GetVertexData(const BaseType::VertexIndex index)</div><div class="ttdoc">Get the vertex data at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00059">Mesh.cpp:59</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_aaa536140f461bc514bef21971c627e87"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87">Data::Surface::Mesh::Clone</a></div><div class="ttdeci">std::unique_ptr&lt; Mesh &gt; Clone() const</div><div class="ttdoc">Deep clone of the mesh.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00026">Mesh.cpp:26</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html_a09b28d462d786661d18ff716d0764ae9"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Data::Primitive::Triangle::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Triangle vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00039">Primitive.h:39</a></div></div>
 <div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_a0ec39fc8cfa23371d37e4d1179a52067"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Data::Primitive::Vertex::Position</a></div><div class="ttdeci">BaseType::Vec3 Position</div><div class="ttdoc">Vertex position in 3D.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00026">Primitive.h:26</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="adddae56dc77d10223c61543e485692f0" name="adddae56dc77d10223c61543e485692f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adddae56dc77d10223c61543e485692f0">&#9670;&#160;</a></span>TEST() <span class="overload">[5/10]</span></h2>
+<a id="a35fd336ee16783084d0f4516c563f9f8" name="a35fd336ee16783084d0f4516c563f9f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35fd336ee16783084d0f4516c563f9f8">&#9670;&#160;</a></span>TEST() <span class="overload">[5/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -359,7 +361,81 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal&#160;</td>
+          <td class="paramtype">ComputeSmoothVertexNormals_ShouldComputeEachSmoothVertexNormal&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Mesh__utest_8cpp_source.html#l00217">217</a> of file <a class="el" href="Mesh__utest_8cpp_source.html">Mesh_utest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
+<div class="line"><span class="lineno">  219</span>    std::unique_ptr&lt;Mesh&gt; mesh = <a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">MeshLoader::LoadOFF</a>(<span class="stringliteral">&quot;TestFiles/Off/cube.off&quot;</span>);</div>
+<div class="line"><span class="lineno">  220</span>    mesh-&gt;ComputeSmoothVertexNormals(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>    <span class="comment">// The cube has 12 triangular faces (2 per cube triangle)</span></div>
+<div class="line"><span class="lineno">  223</span>    ASSERT_EQ(mesh-&gt;GetTriangleCount(), 12);</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="comment">// For a cube, each vertex is shared by 3 faces meeting at 90-degree angles</span></div>
+<div class="line"><span class="lineno">  226</span>    <span class="comment">// The angle-weighted vertex normal is the sum of triangle normals weighted by their angles</span></div>
+<div class="line"><span class="lineno">  227</span>    <span class="comment">// Since all angles are 90 degrees (π/2) and faces are orthogonal:</span></div>
+<div class="line"><span class="lineno">  228</span>    <span class="comment">// Each vertex normal = normalized sum of 3 orthogonal face normals</span></div>
+<div class="line"><span class="lineno">  229</span>    <span class="comment">// This results in normals pointing along the diagonal from cube center to each vertex</span></div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> invSqrt3 = 1.0f / std::sqrt(3.0f); <span class="comment">// ≈ 0.57735</span></div>
+<div class="line"><span class="lineno">  232</span> </div>
+<div class="line"><span class="lineno">  233</span>    <span class="keyword">const</span> std::vector&lt;Vec3&gt; expectedVertexNormals = {</div>
+<div class="line"><span class="lineno">  234</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, -invSqrt3, -invSqrt3), <span class="comment">// Vertex 0: (-1, -1, -1)</span></div>
+<div class="line"><span class="lineno">  235</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, invSqrt3, -invSqrt3), <span class="comment">// Vertex 1: (-1, 1, -1)</span></div>
+<div class="line"><span class="lineno">  236</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, invSqrt3, -invSqrt3), <span class="comment">// Vertex 2: (1, 1, -1)</span></div>
+<div class="line"><span class="lineno">  237</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, -invSqrt3, -invSqrt3), <span class="comment">// Vertex 3: (1, -1, -1)</span></div>
+<div class="line"><span class="lineno">  238</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, -invSqrt3, invSqrt3), <span class="comment">// Vertex 4: (-1, -1, 1)</span></div>
+<div class="line"><span class="lineno">  239</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, invSqrt3, invSqrt3), <span class="comment">// Vertex 5: (-1, 1, 1)</span></div>
+<div class="line"><span class="lineno">  240</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, invSqrt3, invSqrt3), <span class="comment">// Vertex 6: (1, 1, 1)</span></div>
+<div class="line"><span class="lineno">  241</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, -invSqrt3, invSqrt3) <span class="comment">// Vertex 7: (1, -1, 1)</span></div>
+<div class="line"><span class="lineno">  242</span>    };</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>    <span class="keyword">constexpr</span> <span class="keywordtype">float</span> epsilon = 1e-5f;</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <span class="comment">// Check that each smooth vertex computed normal matches the expected one.</span></div>
+<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex = 0; iVertex &lt; mesh-&gt;GetVertexCount(); ++iVertex)</div>
+<div class="line"><span class="lineno">  248</span>    {</div>
+<div class="line"><span class="lineno">  249</span>        <span class="comment">// Get the computed normal for the current vertex.</span></div>
+<div class="line"><span class="lineno">  250</span>        <span class="keyword">auto</span> curVertexExtraData = mesh-&gt;GetVertex(iVertex).GetExtraData&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">SmoothVertexNormalExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  251</span>        assert(curVertexExtraData != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  252</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = curVertexExtraData-&gt;GetData();</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>        <span class="comment">// Check that the normal matches the expected direction.</span></div>
+<div class="line"><span class="lineno">  255</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(computedNormal, expectedVertexNormals[iVertex], epsilon));</div>
+<div class="line"><span class="lineno">  256</span>    }</div>
+<div class="line"><span class="lineno">  257</span>}</div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1SmoothVertexNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">Data::ExtraData::SmoothVertexNormalExtraData</a></div><div class="ttdoc">Extra data type to store a smooth vertex normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00055">ExtraDataType.h:56</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00022">BaseType.h:22</a></div></div>
+<div class="ttc" id="anamespaceMath_1_1Compare_html_aaf09643b73e276e2ca121b9e21d844d8"><div class="ttname"><a href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">Math::Compare::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float lhs, float rhs, float eps=1e-6)</div><div class="ttdoc">Helper function to compare two floating point variables.</div><div class="ttdef"><b>Definition</b> <a href="MathHelpers_8h_source.html#l00011">MathHelpers.h:11</a></div></div>
+<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_ab6956d24e900067738077b12ddde0c99"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">Utilitary::Surface::MeshLoader::LoadOFF</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOFF(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OFF file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00062">MeshLoader.cpp:62</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a85f4a7dbe1c92a6acbe495eecec9abad" name="a85f4a7dbe1c92a6acbe495eecec9abad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f4a7dbe1c92a6acbe495eecec9abad">&#9670;&#160;</a></span>TEST() <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">MeshTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ComputeTriangleNormals_ShouldComputeEachTriangleNormal&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -378,21 +454,21 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  182</span>    <span class="comment">// The cube has 12 triangular faces (2 per cube triangle)</span></div>
 <div class="line"><span class="lineno">  183</span>    ASSERT_EQ(mesh-&gt;GetTriangleCount(), 12);</div>
 <div class="line"><span class="lineno">  184</span> </div>
-<div class="line"><span class="lineno">  185</span>    <span class="comment">// Expected normals for each cube triangle (normalized)</span></div>
-<div class="line"><span class="lineno">  186</span>    <span class="comment">// Each cube triangle has 2 triangular faces with the same normal</span></div>
-<div class="line"><span class="lineno">  187</span>    <span class="keyword">const</span> std::vector&lt;Vec3&gt; expectedFaceNormals = {</div>
-<div class="line"><span class="lineno">  188</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, -1), <span class="comment">// Triangle 0: Front triangle (-Z)</span></div>
-<div class="line"><span class="lineno">  189</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, -1), <span class="comment">// Triangle 1: Front triangle (-Z)</span></div>
-<div class="line"><span class="lineno">  190</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-1, 0, 0), <span class="comment">// Triangle 2: Left triangle (-X)</span></div>
-<div class="line"><span class="lineno">  191</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-1, 0, 0), <span class="comment">// Triangle 3: Left triangle (-X)</span></div>
-<div class="line"><span class="lineno">  192</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(1, 0, 0), <span class="comment">// Triangle 4: Right triangle (+X)</span></div>
-<div class="line"><span class="lineno">  193</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(1, 0, 0), <span class="comment">// Triangle 5: Right triangle (+X)</span></div>
-<div class="line"><span class="lineno">  194</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, -1, 0), <span class="comment">// Triangle 6: Bottom triangle (-Y)</span></div>
-<div class="line"><span class="lineno">  195</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, -1, 0), <span class="comment">// Triangle 7: Bottom triangle (-Y)</span></div>
-<div class="line"><span class="lineno">  196</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, 1), <span class="comment">// Triangle 8: Back triangle (+Z)</span></div>
-<div class="line"><span class="lineno">  197</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, 1), <span class="comment">// Triangle 9: Back triangle (+Z)</span></div>
-<div class="line"><span class="lineno">  198</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 1, 0), <span class="comment">// Triangle 10: Top triangle (+Y)</span></div>
-<div class="line"><span class="lineno">  199</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 1, 0) <span class="comment">// Triangle 11: Top triangle (+Y)</span></div>
+<div class="line"><span class="lineno">  185</span>    <span class="comment">// Expected normals for each cube face (normalized)</span></div>
+<div class="line"><span class="lineno">  186</span>    <span class="comment">// Each cube face has 2 triangular faces with the same normal</span></div>
+<div class="line"><span class="lineno">  187</span>    <span class="keyword">const</span> std::vector&lt;Vec3&gt; expectedTriangleNormals = {</div>
+<div class="line"><span class="lineno">  188</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, -1), <span class="comment">// Triangle 0: Front face (-Z)</span></div>
+<div class="line"><span class="lineno">  189</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, -1), <span class="comment">// Triangle 1: Front face (-Z)</span></div>
+<div class="line"><span class="lineno">  190</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-1, 0, 0), <span class="comment">// Triangle 2: Left face (-X)</span></div>
+<div class="line"><span class="lineno">  191</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-1, 0, 0), <span class="comment">// Triangle 3: Left face (-X)</span></div>
+<div class="line"><span class="lineno">  192</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(1, 0, 0), <span class="comment">// Triangle 4: Right face (+X)</span></div>
+<div class="line"><span class="lineno">  193</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(1, 0, 0), <span class="comment">// Triangle 5: Right face (+X)</span></div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, -1, 0), <span class="comment">// Triangle 6: Bottom face (-Y)</span></div>
+<div class="line"><span class="lineno">  195</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, -1, 0), <span class="comment">// Triangle 7: Bottom face (-Y)</span></div>
+<div class="line"><span class="lineno">  196</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, 1), <span class="comment">// Triangle 8: Back face (+Z)</span></div>
+<div class="line"><span class="lineno">  197</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 0, 1), <span class="comment">// Triangle 9: Back face (+Z)</span></div>
+<div class="line"><span class="lineno">  198</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 1, 0), <span class="comment">// Triangle 10: Top face (+Y)</span></div>
+<div class="line"><span class="lineno">  199</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(0, 1, 0) <span class="comment">// Triangle 11: Top face (+Y)</span></div>
 <div class="line"><span class="lineno">  200</span>    };</div>
 <div class="line"><span class="lineno">  201</span> </div>
 <div class="line"><span class="lineno">  202</span>    <span class="keyword">constexpr</span> <span class="keywordtype">float</span> epsilon = 1e-5f;</div>
@@ -401,55 +477,20 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  205</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> iTriangle = 0; iTriangle &lt; mesh-&gt;GetTriangleCount(); ++iTriangle)</div>
 <div class="line"><span class="lineno">  206</span>    {</div>
 <div class="line"><span class="lineno">  207</span>        <span class="comment">// Get the computed normal for the current triangle.</span></div>
-<div class="line"><span class="lineno">  208</span>        <span class="keyword">auto</span> curFaceExtraData = mesh-&gt;GetTriangle(iTriangle).GetExtraData&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  209</span>        assert(curFaceExtraData != <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  210</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = curFaceExtraData-&gt;GetData();</div>
+<div class="line"><span class="lineno">  208</span>        <span class="keyword">auto</span> curTriangleExtraData = mesh-&gt;GetTriangle(iTriangle).GetExtraData&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;();</div>
+<div class="line"><span class="lineno">  209</span>        assert(curTriangleExtraData != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  210</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = curTriangleExtraData-&gt;GetData();</div>
 <div class="line"><span class="lineno">  211</span> </div>
 <div class="line"><span class="lineno">  212</span>        <span class="comment">// Check that the normal matches the expected direction.</span></div>
-<div class="line"><span class="lineno">  213</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(computedNormal, expectedFaceNormals[iTriangle], epsilon));</div>
+<div class="line"><span class="lineno">  213</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8">EqualNear</a>(computedNormal, expectedTriangleNormals[iTriangle], epsilon));</div>
 <div class="line"><span class="lineno">  214</span>    }</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>    <span class="comment">// For a cube, each vertex is shared by 3 faces meeting at 90-degree angles</span></div>
-<div class="line"><span class="lineno">  217</span>    <span class="comment">// The angle-weighted vertex normal is the sum of triangle normals weighted by their angles</span></div>
-<div class="line"><span class="lineno">  218</span>    <span class="comment">// Since all angles are 90 degrees (π/2) and faces are orthogonal:</span></div>
-<div class="line"><span class="lineno">  219</span>    <span class="comment">// Each vertex normal = normalized sum of 3 orthogonal face normals</span></div>
-<div class="line"><span class="lineno">  220</span>    <span class="comment">// This results in normals pointing along the diagonal from cube center to each vertex</span></div>
-<div class="line"><span class="lineno">  221</span> </div>
-<div class="line"><span class="lineno">  222</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> invSqrt3 = 1.0f / std::sqrt(3.0f); <span class="comment">// ≈ 0.57735</span></div>
-<div class="line"><span class="lineno">  223</span> </div>
-<div class="line"><span class="lineno">  224</span>    <span class="keyword">const</span> std::vector&lt;Vec3&gt; expectedVertexNormals = {</div>
-<div class="line"><span class="lineno">  225</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, -invSqrt3, -invSqrt3), <span class="comment">// Vertex 0: (-1, -1, -1)</span></div>
-<div class="line"><span class="lineno">  226</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, invSqrt3, -invSqrt3), <span class="comment">// Vertex 1: (-1, 1, -1)</span></div>
-<div class="line"><span class="lineno">  227</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, invSqrt3, -invSqrt3), <span class="comment">// Vertex 2: (1, 1, -1)</span></div>
-<div class="line"><span class="lineno">  228</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, -invSqrt3, -invSqrt3), <span class="comment">// Vertex 3: (1, -1, -1)</span></div>
-<div class="line"><span class="lineno">  229</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, -invSqrt3, invSqrt3), <span class="comment">// Vertex 4: (-1, -1, 1)</span></div>
-<div class="line"><span class="lineno">  230</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(-invSqrt3, invSqrt3, invSqrt3), <span class="comment">// Vertex 5: (-1, 1, 1)</span></div>
-<div class="line"><span class="lineno">  231</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, invSqrt3, invSqrt3), <span class="comment">// Vertex 6: (1, 1, 1)</span></div>
-<div class="line"><span class="lineno">  232</span>        <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>(invSqrt3, -invSqrt3, invSqrt3) <span class="comment">// Vertex 7: (1, -1, 1)</span></div>
-<div class="line"><span class="lineno">  233</span>    };</div>
-<div class="line"><span class="lineno">  234</span> </div>
-<div class="line"><span class="lineno">  235</span>    <span class="comment">// Check that each smooth vertex computed normal matches the expected one.</span></div>
-<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex = 0; iVertex &lt; mesh-&gt;GetVertexCount(); ++iVertex)</div>
-<div class="line"><span class="lineno">  237</span>    {</div>
-<div class="line"><span class="lineno">  238</span>        <span class="comment">// Get the computed normal for the current vertex.</span></div>
-<div class="line"><span class="lineno">  239</span>        <span class="keyword">auto</span> curVertexExtraData = mesh-&gt;GetVertex(iVertex).GetExtraData&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">SmoothVertexNormalExtraData</a>&gt;();</div>
-<div class="line"><span class="lineno">  240</span>        assert(curVertexExtraData != <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  241</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&amp; computedNormal = curVertexExtraData-&gt;GetData();</div>
-<div class="line"><span class="lineno">  242</span> </div>
-<div class="line"><span class="lineno">  243</span>        <span class="comment">// Check that the normal matches the expected direction.</span></div>
-<div class="line"><span class="lineno">  244</span>        EXPECT_TRUE(<a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(computedNormal, expectedVertexNormals[iVertex], epsilon));</div>
-<div class="line"><span class="lineno">  245</span>    }</div>
-<div class="line"><span class="lineno">  246</span>}</div>
-<div class="ttc" id="aclassData_1_1ExtraData_1_1SmoothVertexNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html">Data::ExtraData::SmoothVertexNormalExtraData</a></div><div class="ttdoc">Extra data type to store a smooth vertex normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00055">ExtraDataType.h:56</a></div></div>
+<div class="line"><span class="lineno">  215</span>}</div>
 <div class="ttc" id="aclassData_1_1ExtraData_1_1TriangleNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">Data::ExtraData::TriangleNormalExtraData</a></div><div class="ttdoc">Extra data type to store a triangle normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00047">ExtraDataType.h:48</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00019">BaseType.h:19</a></div></div>
-<div class="ttc" id="anamespaceMath_html_adfdafc5a22fd8b7dafbbf5d1ff6d8604"><div class="ttname"><a href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">Math::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float lhs, float rhs, float eps=1e-6)</div><div class="ttdoc">Helper function to compare two floating point variables.</div><div class="ttdef"><b>Definition</b> <a href="MathUtils_8h_source.html#l00011">MathUtils.h:11</a></div></div>
-<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_ab6956d24e900067738077b12ddde0c99"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">Utilitary::Surface::MeshLoader::LoadOFF</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOFF(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OFF file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00062">MeshLoader.cpp:62</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a61aa6f0ddf2101d0b66acb903242132b" name="a61aa6f0ddf2101d0b66acb903242132b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61aa6f0ddf2101d0b66acb903242132b">&#9670;&#160;</a></span>TEST() <span class="overload">[6/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a61aa6f0ddf2101d0b66acb903242132b">&#9670;&#160;</a></span>TEST() <span class="overload">[7/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -496,7 +537,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a3de98438b0a2ed06f101f864bd81b854" name="a3de98438b0a2ed06f101f864bd81b854"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3de98438b0a2ed06f101f864bd81b854">&#9670;&#160;</a></span>TEST() <span class="overload">[7/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3de98438b0a2ed06f101f864bd81b854">&#9670;&#160;</a></span>TEST() <span class="overload">[8/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -541,7 +582,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a00d55c71a52f56c778fba16b1c7f5975" name="a00d55c71a52f56c778fba16b1c7f5975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00d55c71a52f56c778fba16b1c7f5975">&#9670;&#160;</a></span>TEST() <span class="overload">[8/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00d55c71a52f56c778fba16b1c7f5975">&#9670;&#160;</a></span>TEST() <span class="overload">[9/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -585,15 +626,15 @@ Functions</h2></td></tr>
 <div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html">Data::Primitive::TriangleProxy</a></div><div class="ttdoc">Proxy class for a triangle in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00009">PrimitiveProxy.h:10</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a5df8a7acf679eedfe88635f68d317b87"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a5df8a7acf679eedfe88635f68d317b87">Data::Primitive::TriangleProxy::GetVertex</a></div><div class="ttdeci">BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const</div><div class="ttdoc">Get the vertex at the given index of the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00030">PrimitiveProxy.cpp:30</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a670994a17bd18002751ab8a2f1db6585"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a670994a17bd18002751ab8a2f1db6585">Data::Primitive::TriangleProxy::GetIndex</a></div><div class="ttdeci">BaseType::TriangleIndex GetIndex() const</div><div class="ttdoc">Get the index of the triangle in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00015">PrimitiveProxy.cpp:15</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00090">PrimitiveProxy.h:91</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00091">PrimitiveProxy.h:92</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a65b3a363088ca3081f03b6bd9092b117"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a65b3a363088ca3081f03b6bd9092b117">Data::Primitive::VertexProxy::GetIndex</a></div><div class="ttdeci">BaseType::VertexIndex GetIndex() const</div><div class="ttdoc">Get the index of the vertex in the mesh.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00059">PrimitiveProxy.cpp:59</a></div></div>
 <div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_aa2ee71001c0af3d12409afb00ae42c52"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#aa2ee71001c0af3d12409afb00ae42c52">Data::Primitive::VertexProxy::GetPosition</a></div><div class="ttdeci">BaseType::Vec3 &amp; GetPosition()</div><div class="ttdoc">Get the position of the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00074">PrimitiveProxy.cpp:74</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a884cafda4dde383690fca778774e7da5"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">Data::Surface::Mesh::GetVertex</a></div><div class="ttdeci">Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index)</div><div class="ttdoc">Get a proxy to the vertex at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00042">Mesh.cpp:42</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a884cafda4dde383690fca778774e7da5"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a884cafda4dde383690fca778774e7da5">Data::Surface::Mesh::GetVertex</a></div><div class="ttdeci">Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index)</div><div class="ttdoc">Get a proxy to the vertex at the given index.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00041">Mesh.cpp:41</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a6d6d69baff83ab2c9e677378fd4ec60f" name="a6d6d69baff83ab2c9e677378fd4ec60f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d6d69baff83ab2c9e677378fd4ec60f">&#9670;&#160;</a></span>TEST() <span class="overload">[9/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6d69baff83ab2c9e677378fd4ec60f">&#9670;&#160;</a></span>TEST() <span class="overload">[10/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -644,7 +685,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a8a12a72d38b579f04cd168a7fe372ff5" name="a8a12a72d38b579f04cd168a7fe372ff5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a12a72d38b579f04cd168a7fe372ff5">&#9670;&#160;</a></span>TEST() <span class="overload">[10/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a12a72d38b579f04cd168a7fe372ff5">&#9670;&#160;</a></span>TEST() <span class="overload">[11/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -687,7 +728,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  165</span> </div>
 <div class="line"><span class="lineno">  166</span>    EXPECT_EQ(<a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshIntegrity.html#ac090620611b383ab6337b448ddf9a235">MeshIntegrity::CheckIntegrity</a>(mesh), MeshIntegrity::ExitCode::MeshOK);</div>
 <div class="line"><span class="lineno">  167</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9b826c6a581cb0b8461dea1fdae7cc88"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88">Data::Surface::Mesh::UpdateMeshConnectivity</a></div><div class="ttdeci">void UpdateMeshConnectivity()</div><div class="ttdoc">Update neighbor informations on each triangle and incident triangle for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00106">Mesh.cpp:106</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a9b826c6a581cb0b8461dea1fdae7cc88"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88">Data::Surface::Mesh::UpdateMeshConnectivity</a></div><div class="ttdeci">void UpdateMeshConnectivity()</div><div class="ttdoc">Update neighbor informations on each triangle and incident triangle for each vertex.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00109">Mesh.cpp:109</a></div></div>
 <div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshIntegrity_html_ac090620611b383ab6337b448ddf9a235"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshIntegrity.html#ac090620611b383ab6337b448ddf9a235">Utilitary::Surface::MeshIntegrity::CheckIntegrity</a></div><div class="ttdeci">static ExitCode CheckIntegrity(const Data::Surface::Mesh &amp;mesh)</div><div class="ttdoc">Check the integrity of the mesh.</div><div class="ttdef"><b>Definition</b> <a href="MeshIntegrity_8cpp_source.html#l00009">MeshIntegrity.cpp:9</a></div></div>
 </div><!-- fragment -->
 </div>

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['vertexpair_0',['VertexPair',['../classData_1_1Primitive_1_1VertexPair.html#a5bfceeb95d42a941df6316dccee90e83',1,'Data::Primitive::VertexPair']]],
-  ['vertexproxy_1',['VertexProxy',['../classData_1_1Primitive_1_1VertexProxy.html#a4a735ba5a6253316ada18ac83bc06b98',1,'Data::Primitive::VertexProxy']]],
-  ['verticesaroundvertexcirculator_2',['VerticesAroundVertexCirculator',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a4d33205000c8a8c895ebe51726df5bbd',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator']]],
-  ['verticesaroundvertexrange_3',['VerticesAroundVertexRange',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#aacf1e89291d860160920e9cf4a18dce1',1,'Data::Surface::Mesh::VerticesAroundVertexRange']]]
+  ['update_0',['Update',['../classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1',1,'Core::Window']]],
+  ['updatecurvertexindexinccworder_1',['UpdateCurVertexIndexInCCWOrder',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a6a8287131e62c2cbe68aca461ac42fbd',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator']]],
+  ['updatecurvertexindexincworder_2',['UpdateCurVertexIndexInCWOrder',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a0e2dd24b29bf5631a81c9fdb8bee9b9c',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator']]],
+  ['updatemeshconnectivity_3',['UpdateMeshConnectivity',['../classData_1_1Surface_1_1Mesh.html#a9b826c6a581cb0b8461dea1fdae7cc88',1,'Data::Surface::Mesh']]]
 ];

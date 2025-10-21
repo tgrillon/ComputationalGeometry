@@ -4,7 +4,7 @@ var namespaces_dup =
     [ "BaseType", "namespaceBaseType.html", [
       [ "EdgeIndex", "namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6", null ],
       [ "iVec2", "namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243", null ],
-      [ "ScalarType", "namespaceBaseType.html#a7c0f9e64333f460907f7fe6eda8a7d02", null ],
+      [ "ScalarValue", "namespaceBaseType.html#a28df5b4a35d943e29c551c5d1f3fb8a9", null ],
       [ "TriangleIndex", "namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5", null ],
       [ "Vec2", "namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49", null ],
       [ "Vec3", "namespaceBaseType.html#a5a8fad12a866678288c461619b32172f", null ],
@@ -19,11 +19,7 @@ var namespaces_dup =
       [ "Next", "namespaceIndexHelpers.html#a4800e0ce9f1f1c511265df11c76408eb", null ],
       [ "Previous", "namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c", null ]
     ] ],
-    [ "Math", "namespaceMath.html", [
-      [ "EqualNear", "namespaceMath.html#ae4df48cdbd59f55da80b45aa40141499", null ],
-      [ "EqualNear", "namespaceMath.html#a73a96cab0f5ff4b3da65bcccadbcd833", null ],
-      [ "EqualNear", "namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604", null ]
-    ] ],
+    [ "Math", "namespaceMath.html", "namespaceMath" ],
     [ "PrintHelpers", "namespacePrintHelpers.html", "namespacePrintHelpers" ],
     [ "Renderer", "namespaceRenderer.html", "namespaceRenderer" ],
     [ "std", "namespacestd.html", "namespacestd" ],

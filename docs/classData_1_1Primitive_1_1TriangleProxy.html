@@ -216,9 +216,9 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>    : <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>(&amp;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">mesh</a>)</div>
 <div class="line"><span class="lineno">   12</span>    , <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>(index)</div>
 <div class="line"><span class="lineno">   13</span>{}</div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a24a7f75ccd9adad08817c91e90fc1402"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">Data::Primitive::TriangleProxy::m_Index</a></div><div class="ttdeci">BaseType::TriangleIndex m_Index</div><div class="ttdoc">Index to the triangle being proxied.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00086">PrimitiveProxy.h:86</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a635d547a8fb6ea54c738142c429ab021"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">Data::Primitive::TriangleProxy::m_Mesh</a></div><div class="ttdeci">Data::Surface::Mesh * m_Mesh</div><div class="ttdoc">Pointer to the mesh containing the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00084">PrimitiveProxy.h:84</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a99f94cd9a0331815d9e452dab934d270"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">Data::Primitive::TriangleProxy::HasExtraData</a></div><div class="ttdeci">bool HasExtraData() const</div><div class="ttdoc">Check if extra data of type T is associated with the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00057">PrimitiveProxy.h:57</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a24a7f75ccd9adad08817c91e90fc1402"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">Data::Primitive::TriangleProxy::m_Index</a></div><div class="ttdeci">BaseType::TriangleIndex m_Index</div><div class="ttdoc">Index to the triangle being proxied.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00087">PrimitiveProxy.h:87</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a635d547a8fb6ea54c738142c429ab021"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">Data::Primitive::TriangleProxy::m_Mesh</a></div><div class="ttdeci">Data::Surface::Mesh * m_Mesh</div><div class="ttdoc">Pointer to the mesh containing the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00085">PrimitiveProxy.h:85</a></div></div>
+<div class="ttc" id="aclassData_1_1Primitive_1_1TriangleProxy_html_a99f94cd9a0331815d9e452dab934d270"><div class="ttname"><a href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">Data::Primitive::TriangleProxy::HasExtraData</a></div><div class="ttdeci">bool HasExtraData() const</div><div class="ttdoc">Check if extra data of type T is associated with the triangle.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00058">PrimitiveProxy.h:58</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -250,13 +250,13 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 
 <p>Erase extra data of type T associated with the triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00049">49</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>    {</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>() &amp;&amp; <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">HasExtraData&lt;T&gt;</a>());</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Erase&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac47c66a581bcb05e0bb0fa026dc5849a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">Data::Surface::Mesh::HasTrianglesExtraDataContainer</a></div><div class="ttdeci">bool HasTrianglesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00179">Mesh.cpp:179</a></div></div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac956e15803ff70da0237bc2fa8f5445e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">Data::Surface::Mesh::m_TrianglesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::ExtraData::ExtraDataContainer &gt; m_TrianglesExtraDataContainer</div><div class="ttdoc">Extra data containers for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00287">Mesh.h:287</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00050">50</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>    {</div>
+<div class="line"><span class="lineno">   52</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>() &amp;&amp; <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">HasExtraData&lt;T&gt;</a>());</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Erase&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac47c66a581bcb05e0bb0fa026dc5849a"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">Data::Surface::Mesh::HasTrianglesExtraDataContainer</a></div><div class="ttdeci">bool HasTrianglesExtraDataContainer() const</div><div class="ttdoc">Check if the mesh has extra data containers for triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8cpp_source.html#l00182">Mesh.cpp:182</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_ac956e15803ff70da0237bc2fa8f5445e"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">Data::Surface::Mesh::m_TrianglesExtraDataContainer</a></div><div class="ttdeci">std::vector&lt; Data::ExtraData::ExtraDataContainer &gt; m_TrianglesExtraDataContainer</div><div class="ttdoc">Extra data containers for each triangle.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00291">Mesh.h:291</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -324,9 +324,10 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 
 <p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00025">25</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
-<div class="line"><span class="lineno">   27</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>());</div>
-<div class="line"><span class="lineno">   28</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Get&lt;<span class="keyword">const</span> <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
-<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>())</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Get&lt;<span class="keyword">const</span> <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -433,11 +434,11 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 
 <p>Get or create extra data of type T associated with the triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00033">33</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>());</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].GetOrCreate&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00034">34</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>());</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].GetOrCreate&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -462,7 +463,7 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 <div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
 <div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">m_Triangles</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>];</div>
 <div class="line"><span class="lineno">   23</span>}</div>
-<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a67d1ca0c36c2ab0fbf490f4ae5087f61"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">Data::Surface::Mesh::m_Triangles</a></div><div class="ttdeci">std::vector&lt; Data::Primitive::Triangle &gt; m_Triangles</div><div class="ttdoc">List of triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00282">Mesh.h:282</a></div></div>
+<div class="ttc" id="aclassData_1_1Surface_1_1Mesh_html_a67d1ca0c36c2ab0fbf490f4ae5087f61"><div class="ttname"><a href="classData_1_1Surface_1_1Mesh.html#a67d1ca0c36c2ab0fbf490f4ae5087f61">Data::Surface::Mesh::m_Triangles</a></div><div class="ttdeci">std::vector&lt; Data::Primitive::Triangle &gt; m_Triangles</div><div class="ttdoc">List of triangles.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00286">Mesh.h:286</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -568,10 +569,10 @@ template&lt;typename T &gt; </div>
 
 <p>Check if extra data of type T is associated with the triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00057">57</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>    {</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>() &amp;&amp; <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Has&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00058">58</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>() &amp;&amp; <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Has&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;();</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -603,11 +604,11 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 
 <p>Set extra data of type T associated with the triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00041">41</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>    {</div>
-<div class="line"><span class="lineno">   43</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>());</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Set&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;(<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">data</a>);</div>
-<div class="line"><span class="lineno">   45</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00042">42</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>    {</div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">assert</a>(<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_function" href="classData_1_1Surface_1_1Mesh.html#ac47c66a581bcb05e0bb0fa026dc5849a">HasTrianglesExtraDataContainer</a>());</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a635d547a8fb6ea54c738142c429ab021">m_Mesh</a>-&gt;<a class="code hl_variable" href="classData_1_1Surface_1_1Mesh.html#ac956e15803ff70da0237bc2fa8f5445e">m_TrianglesExtraDataContainer</a>[<a class="code hl_variable" href="classData_1_1Primitive_1_1TriangleProxy.html#a24a7f75ccd9adad08817c91e90fc1402">m_Index</a>].Set&lt;<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">T</a>&gt;(<a class="code hl_function" href="classData_1_1Primitive_1_1TriangleProxy.html#a99f94cd9a0331815d9e452dab934d270">data</a>);</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -634,7 +635,7 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 
 <p>Index to the triangle being proxied. </p>
 
-<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00086">86</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00087">87</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
 
 </div>
 </div>
@@ -660,7 +661,7 @@ template&lt;<a class="el" href="classData_1_1Primitive_1_1TriangleProxy.html#a99
 
 <p>Pointer to the mesh containing the triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00084">84</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PrimitiveProxy_8h_source.html#l00085">85</a> of file <a class="el" href="PrimitiveProxy_8h_source.html">PrimitiveProxy.h</a>.</p>
 
 </div>
 </div>

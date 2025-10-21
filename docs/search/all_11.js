@@ -1,7 +1,7 @@
 var searchData=
 [
   ['s_5fapplication_0',['s_Application',['../namespaceCore.html#a368c16922eb60842617d97c5a5bc6dcf',1,'Core']]],
-  ['scalartype_1',['ScalarType',['../namespaceBaseType.html#a7c0f9e64333f460907f7fe6eda8a7d02',1,'BaseType']]],
+  ['scalarvalue_1',['ScalarValue',['../namespaceBaseType.html#a28df5b4a35d943e29c551c5d1f3fb8a9',1,'BaseType']]],
   ['set_2',['Set',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#a89b81828989b53bc00d1d60ed1acef2e',1,'Data::ExtraData::ExtraDataContainer']]],
   ['setdata_3',['setdata',['../classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c',1,'Data::ExtraData::SingleDataExtraData::SetData(T const &amp;value)'],['../classData_1_1ExtraData_1_1SingleDataExtraData.html#a8089a3cb2091dfb6c756787f4bd1219b',1,'Data::ExtraData::SingleDataExtraData::SetData(T &amp;&amp;value)']]],
   ['setextradata_4',['setextradata',['../classData_1_1Primitive_1_1VertexProxy.html#a47388e564683b70d4e5b8360b01de737',1,'Data::Primitive::VertexProxy::SetExtraData()'],['../classData_1_1Primitive_1_1TriangleProxy.html#a55273056c8c2db0886f7b331a55a5b93',1,'Data::Primitive::TriangleProxy::SetExtraData()']]],
