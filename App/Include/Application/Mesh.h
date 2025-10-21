@@ -91,10 +91,15 @@ public:
 	/// @brief Check if the mesh has extra data containers for triangles.
 	bool HasTrianglesExtraDataContainer() const;
 
-	/// @brief Compute normal for each triangle of the mesh (Normalized).
-	/// @param computeSmoothVertexNormals If true, compute smooth vertex normals (Normalized).
-	/// @note The computed normals are stored as extra data on the triangles and vertices.
-	void ComputeTriangleNormals(bool computeSmoothVertexNormals = false);
+	/// @brief Compute normal for each triangle of the mesh.
+	/// @param normalize If true, compute normalized triangle normals.
+	/// @note The computed normals are stored as extra data on each triangle.
+	void ComputeTriangleNormals(bool normalize = false);
+
+	/// @brief Compute smooth normal for each vertex of the mesh.
+	/// @param normalize If true, compute normalized smooth vertex normals.
+	/// @note The computed normals are stored as extra data on each vertex.
+	void ComputeSmoothVertexNormals(bool normalize = false);
 
 public:
 	/// @brief Circulator to iterate over the vertices around a given vertex.
@@ -277,7 +282,6 @@ public:
 private:
 	/// @brief List of vertices.
 	std::vector<Data::Primitive::Vertex> m_Vertices{};
-
 	/// @brief List of triangles.
 	std::vector<Data::Primitive::Triangle> m_Triangles{};
 

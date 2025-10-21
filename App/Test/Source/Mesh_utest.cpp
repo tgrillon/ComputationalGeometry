@@ -1,5 +1,5 @@
 #include "Application/ExtraDataType.h"
-#include "Application/MathUtils.h"
+#include "Application/MathHelpers.h"
 #include "Application/Mesh.h"
 #include "Application/MeshIntegrity.h"
 #include "Application/MeshLoader.h"
@@ -174,7 +174,7 @@ TEST(MeshTest, AddTriangle_ValidMeshWithED_ShouldAddExtraDataContainer)
 	EXPECT_EQ(mesh.GetTriangle(mesh.GetTriangleCount() - 1).GetExtraData<void>(), nullptr);
 }
 
-TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
+TEST(MeshTest, ComputeTriangleNormals_ShouldComputeEachTriangleNormal)
 {
 	std::unique_ptr<Mesh> mesh = MeshLoader::LoadOFF("TestFiles/Off/cube.off");
 	mesh->ComputeTriangleNormals(true);
@@ -182,21 +182,21 @@ TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
 	// The cube has 12 triangular faces (2 per cube triangle)
 	ASSERT_EQ(mesh->GetTriangleCount(), 12);
 
-	// Expected normals for each cube triangle (normalized)
-	// Each cube triangle has 2 triangular faces with the same normal
-	const std::vector<Vec3> expectedFaceNormals = {
-		Vec3(0, 0, -1), // Triangle 0: Front triangle (-Z)
-		Vec3(0, 0, -1), // Triangle 1: Front triangle (-Z)
-		Vec3(-1, 0, 0), // Triangle 2: Left triangle (-X)
-		Vec3(-1, 0, 0), // Triangle 3: Left triangle (-X)
-		Vec3(1, 0, 0), // Triangle 4: Right triangle (+X)
-		Vec3(1, 0, 0), // Triangle 5: Right triangle (+X)
-		Vec3(0, -1, 0), // Triangle 6: Bottom triangle (-Y)
-		Vec3(0, -1, 0), // Triangle 7: Bottom triangle (-Y)
-		Vec3(0, 0, 1), // Triangle 8: Back triangle (+Z)
-		Vec3(0, 0, 1), // Triangle 9: Back triangle (+Z)
-		Vec3(0, 1, 0), // Triangle 10: Top triangle (+Y)
-		Vec3(0, 1, 0) // Triangle 11: Top triangle (+Y)
+	// Expected normals for each cube face (normalized)
+	// Each cube face has 2 triangular faces with the same normal
+	const std::vector<Vec3> expectedTriangleNormals = {
+		Vec3(0, 0, -1), // Triangle 0: Front face (-Z)
+		Vec3(0, 0, -1), // Triangle 1: Front face (-Z)
+		Vec3(-1, 0, 0), // Triangle 2: Left face (-X)
+		Vec3(-1, 0, 0), // Triangle 3: Left face (-X)
+		Vec3(1, 0, 0), // Triangle 4: Right face (+X)
+		Vec3(1, 0, 0), // Triangle 5: Right face (+X)
+		Vec3(0, -1, 0), // Triangle 6: Bottom face (-Y)
+		Vec3(0, -1, 0), // Triangle 7: Bottom face (-Y)
+		Vec3(0, 0, 1), // Triangle 8: Back face (+Z)
+		Vec3(0, 0, 1), // Triangle 9: Back face (+Z)
+		Vec3(0, 1, 0), // Triangle 10: Top face (+Y)
+		Vec3(0, 1, 0) // Triangle 11: Top face (+Y)
 	};
 
 	constexpr float epsilon = 1e-5f;
@@ -205,13 +205,22 @@ TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
 	for(TriangleIndex iTriangle = 0; iTriangle < mesh->GetTriangleCount(); ++iTriangle)
 	{
 		// Get the computed normal for the current triangle.
-		auto curFaceExtraData = mesh->GetTriangle(iTriangle).GetExtraData<TriangleNormalExtraData>();
-		assert(curFaceExtraData != nullptr);
-		const Vec3& computedNormal = curFaceExtraData->GetData();
+		auto curTriangleExtraData = mesh->GetTriangle(iTriangle).GetExtraData<TriangleNormalExtraData>();
+		assert(curTriangleExtraData != nullptr);
+		const Vec3& computedNormal = curTriangleExtraData->GetData();
 
 		// Check that the normal matches the expected direction.
-		EXPECT_TRUE(EqualNear(computedNormal, expectedFaceNormals[iTriangle], epsilon));
+		EXPECT_TRUE(EqualNear(computedNormal, expectedTriangleNormals[iTriangle], epsilon));
 	}
+}
+
+TEST(MeshTest, ComputeSmoothVertexNormals_ShouldComputeEachSmoothVertexNormal)
+{
+	std::unique_ptr<Mesh> mesh = MeshLoader::LoadOFF("TestFiles/Off/cube.off");
+	mesh->ComputeSmoothVertexNormals(true);
+
+	// The cube has 12 triangular faces (2 per cube triangle)
+	ASSERT_EQ(mesh->GetTriangleCount(), 12);
 
 	// For a cube, each vertex is shared by 3 faces meeting at 90-degree angles
 	// The angle-weighted vertex normal is the sum of triangle normals weighted by their angles
@@ -231,6 +240,8 @@ TEST(MeshTest, ComputeFaceNormals_ShouldComputeEachFaceAndSmoothVertexNormal)
 		Vec3(invSqrt3, invSqrt3, invSqrt3), // Vertex 6: (1, 1, 1)
 		Vec3(invSqrt3, -invSqrt3, invSqrt3) // Vertex 7: (1, -1, 1)
 	};
+
+	constexpr float epsilon = 1e-5f;
 
 	// Check that each smooth vertex computed normal matches the expected one.
 	for(VertexIndex iVertex = 0; iVertex < mesh->GetVertexCount(); ++iVertex)

@@ -94,11 +94,15 @@ TriangleIndex Mesh::AddTriangle(const Triangle& triangle)
 
 void Mesh::AddVerticesExtraDataContainer()
 {
+	if(!m_VerticesExtraDataContainer.empty())
+		m_VerticesExtraDataContainer.clear();
 	m_VerticesExtraDataContainer.resize(GetVertexCount());
 }
 
 void Mesh::AddTrianglesExtraDataContainer()
 {
+	if(!m_TrianglesExtraDataContainer.empty())
+		m_TrianglesExtraDataContainer.clear();
 	m_TrianglesExtraDataContainer.resize(GetTriangleCount());
 }
 
@@ -108,12 +112,12 @@ void Mesh::UpdateMeshConnectivity()
 
 	for(TriangleIndex iTriangle = 0; iTriangle < GetTriangleCount(); ++iTriangle)
 	{
-		Triangle& curFace = m_Triangles[iTriangle];
+		Triangle& curTriangle = m_Triangles[iTriangle];
 
 		// Set the incident triangle index for each vertex if it's not already the case.
 		for(EdgeIndex iEdge = 0; iEdge < 3; ++iEdge)
 		{
-			int curVertexIdx = curFace.Vertices[iEdge];
+			int curVertexIdx = curTriangle.Vertices[iEdge];
 			assert(curVertexIdx != -1);
 
 			Vertex& curVertex = m_Vertices[curVertexIdx];
@@ -133,13 +137,13 @@ void Mesh::UpdateMeshConnectivity()
 			{
 				auto [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];
 				m_Triangles[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iTriangle;
-				curFace.Neighbors[edgeIdx] = faceNeighborIdx;
+				curTriangle.Neighbors[edgeIdx] = faceNeighborIdx;
 			}
 		};
 
-		const VertexIndex v0Idx = static_cast<VertexIndex>(curFace.Vertices[0]);
-		const VertexIndex v1Idx = static_cast<VertexIndex>(curFace.Vertices[1]);
-		const VertexIndex v2Idx = static_cast<VertexIndex>(curFace.Vertices[2]);
+		const VertexIndex v0Idx = static_cast<VertexIndex>(curTriangle.Vertices[0]);
+		const VertexIndex v1Idx = static_cast<VertexIndex>(curTriangle.Vertices[1]);
+		const VertexIndex v2Idx = static_cast<VertexIndex>(curTriangle.Vertices[2]);
 
 		// Edge v0-v1
 		SetFacesNeigbhor(v0Idx, v1Idx, 2);
@@ -180,81 +184,164 @@ bool Mesh::HasTrianglesExtraDataContainer() const
 	return m_TrianglesExtraDataContainer.size() > 0;
 }
 
-void Mesh::ComputeTriangleNormals(bool computeSmoothVertexNormals)
+void Mesh::ComputeTriangleNormals(bool normalize)
 {
-	if(m_TrianglesExtraDataContainer.empty())
+	if(!HasTrianglesExtraDataContainer())
 		AddTrianglesExtraDataContainer();
 
-	if(computeSmoothVertexNormals && m_VerticesExtraDataContainer.empty())
+	// if(computeSmoothVertexNormals && m_VerticesExtraDataContainer.empty())
+	// 	AddVerticesExtraDataContainer();
+
+	for(TriangleIndex iTriangle = 0; iTriangle < GetTriangleCount(); ++iTriangle)
+	{
+		const TriangleProxy& curTriangle = GetTriangle(iTriangle);
+
+		const Vec3& posA = m_Vertices[curTriangle.GetVertex(0)].Position;
+		const Vec3& posB = m_Vertices[curTriangle.GetVertex(1)].Position;
+		const Vec3& posC = m_Vertices[curTriangle.GetVertex(2)].Position;
+
+		const Vec3 AB = Normalize(posB - posA);
+		const Vec3 AC = Normalize(posC - posA);
+
+		TriangleNormalExtraData& curTriangleNormal = curTriangle.GetOrCreateExtraData<TriangleNormalExtraData>();
+		Vec3 computedNormal = Cross(AB, AC);
+		if(normalize)
+			computedNormal = Normalize(computedNormal);
+		curTriangleNormal.SetData(computedNormal);
+
+		// if(computeSmoothVertexNormals)
+		// {
+		// 	// Compute the remaining vectors of the triangle.
+		// 	const Vec3 BC = glm::normalize(posC - posB);
+		// 	const Vec3 BA = glm::normalize(posA - posB);
+
+		// 	const Vec3 CA = glm::normalize(posA - posC);
+		// 	const Vec3 CB = glm::normalize(posB - posC);
+
+		// 	// Compute each angle (in randian).
+		// 	const float angleA = glm::angle(AB, AC);
+		// 	const float angleB = glm::angle(BC, BA);
+		// 	const float angleC = glm::angle(CA, CB);
+
+		// 	// Get a proxy on each vertex of the triangle.
+		// 	const VertexProxy& vertexA = GetVertex(curTriangle.GetVertex(0));
+		// 	const VertexProxy& vertexB = GetVertex(curTriangle.GetVertex(1));
+		// 	const VertexProxy& vertexC = GetVertex(curTriangle.GetVertex(2));
+
+		// 	// Add the normal weighted by the related angle as an extra data to each vertex.
+		// 	FlatVertexNormalsExtraData& vertexAExtraData = vertexA.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+		// 	vertexAExtraData.GetData().emplace_back(computedNormal * angleA);
+		// 	FlatVertexNormalsExtraData& vertexBExtraData = vertexB.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+		// 	vertexBExtraData.GetData().emplace_back(computedNormal * angleB);
+		// 	FlatVertexNormalsExtraData& vertexCExtraData = vertexC.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+		// 	vertexCExtraData.GetData().emplace_back(computedNormal * angleC);
+		// }
+	}
+
+	// if(computeSmoothVertexNormals)
+	// {
+	// 	// Compute the smooth normal for each vertex of the mesh.
+	// 	for(VertexIndex iVertex = 0; iVertex < GetVertexCount(); ++iVertex)
+	// 	{
+	// 		// Get the current vertex and create the extra data that will handle the smooth vertex normal.
+	// 		const VertexProxy& curVertex = GetVertex(iVertex);
+	// 		SmoothVertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<SmoothVertexNormalExtraData>();
+
+	// 		// Get the precomputed flat vertex normals.
+	// 		auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();
+	// 		assert(vertexFlatNormals != nullptr);
+
+	// 		// Accumulate the flat vertex normals.
+	// 		Vec3 computedNormal = std::accumulate(
+	// 			vertexFlatNormals->GetData().begin(),
+	// 			vertexFlatNormals->GetData().end(),
+	// 			Vec3{ 0., 0., 0. },
+	// 			std::plus<Vec3>());
+
+	// 		curVertexNormal.SetData(glm::normalize(computedNormal));
+	// 		curVertex.EraseExtraData<FlatVertexNormalsExtraData>();
+	// 	}
+	// }
+}
+
+void Mesh::ComputeSmoothVertexNormals(bool normalize)
+{
+	if(!HasTrianglesExtraDataContainer())
+		AddTrianglesExtraDataContainer();
+
+	if(!HasVerticesExtraDataContainer())
 		AddVerticesExtraDataContainer();
 
 	for(TriangleIndex iTriangle = 0; iTriangle < GetTriangleCount(); ++iTriangle)
 	{
-		const TriangleProxy& curFace = GetTriangle(iTriangle);
+		const TriangleProxy& curTriangle = GetTriangle(iTriangle);
 
-		const Vec3& posA = m_Vertices[curFace.GetVertex(0)].Position;
-		const Vec3& posB = m_Vertices[curFace.GetVertex(1)].Position;
-		const Vec3& posC = m_Vertices[curFace.GetVertex(2)].Position;
+		const Vec3& posA = m_Vertices[curTriangle.GetVertex(0)].Position;
+		const Vec3& posB = m_Vertices[curTriangle.GetVertex(1)].Position;
+		const Vec3& posC = m_Vertices[curTriangle.GetVertex(2)].Position;
 
-		const Vec3 AB = glm::normalize(posB - posA);
-		const Vec3 AC = glm::normalize(posC - posA);
+		const Vec3 AB = Normalize(posB - posA);
+		const Vec3 AC = Normalize(posC - posA);
 
-		TriangleNormalExtraData& curFaceNormal = curFace.GetOrCreateExtraData<TriangleNormalExtraData>();
-		const Vec3& computedNormal = glm::normalize(glm::cross(AB, AC));
-		curFaceNormal.SetData(computedNormal);
+		const Vec3 BC = glm::normalize(posC - posB);
+		const Vec3 BA = glm::normalize(posA - posB);
 
-		if(computeSmoothVertexNormals)
+		const Vec3 CA = glm::normalize(posA - posC);
+		const Vec3 CB = glm::normalize(posB - posC);
+
+		Vec3 curTriangleNormal;
+		if(curTriangle.HasExtraData<TriangleNormalExtraData>())
 		{
-			// Compute the remaining vectors of the triangle.
-			const Vec3 BC = glm::normalize(posC - posB);
-			const Vec3 BA = glm::normalize(posA - posB);
-
-			const Vec3 CA = glm::normalize(posA - posC);
-			const Vec3 CB = glm::normalize(posB - posC);
-
-			// Compute each angle (in randian).
-			const float angleA = glm::angle(AB, AC);
-			const float angleB = glm::angle(BC, BA);
-			const float angleC = glm::angle(CA, CB);
-
-			// Get a proxy on each vertex of the triangle.
-			const VertexProxy& vertexA = GetVertex(curFace.GetVertex(0));
-			const VertexProxy& vertexB = GetVertex(curFace.GetVertex(1));
-			const VertexProxy& vertexC = GetVertex(curFace.GetVertex(2));
-
-			// Add the normal weighted by the related angle as an extra data to each vertex.
-			FlatVertexNormalsExtraData& vertexAExtraData = vertexA.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
-			vertexAExtraData.GetData().emplace_back(computedNormal * angleA);
-			FlatVertexNormalsExtraData& vertexBExtraData = vertexB.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
-			vertexBExtraData.GetData().emplace_back(computedNormal * angleB);
-			FlatVertexNormalsExtraData& vertexCExtraData = vertexC.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
-			vertexCExtraData.GetData().emplace_back(computedNormal * angleC);
+			curTriangleNormal = curTriangle.GetExtraData<TriangleNormalExtraData>()->GetData();
 		}
+		else
+		{
+			curTriangleNormal = Cross(AB, AC);
+		}
+
+		curTriangleNormal = Normalize(curTriangleNormal);
+
+		// Compute each angle (in randian).
+		const float angleA = Angle(AB, AC);
+		const float angleB = Angle(BC, BA);
+		const float angleC = Angle(CA, CB);
+
+		// Get a proxy on each vertex of the triangle.
+		const VertexProxy& vertexA = GetVertex(curTriangle.GetVertex(0));
+		const VertexProxy& vertexB = GetVertex(curTriangle.GetVertex(1));
+		const VertexProxy& vertexC = GetVertex(curTriangle.GetVertex(2));
+
+		// Add the normal weighted by the related angle as an extra data to each vertex.
+		FlatVertexNormalsExtraData& vertexAExtraData = vertexA.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+		vertexAExtraData.GetData().emplace_back(curTriangleNormal * angleA);
+		FlatVertexNormalsExtraData& vertexBExtraData = vertexB.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+		vertexBExtraData.GetData().emplace_back(curTriangleNormal * angleB);
+		FlatVertexNormalsExtraData& vertexCExtraData = vertexC.GetOrCreateExtraData<FlatVertexNormalsExtraData>();
+		vertexCExtraData.GetData().emplace_back(curTriangleNormal * angleC);
 	}
 
-	if(computeSmoothVertexNormals)
+	// Compute the smooth normal for each vertex of the mesh.
+	for(VertexIndex iVertex = 0; iVertex < GetVertexCount(); ++iVertex)
 	{
-		// Compute the smooth normal for each vertex of the mesh.
-		for(VertexIndex iVertex = 0; iVertex < GetVertexCount(); ++iVertex)
-		{
-			// Get the current vertex and create the extra data that will handle the smooth vertex normal.
-			const VertexProxy& curVertex = GetVertex(iVertex);
-			SmoothVertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<SmoothVertexNormalExtraData>();
+		// Get the current vertex and create the extra data that will handle the smooth vertex normal.
+		const VertexProxy& curVertex = GetVertex(iVertex);
+		SmoothVertexNormalExtraData& curVertexNormal = curVertex.GetOrCreateExtraData<SmoothVertexNormalExtraData>();
 
-			// Get the precomputed flat vertex normals.
-			auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();
-			assert(vertexFlatNormals != nullptr);
+		// Get the precomputed flat vertex normals.
+		auto vertexFlatNormals = curVertex.GetExtraData<FlatVertexNormalsExtraData>();
+		assert(vertexFlatNormals != nullptr);
 
-			// Accumulate the flat vertex normals.
-			Vec3 computedNormal = std::accumulate(
-				vertexFlatNormals->GetData().begin(),
-				vertexFlatNormals->GetData().end(),
-				Vec3{ 0., 0., 0. },
-				std::plus<Vec3>());
+		// Accumulate the flat vertex normals.
+		Vec3 computedNormal = std::accumulate(
+			vertexFlatNormals->GetData().begin(),
+			vertexFlatNormals->GetData().end(),
+			Vec3{ 0., 0., 0. },
+			std::plus<Vec3>());
 
-			curVertexNormal.SetData(glm::normalize(computedNormal));
-			curVertex.EraseExtraData<FlatVertexNormalsExtraData>();
-		}
+		if(normalize)
+			computedNormal = Normalize(computedNormal);
+		curVertexNormal.SetData(computedNormal);
+		curVertex.EraseExtraData<FlatVertexNormalsExtraData>();
 	}
 }
 } // namespace Data::Surface

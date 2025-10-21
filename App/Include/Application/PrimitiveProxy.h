@@ -24,7 +24,8 @@ public:
 	template<typename T>
 	const T* GetExtraData() const
 	{
-		assert(m_Mesh->HasTrianglesExtraDataContainer());
+		if(!m_Mesh->HasTrianglesExtraDataContainer())
+			return nullptr;
 		return m_Mesh->m_TrianglesExtraDataContainer[m_Index].Get<const T>();
 	}
 
@@ -97,7 +98,8 @@ public:
 	template<typename T>
 	T* GetExtraData()
 	{
-		assert(m_Mesh->HasVerticesExtraDataContainer());
+		if(!m_Mesh->HasVerticesExtraDataContainer())
+			return nullptr;
 		return m_Mesh->m_VerticesExtraDataContainer[m_Index].Get<T>();
 	}
 
