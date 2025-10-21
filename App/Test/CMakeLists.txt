@@ -4,7 +4,7 @@
 include(Testing)
 
 set(SOURCES
-    Source/MathUtils_utest.cpp
+    Source/MathHelpers_utest.cpp
     Source/Mesh_utest.cpp
     Source/MeshCirculator_utest.cpp
     Source/MeshExporter_utest.cpp

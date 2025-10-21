@@ -1,5 +1,5 @@
 #include "Application/ExtraDataType.h"
-#include "Application/MathUtils.h"
+#include "Application/MathHelpers.h"
 #include "Application/MeshIntegrity.h"
 #include "Application/MeshLoader.h"
 #include "Application/PrimitiveProxy.h"
@@ -10,7 +10,7 @@ using namespace Utilitary::Surface;
 using namespace Data::ExtraData;
 using namespace Data::Primitive;
 using namespace Data::Surface;
-using namespace Math;
+using namespace Math::Compare;
 using namespace BaseType;
 
 TEST(MeshLoaderTest, LoadOFF_ValidFile_ShouldLoadMesh)

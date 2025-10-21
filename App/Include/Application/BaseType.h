@@ -1,6 +1,9 @@
 #pragma once
 
-#include "glm/glm.hpp"
+#include <glm/glm.hpp>
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/vector_angle.hpp>
 
 #include <bitset>
 #include <cstdint>
@@ -11,7 +14,7 @@ using EdgeIndex = uint8_t;
 using VertexLocalIndex = uint8_t;
 using VertexIndex = uint32_t;
 using TriangleIndex = uint32_t;
-using ScalarType = double;
+using ScalarValue = double;
 
 using iVec2 = glm::ivec2;
 

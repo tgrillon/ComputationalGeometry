@@ -1,16 +1,15 @@
 #include "Application/Mesh.h"
 
 #include "Application/ExtraDataType.h"
+#include "Application/MathHelpers.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/VertexPair.h"
 
 using namespace BaseType;
+using namespace Math::Geometry;
 using namespace Data::Primitive;
 using namespace Data::ExtraData;
 using namespace Utilitary::Primitive;
-
-#define GLM_ENABLE_EXPERIMENTAL
-#include <glm/gtx/vector_angle.hpp>
 
 #include <numeric>
 

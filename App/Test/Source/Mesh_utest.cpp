@@ -13,7 +13,7 @@ using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::ExtraData;
 using namespace Data::Primitive;
-using namespace Math;
+using namespace Math::Compare;
 
 TEST(MeshTest, CopyConstructor_ShouldDeepCopyMesh)
 {
