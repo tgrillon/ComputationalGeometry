@@ -1,12 +1,12 @@
 var searchData=
 [
   ['edgeindex_0',['EdgeIndex',['../namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6',1,'BaseType']]],
-  ['end_1',['end',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#a60bf1dbfe6b82a1214b114a7be73dd6b',1,'Data::Surface::Mesh::VerticesAroundVertexRange::end()'],['../classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexRange.html#a4c0582f6f7200e36c909fe6dd3be01fe',1,'Data::Surface::Mesh::FacesAroundVertexRange::end()']]],
+  ['end_1',['end',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#a60bf1dbfe6b82a1214b114a7be73dd6b',1,'Data::Surface::Mesh::VerticesAroundVertexRange::end()'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexRange.html#a105958ccc1840fcbafb23b6f93853431',1,'Data::Surface::Mesh::TrianglesAroundVertexRange::end()']]],
   ['entrypoint_2ecpp_2',['EntryPoint.cpp',['../EntryPoint_8cpp.html',1,'']]],
   ['eof_3',['eof',['../structstbi__io__callbacks.html#a319639db2f76e715eed7a7a974136832',1,'stbi_io_callbacks']]],
-  ['equalnear_4',['equalnear',['../namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602',1,'Math::EqualNear(float a, float b, float eps=1e-6)'],['../namespaceMath.html#af0d04a6e49b897b1a55cd640d3bcfc2f',1,'Math::EqualNear(BaseType::Vec2 a, BaseType::Vec2 b, float eps=1e-6)'],['../namespaceMath.html#ad33ffd9b9e6be9a72db237983a6a6035',1,'Math::EqualNear(BaseType::Vec3 a, BaseType::Vec3 b, float eps=1e-6)']]],
+  ['equalnear_4',['equalnear',['../namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604',1,'Math::EqualNear(float lhs, float rhs, float eps=1e-6)'],['../namespaceMath.html#ae4df48cdbd59f55da80b45aa40141499',1,'Math::EqualNear(BaseType::Vec2 lhs, BaseType::Vec2 rhs, float eps=1e-6)'],['../namespaceMath.html#a73a96cab0f5ff4b3da65bcccadbcd833',1,'Math::EqualNear(BaseType::Vec3 lhs, BaseType::Vec3 rhs, float eps=1e-6)']]],
   ['erase_5',['Erase',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#aac69df26bd1606d2d177c91710cfe988',1,'Data::ExtraData::ExtraDataContainer']]],
-  ['eraseextradata_6',['eraseextradata',['../classData_1_1Primitive_1_1FaceProxy.html#a57928f1e4172800323730006dc72c39a',1,'Data::Primitive::FaceProxy::EraseExtraData()'],['../classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed',1,'Data::Primitive::VertexProxy::EraseExtraData()']]],
+  ['eraseextradata_6',['eraseextradata',['../classData_1_1Primitive_1_1TriangleProxy.html#a3d419aa7542b58ec76a6c3f545ac4d75',1,'Data::Primitive::TriangleProxy::EraseExtraData()'],['../classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed',1,'Data::Primitive::VertexProxy::EraseExtraData()']]],
   ['error_7',['Error',['../PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50',1,'PrintHelpers.h']]],
   ['errorimpl_8',['ErrorImpl',['../namespacePrintHelpers_1_1detail.html#a5ddaaeb95e8c32e14e897870fe52b91d',1,'PrintHelpers::detail']]],
   ['event_9',['Event',['../classCore_1_1Event.html',1,'Core']]],

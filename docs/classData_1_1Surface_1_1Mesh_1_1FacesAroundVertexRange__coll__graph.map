@@ -1,5 +1,0 @@
-<map id="Data::Surface::Mesh::FacesAroundVertexRange" name="Data::Surface::Mesh::FacesAroundVertexRange">
-<area shape="rect" id="Node000001" title="Range to iterate over the faces around a given vertex." alt="" coords="5,93,200,133"/>
-<area shape="rect" id="Node000002" href="$classData_1_1Surface_1_1Mesh.html" title="Class representing a 3D triangular mesh." alt="" coords="26,5,179,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,44,105,93,100,93,100,44"/>
-</map>

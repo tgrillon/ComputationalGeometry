@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['reference_0',['reference',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a4dfbf105f20d05474d55f9c69ad87bd9',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::reference'],['../classData_1_1Surface_1_1Mesh_1_1FacesAroundVertexCirculator.html#a6ab1e4dc2abd48415eea8c4dffcaa49e',1,'Data::Surface::Mesh::FacesAroundVertexCirculator::reference']]]
+  ['scalartype_0',['ScalarType',['../namespaceBaseType.html#a7c0f9e64333f460907f7fe6eda8a7d02',1,'BaseType']]],
+  ['stbi_5fuc_1',['stbi_uc',['../stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d',1,'stb_image.h']]],
+  ['stbi_5fus_2',['stbi_us',['../stb__image_8h.html#a648037d4c55689328ba08c8f5d293df2',1,'stb_image.h']]]
 ];

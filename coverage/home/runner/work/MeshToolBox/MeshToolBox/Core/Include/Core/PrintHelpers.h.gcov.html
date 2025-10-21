@@ -31,18 +31,18 @@
             <td class="headerValue">filtered.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">20.0&nbsp;%</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">33.3&nbsp;%</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">8</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-21 08:33:38</td>
+            <td class="headerValue">2025-10-21 08:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">33.3&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">50.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -137,10 +137,10 @@
 <span id="L67"><span class="lineNum">      67</span>              : namespace detail</span>
 <span id="L68"><span class="lineNum">      68</span>              : {</span>
 <span id="L69"><span class="lineNum">      69</span>              : template&lt;typename... Args&gt;</span>
-<span id="L70"><span class="lineNum">      70</span>              : void InfoImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC tlaBgGNC">           4 : void InfoImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span></span>
 <span id="L71"><span class="lineNum">      71</span>              : {</span>
-<span id="L72"><span class="lineNum">      72</span>              :         auto func_name = ExtractFunctionName(loc.function_name());</span>
-<span id="L73"><span class="lineNum">      73</span>              :         std::cout &lt;&lt; std::format(</span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">           4 :         auto func_name = ExtractFunctionName(loc.function_name());</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">           4 :         std::cout &lt;&lt; std::format(</span></span>
 <span id="L74"><span class="lineNum">      74</span>              :                 &quot;{}[INFO]{} {}[{}]{} {}\n&quot;,</span>
 <span id="L75"><span class="lineNum">      75</span>              :                 Color::Cyan,</span>
 <span id="L76"><span class="lineNum">      76</span>              :                 Color::Reset,</span>
@@ -148,7 +148,7 @@
 <span id="L78"><span class="lineNum">      78</span>              :                 func_name,</span>
 <span id="L79"><span class="lineNum">      79</span>              :                 Color::Reset,</span>
 <span id="L80"><span class="lineNum">      80</span>              :                 std::format(fmt, std::forward&lt;Args&gt;(args)...));</span>
-<span id="L81"><span class="lineNum">      81</span>              : }</span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">           4 : }</span></span>
 <span id="L82"><span class="lineNum">      82</span>              : </span>
 <span id="L83"><span class="lineNum">      83</span>              : template&lt;typename... Args&gt;</span>
 <span id="L84"><span class="lineNum">      84</span>              : void SuccessImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span>
@@ -179,7 +179,7 @@
 <span id="L109"><span class="lineNum">     109</span>              : }</span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
 <span id="L111"><span class="lineNum">     111</span>              : template&lt;typename... Args&gt;</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">           4 : void ErrorImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           4 : void ErrorImpl(const std::source_location&amp; loc, std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</span></span>
 <span id="L113"><span class="lineNum">     113</span>              : {</span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           4 :         auto func_name = ExtractFunctionName(loc.function_name());</span></span>
 <span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           4 :         std::cerr &lt;&lt; std::format(</span></span>

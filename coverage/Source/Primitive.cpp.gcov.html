@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-21 08:33:38</td>
+            <td class="headerValue">2025-10-21 08:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -75,42 +75,42 @@
 <span id="L5"><span class="lineNum">       5</span>              : </span>
 <span id="L6"><span class="lineNum">       6</span>              : namespace Utilitary::Primitive</span>
 <span id="L7"><span class="lineNum">       7</span>              : {</span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC tlaBgGNC">         106 : int GetEdgeIndex(const Face&amp; face, const VertexIndex firstIndex, const VertexIndex secondIndex)</span></span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC tlaBgGNC">         100 : int GetEdgeIndex(const Triangle&amp; triangle, const VertexIndex firstIndex, const VertexIndex secondIndex)</span></span>
 <span id="L9"><span class="lineNum">       9</span>              : {</span>
 <span id="L10"><span class="lineNum">      10</span>              :         // Initialize edge index to -1 (not found)</span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">         106 :         int edgeIdx = -1;</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">         100 :         int edgeIdx = -1;</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
 <span id="L13"><span class="lineNum">      13</span>              :         // Lambda to find the edge index given a vertex and the current index</span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">         204 :         auto FindEdgeIndex = [&amp;](const VertexIndex vertexIdx, const uint8_t idx)</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">         192 :         auto FindEdgeIndex = [&amp;](const VertexIndex vertexIdx, const uint8_t idx)</span></span>
 <span id="L15"><span class="lineNum">      15</span>              :         {</span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">         204 :                 VertexIndex prevVertexIdx = face.Vertices[IndexHelpers::Previous[idx]];</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         204 :                 VertexIndex nextVertexIdx = face.Vertices[IndexHelpers::Next[idx]];</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         204 :                 if(prevVertexIdx == vertexIdx)</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          99 :                         return static_cast&lt;int&gt;(IndexHelpers::Next[idx]);</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         105 :                 else if(nextVertexIdx == vertexIdx)</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          99 :                         return static_cast&lt;int&gt;(IndexHelpers::Previous[idx]);</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">         192 :                 VertexIndex prevVertexIdx = triangle.Vertices[IndexHelpers::Previous[idx]];</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         192 :                 VertexIndex nextVertexIdx = triangle.Vertices[IndexHelpers::Next[idx]];</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         192 :                 if(prevVertexIdx == vertexIdx)</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          93 :                         return static_cast&lt;int&gt;(IndexHelpers::Next[idx]);</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          99 :                 else if(nextVertexIdx == vertexIdx)</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          93 :                         return static_cast&lt;int&gt;(IndexHelpers::Previous[idx]);</span></span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           6 :                 return -1;</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         106 :         };</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         100 :         };</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span>              :         // Iterate through the vertices of the face to find the edge</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         424 :         for(EdgeIndex iEdge = 0; iEdge &lt; 3; ++iEdge)</span></span>
+<span id="L26"><span class="lineNum">      26</span>              :         // Iterate through the vertices of the triangle to find the edge</span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         400 :         for(EdgeIndex iEdge = 0; iEdge &lt; 3; ++iEdge)</span></span>
 <span id="L28"><span class="lineNum">      28</span>              :         {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         318 :                 VertexIndex curVertexIdx = face.Vertices[IndexHelpers::Current[iEdge]];</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         318 :                 if(curVertexIdx == firstIndex)</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         102 :                         edgeIdx = FindEdgeIndex(secondIndex, iEdge);</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         216 :                 else if(curVertexIdx == secondIndex)</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         102 :                         edgeIdx = FindEdgeIndex(firstIndex, iEdge);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         300 :                 VertexIndex curVertexIdx = triangle.Vertices[IndexHelpers::Current[iEdge]];</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         300 :                 if(curVertexIdx == firstIndex)</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          96 :                         edgeIdx = FindEdgeIndex(secondIndex, iEdge);</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         204 :                 else if(curVertexIdx == secondIndex)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          96 :                         edgeIdx = FindEdgeIndex(firstIndex, iEdge);</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :         }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         106 :         return edgeIdx;</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         100 :         return edgeIdx;</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : }</span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          46 : int GetVertexLocalIndex(const Face&amp; face, const VertexIndex index)</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          52 : int GetVertexLocalIndex(const Triangle&amp; triangle, const VertexIndex index)</span></span>
 <span id="L40"><span class="lineNum">      40</span>              : {</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          99 :         for(int iEdge = 0; iEdge &lt; 3; ++iEdge)</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          96 :                 if(static_cast&lt;VertexIndex&gt;(face.Vertices[iEdge]) == index)</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          43 :                         return iEdge;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         111 :         for(int iEdge = 0; iEdge &lt; 3; ++iEdge)</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         108 :                 if(static_cast&lt;VertexIndex&gt;(triangle.Vertices[iEdge]) == index)</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          49 :                         return iEdge;</span></span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           3 :         return -1;</span></span>
 <span id="L46"><span class="lineNum">      46</span>              : }</span>

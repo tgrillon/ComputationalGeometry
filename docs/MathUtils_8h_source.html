@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: App/Include/Application/MathUtils.h Source File</title>
+<title>MeshToolBox: App/Include/Application/MathUtils.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,7 +37,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">SandBox
+   <div id="projectname">MeshToolBox
    </div>
   </td>
  </tr>
@@ -119,37 +119,37 @@ $(document).ready(function(){initNavTree('MathUtils_8h_source.html',''); initRes
 <div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespaceMath.html">    8</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMath.html">Math</a></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">   10</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(<span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b, <span class="keywordtype">float</span> eps = 1e-6)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">float</span> diff = std::fabs(a - b);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">if</span>(diff &lt;= eps)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">return</span> diff &lt;= (std::max(std::fabs(a), std::fabs(b)) * eps);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">   11</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(<span class="keywordtype">float</span> lhs, <span class="keywordtype">float</span> rhs, <span class="keywordtype">float</span> eps = 1e-6)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">float</span> diff = std::fabs(lhs - rhs);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">if</span>(diff &lt;= eps)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">return</span> diff &lt;= (std::max(std::fabs(lhs), std::fabs(rhs)) * eps);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespaceMath.html#af0d04a6e49b897b1a55cd640d3bcfc2f">   19</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(<a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a> a, <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a> b, <span class="keywordtype">float</span> eps = 1e-6)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(a.x, b.x, eps) &amp;&amp; <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(a.y, b.y, eps);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespaceMath.html#ae4df48cdbd59f55da80b45aa40141499">   21</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(<a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a> lhs, <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a> rhs, <span class="keywordtype">float</span> eps = 1e-6)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(lhs.x, rhs.x, eps) &amp;&amp; <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(lhs.y, rhs.y, eps);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceMath.html#ad33ffd9b9e6be9a72db237983a6a6035">   24</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a> a, <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a> b, <span class="keywordtype">float</span> eps = 1e-6)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(a.x, b.x, eps) &amp;&amp; <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(a.y, b.y, eps) &amp;&amp; <a class="code hl_function" href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">EqualNear</a>(a.z, b.z, eps);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespaceMath.html#a73a96cab0f5ff4b3da65bcccadbcd833">   27</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a> lhs, <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a> rhs, <span class="keywordtype">float</span> eps = 1e-6)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(lhs.x, rhs.x, eps) &amp;&amp; <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(lhs.y, rhs.y, eps) &amp;&amp; <a class="code hl_function" href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">EqualNear</a>(lhs.z, rhs.z, eps);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
 </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <span class="comment">// namespace Math</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>} <span class="comment">// namespace Math</span></div>
 </div>
 <div class="ttc" id="aBaseType_8h_html"><div class="ttname"><a href="BaseType_8h.html">BaseType.h</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00017">BaseType.h:17</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00016">BaseType.h:16</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00019">BaseType.h:19</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00018">BaseType.h:18</a></div></div>
 <div class="ttc" id="anamespaceMath_html"><div class="ttname"><a href="namespaceMath.html">Math</a></div><div class="ttdef"><b>Definition</b> <a href="MathUtils_8h_source.html#l00008">MathUtils.h:9</a></div></div>
-<div class="ttc" id="anamespaceMath_html_a3e57c16e11079bbc2f537dd1746b0602"><div class="ttname"><a href="namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602">Math::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float a, float b, float eps=1e-6)</div><div class="ttdef"><b>Definition</b> <a href="MathUtils_8h_source.html#l00010">MathUtils.h:10</a></div></div>
+<div class="ttc" id="anamespaceMath_html_adfdafc5a22fd8b7dafbbf5d1ff6d8604"><div class="ttname"><a href="namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604">Math::EqualNear</a></div><div class="ttdeci">constexpr bool EqualNear(float lhs, float rhs, float eps=1e-6)</div><div class="ttdoc">Helper function to compare two floating point variables.</div><div class="ttdef"><b>Definition</b> <a href="MathUtils_8h_source.html#l00011">MathUtils.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

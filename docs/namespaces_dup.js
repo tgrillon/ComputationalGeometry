@@ -3,13 +3,14 @@ var namespaces_dup =
     [ "Application", "namespaceApplication.html", "namespaceApplication" ],
     [ "BaseType", "namespaceBaseType.html", [
       [ "EdgeIndex", "namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6", null ],
-      [ "FaceIndex", "namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110", null ],
       [ "iVec2", "namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243", null ],
       [ "ScalarType", "namespaceBaseType.html#a7c0f9e64333f460907f7fe6eda8a7d02", null ],
+      [ "TriangleIndex", "namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5", null ],
       [ "Vec2", "namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49", null ],
       [ "Vec3", "namespaceBaseType.html#a5a8fad12a866678288c461619b32172f", null ],
       [ "Vec4", "namespaceBaseType.html#a6ee52a295536ca26fad77ac6263d9835", null ],
-      [ "VertexIndex", "namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6", null ]
+      [ "VertexIndex", "namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6", null ],
+      [ "VertexLocalIndex", "namespaceBaseType.html#ad30d7329b9139af2bfe5405ebb6774a7", null ]
     ] ],
     [ "Core", "namespaceCore.html", "namespaceCore" ],
     [ "Data", "namespaceData.html", "namespaceData" ],
@@ -19,9 +20,9 @@ var namespaces_dup =
       [ "Previous", "namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c", null ]
     ] ],
     [ "Math", "namespaceMath.html", [
-      [ "EqualNear", "namespaceMath.html#af0d04a6e49b897b1a55cd640d3bcfc2f", null ],
-      [ "EqualNear", "namespaceMath.html#ad33ffd9b9e6be9a72db237983a6a6035", null ],
-      [ "EqualNear", "namespaceMath.html#a3e57c16e11079bbc2f537dd1746b0602", null ]
+      [ "EqualNear", "namespaceMath.html#ae4df48cdbd59f55da80b45aa40141499", null ],
+      [ "EqualNear", "namespaceMath.html#a73a96cab0f5ff4b3da65bcccadbcd833", null ],
+      [ "EqualNear", "namespaceMath.html#adfdafc5a22fd8b7dafbbf5d1ff6d8604", null ]
     ] ],
     [ "PrintHelpers", "namespacePrintHelpers.html", "namespacePrintHelpers" ],
     [ "Renderer", "namespaceRenderer.html", "namespaceRenderer" ],

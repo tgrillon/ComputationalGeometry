@@ -1,8 +1,8 @@
 var searchData=
 [
   ['acknowledgments_0',['Authors and Acknowledgments',['../index.html#autotoc_md13',1,'']]],
-  ['addface_1',['AddFace',['../classData_1_1Surface_1_1Mesh.html#a57da399a6ee7674465074f77e16cc058',1,'Data::Surface::Mesh']]],
-  ['addfacesextradatacontainer_2',['AddFacesExtraDataContainer',['../classData_1_1Surface_1_1Mesh.html#a9d974322852c4cc0cdad6ef62b39c434',1,'Data::Surface::Mesh']]],
+  ['addtriangle_1',['AddTriangle',['../classData_1_1Surface_1_1Mesh.html#a02ddd1f882a72a6ca6cd34863b79c633',1,'Data::Surface::Mesh']]],
+  ['addtrianglesextradatacontainer_2',['AddTrianglesExtraDataContainer',['../classData_1_1Surface_1_1Mesh.html#ad89c901d33c3e1eed3723e59606d30c0',1,'Data::Surface::Mesh']]],
   ['addvertex_3',['AddVertex',['../classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e',1,'Data::Surface::Mesh']]],
   ['addverticesextradatacontainer_4',['AddVerticesExtraDataContainer',['../classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6',1,'Data::Surface::Mesh']]],
   ['and_20acknowledgments_5',['Authors and Acknowledgments',['../index.html#autotoc_md13',1,'']]],

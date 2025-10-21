@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['stbi_5fdefault_0',['STBI_default',['../stb__image_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba0177ac2c5002f4f251bb766d41752029',1,'stb_image.h']]],
-  ['stbi_5fgrey_1',['STBI_grey',['../stb__image_8h.html#a06fc87d81c62e9abb8790b6e5713c55bad1eb95ca1fa7706bf732bf35a0ed40aa',1,'stb_image.h']]],
-  ['stbi_5fgrey_5falpha_2',['STBI_grey_alpha',['../stb__image_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf5829d16d4cca6077465c5abd346e2f8',1,'stb_image.h']]],
-  ['stbi_5frgb_3',['STBI_rgb',['../stb__image_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa59123e5d0af25f9b1539f5cf1facddf',1,'stb_image.h']]],
-  ['stbi_5frgb_5falpha_4',['STBI_rgb_alpha',['../stb__image_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa7b1af0c9f0310c3ada2aa29a32de293',1,'stb_image.h']]]
+  ['trianglehasduplicatedvertices_0',['TriangleHasDuplicatedVertices',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125aca8af56ae0b2f9febea25119627ffa6456',1,'Utilitary::Surface::MeshIntegrity']]],
+  ['trianglehasnullvertex_1',['TriangleHasNullVertex',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125aca2ad32f3dc73f3d9694c4f268c02430bc',1,'Utilitary::Surface::MeshIntegrity']]],
+  ['triangleisitsownneighbor_2',['TriangleIsItsOwnNeighbor',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acaaed8b63a3d9d4795cc7ba31ab526a5ce',1,'Utilitary::Surface::MeshIntegrity']]],
+  ['triangleneighbornotreciprocal_3',['TriangleNeighborNotReciprocal',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acabf0eb390a29d53bf466e052aa34f5cd1',1,'Utilitary::Surface::MeshIntegrity']]]
 ];

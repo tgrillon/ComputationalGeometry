@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: Data::Primitive::Vertex Struct Reference</title>
+<title>MeshToolBox: Data::Primitive::Vertex Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,7 +37,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">SandBox
+   <div id="projectname">MeshToolBox
    </div>
   </td>
  </tr>
@@ -118,33 +118,32 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a0ec39fc8cfa23371d37e4d1179a52067" id="r_a0ec39fc8cfa23371d37e4d1179a52067"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a> {}</td></tr>
 <tr class="memdesc:a0ec39fc8cfa23371d37e4d1179a52067"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structData_1_1Primitive_1_1Vertex.html" title="Structure holding the informations relative to a vertex primitive.">Vertex</a> position in 3D.  <br /></td></tr>
 <tr class="separator:a0ec39fc8cfa23371d37e4d1179a52067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad79c2d2b680be7d9d08cd2765d31620e" id="r_ad79c2d2b680be7d9d08cd2765d31620e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> { -1 }</td></tr>
-<tr class="memdesc:ad79c2d2b680be7d9d08cd2765d31620e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index to one of the incident faces for internal purposes.  <br /></td></tr>
-<tr class="separator:ad79c2d2b680be7d9d08cd2765d31620e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1075505a28612782755b8f0a02986d4" id="r_ad1075505a28612782755b8f0a02986d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> { -1 }</td></tr>
+<tr class="memdesc:ad1075505a28612782755b8f0a02986d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index to one of the incident triangles for internal purposes.  <br /></td></tr>
+<tr class="separator:ad1075505a28612782755b8f0a02986d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure holding the informations relative to a vertex primitive. </p>
-<dl class="section note"><dt>Note</dt><dd>IncidentFace is a pointer to one of the incident faces of the vertex. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Primitive_8h_source.html#l00024">24</a> of file <a class="el" href="Primitive_8h_source.html">Primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Primitive_8h_source.html#l00023">23</a> of file <a class="el" href="Primitive_8h_source.html">Primitive.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad79c2d2b680be7d9d08cd2765d31620e" name="ad79c2d2b680be7d9d08cd2765d31620e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad79c2d2b680be7d9d08cd2765d31620e">&#9670;&#160;</a></span>IncidentFaceIdx</h2>
+<a id="ad1075505a28612782755b8f0a02986d4" name="ad1075505a28612782755b8f0a02986d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1075505a28612782755b8f0a02986d4">&#9670;&#160;</a></span>IncidentTriangleIdx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Data::Primitive::Vertex::IncidentFaceIdx { -1 }</td>
+          <td class="memname">int Data::Primitive::Vertex::IncidentTriangleIdx { -1 }</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Index to one of the incident faces for internal purposes. </p>
-<dl class="section note"><dt>Note</dt><dd>If the vertex has no incident face, this index is set to -1. </dd></dl>
+<p>Index to one of the incident triangles for internal purposes. </p>
+<dl class="section note"><dt>Note</dt><dd>If the vertex has no incident triangle, this index is set to -1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Primitive_8h_source.html#l00031">31</a> of file <a class="el" href="Primitive_8h_source.html">Primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{ -1 };</div>
+<p class="definition">Definition at line <a class="el" href="Primitive_8h_source.html#l00030">30</a> of file <a class="el" href="Primitive_8h_source.html">Primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{ -1 };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -162,8 +161,8 @@ Public Attributes</h2></td></tr>
 
 <p><a class="el" href="structData_1_1Primitive_1_1Vertex.html" title="Structure holding the informations relative to a vertex primitive.">Vertex</a> position in 3D. </p>
 
-<p class="definition">Definition at line <a class="el" href="Primitive_8h_source.html#l00027">27</a> of file <a class="el" href="Primitive_8h_source.html">Primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="Primitive_8h_source.html#l00026">26</a> of file <a class="el" href="Primitive_8h_source.html">Primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Base class for extra data type with only one attribute.">
 <polygon fill="#999999" stroke="#666666" points="154,-30 0,-30 0,0 154,0 154,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Data::ExtraData::SingleData</text>
 <text text-anchor="middle" x="77" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">ExtraData&lt; T &gt;</text>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classData_1_1ExtraData_1_1BaseExtraDataType.html" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="classData_1_1ExtraData_1_1BaseExtraDataType.html" target="_top" xlink:title="Base class for extra data type.">
 <polygon fill="white" stroke="#666666" points="152,-96 2,-96 2,-66 152,-66 152,-96"/>
 <text text-anchor="start" x="10" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">Data::ExtraData::BaseExtra</text>
 <text text-anchor="middle" x="77" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">DataType</text>

@@ -3,7 +3,7 @@ var searchData=
   ['checkintegrity_0',['CheckIntegrity',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#ac090620611b383ab6337b448ddf9a235',1,'Utilitary::Surface::MeshIntegrity']]],
   ['clear_1',['Clear',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#abe07c21f85b7b995239a5efd9ebee2f0',1,'Data::ExtraData::ExtraDataContainer']]],
   ['clone_2',['Clone',['../classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87',1,'Data::Surface::Mesh']]],
-  ['computefacenormals_3',['ComputeFaceNormals',['../classData_1_1Surface_1_1Mesh.html#a3e206bec66b032df60e39ba21c97ac66',1,'Data::Surface::Mesh']]],
+  ['computetrianglenormals_3',['ComputeTriangleNormals',['../classData_1_1Surface_1_1Mesh.html#a96e556c02aaf5f7f1b29d7e1b8030b47',1,'Data::Surface::Mesh']]],
   ['create_4',['Create',['../classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2',1,'Core::Window']]],
   ['createapplication_5',['CreateApplication',['../namespaceCore.html#a5a6d0eb653b89c7c83a4514c47e58c3b',1,'Core']]],
   ['createcomputeshader_6',['CreateComputeShader',['../namespaceRenderer.html#a6e7d810631dd3625d5cb06d0eafbcb41',1,'Renderer']]],

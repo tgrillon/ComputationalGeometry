@@ -1,15 +1,25 @@
 <map id="Data::ExtraData::BaseExtraDataType" name="Data::ExtraData::BaseExtraDataType">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,137,205,177"/>
-<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="253,65,472,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,131,290,103,291,108,191,136"/>
-<area shape="rect" id="Node000005" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="260,130,465,185"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="219,155,260,155,260,160,219,160"/>
-<area shape="rect" id="Node000007" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="260,209,465,249"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="191,179,291,207,290,212,190,184"/>
-<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1FaceNormalExtraData.html" title=" " alt="" coords="527,5,737,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="466,60,541,43,542,48,467,65"/>
-<area shape="rect" id="Node000004" href="$classData_1_1ExtraData_1_1VertexNormalExtraData.html" title=" " alt="" coords="520,69,744,109"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="485,84,520,85,520,90,485,90"/>
-<area shape="rect" id="Node000006" href="$classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html" title=" " alt="" coords="531,137,733,177"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="479,155,531,155,531,160,479,160"/>
+<area shape="rect" id="Node000001" title="Base class for extra data type." alt="" coords="5,229,205,269"/>
+<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,25,487,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,217,186,167,252,115,319,77,322,82,255,120,190,171,137,221"/>
+<area shape="rect" id="Node000004" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="275,129,493,169"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="156,221,252,179,291,167,293,172,254,184,158,225"/>
+<area shape="rect" id="Node000007" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,193,487,233"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="219,232,281,224,282,229,219,237"/>
+<area shape="rect" id="Node000009" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="263,258,505,313"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="219,261,264,267,263,272,218,267"/>
+<area shape="rect" id="Node000011" href="$classData_1_1ExtraData_1_1ObjectMaterialData.html" title="Store object material data defined within a MTL file." alt="" coords="253,337,515,362"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="151,274,200,300,254,323,295,334,294,339,252,328,198,305,149,279"/>
+<area shape="rect" id="Node000012" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title="Base class for extra data type with only one attribute." alt="" coords="281,387,487,427"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="136,278,188,327,220,351,255,372,283,384,281,389,252,377,217,356,184,331,132,281"/>
+<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html" title="Extra data type to store vertex flat normals." alt="" coords="575,5,777,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="500,39,575,32,576,37,501,44"/>
+<area shape="rect" id="Node000005" href="$classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html" title="Extra data type to store a smooth vertex normal." alt="" coords="563,69,789,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="495,124,577,107,579,112,496,129"/>
+<area shape="rect" id="Node000006" href="$classData_1_1ExtraData_1_1TriangleNormalExtraData.html" title="Extra data type to store a triangle normal." alt="" coords="583,133,769,173"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="507,148,583,149,583,155,507,154"/>
+<area shape="rect" id="Node000008" href="$classData_1_1ExtraData_1_1TriangleMaterialName.html" title="Extra data type to store a triangle material name." alt="" coords="583,197,769,237"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="500,212,583,213,583,219,500,218"/>
+<area shape="rect" id="Node000010" href="$classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html" title="Extra data type to store texture coordinates for each vertex of a triangle." alt="" coords="583,265,769,305"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="518,283,583,283,583,288,518,288"/>
 </map>

@@ -24,8 +24,23 @@
 */
 var NAVTREE =
 [
-  [ "SandBox", "index.html", [
-    [ "MeshToolbox", "index.html", "index" ],
+  [ "MeshToolBox", "index.html", [
+    [ "Overview", "index.html#autotoc_md1", null ],
+    [ "Development Guidelines", "index.html#autotoc_md2", [
+      [ "Code Quality Standards", "index.html#autotoc_md3", null ],
+      [ "Continuous Integration", "index.html#autotoc_md4", null ]
+    ] ],
+    [ "Key Features", "index.html#autotoc_md5", [
+      [ "Planned features", "index.html#autotoc_md6", null ]
+    ] ],
+    [ "Getting Started", "index.html#autotoc_md7", [
+      [ "Prerequisites", "index.html#autotoc_md8", null ],
+      [ "Installation & Build", "index.html#autotoc_md9", null ]
+    ] ],
+    [ "Modules", "index.html#autotoc_md10", null ],
+    [ "License", "index.html#autotoc_md11", null ],
+    [ "Support", "index.html#autotoc_md12", null ],
+    [ "Authors and Acknowledgments", "index.html#autotoc_md13", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -64,9 +79,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AppLayer_8cpp.html",
-"classCore_1_1Application.html#a1b5b50442d3986a5009e364739147e9c",
-"classData_1_1Surface_1_1Mesh.html#ab71eabeb4556f5825ccdef0cf688d408",
-"namespaceRenderer.html#aa14b819ddb2596867be3f191fdaf3f6f"
+"classCore_1_1Application.html#a13e3bfad8f90c9f7a1d9bf04f774e769",
+"classData_1_1Primitive_1_1VertexProxy.html#ad6f28c375140ed94ef9b090b7b5184ab",
+"namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

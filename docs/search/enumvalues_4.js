@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['vertexhasnullincidentface_0',['VertexHasNullIncidentFace',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125aca230430ea9ef7a63206fa92f5d44326c3',1,'Utilitary::Surface::MeshIntegrity']]],
-  ['vertexnotinface_1',['VertexNotInFace',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acad9bf21b5a04eab8db1f8679b358196d7',1,'Utilitary::Surface::MeshIntegrity']]]
+  ['vertexhasnullincidenttriangle_0',['VertexHasNullIncidentTriangle',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125aca39f4950f6e997f49ac42ce2e9f8f9498',1,'Utilitary::Surface::MeshIntegrity']]],
+  ['vertexnotintriangle_1',['VertexNotInTriangle',['../structUtilitary_1_1Surface_1_1MeshIntegrity.html#acb2dec07341118e8e633ddc8824125acad9bb3249f71e17c224792cdb7ea20db8',1,'Utilitary::Surface::MeshIntegrity']]]
 ];

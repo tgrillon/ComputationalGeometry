@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: App/Source/MeshLoader.cpp Source File</title>
+<title>MeshToolBox: App/Source/MeshLoader.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,7 +37,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">SandBox
+   <div id="projectname">MeshToolBox
    </div>
   </td>
  </tr>
@@ -111,291 +111,348 @@ $(document).ready(function(){initNavTree('MeshLoader_8cpp_source.html',''); init
 <div class="contents">
 <a href="MeshLoader_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="MeshLoader_8h.html">Application/MeshLoader.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="PrimitiveProxy_8h.html">Application/PrimitiveProxy.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="VertexPair_8h.html">Application/VertexPair.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="PrintHelpers_8h.html">Core/PrintHelpers.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceData_1_1Surface.html">Data::Surface</a>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceData_1_1Primitive.html">Data::Primitive</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBaseType.html">BaseType</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Helper lambda to skip comments and empty lines</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> SkipCommentsAndWhitespace(std::ifstream&amp; file)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">while</span>(file.peek() == <span class="charliteral">&#39;#&#39;</span> || file.peek() == <span class="charliteral">&#39;\n&#39;</span> || file.peek() == <span class="charliteral">&#39;\r&#39;</span>)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span>(file.peek() == <span class="charliteral">&#39;#&#39;</span>)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="comment">// Skip the entire comment line</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            file.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), <span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="comment">// Skip whitespace</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            file.get();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        }</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUtilitary_1_1Surface.html">Utilitary::Surface</a></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">   40</a></span>std::unique_ptr&lt;Mesh&gt; <a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">MeshLoader::LoadOFF</a>(<span class="keyword">const</span> std::filesystem::path&amp; filepath)</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="ExtraDataType_8h.html">Application/ExtraDataType.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="PrimitiveProxy_8h.html">Application/PrimitiveProxy.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="VertexPair_8h.html">Application/VertexPair.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="PrintHelpers_8h.html">Core/PrintHelpers.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceData_1_1Surface.html">Data::Surface</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceData_1_1Primitive.html">Data::Primitive</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceData_1_1ExtraData.html">Data::ExtraData</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBaseType.html">BaseType</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> SkipCommentsAndWhitespace(std::ifstream&amp; file)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">while</span>(file.peek() == <span class="charliteral">&#39;#&#39;</span> || file.peek() == <span class="charliteral">&#39;\n&#39;</span> || file.peek() == <span class="charliteral">&#39;\r&#39;</span> || file.peek() == <span class="charliteral">&#39; &#39;</span>)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">if</span>(file.peek() == <span class="charliteral">&#39;#&#39;</span>)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="comment">// Skip the entire comment line</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            file.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="comment">// Skip whitespace</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            file.get();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">int</span> ReadNextInteger(std::ifstream&amp; file)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::ifstream file(filepath);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// Checking file opening</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span>(!file.is_open())</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Failed to open file: {}&quot;</span>, filepath.string());</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Checking file type</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SkipCommentsAndWhitespace(file);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    std::string type;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    file &gt;&gt; type;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span>(type != <span class="stringliteral">&quot;OFF&quot;</span>)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Wrong file format (must be OFF) : {}&quot;</span>, filepath.string());</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">auto</span> mesh = std::make_unique&lt;Mesh&gt;();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Retrieving the number of vertices / faces</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    SkipCommentsAndWhitespace(file);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> vertexCount, faceCount, unusedEdgeCount;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    file &gt;&gt; vertexCount &gt;&gt; faceCount &gt;&gt; unusedEdgeCount;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Reading vertices</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    mesh-&gt;m_Vertices.resize(vertexCount);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp;&amp; curVertex : mesh-&gt;m_Vertices)</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        SkipCommentsAndWhitespace(file);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        file &gt;&gt; curVertex.Position.x &gt;&gt; curVertex.Position.y &gt;&gt; curVertex.Position.z;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Map to store edges and their corresponding face and edge index</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::unordered_map&lt;VertexPair, std::pair&lt;FaceIndex, EdgeIndex&gt;&gt; neighborMap;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    mesh-&gt;m_Faces.resize(faceCount);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iFace = 0; iFace &lt; faceCount; ++iFace)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = mesh-&gt;m_Faces[iFace];</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        SkipCommentsAndWhitespace(file);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// Set the face index</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        file &gt;&gt; vertexCount;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iEdge = 0; iEdge &lt; vertexCount; ++iEdge)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> curVertexIdx;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            file &gt;&gt; curVertexIdx;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <span class="comment">// Get pointers to the vertex.</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = mesh-&gt;m_Vertices[curVertexIdx];</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="comment">// Set IncidentFaceIdx for the vertex if it&#39;s not already the case.</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> == -1)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> = iFace;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">char</span> buffer[16];</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    file &gt;&gt; std::ws; <span class="comment">// Skip leading whitespace</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Read until first &#39;/&#39; or whitespace</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">while</span>(file.peek() != EOF &amp;&amp; !std::isspace(file.peek()) &amp;&amp; file.peek() != <span class="charliteral">&#39;/&#39;</span>)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        buffer[i++] = file.get();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    buffer[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">if</span>(buffer[0] == <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// Convert string to index</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> std::stoi(buffer) - 1;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUtilitary_1_1Surface.html">Utilitary::Surface</a></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">   62</a></span>std::unique_ptr&lt;Mesh&gt; <a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">MeshLoader::LoadOFF</a>(<span class="keyword">const</span> std::filesystem::path&amp; filepath)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    std::ifstream file(filepath);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// Checking file opening</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">if</span>(!file.is_open())</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Failed to open file: {}&quot;</span>, filepath.string());</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// Checking file type</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    std::string type;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    file &gt;&gt; type;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span>(type != <span class="stringliteral">&quot;OFF&quot;</span>)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Wrong file format (must be OFF) : {}&quot;</span>, filepath.string());</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">auto</span> mesh = std::make_unique&lt;Mesh&gt;();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// Retrieving the number of vertices / faces</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">int</span> vertexCount, faceCount, unusedEdgeCount;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    file &gt;&gt; vertexCount &gt;&gt; faceCount &gt;&gt; unusedEdgeCount;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// Reading vertices</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    mesh-&gt;m_Vertices.resize(vertexCount);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp;&amp; curVertex : mesh-&gt;m_Vertices)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        file &gt;&gt; curVertex.Position.x &gt;&gt; curVertex.Position.y &gt;&gt; curVertex.Position.z;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="comment">// Map to store edges and their corresponding triangle and edge index</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    std::unordered_map&lt;VertexPair, std::pair&lt;TriangleIndex, EdgeIndex&gt;&gt; neighborMap;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="comment">// Set vertices of the face.</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[iEdge] = curVertexIdx;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="comment">// Set neighboring faces using the edges</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keyword">auto</span> SetFacesNeigbhor = [&amp;](<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> firstVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> secondVertexIdx, uint8_t edgeIdx)</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="keywordflow">if</span>(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                neighborMap[{ firstVertexIdx, secondVertexIdx }] = { iFace, edgeIdx };</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            }</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordflow">else</span> <span class="comment">// The edge with firstVertex and secondVertex is already registered in map</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            {</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                <span class="keyword">auto</span> [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                mesh-&gt;m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = iFace;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[edgeIdx] = faceNeighborIdx;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            }</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        };</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v0Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0]);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v1Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1]);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v2Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2]);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// Set neighboring faces using the edges</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">auto</span> SetFacesNeigbhor =</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        [&amp;](<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> faceIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> firstVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> secondVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">EdgeIndex</a> edgeIdx)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span>(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            neighborMap[{ firstVertexIdx, secondVertexIdx }] = { faceIdx, edgeIdx };</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">else</span> <span class="comment">// The edge with firstVertex and secondVertex is already registered in map</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keyword">auto</span> [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            mesh-&gt;m_Triangles[faceNeighborIdx].Neighbors[neighborEdgeIdx] = faceIdx;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            mesh-&gt;m_Triangles[faceIdx].Neighbors[edgeIdx] = faceNeighborIdx;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    };</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    mesh-&gt;m_Triangles.resize(faceCount);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iTriangle = 0; iTriangle &lt; faceCount; ++iTriangle)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a>&amp; curFace = mesh-&gt;m_Triangles[iTriangle];</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        SkipCommentsAndWhitespace(file);</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="comment">// Edge v0-v1</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        SetFacesNeigbhor(v0Idx, v1Idx, 2);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="comment">// Edge v1-v2</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        SetFacesNeigbhor(v1Idx, v2Idx, 0);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="comment">// Edge v2-v0</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        SetFacesNeigbhor(v2Idx, v0Idx, 1);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="comment">// Set the triangle index</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        file &gt;&gt; vertexCount;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iEdge = 0; iEdge &lt; vertexCount; ++iEdge)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> curVertexIdx;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            file &gt;&gt; curVertexIdx;</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    file.close();</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> mesh;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
-</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5">  136</a></span>std::unique_ptr&lt;Mesh&gt; <a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5">MeshLoader::LoadOBJ</a>(<span class="keyword">const</span> std::filesystem::path&amp; filepath)</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>{</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    std::ifstream file(filepath);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="comment">// Checking file opening</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">if</span>(!file.is_open())</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    {</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Failed to open file: {}&quot;</span>, filepath.string());</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    }</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="comment">// Get pointers to the vertex.</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = mesh-&gt;m_Vertices[curVertexIdx];</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            <span class="comment">// Set IncidentTriangleIdx for the vertex if it&#39;s not already the case.</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> == -1)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> = iTriangle;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="comment">// Set vertices of the triangle.</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[iEdge] = curVertexIdx;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex0 = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[0]);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex1 = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[1]);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex2 = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[2]);</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="comment">// Check file extension</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">if</span>(filepath.extension() != <span class="stringliteral">&quot;.obj&quot;</span>)</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    {</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Wrong file extension (must be .obj): {}&quot;</span>, filepath.string());</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    }</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">auto</span> mesh = std::make_unique&lt;Mesh&gt;();</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="comment">// Map to store edges and their corresponding face and edge index</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    std::unordered_map&lt;VertexPair, std::pair&lt;FaceIndex, EdgeIndex&gt;&gt; neighborMap;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    std::string type;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> curIndexVt = 0;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> curIndexVn = 0;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordflow">while</span>(file.peek() != EOF)</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    {</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        SkipCommentsAndWhitespace(file);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">if</span>(file.peek() == EOF)</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        file &gt;&gt; type;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="comment">// Process line based on its type</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;v&quot;</span>)</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        { <span class="comment">// Vertex position</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a> curVertex;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            file &gt;&gt; curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>.x &gt;&gt; curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>.y &gt;&gt; curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>.z;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            mesh-&gt;m_Vertices.emplace_back(curVertex);</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            mesh-&gt;m_VerticesExtraDataContainer.emplace_back();</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;vt&quot;</span>)</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        { <span class="comment">// Vertex texture coordinate</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a> curVertex = mesh-&gt;<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a2e075092d457f16eecacd428124d1e29">GetVertex</a>(curIndexVt++);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <span class="keyword">auto</span> texCoordED = curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a>&gt;();</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            file &gt;&gt; texCoordED.x &gt;&gt; texCoordED.y;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;vn&quot;</span>)</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        { <span class="comment">// Vertex normal</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <a class="code hl_class" href="classData_1_1Primitive_1_1VertexProxy.html">VertexProxy</a> curVertex = mesh-&gt;<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a2e075092d457f16eecacd428124d1e29">GetVertex</a>(curIndexVn++);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            <span class="keyword">auto</span> normalED = curVertex.<a class="code hl_function" href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">GetOrCreateExtraData</a>&lt;<a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a>&gt;();</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            file &gt;&gt; normalED.x &gt;&gt; normalED.y &gt;&gt; normalED.z;</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        }</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;f&quot;</span>)</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        { <span class="comment">// Face (triangle)</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <a class="code hl_typedef" href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">FaceIndex</a> curFaceIdx = mesh-&gt;GetFaceCount();</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a>&amp; curFace = mesh-&gt;m_Faces.emplace_back();</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <span class="comment">// Read three vertices for the triangle</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iEdge = 0; iEdge &lt; 3; ++iEdge)</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> curVertexIdx;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                <span class="keywordtype">char</span> buffer[16];</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                file &gt;&gt; std::ws; <span class="comment">// Skip leading whitespace</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                <span class="comment">// Read until first &#39;/&#39; or whitespace</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                <span class="keywordflow">while</span>(file.peek() != EOF &amp;&amp; !std::isspace(file.peek()) &amp;&amp; file.peek() != <span class="charliteral">&#39;/&#39;</span>)</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                {</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                    buffer[i++] = file.get();</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                }</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                buffer[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                <span class="comment">// Convert string to index</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                curVertexIdx = std::stoi(buffer) - 1;</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = mesh-&gt;m_Vertices[curVertexIdx];</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> == -1)</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                    curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">IncidentFaceIdx</a> = curFaceIdx;</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[iEdge] = curVertexIdx;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>                <span class="comment">// Skip texture/normal indices until next vertex or whitespace</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                <span class="keywordflow">while</span>(file.peek() != EOF &amp;&amp; !std::isspace(file.peek()))</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                {</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                    file.ignore(1);</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                }</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            }</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            <span class="comment">// Set neighboring faces using the edges</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keyword">auto</span> SetFacesNeigbhor = [&amp;](<a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> firstVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> secondVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">EdgeIndex</a> edgeIdx)</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            {</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                <span class="keywordflow">if</span>(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                    neighborMap[{ firstVertexIdx, secondVertexIdx }] = { curFaceIdx, edgeIdx };</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                }</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                <span class="keywordflow">else</span> <span class="comment">// The edge with firstVertex and secondVertex is already registered in map</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                    <span class="keyword">auto</span> [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                    mesh-&gt;m_Faces[faceNeighborIdx].Neighbors[neighborEdgeIdx] = curFaceIdx;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                    curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Neighbors</a>[edgeIdx] = faceNeighborIdx;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>                }</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            };</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v0Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[0]);</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v1Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[1]);</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> v2Idx = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a>[2]);</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="comment">// Edge v0-v1</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            SetFacesNeigbhor(v0Idx, v1Idx, 2);</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            <span class="comment">// Edge v1-v2</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            SetFacesNeigbhor(v1Idx, v2Idx, 0);</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            <span class="comment">// Edge v2-v0</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            SetFacesNeigbhor(v2Idx, v0Idx, 1);</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        }</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    }</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    file.close();</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordflow">return</span> mesh;</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>}</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="comment">// Edge v0-v1</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        SetFacesNeigbhor(iTriangle, iVertex0, iVertex1, 2);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="comment">// Edge v1-v2</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        SetFacesNeigbhor(iTriangle, iVertex1, iVertex2, 0);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="comment">// Edge v2-v0</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        SetFacesNeigbhor(iTriangle, iVertex2, iVertex0, 1);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    file.close();</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">return</span> mesh;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
 </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>} <span class="comment">// namespace Utilitary::Surface</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5">  159</a></span>std::unique_ptr&lt;Mesh&gt; <a class="code hl_function" href="structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5">MeshLoader::LoadOBJ</a>(<span class="keyword">const</span> std::filesystem::path&amp; filepath)</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>{</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    std::ifstream file(filepath);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">// Checking file opening</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">if</span>(!file.is_open())</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    {</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Failed to open file: {}&quot;</span>, filepath.string());</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="comment">// Check file extension</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordflow">if</span>(filepath.extension() != <span class="stringliteral">&quot;.obj&quot;</span>)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <a class="code hl_define" href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a>(<span class="stringliteral">&quot;Wrong file extension (must be .obj): {}&quot;</span>, filepath.string());</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">auto</span> mesh = std::make_unique&lt;Mesh&gt;();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="comment">// Map to store edges and their corresponding triangle and edge index.</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    std::unordered_map&lt;VertexPair, std::pair&lt;TriangleIndex, EdgeIndex&gt;&gt; neighborMap;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="comment">// While store texture coordinates informations.</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    std::vector&lt;Vec2&gt; texCoords;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="comment">// While store triangle (flat) normal informations.</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    std::vector&lt;Vec3&gt; flatNormals;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="comment">// Set neighboring faces using the edges</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keyword">auto</span> SetFacesNeigbhor =</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        [&amp;](<a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> faceIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> firstVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> secondVertexIdx, <a class="code hl_typedef" href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">EdgeIndex</a> edgeIdx)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">if</span>(neighborMap.find({ firstVertexIdx, secondVertexIdx }) == neighborMap.end())</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            neighborMap[{ firstVertexIdx, secondVertexIdx }] = { faceIdx, edgeIdx };</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">else</span> <span class="comment">// The edge with firstVertex and secondVertex is already registered in map</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keyword">auto</span> [faceNeighborIdx, neighborEdgeIdx] = neighborMap[{ firstVertexIdx, secondVertexIdx }];</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            mesh-&gt;m_Triangles[faceNeighborIdx].Neighbors[neighborEdgeIdx] = faceIdx;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            mesh-&gt;m_Triangles[faceIdx].Neighbors[edgeIdx] = faceNeighborIdx;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    };</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    std::string type;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordflow">while</span>(file.peek() != EOF)</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">if</span>(file.peek() == EOF)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        file &gt;&gt; type;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <span class="comment">// Process line based on its type</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;mtllib&quot;</span>) <span class="comment">// Ignore this for now.</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            std::string ignoreMtlFile;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            std::getline(file, ignoreMtlFile);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        }</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;g&quot;</span>)</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            std::string objName;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            file &gt;&gt; objName;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <a class="code hl_define" href="PrintHelpers_8h.html#ad436e1e1d6bf1c744f5eca58bfa1fcc8">Info</a>(<span class="stringliteral">&quot;Loading {} object from {} file...&quot;</span>, objName, filepath.string());</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;v&quot;</span>)</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        { <span class="comment">// Vertex position</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a> curVertex;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            file &gt;&gt; curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>.x &gt;&gt; curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>.y &gt;&gt; curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Position</a>.z;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            mesh-&gt;m_Vertices.emplace_back(curVertex);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        }</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;vt&quot;</span>)</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        { <span class="comment">// Vertex texture coordinate</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            <a class="code hl_typedef" href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">Vec2</a> vertexTexCoords;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            file &gt;&gt; vertexTexCoords.x &gt;&gt; vertexTexCoords.y;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            texCoords.emplace_back(vertexTexCoords);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        }</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;vn&quot;</span>)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        { <span class="comment">// Normal vector</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <a class="code hl_typedef" href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">Vec3</a> normal;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            file &gt;&gt; normal.x &gt;&gt; normal.y &gt;&gt; normal.z;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            flatNormals.emplace_back(normal);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            SkipCommentsAndWhitespace(file);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        }</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;usemtl&quot;</span>) <span class="comment">// Ignore this for now.</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        {</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            std::string ignoreMaterialName;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            std::getline(file, ignoreMaterialName);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type == <span class="stringliteral">&quot;f&quot;</span>)</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        { <span class="comment">// Triangle (triangle)</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">TriangleIndex</a> curTriangleIdx = mesh-&gt;GetTriangleCount();</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a>&amp; curFace = mesh-&gt;m_Triangles.emplace_back();</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <span class="keyword">auto</span>&amp; curContainer = mesh-&gt;m_TrianglesExtraDataContainer.emplace_back();</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="comment">// Read three vertices for the triangle</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            <span class="keywordflow">for</span>(<a class="code hl_typedef" href="namespaceBaseType.html#ad30d7329b9139af2bfe5405ebb6774a7">VertexLocalIndex</a> iVertex = 0; iVertex &lt; 3; ++iVertex)</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                <span class="keywordtype">int</span> curVertexIdx = ReadNextInteger(file);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                assert(curVertexIdx != -1);</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                <a class="code hl_struct" href="structData_1_1Primitive_1_1Vertex.html">Vertex</a>&amp; curVertex = mesh-&gt;m_Vertices[curVertexIdx];</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                <span class="keywordflow">if</span>(curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> == -1)</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                    curVertex.<a class="code hl_variable" href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">IncidentTriangleIdx</a> = curTriangleIdx;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[iVertex] = curVertexIdx;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                <span class="comment">// Skip &#39;/&#39; character.</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                file.ignore(1);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                <span class="keywordtype">int</span> texCoordsIdx = ReadNextInteger(file);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                <span class="keywordflow">if</span>(texCoordsIdx != -1)</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                { <span class="comment">// Vertex texCoords index.</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                    <span class="keyword">auto</span>&amp; verticesTexCoords = curContainer.GetOrCreate&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html">VerticesTexCoordsExtraData</a>&gt;();</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                    verticesTexCoords.<a class="code hl_function" href="classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html#a57a6760f4e4b93b729c6fac8fe7d7dda">SetVertexTexCoords</a>(texCoords[texCoordsIdx], iVertex);</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                }</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                <span class="keywordflow">if</span>(file.peek() != <span class="charliteral">&#39;/&#39;</span>)</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                <span class="comment">// Skip &#39;/&#39; character.</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                file.ignore(1);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                <span class="keywordtype">int</span> flatNormalIdx = ReadNextInteger(file);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>                <span class="keywordflow">if</span>(flatNormalIdx != -1)</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>                { <span class="comment">// Flat normal index.</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>                    <span class="keyword">auto</span>&amp; faceNormal = curContainer.GetOrCreate&lt;<a class="code hl_class" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">TriangleNormalExtraData</a>&gt;();</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>                    faceNormal.<a class="code hl_function" href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">SetData</a>(flatNormals[flatNormalIdx]);</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>                }</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>            }</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex0 = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[0]);</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex1 = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[1]);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a> iVertex2 = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">VertexIndex</a><span class="keyword">&gt;</span>(curFace.<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a>[2]);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            <span class="comment">// Edge v0-v1</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            SetFacesNeigbhor(curTriangleIdx, iVertex0, iVertex1, 2);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            <span class="comment">// Edge v1-v2</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            SetFacesNeigbhor(curTriangleIdx, iVertex1, iVertex2, 0);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            <span class="comment">// Edge v2-v0</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            SetFacesNeigbhor(curTriangleIdx, iVertex2, iVertex0, 1);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        }</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    }</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    file.close();</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keywordflow">return</span> mesh;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>}</div>
+</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>} <span class="comment">// namespace Utilitary::Surface</span></div>
+<div class="ttc" id="aExtraDataType_8h_html"><div class="ttname"><a href="ExtraDataType_8h.html">ExtraDataType.h</a></div></div>
 <div class="ttc" id="aMeshLoader_8h_html"><div class="ttname"><a href="MeshLoader_8h.html">MeshLoader.h</a></div></div>
 <div class="ttc" id="aPrimitiveProxy_8h_html"><div class="ttname"><a href="PrimitiveProxy_8h.html">PrimitiveProxy.h</a></div></div>
 <div class="ttc" id="aPrintHelpers_8h_html"><div class="ttname"><a href="PrintHelpers_8h.html">PrintHelpers.h</a></div></div>
 <div class="ttc" id="aPrintHelpers_8h_html_a3820662fa23f7fb1a776c4398eb83c50"><div class="ttname"><a href="PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50">Error</a></div><div class="ttdeci">#define Error(...)</div><div class="ttdef"><b>Definition</b> <a href="PrintHelpers_8h_source.html#l00171">PrintHelpers.h:171</a></div></div>
+<div class="ttc" id="aPrintHelpers_8h_html_ad436e1e1d6bf1c744f5eca58bfa1fcc8"><div class="ttname"><a href="PrintHelpers_8h.html#ad436e1e1d6bf1c744f5eca58bfa1fcc8">Info</a></div><div class="ttdeci">#define Info(...)</div><div class="ttdef"><b>Definition</b> <a href="PrintHelpers_8h_source.html#l00165">PrintHelpers.h:165</a></div></div>
 <div class="ttc" id="aVertexPair_8h_html"><div class="ttname"><a href="VertexPair_8h.html">VertexPair.h</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html">Data::Primitive::VertexProxy</a></div><div class="ttdoc">Proxy class for a vertex in a mesh, providing safe access and extra data storage.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00090">PrimitiveProxy.h:91</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a1aec63e9f93d7d6d952b44ec4bae497d"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a1aec63e9f93d7d6d952b44ec4bae497d">Data::Primitive::VertexProxy::GetOrCreateExtraData</a></div><div class="ttdeci">T &amp; GetOrCreateExtraData() const</div><div class="ttdoc">Get or create extra data of type T associated with the vertex.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8h_source.html#l00114">PrimitiveProxy.h:114</a></div></div>
-<div class="ttc" id="aclassData_1_1Primitive_1_1VertexProxy_html_a2e075092d457f16eecacd428124d1e29"><div class="ttname"><a href="classData_1_1Primitive_1_1VertexProxy.html#a2e075092d457f16eecacd428124d1e29">Data::Primitive::VertexProxy::GetVertex</a></div><div class="ttdeci">Vertex &amp; GetVertex()</div><div class="ttdoc">Get the vertex being proxied.</div><div class="ttdef"><b>Definition</b> <a href="PrimitiveProxy_8cpp_source.html#l00064">PrimitiveProxy.cpp:64</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html"><div class="ttname"><a href="namespaceBaseType.html">BaseType</a></div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00007">BaseType.h:8</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00010">BaseType.h:10</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a224b60c39fa5c7e8cc8b428730d74ba6"><div class="ttname"><a href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">BaseType::EdgeIndex</a></div><div class="ttdeci">uint8_t EdgeIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00009">BaseType.h:9</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00017">BaseType.h:17</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00016">BaseType.h:16</a></div></div>
-<div class="ttc" id="anamespaceBaseType_html_ab5e1083b72a5beb47aca4b562f079110"><div class="ttname"><a href="namespaceBaseType.html#ab5e1083b72a5beb47aca4b562f079110">BaseType::FaceIndex</a></div><div class="ttdeci">uint32_t FaceIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00011">BaseType.h:11</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1SingleDataExtraData_html_a83e96105ae9c358999bf222a4546085c"><div class="ttname"><a href="classData_1_1ExtraData_1_1SingleDataExtraData.html#a83e96105ae9c358999bf222a4546085c">Data::ExtraData::SingleDataExtraData::SetData</a></div><div class="ttdeci">void SetData(T const &amp;value)</div><div class="ttdoc">Setter on the data stored.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00037">ExtraDataType.h:37</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1TriangleNormalExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html">Data::ExtraData::TriangleNormalExtraData</a></div><div class="ttdoc">Extra data type to store a triangle normal.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00047">ExtraDataType.h:48</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1VerticesTexCoordsExtraData_html"><div class="ttname"><a href="classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html">Data::ExtraData::VerticesTexCoordsExtraData</a></div><div class="ttdoc">Extra data type to store texture coordinates for each vertex of a triangle.</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00071">ExtraDataType.h:72</a></div></div>
+<div class="ttc" id="aclassData_1_1ExtraData_1_1VerticesTexCoordsExtraData_html_a57a6760f4e4b93b729c6fac8fe7d7dda"><div class="ttname"><a href="classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html#a57a6760f4e4b93b729c6fac8fe7d7dda">Data::ExtraData::VerticesTexCoordsExtraData::SetVertexTexCoords</a></div><div class="ttdeci">void SetVertexTexCoords(const BaseType::Vec2 &amp;value, const BaseType::VertexLocalIndex index)</div><div class="ttdef"><b>Definition</b> <a href="ExtraDataType_8h_source.html#l00081">ExtraDataType.h:81</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html"><div class="ttname"><a href="namespaceBaseType.html">BaseType</a></div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00008">BaseType.h:9</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a0d98aa03840d23f999d6fb33ddf395b6"><div class="ttname"><a href="namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6">BaseType::VertexIndex</a></div><div class="ttdeci">uint32_t VertexIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00012">BaseType.h:12</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a224b60c39fa5c7e8cc8b428730d74ba6"><div class="ttname"><a href="namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6">BaseType::EdgeIndex</a></div><div class="ttdeci">uint8_t EdgeIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00010">BaseType.h:10</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a5a8fad12a866678288c461619b32172f"><div class="ttname"><a href="namespaceBaseType.html#a5a8fad12a866678288c461619b32172f">BaseType::Vec3</a></div><div class="ttdeci">glm::vec3 Vec3</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00019">BaseType.h:19</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_a6a5a49ea61b7c2072349f6274456ff49"><div class="ttname"><a href="namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49">BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00018">BaseType.h:18</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_ab0b9b1309a54bf96aea7b2acdfa8e4f5"><div class="ttname"><a href="namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5">BaseType::TriangleIndex</a></div><div class="ttdeci">uint32_t TriangleIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00013">BaseType.h:13</a></div></div>
+<div class="ttc" id="anamespaceBaseType_html_ad30d7329b9139af2bfe5405ebb6774a7"><div class="ttname"><a href="namespaceBaseType.html#ad30d7329b9139af2bfe5405ebb6774a7">BaseType::VertexLocalIndex</a></div><div class="ttdeci">uint8_t VertexLocalIndex</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00011">BaseType.h:11</a></div></div>
+<div class="ttc" id="anamespaceData_1_1ExtraData_html"><div class="ttname"><a href="namespaceData_1_1ExtraData.html">Data::ExtraData</a></div><div class="ttdef"><b>Definition</b> <a href="ExtraDataContainer_8h_source.html#l00007">ExtraDataContainer.h:8</a></div></div>
 <div class="ttc" id="anamespaceData_1_1Primitive_html"><div class="ttname"><a href="namespaceData_1_1Primitive.html">Data::Primitive</a></div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00018">Mesh.h:19</a></div></div>
 <div class="ttc" id="anamespaceData_1_1Surface_html"><div class="ttname"><a href="namespaceData_1_1Surface.html">Data::Surface</a></div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00024">Mesh.h:25</a></div></div>
 <div class="ttc" id="anamespaceUtilitary_1_1Surface_html"><div class="ttname"><a href="namespaceUtilitary_1_1Surface.html">Utilitary::Surface</a></div><div class="ttdoc">Forward declaration.</div><div class="ttdef"><b>Definition</b> <a href="Mesh_8h_source.html#l00011">Mesh.h:12</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00035">Primitive.h:36</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_a49432a6f6c8456ed87fdea60fe46acb3"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Data::Primitive::Face::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Face vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00040">Primitive.h:40</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_ab8daaca0bdaa80536c779c8d1296f533"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#ab8daaca0bdaa80536c779c8d1296f533">Data::Primitive::Face::Neighbors</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Neighbors</div><div class="ttdoc">Face neighboring face indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00045">Primitive.h:45</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html">Data::Primitive::Vertex</a></div><div class="ttdoc">Structure holding the informations relative to a vertex primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00024">Primitive.h:25</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_a0ec39fc8cfa23371d37e4d1179a52067"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Data::Primitive::Vertex::Position</a></div><div class="ttdeci">BaseType::Vec3 Position</div><div class="ttdoc">Vertex position in 3D.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00027">Primitive.h:27</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_ad79c2d2b680be7d9d08cd2765d31620e"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#ad79c2d2b680be7d9d08cd2765d31620e">Data::Primitive::Vertex::IncidentFaceIdx</a></div><div class="ttdeci">int IncidentFaceIdx</div><div class="ttdoc">Index to one of the incident faces for internal purposes.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00031">Primitive.h:31</a></div></div>
-<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_a78d38746f63c8773870f61c05f38a7a5"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5">Utilitary::Surface::MeshLoader::LoadOBJ</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOBJ(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OBJ file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00136">MeshLoader.cpp:136</a></div></div>
-<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_ab6956d24e900067738077b12ddde0c99"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">Utilitary::Surface::MeshLoader::LoadOFF</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOFF(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OFF file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00040">MeshLoader.cpp:40</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html">Data::Primitive::Triangle</a></div><div class="ttdoc">Structure holding the informations relative to a triangular triangle primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00034">Primitive.h:35</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html_a09b28d462d786661d18ff716d0764ae9"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Data::Primitive::Triangle::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Triangle vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00039">Primitive.h:39</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html">Data::Primitive::Vertex</a></div><div class="ttdoc">Structure holding the informations relative to a vertex primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00023">Primitive.h:24</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_a0ec39fc8cfa23371d37e4d1179a52067"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067">Data::Primitive::Vertex::Position</a></div><div class="ttdeci">BaseType::Vec3 Position</div><div class="ttdoc">Vertex position in 3D.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00026">Primitive.h:26</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Vertex_html_ad1075505a28612782755b8f0a02986d4"><div class="ttname"><a href="structData_1_1Primitive_1_1Vertex.html#ad1075505a28612782755b8f0a02986d4">Data::Primitive::Vertex::IncidentTriangleIdx</a></div><div class="ttdeci">int IncidentTriangleIdx</div><div class="ttdoc">Index to one of the incident triangles for internal purposes.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00030">Primitive.h:30</a></div></div>
+<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_a78d38746f63c8773870f61c05f38a7a5"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#a78d38746f63c8773870f61c05f38a7a5">Utilitary::Surface::MeshLoader::LoadOBJ</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOBJ(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OBJ file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00159">MeshLoader.cpp:159</a></div></div>
+<div class="ttc" id="astructUtilitary_1_1Surface_1_1MeshLoader_html_ab6956d24e900067738077b12ddde0c99"><div class="ttname"><a href="structUtilitary_1_1Surface_1_1MeshLoader.html#ab6956d24e900067738077b12ddde0c99">Utilitary::Surface::MeshLoader::LoadOFF</a></div><div class="ttdeci">static std::unique_ptr&lt; Data::Surface::Mesh &gt; LoadOFF(const std::filesystem::path &amp;filepath)</div><div class="ttdoc">Load mesh from an OFF file.</div><div class="ttdef"><b>Definition</b> <a href="MeshLoader_8cpp_source.html#l00062">MeshLoader.cpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

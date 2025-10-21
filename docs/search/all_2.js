@@ -5,7 +5,7 @@ var searchData=
   ['clone_2',['Clone',['../classData_1_1Surface_1_1Mesh.html#aaa536140f461bc514bef21971c627e87',1,'Data::Surface::Mesh']]],
   ['code_20quality_20standards_3',['Code Quality Standards',['../index.html#autotoc_md3',1,'']]],
   ['colorattachment_4',['ColorAttachment',['../structRenderer_1_1Framebuffer.html#adbdb3b51fd0818e4568b1fddd39f3da5',1,'Renderer::Framebuffer']]],
-  ['computefacenormals_5',['ComputeFaceNormals',['../classData_1_1Surface_1_1Mesh.html#a3e206bec66b032df60e39ba21c97ac66',1,'Data::Surface::Mesh']]],
+  ['computetrianglenormals_5',['ComputeTriangleNormals',['../classData_1_1Surface_1_1Mesh.html#a96e556c02aaf5f7f1b29d7e1b8030b47',1,'Data::Surface::Mesh']]],
   ['continuous_20integration_6',['Continuous Integration',['../index.html#autotoc_md4',1,'']]],
   ['core_7',['Core',['../namespaceCore.html',1,'']]],
   ['create_8',['Create',['../classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2',1,'Core::Window']]],

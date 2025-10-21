@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['vertices_0',['Vertices',['../structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3',1,'Data::Primitive::Face']]],
-  ['verticesaroundvertexcirculator_1',['VerticesAroundVertexCirculator',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#aef7d6940f357455aa8f6e669ef23ce7b',1,'Data::Surface::Mesh::VerticesAroundVertexRange']]],
-  ['vsync_2',['VSync',['../structCore_1_1WindowSpecification.html#a277607057f3142d98ffe3b73c3d062b3',1,'Core::WindowSpecification']]]
+  ['title_0',['Title',['../structCore_1_1WindowSpecification.html#a5174968a0a355f5cd83b16ebc543d7ed',1,'Core::WindowSpecification']]],
+  ['trianglesaroundvertexcirculator_1',['TrianglesAroundVertexCirculator',['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexRange.html#a98b64bf4eb426defa663c6611c4cdad9',1,'Data::Surface::Mesh::TrianglesAroundVertexRange']]]
 ];

@@ -15,14 +15,17 @@ var annotated_dup =
       [ "ExtraData", "namespaceData_1_1ExtraData.html", [
         [ "BaseExtraDataType", "classData_1_1ExtraData_1_1BaseExtraDataType.html", "classData_1_1ExtraData_1_1BaseExtraDataType" ],
         [ "ExtraDataContainer", "classData_1_1ExtraData_1_1ExtraDataContainer.html", "classData_1_1ExtraData_1_1ExtraDataContainer" ],
-        [ "FaceNormalExtraData", "classData_1_1ExtraData_1_1FaceNormalExtraData.html", "classData_1_1ExtraData_1_1FaceNormalExtraData" ],
         [ "FlatVertexNormalsExtraData", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData" ],
+        [ "ObjectMaterialData", "classData_1_1ExtraData_1_1ObjectMaterialData.html", "classData_1_1ExtraData_1_1ObjectMaterialData" ],
         [ "SingleDataExtraData", "classData_1_1ExtraData_1_1SingleDataExtraData.html", "classData_1_1ExtraData_1_1SingleDataExtraData" ],
-        [ "VertexNormalExtraData", "classData_1_1ExtraData_1_1VertexNormalExtraData.html", "classData_1_1ExtraData_1_1VertexNormalExtraData" ]
+        [ "SmoothVertexNormalExtraData", "classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html", "classData_1_1ExtraData_1_1SmoothVertexNormalExtraData" ],
+        [ "TriangleMaterialName", "classData_1_1ExtraData_1_1TriangleMaterialName.html", "classData_1_1ExtraData_1_1TriangleMaterialName" ],
+        [ "TriangleNormalExtraData", "classData_1_1ExtraData_1_1TriangleNormalExtraData.html", "classData_1_1ExtraData_1_1TriangleNormalExtraData" ],
+        [ "VerticesTexCoordsExtraData", "classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html", "classData_1_1ExtraData_1_1VerticesTexCoordsExtraData" ]
       ] ],
       [ "Primitive", "namespaceData_1_1Primitive.html", [
-        [ "Face", "structData_1_1Primitive_1_1Face.html", "structData_1_1Primitive_1_1Face" ],
-        [ "FaceProxy", "classData_1_1Primitive_1_1FaceProxy.html", "classData_1_1Primitive_1_1FaceProxy" ],
+        [ "Triangle", "structData_1_1Primitive_1_1Triangle.html", "structData_1_1Primitive_1_1Triangle" ],
+        [ "TriangleProxy", "classData_1_1Primitive_1_1TriangleProxy.html", "classData_1_1Primitive_1_1TriangleProxy" ],
         [ "Vertex", "structData_1_1Primitive_1_1Vertex.html", "structData_1_1Primitive_1_1Vertex" ],
         [ "VertexPair", "classData_1_1Primitive_1_1VertexPair.html", "classData_1_1Primitive_1_1VertexPair" ],
         [ "VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html", "classData_1_1Primitive_1_1VertexProxy" ]
@@ -36,6 +39,8 @@ var annotated_dup =
       [ "Texture", "structRenderer_1_1Texture.html", "structRenderer_1_1Texture" ]
     ] ],
     [ "std", "namespacestd.html", [
+      [ "hash< BaseType::Vec2 >", "structstd_1_1hash_3_01BaseType_1_1Vec2_01_4.html", "structstd_1_1hash_3_01BaseType_1_1Vec2_01_4" ],
+      [ "hash< BaseType::Vec3 >", "structstd_1_1hash_3_01BaseType_1_1Vec3_01_4.html", "structstd_1_1hash_3_01BaseType_1_1Vec3_01_4" ],
       [ "hash< Data::Primitive::VertexPair >", "structstd_1_1hash_3_01Data_1_1Primitive_1_1VertexPair_01_4.html", "structstd_1_1hash_3_01Data_1_1Primitive_1_1VertexPair_01_4" ]
     ] ],
     [ "Utilitary", "namespaceUtilitary.html", [

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eof_0',['eof',['../structstbi__io__callbacks.html#a319639db2f76e715eed7a7a974136832',1,'stbi_io_callbacks']]]
+  ['d_0',['D',['../classData_1_1ExtraData_1_1ObjectMaterialData.html#a32e0481e7004b64516b5ad46e6b2ecc7',1,'Data::ExtraData::ObjectMaterialData']]]
 ];

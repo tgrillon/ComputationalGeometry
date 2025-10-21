@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: Data::ExtraData::BaseExtraDataType Class Reference</title>
+<title>MeshToolBox: Data::ExtraData::BaseExtraDataType Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,7 +37,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">SandBox
+   <div id="projectname">MeshToolBox
    </div>
   </td>
  </tr>
@@ -108,11 +108,14 @@ $(document).ready(function(){initNavTree('classData_1_1ExtraData_1_1BaseExtraDat
 </div><!--header-->
 <div class="contents">
 
+<p>Base class for extra data type.  
+ <a href="classData_1_1ExtraData_1_1BaseExtraDataType.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ExtraDataType_8h_source.html">ExtraDataType.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Data::ExtraData::BaseExtraDataType:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classData_1_1ExtraData_1_1BaseExtraDataType__inherit__graph.svg" width="750" height="255"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classData_1_1ExtraData_1_1BaseExtraDataType__inherit__graph.svg" width="795" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -120,11 +123,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a76e4cba97def9c9ce6cb0043e0490b81" id="r_a76e4cba97def9c9ce6cb0043e0490b81"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1ExtraData_1_1BaseExtraDataType.html#a76e4cba97def9c9ce6cb0043e0490b81">~BaseExtraDataType</a> ()=default</td></tr>
 <tr class="separator:a76e4cba97def9c9ce6cb0043e0490b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65ae8850616865b516590be50a44331d" id="r_a65ae8850616865b516590be50a44331d"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classData_1_1ExtraData_1_1BaseExtraDataType.html#a65ae8850616865b516590be50a44331d">GetName</a> ()=0</td></tr>
+<tr class="memdesc:a65ae8850616865b516590be50a44331d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the extra data.  <br /></td></tr>
 <tr class="separator:a65ae8850616865b516590be50a44331d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ExtraDataType_8h_source.html#l00010">10</a> of file <a class="el" href="ExtraDataType_8h_source.html">ExtraDataType.h</a>.</p>
+<div class="textblock"><p>Base class for extra data type. </p>
+
+<p class="definition">Definition at line <a class="el" href="ExtraDataType_8h_source.html#l00012">12</a> of file <a class="el" href="ExtraDataType_8h_source.html">ExtraDataType.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a76e4cba97def9c9ce6cb0043e0490b81" name="a76e4cba97def9c9ce6cb0043e0490b81"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76e4cba97def9c9ce6cb0043e0490b81">&#9670;&#160;</a></span>~BaseExtraDataType()</h2>
@@ -175,7 +180,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classData_1_1ExtraData_1_1FaceNormalExtraData.html#a61de8207d4814a16df40b360606cdeb9">Data::ExtraData::FaceNormalExtraData</a>, <a class="el" href="classData_1_1ExtraData_1_1VertexNormalExtraData.html#a547c65ec94bb462d820b5a953bb039aa">Data::ExtraData::VertexNormalExtraData</a>, and <a class="el" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html#ad3fe2e23acfb27ff1a4f2649c516f0ff">Data::ExtraData::FlatVertexNormalsExtraData</a>.</p>
+<p>Returns the name of the extra data. </p>
+
+<p>Implemented in <a class="el" href="classData_1_1ExtraData_1_1TriangleNormalExtraData.html#a3eaf6d24dedea8dc2dae6b9fc42866b5">Data::ExtraData::TriangleNormalExtraData</a>, <a class="el" href="classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html#a794e7d9dd8cd98c0d2e9ccb372c57447">Data::ExtraData::SmoothVertexNormalExtraData</a>, <a class="el" href="classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html#ad3fe2e23acfb27ff1a4f2649c516f0ff">Data::ExtraData::FlatVertexNormalsExtraData</a>, <a class="el" href="classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html#ab8bd26902b98268cfea4521450e7a236">Data::ExtraData::VerticesTexCoordsExtraData</a>, <a class="el" href="classData_1_1ExtraData_1_1TriangleMaterialName.html#a33765f4466d3af0ffe006c088befa32c">Data::ExtraData::TriangleMaterialName</a>, and <a class="el" href="classData_1_1ExtraData_1_1ObjectMaterialData.html#a0dc4bed15f01de57675a18838b41d323">Data::ExtraData::ObjectMaterialData</a>.</p>
 
 </div>
 </div>

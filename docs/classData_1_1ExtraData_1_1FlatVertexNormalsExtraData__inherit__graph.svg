@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Extra data type to store vertex flat normals.">
 <polygon fill="#999999" stroke="#666666" points="152.5,-30 1.5,-30 1.5,0 152.5,0 152.5,-30"/>
 <text text-anchor="start" x="9.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Data::ExtraData::FlatVertex</text>
 <text text-anchor="middle" x="77" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">NormalsExtraData</text>
@@ -41,7 +41,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classData_1_1ExtraData_1_1BaseExtraDataType.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classData_1_1ExtraData_1_1BaseExtraDataType.html" target="_top" xlink:title="Base class for extra data type.">
 <polygon fill="white" stroke="#666666" points="152,-173 2,-173 2,-143 152,-143 152,-173"/>
 <text text-anchor="start" x="10" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">Data::ExtraData::BaseExtra</text>
 <text text-anchor="middle" x="77" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">DataType</text>

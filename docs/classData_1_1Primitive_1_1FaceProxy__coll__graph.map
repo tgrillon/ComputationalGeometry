@@ -1,5 +1,0 @@
-<map id="Data::Primitive::FaceProxy" name="Data::Primitive::FaceProxy">
-<area shape="rect" id="Node000001" title="Proxy class for a face in a mesh, providing safe access and extra data storage." alt="" coords="5,93,200,119"/>
-<area shape="rect" id="Node000002" href="$classData_1_1Surface_1_1Mesh.html" title="Class representing a 3D triangular mesh." alt="" coords="26,5,179,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,45,105,93,100,93,100,45"/>
-</map>

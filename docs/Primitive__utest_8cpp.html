@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SandBox: App/Test/Source/Primitive_utest.cpp File Reference</title>
+<title>MeshToolBox: App/Test/Source/Primitive_utest.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,7 +37,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">SandBox
+   <div id="projectname">MeshToolBox
    </div>
   </td>
  </tr>
@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('Primitive__utest_8cpp.html',''); initR
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Primitive_utest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="Primitive__utest_8cpp__incl.svg" width="400" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="Primitive__utest_8cpp__incl.svg" width="451" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="Primitive__utest_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -156,19 +156,19 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Primitive__utest_8cpp_source.html#l00020">20</a> of file <a class="el" href="Primitive__utest_8cpp_source.html">Primitive_utest.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a> face{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a> = { 0, 1, 2 } };</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a> triangle{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a> = { 0, 1, 2 } };</div>
 <div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 0, 3), -1);</div>
-<div class="line"><span class="lineno">   25</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 3, 0), -1);</div>
-<div class="line"><span class="lineno">   26</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 1, 3), -1);</div>
-<div class="line"><span class="lineno">   27</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 3, 1), -1);</div>
-<div class="line"><span class="lineno">   28</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 2, 3), -1);</div>
-<div class="line"><span class="lineno">   29</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 3, 2), -1);</div>
-<div class="line"><span class="lineno">   30</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 3, 4), -1);</div>
+<div class="line"><span class="lineno">   24</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 0, 3), -1);</div>
+<div class="line"><span class="lineno">   25</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 3, 0), -1);</div>
+<div class="line"><span class="lineno">   26</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 1, 3), -1);</div>
+<div class="line"><span class="lineno">   27</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 3, 1), -1);</div>
+<div class="line"><span class="lineno">   28</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 2, 3), -1);</div>
+<div class="line"><span class="lineno">   29</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 3, 2), -1);</div>
+<div class="line"><span class="lineno">   30</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 3, 4), -1);</div>
 <div class="line"><span class="lineno">   31</span>}</div>
-<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_a49b312af49a1a9abf0110c67fa844aa8"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">Utilitary::Primitive::GetEdgeIndex</a></div><div class="ttdeci">int GetEdgeIndex(const Data::Primitive::Face &amp;face, const BaseType::VertexIndex firstIndex, const BaseType::VertexIndex secondIndex)</div><div class="ttdoc">Get the index of the edge defined by two vertices in a face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00008">Primitive.cpp:8</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html">Data::Primitive::Face</a></div><div class="ttdoc">Structure holding the informations relative to a triangular face primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00035">Primitive.h:36</a></div></div>
-<div class="ttc" id="astructData_1_1Primitive_1_1Face_html_a49432a6f6c8456ed87fdea60fe46acb3"><div class="ttname"><a href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Data::Primitive::Face::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Face vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00040">Primitive.h:40</a></div></div>
+<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_a66fadf22fbafb9e0bd86e0b2ebe5858c"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">Utilitary::Primitive::GetEdgeIndex</a></div><div class="ttdeci">int GetEdgeIndex(const Data::Primitive::Triangle &amp;triangle, const BaseType::VertexIndex firstIndex, const BaseType::VertexIndex secondIndex)</div><div class="ttdoc">Get the index of the edge defined by two vertices in a triangle.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00008">Primitive.cpp:8</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html">Data::Primitive::Triangle</a></div><div class="ttdoc">Structure holding the informations relative to a triangular triangle primitive.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00034">Primitive.h:35</a></div></div>
+<div class="ttc" id="astructData_1_1Primitive_1_1Triangle_html_a09b28d462d786661d18ff716d0764ae9"><div class="ttname"><a href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Data::Primitive::Triangle::Vertices</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; Vertices</div><div class="ttdoc">Triangle vertex indices.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8h_source.html#l00039">Primitive.h:39</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -200,14 +200,14 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Primitive__utest_8cpp_source.html#l00008">8</a> of file <a class="el" href="Primitive__utest_8cpp_source.html">Primitive_utest.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
-<div class="line"><span class="lineno">   10</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a> face{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a> = { 0, 1, 2 } };</div>
+<div class="line"><span class="lineno">   10</span>    <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a> triangle{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a> = { 0, 1, 2 } };</div>
 <div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 0, 1), 2);</div>
-<div class="line"><span class="lineno">   13</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 1, 2), 0);</div>
-<div class="line"><span class="lineno">   14</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 2, 0), 1);</div>
-<div class="line"><span class="lineno">   15</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 1, 0), 2);</div>
-<div class="line"><span class="lineno">   16</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 2, 1), 0);</div>
-<div class="line"><span class="lineno">   17</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a49b312af49a1a9abf0110c67fa844aa8">GetEdgeIndex</a>(face, 0, 2), 1);</div>
+<div class="line"><span class="lineno">   12</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 0, 1), 2);</div>
+<div class="line"><span class="lineno">   13</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 1, 2), 0);</div>
+<div class="line"><span class="lineno">   14</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 2, 0), 1);</div>
+<div class="line"><span class="lineno">   15</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 1, 0), 2);</div>
+<div class="line"><span class="lineno">   16</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 2, 1), 0);</div>
+<div class="line"><span class="lineno">   17</span>    EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#a66fadf22fbafb9e0bd86e0b2ebe5858c">GetEdgeIndex</a>(triangle, 0, 2), 1);</div>
 <div class="line"><span class="lineno">   18</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -241,14 +241,14 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="Primitive__utest_8cpp_source.html#l00052">52</a> of file <a class="el" href="Primitive__utest_8cpp_source.html">Primitive_utest.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
 <div class="line"><span class="lineno">   54</span>    {</div>
-<div class="line"><span class="lineno">   55</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a> face{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a> = { 0, 1, 2 } };</div>
+<div class="line"><span class="lineno">   55</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a> triangle{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a> = { 0, 1, 2 } };</div>
 <div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 4), -1);</div>
-<div class="line"><span class="lineno">   58</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 8), -1);</div>
-<div class="line"><span class="lineno">   59</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 6), -1);</div>
+<div class="line"><span class="lineno">   57</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 4), -1);</div>
+<div class="line"><span class="lineno">   58</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 8), -1);</div>
+<div class="line"><span class="lineno">   59</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 6), -1);</div>
 <div class="line"><span class="lineno">   60</span>    }</div>
 <div class="line"><span class="lineno">   61</span>}</div>
-<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_abaaff4c4271871ab94b68cd4665745a5"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">Utilitary::Primitive::GetVertexLocalIndex</a></div><div class="ttdeci">int GetVertexLocalIndex(const Data::Primitive::Face &amp;face, const BaseType::VertexIndex index)</div><div class="ttdoc">Get the local index of a vertex in a face.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00039">Primitive.cpp:39</a></div></div>
+<div class="ttc" id="anamespaceUtilitary_1_1Primitive_html_ab08eae7e30a3bd3bf1f39dbec046ae14"><div class="ttname"><a href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">Utilitary::Primitive::GetVertexLocalIndex</a></div><div class="ttdeci">int GetVertexLocalIndex(const Data::Primitive::Triangle &amp;triangle, const BaseType::VertexIndex index)</div><div class="ttdoc">Get the local index of a vertex in a triangle.</div><div class="ttdef"><b>Definition</b> <a href="Primitive_8cpp_source.html#l00039">Primitive.cpp:39</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -281,19 +281,19 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="Primitive__utest_8cpp_source.html#l00033">33</a> of file <a class="el" href="Primitive__utest_8cpp_source.html">Primitive_utest.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
 <div class="line"><span class="lineno">   35</span>    {</div>
-<div class="line"><span class="lineno">   36</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a> face{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a> = { 0, 1, 2 } };</div>
+<div class="line"><span class="lineno">   36</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a> triangle{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a> = { 0, 1, 2 } };</div>
 <div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 0), 0);</div>
-<div class="line"><span class="lineno">   39</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 1), 1);</div>
-<div class="line"><span class="lineno">   40</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 2), 2);</div>
+<div class="line"><span class="lineno">   38</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 0), 0);</div>
+<div class="line"><span class="lineno">   39</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 1), 1);</div>
+<div class="line"><span class="lineno">   40</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 2), 2);</div>
 <div class="line"><span class="lineno">   41</span>    }</div>
 <div class="line"><span class="lineno">   42</span> </div>
 <div class="line"><span class="lineno">   43</span>    {</div>
-<div class="line"><span class="lineno">   44</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Face.html">Face</a> face{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Face.html#a49432a6f6c8456ed87fdea60fe46acb3">Vertices</a> = { 5, 8, 1 } };</div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_struct" href="structData_1_1Primitive_1_1Triangle.html">Triangle</a> triangle{ .<a class="code hl_variable" href="structData_1_1Primitive_1_1Triangle.html#a09b28d462d786661d18ff716d0764ae9">Vertices</a> = { 5, 8, 1 } };</div>
 <div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 5), 0);</div>
-<div class="line"><span class="lineno">   47</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 8), 1);</div>
-<div class="line"><span class="lineno">   48</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#abaaff4c4271871ab94b68cd4665745a5">GetVertexLocalIndex</a>(face, 1), 2);</div>
+<div class="line"><span class="lineno">   46</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 5), 0);</div>
+<div class="line"><span class="lineno">   47</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 8), 1);</div>
+<div class="line"><span class="lineno">   48</span>        EXPECT_EQ(<a class="code hl_function" href="namespaceUtilitary_1_1Primitive.html#ab08eae7e30a3bd3bf1f39dbec046ae14">GetVertexLocalIndex</a>(triangle, 1), 2);</div>
 <div class="line"><span class="lineno">   49</span>    }</div>
 <div class="line"><span class="lineno">   50</span>}</div>
 </div><!-- fragment -->
