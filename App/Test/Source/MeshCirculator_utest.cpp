@@ -8,7 +8,7 @@ using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::Primitive;
 
-TEST(MeshTest, GetVerticesAroundVertex_OneFace_ShouldIterateCorrectly)
+TEST(MeshCirculatorTest, GetVerticesAroundVertex_OneFace_ShouldIterateCorrectly)
 {
 	Mesh mesh;
 
@@ -30,7 +30,7 @@ TEST(MeshTest, GetVerticesAroundVertex_OneFace_ShouldIterateCorrectly)
 	EXPECT_EQ(collectedVertices, expectedVertices);
 }
 
-TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrectly)
+TEST(MeshCirculatorTest, GetVerticesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrectly)
 {
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
 	{
@@ -60,7 +60,7 @@ TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCor
 	}
 }
 
-TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrectly)
+TEST(MeshCirculatorTest, GetVerticesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrectly)
 {
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
 
@@ -76,7 +76,7 @@ TEST(MeshTest, GetVerticesAroundVertex_CirculatorWithClosedRing_ShouldIterateCor
 	EXPECT_EQ(collectedVertices, expectedVertices);
 }
 
-TEST(MeshTest, GetFacesAroundVertex_OneFace_ShouldIterateCorrectly)
+TEST(MeshCirculatorTest, GetFacesAroundVertex_OneFace_ShouldIterateCorrectly)
 {
 	Mesh mesh;
 
@@ -98,7 +98,7 @@ TEST(MeshTest, GetFacesAroundVertex_OneFace_ShouldIterateCorrectly)
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }
 
-TEST(MeshTest, GetFacesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrectly)
+TEST(MeshCirculatorTest, GetFacesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrectly)
 {
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
 
@@ -114,7 +114,7 @@ TEST(MeshTest, GetFacesAroundVertex_CirculatorWithOpenedRing_ShouldIterateCorrec
 	EXPECT_EQ(collectedFaces, expectedFaces);
 }
 
-TEST(MeshTest, GetFacesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrectly)
+TEST(MeshCirculatorTest, GetFacesAroundVertex_CirculatorWithClosedRing_ShouldIterateCorrectly)
 {
 	Mesh mesh = TestHelpers::CreateGridMesh(2, 2);
 
