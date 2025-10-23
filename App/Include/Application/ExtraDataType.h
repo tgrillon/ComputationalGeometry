@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Application/BaseType.h"
+#include "Core/BaseType.h"
 
 #include <array>
 #include <string>
@@ -44,7 +44,7 @@ private:
 };
 
 /// @brief Extra data type to store a triangle normal.
-class TriangleNormalExtraData : public SingleDataExtraData<BaseType::Vec3>
+class TriangleNormalExtraData : public SingleDataExtraData<Core::BaseType::Vec3>
 {
 public:
 	/// @brief Returns the name of the extra data.
@@ -52,7 +52,7 @@ public:
 };
 
 /// @brief Extra data type to store a smooth vertex normal.
-class SmoothVertexNormalExtraData : public SingleDataExtraData<BaseType::Vec3>
+class SmoothVertexNormalExtraData : public SingleDataExtraData<Core::BaseType::Vec3>
 {
 public:
 	/// @brief Returns the name of the extra data.
@@ -60,7 +60,7 @@ public:
 };
 
 /// @brief Extra data type to store vertex flat normals.
-class FlatVertexNormalsExtraData : public SingleDataExtraData<std::vector<BaseType::Vec3>>
+class FlatVertexNormalsExtraData : public SingleDataExtraData<std::vector<Core::BaseType::Vec3>>
 {
 public:
 	/// @brief Returns the name of the extra data.
@@ -68,17 +68,20 @@ public:
 };
 
 /// @brief Extra data type to store texture coordinates for each vertex of a triangle.
-class VerticesTexCoordsExtraData : public SingleDataExtraData<std::array<BaseType::Vec2, 3>>
+class VerticesTexCoordsExtraData : public SingleDataExtraData<std::array<Core::BaseType::Vec2, 3>>
 {
 public:
 	/// @brief Returns the name of the extra data.
 	std::string GetName() override { return "VertexTexCoordsExtraData"; }
 
-	const BaseType::Vec2& GetVertexTexCoords(const BaseType::VertexLocalIndex index) const { return GetData()[index]; }
+	const Core::BaseType::Vec2& GetVertexTexCoords(const Core::BaseType::VertexLocalIndex index) const
+	{
+		return GetData()[index];
+	}
 
-	BaseType::Vec2& GetVertexTexCoords(const BaseType::VertexLocalIndex index) { return GetData()[index]; }
+	Core::BaseType::Vec2& GetVertexTexCoords(const Core::BaseType::VertexLocalIndex index) { return GetData()[index]; }
 
-	void SetVertexTexCoords(const BaseType::Vec2& value, const BaseType::VertexLocalIndex index)
+	void SetVertexTexCoords(const Core::BaseType::Vec2& value, const Core::BaseType::VertexLocalIndex index)
 	{
 		GetData()[index] = value;
 	}
@@ -117,13 +120,13 @@ public:
 
 public:
 	/// @brief Ambiant color.
-	BaseType::Vec3 Ka{ 0., 0., 0. };
+	Core::BaseType::Vec3 Ka{ 0., 0., 0. };
 	/// @brief Diffuse color.
-	BaseType::Vec3 Kd{ 0., 0., 0. };
+	Core::BaseType::Vec3 Kd{ 0., 0., 0. };
 	/// @brief Specular color.
-	BaseType::Vec3 Ks{ 0., 0., 0. };
+	Core::BaseType::Vec3 Ks{ 0., 0., 0. };
 	/// @brief Emissive color.
-	BaseType::Vec3 Ke{ 0., 0., 0. };
+	Core::BaseType::Vec3 Ke{ 0., 0., 0. };
 
 	/// @brief Specular exponent.
 	float Ns{ 0. };

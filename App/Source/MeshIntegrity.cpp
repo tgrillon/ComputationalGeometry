@@ -1,6 +1,6 @@
 #include "Application/MeshIntegrity.h"
 
-using namespace BaseType;
+using namespace Core::BaseType;
 using namespace Data::Primitive;
 using namespace Data::Surface;
 

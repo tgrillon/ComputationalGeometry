@@ -45,21 +45,21 @@ inline Data::Surface::Mesh CreateValidMeshWithED()
 	{ // Add vertices texCoords and normal for the first triangle
 		Data::Primitive::TriangleProxy triangle = mesh.GetTriangle(0);
 		auto& texCoords = triangle.GetOrCreateExtraData<Data::ExtraData::VerticesTexCoordsExtraData>();
-		texCoords.SetVertexTexCoords(BaseType::Vec2{ 0.0, 0.0 }, 0);
-		texCoords.SetVertexTexCoords(BaseType::Vec2{ 1.0, 0.0 }, 1);
-		texCoords.SetVertexTexCoords(BaseType::Vec2{ 1.0, 1.0 }, 2);
+		texCoords.SetVertexTexCoords(Core::BaseType::Vec2{ 0.0, 0.0 }, 0);
+		texCoords.SetVertexTexCoords(Core::BaseType::Vec2{ 1.0, 0.0 }, 1);
+		texCoords.SetVertexTexCoords(Core::BaseType::Vec2{ 1.0, 1.0 }, 2);
 		auto& triangleNormal = triangle.GetOrCreateExtraData<Data::ExtraData::TriangleNormalExtraData>();
-		triangleNormal.GetData() = BaseType::Vec3{ 1.0, 0.0, 0.0 };
+		triangleNormal.GetData() = Core::BaseType::Vec3{ 1.0, 0.0, 0.0 };
 	}
 
 	{ // Add vertices texCoords and normal for the second triangle
 		Data::Primitive::TriangleProxy triangle = mesh.GetTriangle(1);
 		auto& texCoords = triangle.GetOrCreateExtraData<Data::ExtraData::VerticesTexCoordsExtraData>();
-		texCoords.SetVertexTexCoords(BaseType::Vec2{ 0.0, 0.0 }, 0);
-		texCoords.SetVertexTexCoords(BaseType::Vec2{ 1.0, 1.0 }, 1);
-		texCoords.SetVertexTexCoords(BaseType::Vec2{ 0.0, 1.0 }, 2);
+		texCoords.SetVertexTexCoords(Core::BaseType::Vec2{ 0.0, 0.0 }, 0);
+		texCoords.SetVertexTexCoords(Core::BaseType::Vec2{ 1.0, 1.0 }, 1);
+		texCoords.SetVertexTexCoords(Core::BaseType::Vec2{ 0.0, 1.0 }, 2);
 		auto& triangleNormal = triangle.GetOrCreateExtraData<Data::ExtraData::TriangleNormalExtraData>();
-		triangleNormal.GetData() = BaseType::Vec3{ 1.0, 0.0, 0.0 };
+		triangleNormal.GetData() = Core::BaseType::Vec3{ 1.0, 0.0, 0.0 };
 	}
 
 	return mesh;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Application/BaseType.h"
+#include "Core/BaseType.h"
 
 #include <array>
 
@@ -8,11 +8,11 @@
 namespace IndexHelpers
 {
 /// @brief Arrays to get the previous index in a triangle.
-constexpr std::array<BaseType::EdgeIndex, 3> Previous{ 2, 0, 1 };
+constexpr std::array<Core::BaseType::EdgeIndex, 3> Previous{ 2, 0, 1 };
 /// @brief Arrays to get the current index in a triangle.
-constexpr std::array<BaseType::EdgeIndex, 3> Current{ 0, 1, 2 };
+constexpr std::array<Core::BaseType::EdgeIndex, 3> Current{ 0, 1, 2 };
 /// @brief Arrays to get the next index in a triangle.
-constexpr std::array<BaseType::EdgeIndex, 3> Next{ 1, 2, 0 };
+constexpr std::array<Core::BaseType::EdgeIndex, 3> Next{ 1, 2, 0 };
 } // namespace IndexHelpers
 
 namespace Data::Primitive
@@ -23,7 +23,7 @@ struct Triangle;
 struct Vertex
 {
 	/// @brief Vertex position in 3D.
-	BaseType::Vec3 Position{};
+	Core::BaseType::Vec3 Position{};
 
 	/// @brief Index to one of the incident triangles for internal purposes.
 	/// @note If the vertex has no incident triangle, this index is set to -1.
@@ -54,12 +54,12 @@ namespace Utilitary::Primitive
 /// @return The index of the edge (0, 1, or 2), or -1 if the edge is not found.
 int GetEdgeIndex(
 	const Data::Primitive::Triangle& triangle,
-	const BaseType::VertexIndex firstIndex,
-	const BaseType::VertexIndex secondIndex);
+	const Core::BaseType::VertexIndex firstIndex,
+	const Core::BaseType::VertexIndex secondIndex);
 
 /// @brief Get the local index of a vertex in a triangle.
 /// @param triangle The triangle containing the vertex.
 /// @param index The vertex to found in the triangle.
 /// @return The local index of the vertex (0, 1, or 2), or -1 if it is not found.
-int GetVertexLocalIndex(const Data::Primitive::Triangle& triangle, const BaseType::VertexIndex index);
+int GetVertexLocalIndex(const Data::Primitive::Triangle& triangle, const Core::BaseType::VertexIndex index);
 } // namespace Utilitary::Primitive

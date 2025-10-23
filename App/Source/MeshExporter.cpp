@@ -1,16 +1,16 @@
 #include "Application/MeshExporter.h"
 
-#include "Application/BaseType.h"
 #include "Application/ExtraDataContainer.h"
 #include "Application/ExtraDataType.h"
 #include "Application/PrimitiveProxy.h"
+#include "Core/BaseType.h"
 #include "Core/PrintHelpers.h"
 
 using namespace Data::Surface;
 using namespace Data::Primitive;
 using namespace Data::ExtraData;
 using namespace Utilitary::Primitive;
-using namespace BaseType;
+using namespace Core::BaseType;
 
 #include <algorithm>
 #include <cassert>

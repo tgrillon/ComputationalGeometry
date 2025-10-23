@@ -2,7 +2,7 @@
 
 using namespace Data::Primitive;
 using namespace Utilitary::Primitive;
-using namespace BaseType;
+using namespace Core::BaseType;
 
 namespace Data::Surface
 {

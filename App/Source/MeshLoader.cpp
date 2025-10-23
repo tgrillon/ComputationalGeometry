@@ -14,7 +14,7 @@
 using namespace Data::Surface;
 using namespace Data::Primitive;
 using namespace Data::ExtraData;
-using namespace BaseType;
+using namespace Core::BaseType;
 
 namespace
 {

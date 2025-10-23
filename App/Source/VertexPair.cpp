@@ -1,6 +1,6 @@
 #include "Application/VertexPair.h"
 
-using namespace BaseType;
+using namespace Core::BaseType;
 
 namespace Data::Primitive
 {

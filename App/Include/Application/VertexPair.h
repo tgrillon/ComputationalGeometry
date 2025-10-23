@@ -13,7 +13,7 @@ class VertexPair
 {
 public:
 	/// @brief Construct a VertexPair from two vertices.
-	VertexPair(const BaseType::VertexIndex firstIndex, const BaseType::VertexIndex secondIndex);
+	VertexPair(const Core::BaseType::VertexIndex firstIndex, const Core::BaseType::VertexIndex secondIndex);
 
 	/// @brief Equality operator.
 	bool operator==(const VertexPair& other) const;
@@ -29,9 +29,9 @@ public:
 
 private:
 	/// @brief Minimum vertex (the one with the smaller index).
-	BaseType::VertexIndex m_MinVertexIdx;
+	Core::BaseType::VertexIndex m_MinVertexIdx;
 	/// @brief Maximum vertex (the one with the biggest index).
-	BaseType::VertexIndex m_MaxVertexIdx;
+	Core::BaseType::VertexIndex m_MaxVertexIdx;
 };
 } // namespace Data::Primitive
 
@@ -43,8 +43,8 @@ struct hash<Data::Primitive::VertexPair>
 {
 	size_t operator()(const Data::Primitive::VertexPair& vertexPair) const
 	{
-		auto h1 = std::hash<BaseType::VertexIndex>{}(vertexPair.GetMinVertexIdx());
-		auto h2 = std::hash<BaseType::VertexIndex>{}(vertexPair.GetMaxVertexIdx());
+		auto h1 = std::hash<Core::BaseType::VertexIndex>{}(vertexPair.GetMinVertexIdx());
+		auto h2 = std::hash<Core::BaseType::VertexIndex>{}(vertexPair.GetMaxVertexIdx());
 		return h1 ^ h2;
 	}
 };

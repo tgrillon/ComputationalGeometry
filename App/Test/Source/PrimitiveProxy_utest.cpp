@@ -13,12 +13,12 @@ TEST(PrimitiveProxyTest, VertexProxy_ValidVertex_ShouldBeValid)
 	VertexProxy vertexProxy = mesh.GetVertex(0);
 
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
-	EXPECT_EQ(vertexProxy.GetPosition(), (BaseType::Vec3{ 0., 0., 0. }));
+	EXPECT_EQ(vertexProxy.GetPosition(), (Core::BaseType::Vec3{ 0., 0., 0. }));
 	EXPECT_EQ(vertexProxy.GetIncidentTriangle(), 0);
 
 	Vertex& vertex = vertexProxy.GetVertex();
 	vertex.Position = { 2., 2., 2. };
-	EXPECT_EQ(vertexProxy.GetPosition(), (BaseType::Vec3{ 2., 2., 2. }));
+	EXPECT_EQ(vertexProxy.GetPosition(), (Core::BaseType::Vec3{ 2., 2., 2. }));
 }
 
 TEST(PrimitiveProxyTest, VertexProxy_ConstValidVertex_ShouldBeValid)
@@ -27,7 +27,7 @@ TEST(PrimitiveProxyTest, VertexProxy_ConstValidVertex_ShouldBeValid)
 	const VertexProxy vertexProxy = mesh.GetVertex(0);
 
 	EXPECT_EQ(vertexProxy.GetIndex(), 0);
-	EXPECT_EQ(vertexProxy.GetPosition(), (BaseType::Vec3{ 0., 0., 0. }));
+	EXPECT_EQ(vertexProxy.GetPosition(), (Core::BaseType::Vec3{ 0., 0., 0. }));
 	EXPECT_EQ(vertexProxy.GetIncidentTriangle(), 0);
 }
 

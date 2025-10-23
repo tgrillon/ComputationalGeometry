@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Application/BaseType.h"
 #include "Application/Mesh.h"
+#include "Core/BaseType.h"
 
 namespace Data::Primitive
 {
@@ -10,7 +10,7 @@ class TriangleProxy
 {
 public:
 	/// @brief Construct a TriangleProxy from a mesh and a triangle.
-	TriangleProxy(Data::Surface::Mesh& mesh, const BaseType::TriangleIndex index);
+	TriangleProxy(Data::Surface::Mesh& mesh, const Core::BaseType::TriangleIndex index);
 
 	/// @brief Get extra data of type T associated with the triangle, or nullptr if not found.
 	template<typename T>
@@ -61,7 +61,7 @@ public:
 	}
 
 	/// @brief Get the index of the triangle in the mesh.
-	BaseType::TriangleIndex GetIndex() const;
+	Core::BaseType::TriangleIndex GetIndex() const;
 
 	/// @brief Get the triangle being proxied.
 	Triangle& GetTriangle();
@@ -69,13 +69,13 @@ public:
 	const Triangle& GetTriangle() const;
 
 	/// @brief Get the vertex at the given index of the triangle.
-	BaseType::VertexIndex GetVertex(const BaseType::EdgeIndex index) const;
+	Core::BaseType::VertexIndex GetVertex(const Core::BaseType::EdgeIndex index) const;
 
 	/// @brief Get all vertex indices of the triangle.
 	std::array<int, 3> GetVertices() const;
 
 	/// @brief Get the neighbor triangle at the given index of the triangle.
-	int GetNeighbor(const BaseType::EdgeIndex index) const;
+	int GetNeighbor(const Core::BaseType::EdgeIndex index) const;
 
 	/// @brief Get all neighbor triangle indices of the triangle.
 	std::array<int, 3> GetNeighbors() const;
@@ -84,7 +84,7 @@ private:
 	/// @brief Pointer to the mesh containing the triangle.
 	mutable Data::Surface::Mesh* m_Mesh;
 	/// @brief Index to the triangle being proxied.
-	BaseType::TriangleIndex m_Index;
+	Core::BaseType::TriangleIndex m_Index;
 };
 
 /// @brief Proxy class for a vertex in a mesh, providing safe access and extra data storage.
@@ -92,7 +92,7 @@ class VertexProxy
 {
 public:
 	/// @brief Construct a VertexProxy from a mesh and a vertex.
-	VertexProxy(Data::Surface::Mesh& mesh, const BaseType::VertexIndex index);
+	VertexProxy(Data::Surface::Mesh& mesh, const Core::BaseType::VertexIndex index);
 
 	/// @brief Get extra data of type T associated with the vertex, or nullptr if not found.
 	template<typename T>
@@ -143,7 +143,7 @@ public:
 	}
 
 	/// @brief Get the index of the vertex in the mesh.
-	BaseType::VertexIndex GetIndex() const;
+	Core::BaseType::VertexIndex GetIndex() const;
 
 	/// @brief Get the vertex being proxied.
 	Vertex& GetVertex();
@@ -151,10 +151,10 @@ public:
 	const Vertex& GetVertex() const;
 
 	/// @brief Get the position of the vertex.
-	BaseType::Vec3& GetPosition();
+	Core::BaseType::Vec3& GetPosition();
 
 	/// @brief Get the position of the vertex (const version).
-	const BaseType::Vec3& GetPosition() const;
+	const Core::BaseType::Vec3& GetPosition() const;
 
 	/// @brief Get the incident triangle of the vertex.
 	int GetIncidentTriangle() const;
@@ -163,6 +163,6 @@ private:
 	/// @brief Pointer to the mesh containing the vertex.
 	Data::Surface::Mesh* m_Mesh;
 	/// @brief Index to the vertex being proxied.
-	BaseType::VertexIndex m_Index;
+	Core::BaseType::VertexIndex m_Index;
 };
 } // namespace Data::Primitive
