@@ -1,7 +1,7 @@
 <map id="Data::ExtraData::SmoothVertexNormalExtraData" name="Data::ExtraData::SmoothVertexNormalExtraData">
-<area shape="rect" id="Node000001" title="Extra data type to store a smooth vertex normal." alt="" coords="5,181,232,221"/>
-<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="9,93,228,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,147,121,181,116,181,116,147"/>
+<area shape="rect" id="Node000001" title="Extra data type to store a smooth vertex normal." alt="" coords="5,196,232,236"/>
+<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="16,93,221,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,162,121,196,116,196,116,162"/>
 <area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1BaseExtraDataType.html" title="Base class for extra data type." alt="" coords="19,5,219,45"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,59,121,93,116,93,116,59"/>
 </map>

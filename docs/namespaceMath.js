@@ -1,15 +1,15 @@
 var namespaceMath =
 [
     [ "Compare", "namespaceMath_1_1Compare.html", [
-      [ "EqualNear", "namespaceMath_1_1Compare.html#a11bdc4b9ef9b48eaac19882af39358d7", null ],
-      [ "EqualNear", "namespaceMath_1_1Compare.html#acdbd96d6ca7e2a292712179febcf9113", null ],
+      [ "EqualNear", "namespaceMath_1_1Compare.html#a41b2d59edecb785e4aebd7bc1a1f1a99", null ],
+      [ "EqualNear", "namespaceMath_1_1Compare.html#aff09319295f6c54bfcb7ee2e61edf764", null ],
       [ "EqualNear", "namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8", null ]
     ] ],
     [ "Geometry", "namespaceMath_1_1Geometry.html", [
-      [ "Angle", "namespaceMath_1_1Geometry.html#a4376274a2a37fa0e97f804e38c28e114", null ],
-      [ "Cross", "namespaceMath_1_1Geometry.html#afbf5df5321a788220ed23ff8f243a15f", null ],
-      [ "Dot", "namespaceMath_1_1Geometry.html#aade5614287e9242a8d9dcdadce374e99", null ],
-      [ "Length", "namespaceMath_1_1Geometry.html#af3dd363240ce1b30362f9cb3898305b8", null ],
-      [ "Normalize", "namespaceMath_1_1Geometry.html#ad6680884a9cb32841e383cb463b26b17", null ]
+      [ "Angle", "namespaceMath_1_1Geometry.html#ad2054025ebb238a4ef0569072f4f414b", null ],
+      [ "Cross", "namespaceMath_1_1Geometry.html#a1e5ecd71da396f867ba5f5bebfbab12a", null ],
+      [ "Dot", "namespaceMath_1_1Geometry.html#ab999e1c0c7d9a31b42aaa6f4931681da", null ],
+      [ "Length", "namespaceMath_1_1Geometry.html#a4dbfa29b4c022e15c7d00846ebbcc3c6", null ],
+      [ "Normalize", "namespaceMath_1_1Geometry.html#afb9276a45df6dc4e8b6cf118e133edb8", null ]
     ] ]
 ];

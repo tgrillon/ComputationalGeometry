@@ -3,20 +3,20 @@ var hierarchy =
     [ "Core::Application", "classCore_1_1Application.html", null ],
     [ "Core::ApplicationSpecification", "structCore_1_1ApplicationSpecification.html", null ],
     [ "Data::ExtraData::BaseExtraDataType", "classData_1_1ExtraData_1_1BaseExtraDataType.html", [
-      [ "Data::ExtraData::SingleDataExtraData< std::vector< BaseType::Vec3 > >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
+      [ "Data::ExtraData::SingleDataExtraData< std::vector< Core::BaseType::Vec3 > >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::FlatVertexNormalsExtraData", "classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html", null ]
       ] ],
       [ "Data::ExtraData::SingleDataExtraData< bool >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::IsBoundaryVertexExtraData", "classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html", null ]
       ] ],
-      [ "Data::ExtraData::SingleDataExtraData< BaseType::Vec3 >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
+      [ "Data::ExtraData::SingleDataExtraData< Core::BaseType::Vec3 >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::SmoothVertexNormalExtraData", "classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html", null ],
         [ "Data::ExtraData::TriangleNormalExtraData", "classData_1_1ExtraData_1_1TriangleNormalExtraData.html", null ]
       ] ],
       [ "Data::ExtraData::SingleDataExtraData< std::string >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::TriangleMaterialName", "classData_1_1ExtraData_1_1TriangleMaterialName.html", null ]
       ] ],
-      [ "Data::ExtraData::SingleDataExtraData< std::array< BaseType::Vec2, 3 > >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
+      [ "Data::ExtraData::SingleDataExtraData< std::array< Core::BaseType::Vec2, 3 > >", "classData_1_1ExtraData_1_1SingleDataExtraData.html", [
         [ "Data::ExtraData::VerticesTexCoordsExtraData", "classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html", null ]
       ] ],
       [ "Data::ExtraData::ObjectMaterialData", "classData_1_1ExtraData_1_1ObjectMaterialData.html", null ],
@@ -25,8 +25,8 @@ var hierarchy =
     [ "Core::Event", "classCore_1_1Event.html", null ],
     [ "Data::ExtraData::ExtraDataContainer", "classData_1_1ExtraData_1_1ExtraDataContainer.html", null ],
     [ "Renderer::Framebuffer", "structRenderer_1_1Framebuffer.html", null ],
-    [ "std::hash< BaseType::Vec2 >", "structstd_1_1hash_3_01BaseType_1_1Vec2_01_4.html", null ],
-    [ "std::hash< BaseType::Vec3 >", "structstd_1_1hash_3_01BaseType_1_1Vec3_01_4.html", null ],
+    [ "std::hash< Core::BaseType::Vec2 >", "structstd_1_1hash_3_01Core_1_1BaseType_1_1Vec2_01_4.html", null ],
+    [ "std::hash< Core::BaseType::Vec3 >", "structstd_1_1hash_3_01Core_1_1BaseType_1_1Vec3_01_4.html", null ],
     [ "std::hash< Data::Primitive::VertexPair >", "structstd_1_1hash_3_01Data_1_1Primitive_1_1VertexPair_01_4.html", null ],
     [ "Core::Layer", "classCore_1_1Layer.html", [
       [ "Application::AppLayer", "classApplication_1_1AppLayer.html", null ]

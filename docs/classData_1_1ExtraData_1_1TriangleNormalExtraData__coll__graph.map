@@ -1,7 +1,7 @@
 <map id="Data::ExtraData::TriangleNormalExtraData" name="Data::ExtraData::TriangleNormalExtraData">
-<area shape="rect" id="Node000001" title="Extra data type to store a triangle normal." alt="" coords="22,181,207,221"/>
-<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="5,93,224,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,147,117,181,112,181,112,147"/>
-<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1BaseExtraDataType.html" title="Base class for extra data type." alt="" coords="15,5,215,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="117,59,117,93,112,93,112,59"/>
+<area shape="rect" id="Node000001" title="Extra data type to store a triangle normal." alt="" coords="15,196,201,236"/>
+<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="5,93,211,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,162,111,196,105,196,105,162"/>
+<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1BaseExtraDataType.html" title="Base class for extra data type." alt="" coords="8,5,208,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,59,111,93,105,93,105,59"/>
 </map>

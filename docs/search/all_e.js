@@ -1,10 +1,10 @@
 var searchData=
 [
   ['planned_20features_0',['Planned features',['../index.html#autotoc_md6',1,'']]],
-  ['pointer_1',['pointer',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a5939b33b7ec2bf5d06b287432de064e2',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::pointer'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#ac9d5f36ed124eae4a738ab0cc05dc2a1',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::pointer']]],
-  ['position_2',['Position',['../structData_1_1Primitive_1_1Vertex.html#a0ec39fc8cfa23371d37e4d1179a52067',1,'Data::Primitive::Vertex']]],
+  ['pointer_1',['pointer',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#ad113c52adbb9f61a310bba3bf90184ca',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::pointer'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#aac627f7eea7e4c1ead232f1e6f5b18f8',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::pointer']]],
+  ['position_2',['Position',['../structData_1_1Primitive_1_1Vertex.html#af0d6f3b52b4518c84ab9e2f03fb8e3a0',1,'Data::Primitive::Vertex']]],
   ['prerequisites_3',['Prerequisites',['../index.html#autotoc_md8',1,'']]],
-  ['previous_4',['Previous',['../namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c',1,'IndexHelpers']]],
+  ['previous_4',['Previous',['../namespaceIndexHelpers.html#a151e17b531f6dbec6541ea01c543bbbb',1,'IndexHelpers']]],
   ['primitive_2ecpp_5',['Primitive.cpp',['../Primitive_8cpp.html',1,'']]],
   ['primitive_2eh_6',['Primitive.h',['../Primitive_8h.html',1,'']]],
   ['primitive_5futest_2ecpp_7',['Primitive_utest.cpp',['../Primitive__utest_8cpp.html',1,'']]],

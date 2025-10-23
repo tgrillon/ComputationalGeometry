@@ -1,6 +1,6 @@
 var classData_1_1Primitive_1_1VertexProxy =
 [
-    [ "VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html#a4a735ba5a6253316ada18ac83bc06b98", null ],
+    [ "VertexProxy", "classData_1_1Primitive_1_1VertexProxy.html#ab150f69b19d4485a227bff28c326585e", null ],
     [ "EraseExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed", null ],
     [ "GetExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a4fc9bd2fe9345aeb2d6e78745456f04b", null ],
     [ "GetExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a4cee163392225127317e2503c72fc159", null ],
@@ -13,6 +13,6 @@ var classData_1_1Primitive_1_1VertexProxy =
     [ "GetVertex", "classData_1_1Primitive_1_1VertexProxy.html#aadafbd82c910283e6daaf8126241d28c", null ],
     [ "HasExtraData", "classData_1_1Primitive_1_1VertexProxy.html#af6168d45a4d27ffd13df0c7922be7159", null ],
     [ "SetExtraData", "classData_1_1Primitive_1_1VertexProxy.html#a47388e564683b70d4e5b8360b01de737", null ],
-    [ "m_Index", "classData_1_1Primitive_1_1VertexProxy.html#aa6f2f9a799ee03682b8c0628461a1956", null ],
+    [ "m_Index", "classData_1_1Primitive_1_1VertexProxy.html#aa786693c880e1eca9a82aad0c5a1c1d9", null ],
     [ "m_Mesh", "classData_1_1Primitive_1_1VertexProxy.html#ac48c41f1a2de3864a616ad616483546b", null ]
 ];

@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['edgeindex_0',['EdgeIndex',['../namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6',1,'BaseType']]],
+  ['edgeindex_0',['EdgeIndex',['../namespaceCore_1_1BaseType.html#a04432526a19f9e98e60663874200fce7',1,'Core::BaseType']]],
   ['end_1',['end',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexRange.html#a60bf1dbfe6b82a1214b114a7be73dd6b',1,'Data::Surface::Mesh::VerticesAroundVertexRange::end()'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexRange.html#a105958ccc1840fcbafb23b6f93853431',1,'Data::Surface::Mesh::TrianglesAroundVertexRange::end()']]],
   ['entrypoint_2ecpp_2',['EntryPoint.cpp',['../EntryPoint_8cpp.html',1,'']]],
   ['eof_3',['eof',['../structstbi__io__callbacks.html#a319639db2f76e715eed7a7a974136832',1,'stbi_io_callbacks']]],
-  ['equalnear_4',['equalnear',['../namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8',1,'Math::Compare::EqualNear(float lhs, float rhs, float eps=1e-6)'],['../namespaceMath_1_1Compare.html#a11bdc4b9ef9b48eaac19882af39358d7',1,'Math::Compare::EqualNear(BaseType::Vec2 lhs, BaseType::Vec2 rhs, float eps=1e-6)'],['../namespaceMath_1_1Compare.html#acdbd96d6ca7e2a292712179febcf9113',1,'Math::Compare::EqualNear(BaseType::Vec3 lhs, BaseType::Vec3 rhs, float eps=1e-6)']]],
+  ['equalnear_4',['equalnear',['../namespaceMath_1_1Compare.html#aaf09643b73e276e2ca121b9e21d844d8',1,'Math::Compare::EqualNear(float lhs, float rhs, float eps=1e-6)'],['../namespaceMath_1_1Compare.html#a41b2d59edecb785e4aebd7bc1a1f1a99',1,'Math::Compare::EqualNear(Core::BaseType::Vec2 lhs, Core::BaseType::Vec2 rhs, float eps=1e-6)'],['../namespaceMath_1_1Compare.html#aff09319295f6c54bfcb7ee2e61edf764',1,'Math::Compare::EqualNear(Core::BaseType::Vec3 lhs, Core::BaseType::Vec3 rhs, float eps=1e-6)']]],
   ['erase_5',['Erase',['../classData_1_1ExtraData_1_1ExtraDataContainer.html#aac69df26bd1606d2d177c91710cfe988',1,'Data::ExtraData::ExtraDataContainer']]],
   ['eraseextradata_6',['eraseextradata',['../classData_1_1Primitive_1_1TriangleProxy.html#a3d419aa7542b58ec76a6c3f545ac4d75',1,'Data::Primitive::TriangleProxy::EraseExtraData()'],['../classData_1_1Primitive_1_1VertexProxy.html#a9b46dcf86adb6ee9944d94f99fcba6ed',1,'Data::Primitive::VertexProxy::EraseExtraData()']]],
   ['error_7',['Error',['../PrintHelpers_8h.html#a3820662fa23f7fb1a776c4398eb83c50',1,'PrintHelpers.h']]],

@@ -11,5 +11,5 @@ var searchData=
   ['development_20guidelines_8',['Development Guidelines',['../index.html#autotoc_md2',1,'']]],
   ['difference_5ftype_9',['difference_type',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a6dba30510dd12dbaa7ada1f50d831062',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::difference_type'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#ad90dba3805b34ae30851a370fad03a28',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::difference_type']]],
   ['displaymode_10',['DisplayMode',['../classCore_1_1Application.html#a16f8895de8269ebcfae75da390bcd7ca',1,'Core::Application']]],
-  ['dot_11',['Dot',['../namespaceMath_1_1Geometry.html#aade5614287e9242a8d9dcdadce374e99',1,'Math::Geometry']]]
+  ['dot_11',['Dot',['../namespaceMath_1_1Geometry.html#ab999e1c0c7d9a31b42aaa6f4931681da',1,'Math::Geometry']]]
 ];

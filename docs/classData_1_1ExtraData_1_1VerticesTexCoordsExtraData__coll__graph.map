@@ -1,7 +1,7 @@
 <map id="Data::ExtraData::VerticesTexCoordsExtraData" name="Data::ExtraData::VerticesTexCoordsExtraData">
-<area shape="rect" id="Node000001" title="Extra data type to store texture coordinates for each vertex of a triangle." alt="" coords="33,196,219,236"/>
-<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="5,93,247,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,162,129,196,123,196,123,162"/>
-<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1BaseExtraDataType.html" title="Base class for extra data type." alt="" coords="26,5,226,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,59,129,93,123,93,123,59"/>
+<area shape="rect" id="Node000001" title="Extra data type to store texture coordinates for each vertex of a triangle." alt="" coords="17,196,203,236"/>
+<area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="5,93,215,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,162,113,196,107,196,107,162"/>
+<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1BaseExtraDataType.html" title="Base class for extra data type." alt="" coords="10,5,210,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,59,113,93,107,93,107,59"/>
 </map>

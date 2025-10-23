@@ -1,11 +1,11 @@
 var MathHelpers_8h =
 [
-    [ "Angle", "MathHelpers_8h.html#a4376274a2a37fa0e97f804e38c28e114", null ],
-    [ "Cross", "MathHelpers_8h.html#afbf5df5321a788220ed23ff8f243a15f", null ],
-    [ "Dot", "MathHelpers_8h.html#aade5614287e9242a8d9dcdadce374e99", null ],
-    [ "EqualNear", "MathHelpers_8h.html#a11bdc4b9ef9b48eaac19882af39358d7", null ],
-    [ "EqualNear", "MathHelpers_8h.html#acdbd96d6ca7e2a292712179febcf9113", null ],
+    [ "Angle", "MathHelpers_8h.html#ad2054025ebb238a4ef0569072f4f414b", null ],
+    [ "Cross", "MathHelpers_8h.html#a1e5ecd71da396f867ba5f5bebfbab12a", null ],
+    [ "Dot", "MathHelpers_8h.html#ab999e1c0c7d9a31b42aaa6f4931681da", null ],
+    [ "EqualNear", "MathHelpers_8h.html#a41b2d59edecb785e4aebd7bc1a1f1a99", null ],
+    [ "EqualNear", "MathHelpers_8h.html#aff09319295f6c54bfcb7ee2e61edf764", null ],
     [ "EqualNear", "MathHelpers_8h.html#aaf09643b73e276e2ca121b9e21d844d8", null ],
-    [ "Length", "MathHelpers_8h.html#af3dd363240ce1b30362f9cb3898305b8", null ],
-    [ "Normalize", "MathHelpers_8h.html#ad6680884a9cb32841e383cb463b26b17", null ]
+    [ "Length", "MathHelpers_8h.html#a4dbfa29b4c022e15c7d00846ebbcc3c6", null ],
+    [ "Normalize", "MathHelpers_8h.html#afb9276a45df6dc4e8b6cf118e133edb8", null ]
 ];

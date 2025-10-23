@@ -1,23 +1,12 @@
 var namespaces_dup =
 [
     [ "Application", "namespaceApplication.html", "namespaceApplication" ],
-    [ "BaseType", "namespaceBaseType.html", [
-      [ "EdgeIndex", "namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6", null ],
-      [ "iVec2", "namespaceBaseType.html#a8b4d1853ac8db14c5529dc9edd5c7243", null ],
-      [ "ScalarValue", "namespaceBaseType.html#a28df5b4a35d943e29c551c5d1f3fb8a9", null ],
-      [ "TriangleIndex", "namespaceBaseType.html#ab0b9b1309a54bf96aea7b2acdfa8e4f5", null ],
-      [ "Vec2", "namespaceBaseType.html#a6a5a49ea61b7c2072349f6274456ff49", null ],
-      [ "Vec3", "namespaceBaseType.html#a5a8fad12a866678288c461619b32172f", null ],
-      [ "Vec4", "namespaceBaseType.html#a6ee52a295536ca26fad77ac6263d9835", null ],
-      [ "VertexIndex", "namespaceBaseType.html#a0d98aa03840d23f999d6fb33ddf395b6", null ],
-      [ "VertexLocalIndex", "namespaceBaseType.html#ad30d7329b9139af2bfe5405ebb6774a7", null ]
-    ] ],
     [ "Core", "namespaceCore.html", "namespaceCore" ],
     [ "Data", "namespaceData.html", "namespaceData" ],
     [ "IndexHelpers", "namespaceIndexHelpers.html", [
-      [ "Current", "namespaceIndexHelpers.html#a07b6e6c71e5874541f56038982287d73", null ],
-      [ "Next", "namespaceIndexHelpers.html#a4800e0ce9f1f1c511265df11c76408eb", null ],
-      [ "Previous", "namespaceIndexHelpers.html#a25052cbd70c0b7d8abe3380d644b914c", null ]
+      [ "Current", "namespaceIndexHelpers.html#ac2b4da1035320cbad3e60c55187a5dd5", null ],
+      [ "Next", "namespaceIndexHelpers.html#a14900d4fa5701aff0265812092a6fcae", null ],
+      [ "Previous", "namespaceIndexHelpers.html#a151e17b531f6dbec6541ea01c543bbbb", null ]
     ] ],
     [ "Math", "namespaceMath.html", "namespaceMath" ],
     [ "PrintHelpers", "namespacePrintHelpers.html", "namespacePrintHelpers" ],

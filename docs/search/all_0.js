@@ -6,7 +6,7 @@ var searchData=
   ['addvertex_3',['AddVertex',['../classData_1_1Surface_1_1Mesh.html#aca551211639d9b221c89683667548d0e',1,'Data::Surface::Mesh']]],
   ['addverticesextradatacontainer_4',['AddVerticesExtraDataContainer',['../classData_1_1Surface_1_1Mesh.html#a6898dfd93edbe132daa22781cce59ec6',1,'Data::Surface::Mesh']]],
   ['and_20acknowledgments_5',['Authors and Acknowledgments',['../index.html#autotoc_md13',1,'']]],
-  ['angle_6',['Angle',['../namespaceMath_1_1Geometry.html#a4376274a2a37fa0e97f804e38c28e114',1,'Math::Geometry']]],
+  ['angle_6',['Angle',['../namespaceMath_1_1Geometry.html#ad2054025ebb238a4ef0569072f4f414b',1,'Math::Geometry']]],
   ['applayer_7',['applayer',['../classApplication_1_1AppLayer.html',1,'Application::AppLayer'],['../classApplication_1_1AppLayer.html#ab7d87861d49bc09ad317b7c766646bec',1,'Application::AppLayer::AppLayer()']]],
   ['applayer_2ecpp_8',['AppLayer.cpp',['../AppLayer_8cpp.html',1,'']]],
   ['applayer_2eh_9',['AppLayer.h',['../AppLayer_8h.html',1,'']]],

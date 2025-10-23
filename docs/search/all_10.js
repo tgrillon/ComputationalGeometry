@@ -4,7 +4,7 @@ var searchData=
   ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]],
   ['readtextfile_2',['ReadTextFile',['../namespaceRenderer.html#a4f6e48366391aca4b0f6605da77ae04f',1,'Renderer']]],
   ['red_3',['Red',['../namespacePrintHelpers_1_1Color.html#ab19e8a4eed4bc3ee1eed337c2b3a12c9',1,'PrintHelpers::Color']]],
-  ['reference_4',['reference',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a4dfbf105f20d05474d55f9c69ad87bd9',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::reference'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#a7021f611dc7dbcd6bad8d19aae00bcdd',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::reference']]],
+  ['reference_4',['reference',['../classData_1_1Surface_1_1Mesh_1_1VerticesAroundVertexCirculator.html#a3462ea45ea41b6addf1edfec2b82bbaa',1,'Data::Surface::Mesh::VerticesAroundVertexCirculator::reference'],['../classData_1_1Surface_1_1Mesh_1_1TrianglesAroundVertexCirculator.html#a260ceb185de6d5e0c07080a5fd502a59',1,'Data::Surface::Mesh::TrianglesAroundVertexCirculator::reference']]],
   ['reloadcomputeshader_5',['ReloadComputeShader',['../namespaceRenderer.html#afda4b1083bf26deb7e10bf5e40c3ca59',1,'Renderer']]],
   ['reloadgraphicsshader_6',['ReloadGraphicsShader',['../namespaceRenderer.html#a3543b26302193b0f8ade3177051df85f',1,'Renderer']]],
   ['renderer_7',['Renderer',['../namespaceRenderer.html',1,'']]],

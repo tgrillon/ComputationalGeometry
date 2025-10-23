@@ -1,29 +1,29 @@
 <map id="Data::ExtraData::BaseExtraDataType" name="Data::ExtraData::BaseExtraDataType">
-<area shape="rect" id="Node000001" title="Base class for extra data type." alt="" coords="5,249,205,289"/>
+<area shape="rect" id="Node000001" title="Base class for extra data type." alt="" coords="5,253,205,293"/>
 <area shape="rect" id="Node000002" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,5,487,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,235,175,160,211,119,252,82,295,58,298,62,255,87,215,122,179,163,127,238"/>
-<area shape="rect" id="Node000004" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,97,487,137"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,238,195,204,252,170,330,134,332,139,255,175,198,209,147,243"/>
-<area shape="rect" id="Node000006" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="275,185,493,225"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="206,243,296,222,297,227,207,248"/>
-<area shape="rect" id="Node000009" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,249,487,289"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="219,266,281,266,281,271,219,271"/>
-<area shape="rect" id="Node000011" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="263,313,505,368"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="197,290,279,311,277,316,196,295"/>
-<area shape="rect" id="Node000013" href="$classData_1_1ExtraData_1_1ObjectMaterialData.html" title="Store object material data defined within a MTL file." alt="" coords="253,392,515,417"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="138,296,190,339,221,361,254,378,287,389,285,394,252,383,219,365,187,344,135,300"/>
-<area shape="rect" id="Node000014" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title="Base class for extra data type with only one attribute." alt="" coords="281,442,487,482"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="129,299,181,365,216,399,255,428,282,441,280,446,252,432,212,403,177,369,125,302"/>
-<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html" title="Extra data type to store vertex flat normals." alt="" coords="575,6,777,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="500,27,575,26,575,31,501,33"/>
-<area shape="rect" id="Node000005" href="$classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html" title="Extra data type to store a boolean that tells if the vertex is ona boundary of the mesh." alt="" coords="573,70,779,110"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="500,103,572,97,573,102,501,109"/>
-<area shape="rect" id="Node000007" href="$classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html" title="Extra data type to store a smooth vertex normal." alt="" coords="563,134,789,174"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="506,181,562,171,563,176,507,186"/>
-<area shape="rect" id="Node000008" href="$classData_1_1ExtraData_1_1TriangleNormalExtraData.html" title="Extra data type to store a triangle normal." alt="" coords="583,198,769,238"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="507,208,583,211,583,216,507,213"/>
-<area shape="rect" id="Node000010" href="$classData_1_1ExtraData_1_1TriangleMaterialName.html" title="Extra data type to store a triangle material name." alt="" coords="583,262,769,302"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="500,271,583,275,583,280,500,277"/>
-<area shape="rect" id="Node000012" href="$classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html" title="Extra data type to store texture coordinates for each vertex of a triangle." alt="" coords="583,326,769,366"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="518,340,583,342,583,347,518,346"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,239,173,159,210,116,252,79,288,58,291,62,255,83,213,120,177,163,126,242"/>
+<area shape="rect" id="Node000004" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,93,487,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="137,242,189,200,252,158,316,130,318,135,255,163,192,204,140,246"/>
+<area shape="rect" id="Node000006" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,173,487,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="196,247,280,225,282,230,197,252"/>
+<area shape="rect" id="Node000009" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="281,253,487,293"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="219,270,281,270,281,275,219,275"/>
+<area shape="rect" id="Node000011" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title=" " alt="" coords="279,317,489,372"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="197,294,280,315,278,320,196,299"/>
+<area shape="rect" id="Node000013" href="$classData_1_1ExtraData_1_1ObjectMaterialData.html" title="Store object material data defined within a MTL file." alt="" coords="253,396,515,421"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="138,300,190,343,221,365,254,382,287,393,285,398,252,387,219,369,187,348,135,304"/>
+<area shape="rect" id="Node000014" href="$classData_1_1ExtraData_1_1SingleDataExtraData.html" title="Base class for extra data type with only one attribute." alt="" coords="281,446,487,486"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="129,303,181,369,216,403,255,432,282,445,280,450,252,436,212,407,177,373,125,306"/>
+<area shape="rect" id="Node000003" href="$classData_1_1ExtraData_1_1FlatVertexNormalsExtraData.html" title="Extra data type to store vertex flat normals." alt="" coords="575,9,777,49"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="500,28,575,27,575,33,501,34"/>
+<area shape="rect" id="Node000005" href="$classData_1_1ExtraData_1_1IsBoundaryVertexExtraData.html" title="Extra data type to store a boolean that tells if the vertex is ona boundary of the mesh." alt="" coords="573,73,779,113"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="501,102,572,97,573,102,501,107"/>
+<area shape="rect" id="Node000007" href="$classData_1_1ExtraData_1_1SmoothVertexNormalExtraData.html" title="Extra data type to store a smooth vertex normal." alt="" coords="563,137,789,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="500,181,562,171,563,176,501,186"/>
+<area shape="rect" id="Node000008" href="$classData_1_1ExtraData_1_1TriangleNormalExtraData.html" title="Extra data type to store a triangle normal." alt="" coords="583,201,769,241"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="500,206,583,212,583,217,500,211"/>
+<area shape="rect" id="Node000010" href="$classData_1_1ExtraData_1_1TriangleMaterialName.html" title="Extra data type to store a triangle material name." alt="" coords="583,265,769,305"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="500,275,583,278,583,284,500,280"/>
+<area shape="rect" id="Node000012" href="$classData_1_1ExtraData_1_1VerticesTexCoordsExtraData.html" title="Extra data type to store texture coordinates for each vertex of a triangle." alt="" coords="583,329,769,369"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="502,344,582,345,582,350,502,349"/>
 </map>

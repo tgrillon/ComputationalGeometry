@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['edgeindex_0',['EdgeIndex',['../namespaceBaseType.html#a224b60c39fa5c7e8cc8b428730d74ba6',1,'BaseType']]]
+  ['edgeindex_0',['EdgeIndex',['../namespaceCore_1_1BaseType.html#a04432526a19f9e98e60663874200fce7',1,'Core::BaseType']]]
 ];
