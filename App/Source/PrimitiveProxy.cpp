@@ -2,7 +2,7 @@
 
 #include <utility>
 
-using namespace BaseType;
+using namespace Core::BaseType;
 
 namespace Data::Primitive
 {

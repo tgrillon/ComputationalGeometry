@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Application/BaseType.h"
 #include "Application/Mesh.h"
+#include "Core/BaseType.h"
 
 #include <cstdint>
 #include <filesystem>

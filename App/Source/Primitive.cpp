@@ -1,7 +1,7 @@
 #include "Application/Primitive.h"
 
 using namespace Data::Primitive;
-using namespace BaseType;
+using namespace Core::BaseType;
 
 namespace Utilitary::Primitive
 {

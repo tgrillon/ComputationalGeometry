@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Application/BaseType.h"
 #include "Application/ExtraDataContainer.h"
 #include "Application/Primitive.h"
+#include "Core/BaseType.h"
 
 #include <memory>
 #include <vector>
@@ -51,23 +51,23 @@ public:
 	uint32_t GetTriangleCount() const;
 
 	/// @brief Get a proxy to the vertex at the given index.
-	Data::Primitive::VertexProxy GetVertex(const BaseType::VertexIndex index);
+	Data::Primitive::VertexProxy GetVertex(const Core::BaseType::VertexIndex index);
 	/// @brief Get a proxy to the triangle at the given index.
-	Data::Primitive::TriangleProxy GetTriangle(const BaseType::TriangleIndex index);
+	Data::Primitive::TriangleProxy GetTriangle(const Core::BaseType::TriangleIndex index);
 
 	/// @brief Get the vertex data at the given index.
-	Data::Primitive::Vertex& GetVertexData(const BaseType::VertexIndex index);
+	Data::Primitive::Vertex& GetVertexData(const Core::BaseType::VertexIndex index);
 	/// @brief Get the vertex data at the given index.
-	const Data::Primitive::Vertex& GetVertexData(const BaseType::VertexIndex index) const;
+	const Data::Primitive::Vertex& GetVertexData(const Core::BaseType::VertexIndex index) const;
 	/// @brief Get the triangle data at the given index.
-	Data::Primitive::Triangle& GetTriangleData(const BaseType::TriangleIndex index);
+	Data::Primitive::Triangle& GetTriangleData(const Core::BaseType::TriangleIndex index);
 	/// @brief Get the triangle data at the given index.
-	const Data::Primitive::Triangle& GetTriangleData(const BaseType::TriangleIndex index) const;
+	const Data::Primitive::Triangle& GetTriangleData(const Core::BaseType::TriangleIndex index) const;
 
 	/// @brief Add a vertex to the mesh and return its index.
-	BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex& vertex);
+	Core::BaseType::VertexIndex AddVertex(const Data::Primitive::Vertex& vertex);
 	/// @brief Add a triangle to the mesh and return its index.
-	BaseType::TriangleIndex AddTriangle(const Data::Primitive::Triangle& triangle);
+	Core::BaseType::TriangleIndex AddTriangle(const Data::Primitive::Triangle& triangle);
 
 	/// @brief Add extra data container for each vertex.
 	void AddVerticesExtraDataContainer();
@@ -113,16 +113,16 @@ public:
 	{
 	public:
 		using iterator_category = std::input_iterator_tag;
-		using value_type = BaseType::VertexIndex;
+		using value_type = Core::BaseType::VertexIndex;
 		using difference_type = std::ptrdiff_t;
-		using pointer = BaseType::VertexIndex*;
-		using reference = BaseType::VertexIndex&;
+		using pointer = Core::BaseType::VertexIndex*;
+		using reference = Core::BaseType::VertexIndex&;
 
 	public:
 		/// @brief Construct a circulator to iterate over the vertices around a given vertex in the mesh.
 		/// @param mesh The mesh containing the vertex.
 		/// @param index The index of the vertex around which to circulate.
-		VerticesAroundVertexCirculator(const Data::Surface::Mesh& mesh, const BaseType::VertexIndex index);
+		VerticesAroundVertexCirculator(const Data::Surface::Mesh& mesh, const Core::BaseType::VertexIndex index);
 
 		/// @brief Equality operator.
 		bool operator==(const VerticesAroundVertexCirculator& rhs) const;
@@ -133,7 +133,7 @@ public:
 		VerticesAroundVertexCirculator& operator++();
 
 		/// @brief Dereference operator to get the current vertex index.
-		BaseType::VertexIndex operator*() const;
+		Core::BaseType::VertexIndex operator*() const;
 
 		/// @brief Set whether the circulator is active or not.
 		void SetIsActive(bool value);
@@ -149,7 +149,7 @@ public:
 		const Mesh& m_Mesh;
 
 		/// @brief Index of the central vertex around which we circulate.
-		BaseType::VertexIndex m_CentralVertexIdx;
+		Core::BaseType::VertexIndex m_CentralVertexIdx;
 
 		/// @brief Current triangle index in the circulation.
 		int m_CurTriangleIdx;
@@ -157,9 +157,9 @@ public:
 		int m_PrevTriangleIdx;
 
 		/// @brief Current vertex local index in the current triangle.
-		BaseType::EdgeIndex m_CurVertexLocalIdx;
+		Core::BaseType::EdgeIndex m_CurVertexLocalIdx;
 		/// @brief Current vertex index in the circulation.
-		BaseType::VertexIndex m_CurVertexIdx;
+		Core::BaseType::VertexIndex m_CurVertexIdx;
 
 		/// @brief Number of jumps made in the circulation (used to detect boundaries).
 		uint8_t m_JumpCount{ 0 };
@@ -180,7 +180,7 @@ public:
 		/// @brief Construct a range to iterate over the vertices around a given vertex in the mesh.
 		/// @param mesh The mesh containing the vertex.
 		/// @param index The index of the vertex around which to circulate.
-		VerticesAroundVertexRange(const Mesh& mesh, const BaseType::VertexIndex index);
+		VerticesAroundVertexRange(const Mesh& mesh, const Core::BaseType::VertexIndex index);
 
 		/// @brief Get the begin circulator.
 		VerticesAroundVertexCirculator begin() const;
@@ -191,13 +191,13 @@ public:
 		/// @brief Reference to the mesh.
 		const Mesh& m_Mesh;
 		/// @brief Index of the central vertex around which we circulate.
-		BaseType::VertexIndex m_VertexIdx;
+		Core::BaseType::VertexIndex m_VertexIdx;
 	};
 
 	/// @brief Get a range to iterate over the vertices around a given vertex.
 	/// @param index The index of the vertex around which to circulate.
 	/// @return A range to iterate over the vertices around the given vertex.
-	VerticesAroundVertexRange GetVerticesAroundVertex(const BaseType::VertexIndex index) const;
+	VerticesAroundVertexRange GetVerticesAroundVertex(const Core::BaseType::VertexIndex index) const;
 
 	/// @brief Circulator to iterate over the triangles around a given vertex.
 	/// @note The circulator will iterate in counter-clockwise direction first, then in clock-wise direction if it reaches a boundary.
@@ -207,16 +207,16 @@ public:
 	{
 	public:
 		using iterator_category = std::forward_iterator_tag;
-		using value_type = BaseType::TriangleIndex;
+		using value_type = Core::BaseType::TriangleIndex;
 		using difference_type = std::ptrdiff_t;
-		using pointer = const BaseType::TriangleIndex*;
-		using reference = const BaseType::TriangleIndex&;
+		using pointer = const Core::BaseType::TriangleIndex*;
+		using reference = const Core::BaseType::TriangleIndex&;
 
 	public:
 		/// @brief Construct a circulator to iterate over the triangles around a given vertex in the mesh.
 		/// @param mesh The mesh containing the vertex.
 		/// @param index The index of the vertex around which to circulate.
-		TrianglesAroundVertexCirculator(const Mesh& mesh, const BaseType::VertexIndex index);
+		TrianglesAroundVertexCirculator(const Mesh& mesh, const Core::BaseType::VertexIndex index);
 
 		/// @brief Equality operator.
 		bool operator==(const TrianglesAroundVertexCirculator& rhs) const;
@@ -227,7 +227,7 @@ public:
 		TrianglesAroundVertexCirculator& operator++();
 
 		/// @brief Dereference operator to get the current triangle index.
-		BaseType::TriangleIndex operator*() const;
+		Core::BaseType::TriangleIndex operator*() const;
 
 		/// @brief Set whether the circulator is active or not.
 		void SetIsActive(bool value);
@@ -237,7 +237,7 @@ public:
 		const Mesh& m_Mesh;
 
 		/// @brief Index of the central vertex around which we circulate.
-		BaseType::VertexIndex m_CentralVertexIdx;
+		Core::BaseType::VertexIndex m_CentralVertexIdx;
 
 		/// @brief Current triangle index in the circulation.
 		int m_CurTriangleIdx;
@@ -263,7 +263,7 @@ public:
 		/// @brief Construct a range to iterate over the triangles around a given vertex in the mesh.
 		/// @param mesh The mesh containing the vertex.
 		/// @param index The index of the vertex around which to circulate.
-		TrianglesAroundVertexRange(const Mesh& mesh, const BaseType::VertexIndex index);
+		TrianglesAroundVertexRange(const Mesh& mesh, const Core::BaseType::VertexIndex index);
 
 		/// @brief Get the begin circulator.
 		TrianglesAroundVertexCirculator begin() const;
@@ -274,13 +274,13 @@ public:
 		/// @brief Reference to the mesh.
 		const Mesh& m_Mesh;
 		/// @brief Index of the central vertex around which we circulate.
-		BaseType::VertexIndex m_VertexIdx;
+		Core::BaseType::VertexIndex m_VertexIdx;
 	};
 
 	/// @brief Get a range to iterate over the triangles around a given vertex.
 	/// @param index The index of the vertex around which to circulate.
 	/// @return A range to iterate over the triangles around the given vertex.
-	TrianglesAroundVertexRange GetTrianglesAroundVertex(const BaseType::VertexIndex index) const;
+	TrianglesAroundVertexRange GetTrianglesAroundVertex(const Core::BaseType::VertexIndex index) const;
 
 private:
 	/// @brief List of vertices.

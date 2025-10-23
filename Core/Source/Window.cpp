@@ -8,6 +8,8 @@
 namespace Core
 {
 
+using namespace BaseType;
+
 Window::Window(const WindowSpecification& specification)
 	: m_Specification(specification)
 {}
@@ -52,7 +54,7 @@ void Window::Update()
 	glfwSwapBuffers(m_Handle);
 }
 
-glm::vec2 Window::GetFramebufferSize()
+Vec2 Window::GetFramebufferSize()
 {
 	int width, height;
 	glfwGetFramebufferSize(m_Handle, &width, &height);

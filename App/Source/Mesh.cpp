@@ -5,7 +5,7 @@
 #include "Application/PrimitiveProxy.h"
 #include "Application/VertexPair.h"
 
-using namespace BaseType;
+using namespace Core::BaseType;
 using namespace Math::Geometry;
 using namespace Data::Primitive;
 using namespace Data::ExtraData;

@@ -11,7 +11,7 @@ using namespace Data::ExtraData;
 using namespace Data::Primitive;
 using namespace Data::Surface;
 using namespace Math::Compare;
-using namespace BaseType;
+using namespace Core::BaseType;
 
 TEST(MeshLoaderTest, LoadOFF_ValidFile_ShouldLoadMesh)
 {

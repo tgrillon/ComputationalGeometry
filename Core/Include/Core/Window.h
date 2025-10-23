@@ -1,7 +1,8 @@
 #pragma once
 
+#include "Core/BaseType.h"
+
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
 
 #include <string>
 
@@ -28,7 +29,7 @@ public:
 
 	void Update();
 
-	glm::vec2 GetFramebufferSize();
+	BaseType::Vec2 GetFramebufferSize();
 
 	bool ShouldClose() const;
 

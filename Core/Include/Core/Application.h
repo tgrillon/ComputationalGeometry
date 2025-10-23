@@ -1,9 +1,8 @@
 #pragma once
 
+#include "Core/BaseType.h"
 #include "Core/Layer.h"
 #include "Core/Window.h"
-
-#include <glm/glm.hpp>
 
 #include <functional>
 #include <memory>
@@ -36,7 +35,7 @@ public:
 		m_LayerStack.push_back(std::make_unique<TLayer>());
 	}
 
-	glm::vec2 GetFramebufferSize() const;
+	BaseType::Vec2 GetFramebufferSize() const;
 	GLFWwindow* GetWindow() const;
 
 	bool IsDarkModeEnabled() const;

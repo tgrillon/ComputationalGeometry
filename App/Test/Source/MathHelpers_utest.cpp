@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 using namespace Math::Compare;
-using namespace BaseType;
+using namespace Core::BaseType;
 
 TEST(MathUtilsTest, EqualNear_ShouldHaveTheExpectedResults)
 {

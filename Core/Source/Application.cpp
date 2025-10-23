@@ -16,6 +16,8 @@ extern bool g_ApplicationRunning;
 namespace Core
 {
 
+using namespace BaseType;
+
 static Application* s_Application = nullptr;
 
 static void GLFWErrorCallback(int error, const char* description)
@@ -192,7 +194,7 @@ void Application::Stop()
 	m_Running = false;
 }
 
-glm::vec2 Application::GetFramebufferSize() const
+Vec2 Application::GetFramebufferSize() const
 {
 	return m_Window->GetFramebufferSize();
 }
