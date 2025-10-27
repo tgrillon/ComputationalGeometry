@@ -3,6 +3,11 @@
 #include <glm/glm.hpp>
 
 #define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/transform.hpp>
 #include <glm/gtx/vector_angle.hpp>
 
 #include <bitset>
@@ -14,7 +19,7 @@ using EdgeIndex = uint8_t;
 using VertexLocalIndex = uint8_t;
 using VertexIndex = uint32_t;
 using TriangleIndex = uint32_t;
-using ScalarValue = double;
+using ScalarValue = float;
 
 using iVec2 = glm::ivec2;
 
@@ -23,6 +28,8 @@ using Vec3 = glm::vec3;
 using Vec4 = glm::vec4;
 
 using Mat4 = glm::mat4;
+
+using Quat = glm::quat;
 } // namespace Core::BaseType
 
 namespace std
