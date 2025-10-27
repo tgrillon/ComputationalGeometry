@@ -1,5 +1,7 @@
 #include "Core/Renderer/Shader.h"
 
+#include "Core/PrintHelpers.h"
+
 #include <glad/gl.h>
 
 #include <fstream>
@@ -15,7 +17,7 @@ static std::string ReadTextFile(const std::filesystem::path& path)
 
 	if(!file.is_open())
 	{
-		std::cerr << "Failed to open file: " << path.string() << std::endl;
+		Error("Failed to open file: {}", path.string());
 		return {};
 	}
 
@@ -45,7 +47,7 @@ uint32_t CreateComputeShader(const std::filesystem::path& path)
 		std::vector<GLchar> infoLog(maxLength);
 		glGetShaderInfoLog(shaderHandle, maxLength, &maxLength, &infoLog[0]);
 
-		std::cerr << infoLog.data() << std::endl;
+		Error("{}", infoLog.data());
 
 		glDeleteShader(shaderHandle);
 		return -1;
@@ -65,7 +67,7 @@ uint32_t CreateComputeShader(const std::filesystem::path& path)
 		std::vector<GLchar> infoLog(maxLength);
 		glGetProgramInfoLog(program, maxLength, &maxLength, &infoLog[0]);
 
-		std::cerr << infoLog.data() << std::endl;
+		Error("{}", infoLog.data());
 
 		glDeleteProgram(program);
 		glDeleteShader(shaderHandle);
@@ -113,7 +115,7 @@ uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std
 		std::vector<GLchar> infoLog(maxLength);
 		glGetShaderInfoLog(vertexShaderHandle, maxLength, &maxLength, &infoLog[0]);
 
-		std::cerr << infoLog.data() << std::endl;
+		Error("{}", infoLog.data());
 
 		glDeleteShader(vertexShaderHandle);
 		return -1;
@@ -138,7 +140,7 @@ uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std
 		std::vector<GLchar> infoLog(maxLength);
 		glGetShaderInfoLog(fragmentShaderHandle, maxLength, &maxLength, &infoLog[0]);
 
-		std::cerr << infoLog.data() << std::endl;
+		Error("{}", infoLog.data());
 
 		glDeleteShader(fragmentShaderHandle);
 		return -1;
@@ -161,7 +163,7 @@ uint32_t CreateGraphicsShader(const std::filesystem::path& vertexPath, const std
 		std::vector<GLchar> infoLog(maxLength);
 		glGetProgramInfoLog(program, maxLength, &maxLength, &infoLog[0]);
 
-		std::cerr << infoLog.data() << std::endl;
+		Error("{}", infoLog.data());
 
 		glDeleteProgram(program);
 		glDeleteShader(vertexShaderHandle);

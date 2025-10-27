@@ -54,7 +54,7 @@ inline std::string_view ExtractFunctionName(std::string_view signature)
 template<typename... Args>
 void Print(std::format_string<Args...> fmt, Args&&... args)
 {
-	std::cout << std::format(fmt, std::forward<Args>(args)...) << '\n';
+	(std::cout) << std::format(fmt, std::forward<Args>(args)...) << '\n';
 }
 
 template<typename... Args>

@@ -1,5 +1,6 @@
 #include "Core/Renderer/Renderer.h"
 
+#include "Core/PrintHelpers.h"
 #include "Core/Renderer/GLUtils.h"
 #include "stb_image.h"
 
@@ -35,7 +36,7 @@ Texture LoadTexture(const std::filesystem::path& path)
 
 	if(!data)
 	{
-		std::cerr << "Failed to load texture: " << filepath << "\n";
+		Error("Failed to load texture: {}", filepath);
 		return {};
 	}
 
@@ -84,7 +85,7 @@ bool AttachTextureToFramebuffer(Framebuffer& framebuffer, const Texture texture)
 
 	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 	{
-		std::cerr << "Framebuffer is not complete!" << std::endl;
+		Error("Framebuffer is not complete!");
 		return false;
 	}
 

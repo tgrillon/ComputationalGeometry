@@ -1,5 +1,6 @@
 #include "Core/Application.h"
 
+#include "Core/PrintHelpers.h"
 #include "Core/Renderer/GLUtils.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -22,7 +23,7 @@ static Application* s_Application = nullptr;
 
 static void GLFWErrorCallback(int error, const char* description)
 {
-	std::cerr << "[GLFW Error]: " << description << std::endl;
+	Error("[GLFW Error]: {}", description);
 }
 
 Application::Application(const ApplicationSpecification& specification)

@@ -1,5 +1,7 @@
 #include "Core/Window.h"
 
+#include "Core/PrintHelpers.h"
+
 #include <assert.h>
 #include <glad/gl.h>
 
@@ -31,7 +33,7 @@ void Window::Create()
 
 	if(!m_Handle)
 	{
-		std::cerr << "Failed to create GLFW window!\n";
+		Error("Failed to create GLFW window!");
 		assert(false);
 	}
 

@@ -51,10 +51,14 @@ AppLayer::AppLayer()
 	glVertexArrayAttribBinding(m_VertexArray, 1, 0);
 
 	// Print various OpenGL informations to stdout
-	std::cout << glGetString(GL_VENDOR) << ": " << glGetString(GL_RENDERER) << '\n';
-	std::cout << "GLFW\t " << glfwGetVersionString() << '\n';
-	std::cout << "OpenGL\t " << glGetString(GL_VERSION) << '\n';
-	std::cout << "GLSL\t " << glGetString(GL_SHADING_LANGUAGE_VERSION) << "\n\n";
+
+	Info(
+		"{} {}",
+		reinterpret_cast<const char*>(glGetString(GL_VENDOR)),
+		reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
+	Info("GLFW \t {}", glfwGetVersionString());
+	Info("OpenGL\t {}", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
+	Info("GLSL\t {}", reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
 }
 
 AppLayer::~AppLayer()
