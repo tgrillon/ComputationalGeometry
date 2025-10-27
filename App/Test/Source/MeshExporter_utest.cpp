@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string_view>
 
-using namespace Math;
+using namespace Core::Math;
 using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::Primitive;
