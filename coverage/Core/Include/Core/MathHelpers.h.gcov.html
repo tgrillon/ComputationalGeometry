@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - filtered.info - App/Include/Application/MathHelpers.h</title>
+  <title>LCOV - filtered.info - Core/Include/Core/MathHelpers.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">App/Include/Application</a> - MathHelpers.h<span style="font-size: 80%;"> (source / <a href="MathHelpers.h.func-c.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Core/Include/Core</a> - MathHelpers.h<span style="font-size: 80%;"> (source / <a href="MathHelpers.h.func-c.html">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-27 12:25:47</td>
+            <td class="headerValue">2025-10-27 13:06:58</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -75,7 +75,7 @@
 <span id="L5"><span class="lineNum">       5</span>              : #include &lt;cmath&gt;</span>
 <span id="L6"><span class="lineNum">       6</span>              : #include &lt;limits&gt;</span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
-<span id="L8"><span class="lineNum">       8</span>              : namespace Math::Compare</span>
+<span id="L8"><span class="lineNum">       8</span>              : namespace Core::Math::Compare</span>
 <span id="L9"><span class="lineNum">       9</span>              : {</span>
 <span id="L10"><span class="lineNum">      10</span>              : /// @brief Helper function to compare two floating point variables.</span>
 <span id="L11"><span class="lineNum">      11</span>              : constexpr bool EqualNear(float lhs, float rhs, float eps = 1e-6)</span>
@@ -98,9 +98,9 @@
 <span id="L28"><span class="lineNum">      28</span>              : {</span>
 <span id="L29"><span class="lineNum">      29</span>              :         return EqualNear(lhs.x, rhs.x, eps) &amp;&amp; EqualNear(lhs.y, rhs.y, eps) &amp;&amp; EqualNear(lhs.z, rhs.z, eps);</span>
 <span id="L30"><span class="lineNum">      30</span>              : }</span>
-<span id="L31"><span class="lineNum">      31</span>              : } // namespace Math::Compare</span>
+<span id="L31"><span class="lineNum">      31</span>              : } // namespace Core::Math::Compare</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span>              : namespace Math::Geometry</span>
+<span id="L33"><span class="lineNum">      33</span>              : namespace Core::Math::Geometry</span>
 <span id="L34"><span class="lineNum">      34</span>              : {</span>
 <span id="L35"><span class="lineNum">      35</span>              : /// @brief Returns the normalized version of v.</span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC tlaBgGNC">          80 : inline Core::BaseType::Vec3 Normalize(const Core::BaseType::Vec3&amp; v)</span></span>
@@ -131,7 +131,7 @@
 <span id="L61"><span class="lineNum">      61</span>              : {</span>
 <span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          36 :         return glm::angle(u, v);</span></span>
 <span id="L63"><span class="lineNum">      63</span>              : }</span>
-<span id="L64"><span class="lineNum">      64</span>              : } // namespace Math::Geometry</span>
+<span id="L64"><span class="lineNum">      64</span>              : } // namespace Core::Math::Geometry</span>
         </pre>
               </td>
             </tr>

@@ -5,6 +5,7 @@ var dir_8db4ec2cfd0f83875186a5af144da35f =
     [ "BaseType.h", "BaseType_8h.html", "BaseType_8h" ],
     [ "Event.h", "Event_8h.html", "Event_8h" ],
     [ "Layer.h", "Layer_8h.html", "Layer_8h" ],
+    [ "MathHelpers.h", "MathHelpers_8h.html", "MathHelpers_8h" ],
     [ "PrintHelpers.h", "PrintHelpers_8h.html", "PrintHelpers_8h" ],
     [ "Window.h", "Window_8h.html", "Window_8h" ]
 ];

@@ -171,7 +171,7 @@ $(document).ready(function(){initNavTree('PrintHelpers_8h_source.html',''); init
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespacePrintHelpers.html#a901f1d7dcf3d42dc097aed0957a105a3">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacePrintHelpers.html#a901f1d7dcf3d42dc097aed0957a105a3">Print</a>(std::format_string&lt;Args...&gt; fmt, Args&amp;&amp;... args)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    std::cout &lt;&lt; std::format(fmt, std::forward&lt;Args&gt;(args)...) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    (std::cout) &lt;&lt; std::format(fmt, std::forward&lt;Args&gt;(args)...) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>

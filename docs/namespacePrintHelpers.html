@@ -213,7 +213,7 @@ template&lt;typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="PrintHelpers_8h_source.html#l00055">55</a> of file <a class="el" href="PrintHelpers_8h_source.html">PrintHelpers.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
-<div class="line"><span class="lineno">   57</span>    std::cout &lt;&lt; std::format(fmt, std::forward&lt;Args&gt;(args)...) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">   57</span>    (std::cout) &lt;&lt; std::format(fmt, std::forward&lt;Args&gt;(args)...) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><span class="lineno">   58</span>}</div>
 </div><!-- fragment -->
 </div>

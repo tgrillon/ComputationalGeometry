@@ -12,6 +12,7 @@ var namespaceCore =
       [ "VertexIndex", "namespaceCore_1_1BaseType.html#aa586354031c5be69706612b5c5e20f62", null ],
       [ "VertexLocalIndex", "namespaceCore_1_1BaseType.html#a9990eeb2c3ef00920ed2ce4e564a7686", null ]
     ] ],
+    [ "Math", "namespaceCore_1_1Math.html", "namespaceCore_1_1Math" ],
     [ "Application", "classCore_1_1Application.html", "classCore_1_1Application" ],
     [ "ApplicationSpecification", "structCore_1_1ApplicationSpecification.html", "structCore_1_1ApplicationSpecification" ],
     [ "Event", "classCore_1_1Event.html", null ],

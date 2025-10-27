@@ -8,7 +8,6 @@ var namespaces_dup =
       [ "Next", "namespaceIndexHelpers.html#a14900d4fa5701aff0265812092a6fcae", null ],
       [ "Previous", "namespaceIndexHelpers.html#a151e17b531f6dbec6541ea01c543bbbb", null ]
     ] ],
-    [ "Math", "namespaceMath.html", "namespaceMath" ],
     [ "PrintHelpers", "namespacePrintHelpers.html", "namespacePrintHelpers" ],
     [ "Renderer", "namespaceRenderer.html", "namespaceRenderer" ],
     [ "std", "namespacestd.html", "namespacestd" ],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['math_0',['Math',['../namespaceMath.html',1,'']]],
-  ['math_3a_3acompare_1',['Compare',['../namespaceMath_1_1Compare.html',1,'Math']]],
-  ['math_3a_3ageometry_2',['Geometry',['../namespaceMath_1_1Geometry.html',1,'Math']]]
+  ['printhelpers_0',['PrintHelpers',['../namespacePrintHelpers.html',1,'']]],
+  ['printhelpers_3a_3acolor_1',['Color',['../namespacePrintHelpers_1_1Color.html',1,'PrintHelpers']]],
+  ['printhelpers_3a_3adetail_2',['detail',['../namespacePrintHelpers_1_1detail.html',1,'PrintHelpers']]]
 ];
