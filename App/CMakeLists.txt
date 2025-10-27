@@ -51,7 +51,7 @@ Format(AppStaticLib .)
 add_subdirectory(Test)
 
 # Main executable
-add_executable(App EntryPoint.cpp)
+add_executable(App main.cpp)
 target_link_libraries(App PRIVATE AppStaticLib)
 
 # Copy Data files into build tree 
