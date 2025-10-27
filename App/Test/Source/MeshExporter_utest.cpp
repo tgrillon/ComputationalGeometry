@@ -1,8 +1,8 @@
 #include "Application/ExtraDataType.h"
-#include "Application/MathHelpers.h"
 #include "Application/MeshExporter.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/TestHelpers.h"
+#include "Core/MathHelpers.h"
 #include "Core/PrintHelpers.h"
 
 #include <gtest/gtest.h>

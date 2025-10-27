@@ -1,12 +1,12 @@
 #include "Application/Mesh.h"
 
 #include "Application/ExtraDataType.h"
-#include "Application/MathHelpers.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/VertexPair.h"
+#include "Core/MathHelpers.h"
 
 using namespace Core::BaseType;
-using namespace Math::Geometry;
+using namespace Core::Math::Geometry;
 using namespace Data::Primitive;
 using namespace Data::ExtraData;
 using namespace Utilitary::Primitive;

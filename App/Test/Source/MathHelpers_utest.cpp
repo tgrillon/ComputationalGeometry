@@ -1,8 +1,8 @@
-#include "Application/MathHelpers.h"
+#include "Core/MathHelpers.h"
 
 #include <gtest/gtest.h>
 
-using namespace Math::Compare;
+using namespace Core::Math::Compare;
 using namespace Core::BaseType;
 
 TEST(MathUtilsTest, EqualNear_ShouldHaveTheExpectedResults)

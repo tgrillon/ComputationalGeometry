@@ -1,10 +1,10 @@
 #include "Application/ExtraDataType.h"
-#include "Application/MathHelpers.h"
 #include "Application/Mesh.h"
 #include "Application/MeshIntegrity.h"
 #include "Application/MeshLoader.h"
 #include "Application/PrimitiveProxy.h"
 #include "Application/TestHelpers.h"
+#include "Core/MathHelpers.h"
 
 #include <gtest/gtest.h>
 
@@ -13,7 +13,7 @@ using namespace Utilitary::Surface;
 using namespace Data::Surface;
 using namespace Data::ExtraData;
 using namespace Data::Primitive;
-using namespace Math::Compare;
+using namespace Core::Math::Compare;
 
 TEST(MeshTest, CopyConstructor_ShouldDeepCopyMesh)
 {

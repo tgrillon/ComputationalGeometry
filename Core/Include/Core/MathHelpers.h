@@ -5,7 +5,7 @@
 #include <cmath>
 #include <limits>
 
-namespace Math::Compare
+namespace Core::Math::Compare
 {
 /// @brief Helper function to compare two floating point variables.
 constexpr bool EqualNear(float lhs, float rhs, float eps = 1e-6)
@@ -28,9 +28,9 @@ constexpr bool EqualNear(Core::BaseType::Vec3 lhs, Core::BaseType::Vec3 rhs, flo
 {
 	return EqualNear(lhs.x, rhs.x, eps) && EqualNear(lhs.y, rhs.y, eps) && EqualNear(lhs.z, rhs.z, eps);
 }
-} // namespace Math::Compare
+} // namespace Core::Math::Compare
 
-namespace Math::Geometry
+namespace Core::Math::Geometry
 {
 /// @brief Returns the normalized version of v.
 inline Core::BaseType::Vec3 Normalize(const Core::BaseType::Vec3& v)
@@ -61,4 +61,4 @@ inline Core::BaseType::ScalarValue Angle(const Core::BaseType::Vec3& u, const Co
 {
 	return glm::angle(u, v);
 }
-} // namespace Math::Geometry
+} // namespace Core::Math::Geometry
