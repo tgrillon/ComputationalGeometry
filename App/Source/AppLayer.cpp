@@ -85,6 +85,12 @@ void AppLayer::OnRender()
 	const float windowWidth = ImGui::GetContentRegionAvail().x;
 	const float windowHeight = ImGui::GetContentRegionAvail().y;
 
+	if(windowWidth <= 0 || windowHeight <= 0)
+	{
+		ImGui::End();
+		return;
+	}
+
 	static Renderer::Texture renderTexture;
 	static Renderer::Framebuffer renderFramebuffer;
 
@@ -110,7 +116,6 @@ void AppLayer::OnRender()
 		ImVec2(pos.x + windowWidth, pos.y + windowHeight),
 		ImVec2(0, 1),
 		ImVec2(1, 0));
-
 	ImGui::End();
 
 	// Drawing stuff
