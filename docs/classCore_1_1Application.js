@@ -4,7 +4,7 @@ var classCore_1_1Application =
     [ "~Application", "classCore_1_1Application.html#abf898bbfb37196662e56bbc144875ac2", null ],
     [ "DisplayMode", "classCore_1_1Application.html#a16f8895de8269ebcfae75da390bcd7ca", null ],
     [ "Get", "classCore_1_1Application.html#af7555e5f3cab9c635ff58bcb4f6cac8c", null ],
-    [ "GetFramebufferSize", "classCore_1_1Application.html#ab7243e93c12e8b1be1259ce5e703380d", null ],
+    [ "GetFramebufferSize", "classCore_1_1Application.html#acdc7daf442859b670a8dac4855191ea4", null ],
     [ "GetTime", "classCore_1_1Application.html#ab8b99d5c1e1c0ec4cde0db2a97b294ae", null ],
     [ "GetWindow", "classCore_1_1Application.html#a384e2a6be315e02c2f2347751ce1fbb2", null ],
     [ "IsDarkModeEnabled", "classCore_1_1Application.html#a1b5b50442d3986a5009e364739147e9c", null ],

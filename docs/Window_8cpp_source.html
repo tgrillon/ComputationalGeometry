@@ -119,93 +119,96 @@ $(document).ready(function(){initNavTree('Window_8cpp_source.html',''); initResi
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceCore.html">Core</a></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a2ac97d0baf6dbde85f4ae15258e389c9">   11</a></span><a class="code hl_function" href="classCore_1_1Window.html#a2ac97d0baf6dbde85f4ae15258e389c9">Window::Window</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCore_1_1WindowSpecification.html">WindowSpecification</a>&amp; specification)</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    : m_Specification(specification)</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{}</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using namespace </span>BaseType;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a2ac97d0baf6dbde85f4ae15258e389c9">   13</a></span><a class="code hl_function" href="classCore_1_1Window.html#a2ac97d0baf6dbde85f4ae15258e389c9">Window::Window</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCore_1_1WindowSpecification.html">WindowSpecification</a>&amp; specification)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    : m_Specification(specification)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{}</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a922e2e28e9873adbd05617c560d39925">   15</a></span><a class="code hl_function" href="classCore_1_1Window.html#a922e2e28e9873adbd05617c560d39925">Window::~Window</a>()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_function" href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">Destroy</a>();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a922e2e28e9873adbd05617c560d39925">   17</a></span><a class="code hl_function" href="classCore_1_1Window.html#a922e2e28e9873adbd05617c560d39925">Window::~Window</a>()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_function" href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">Destroy</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2">Window::Create</a>()</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a> = glfwCreateWindow(</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#a247df0d9e510b48771525b9c4fe7d698">Width</a>, <a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#ac31cb2fec7390c24848dcb6a504788f2">Height</a>, <a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#a5174968a0a355f5cd83b16ebc543d7ed">Title</a>.c_str(), <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to create GLFW window!\n&quot;</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        assert(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    glfwMakeContextCurrent(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    gladLoadGL(glfwGetProcAddress);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    glfwSwapInterval(<a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#a277607057f3142d98ffe3b73c3d062b3">VSync</a> ? 1 : 0);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2">   22</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2">Window::Create</a>()</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a> = glfwCreateWindow(</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#a247df0d9e510b48771525b9c4fe7d698">Width</a>, <a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#ac31cb2fec7390c24848dcb6a504788f2">Height</a>, <a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#a5174968a0a355f5cd83b16ebc543d7ed">Title</a>.c_str(), <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to create GLFW window!\n&quot;</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        assert(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    glfwMakeContextCurrent(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    gladLoadGL(glfwGetProcAddress);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    glfwSwapInterval(<a class="code hl_variable" href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">m_Specification</a>.<a class="code hl_variable" href="structCore_1_1WindowSpecification.html#a277607057f3142d98ffe3b73c3d062b3">VSync</a> ? 1 : 0);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">Window::Destroy</a>()</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        glfwDestroyWindow(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">   44</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">Window::Destroy</a>()</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        glfwDestroyWindow(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1">   50</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1">Window::Update</a>()</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    glfwSwapBuffers(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1">Window::Update</a>()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    glfwSwapBuffers(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
 </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a2ebc56eb7a106915cafc1fc57efd1cdd">   55</a></span>glm::vec2 <a class="code hl_function" href="classCore_1_1Window.html#a2ebc56eb7a106915cafc1fc57efd1cdd">Window::GetFramebufferSize</a>()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">int</span> width, height;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    glfwGetFramebufferSize(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>, &amp;width, &amp;height);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> { width, height };</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#a55bb4d8e1f155bb75413cf19eaf1e47d">   57</a></span><a class="code hl_typedef" href="namespaceCore_1_1BaseType.html#aa254ecd93b2ff29ddc3fc1eef5599c0b">Vec2</a> <a class="code hl_function" href="classCore_1_1Window.html#a55bb4d8e1f155bb75413cf19eaf1e47d">Window::GetFramebufferSize</a>()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">int</span> width, height;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    glfwGetFramebufferSize(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>, &amp;width, &amp;height);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> { width, height };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
 </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#abd889864b76a33fcdfed8488e1de7c37">   62</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classCore_1_1Window.html#abd889864b76a33fcdfed8488e1de7c37">Window::ShouldClose</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">return</span> glfwWindowShouldClose(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>) != 0;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classCore_1_1Window.html#abd889864b76a33fcdfed8488e1de7c37">   64</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classCore_1_1Window.html#abd889864b76a33fcdfed8488e1de7c37">Window::ShouldClose</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> glfwWindowShouldClose(<a class="code hl_variable" href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">m_Handle</a>) != 0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
 </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>} <span class="comment">// namespace Core</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace Core</span></div>
 <div class="ttc" id="aWindow_8h_html"><div class="ttname"><a href="Window_8h.html">Window.h</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_a15a5757f30d9af37cf4ef3f41cddb4d1"><div class="ttname"><a href="classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1">Core::Window::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00050">Window.cpp:50</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_a2ac97d0baf6dbde85f4ae15258e389c9"><div class="ttname"><a href="classCore_1_1Window.html#a2ac97d0baf6dbde85f4ae15258e389c9">Core::Window::Window</a></div><div class="ttdeci">Window(const WindowSpecification &amp;specification=WindowSpecification())</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00011">Window.cpp:11</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_a2ebc56eb7a106915cafc1fc57efd1cdd"><div class="ttname"><a href="classCore_1_1Window.html#a2ebc56eb7a106915cafc1fc57efd1cdd">Core::Window::GetFramebufferSize</a></div><div class="ttdeci">glm::vec2 GetFramebufferSize()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00055">Window.cpp:55</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_a7d1bd6bdbdc2b56177eb6b147f039dd4"><div class="ttname"><a href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">Core::Window::m_Specification</a></div><div class="ttdeci">WindowSpecification m_Specification</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00038">Window.h:38</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_a922e2e28e9873adbd05617c560d39925"><div class="ttname"><a href="classCore_1_1Window.html#a922e2e28e9873adbd05617c560d39925">Core::Window::~Window</a></div><div class="ttdeci">~Window()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00015">Window.cpp:15</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_aa48621fd6337bc95bfe0a390b7aebfa2"><div class="ttname"><a href="classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2">Core::Window::Create</a></div><div class="ttdeci">void Create()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00020">Window.cpp:20</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_abb448f26098fb61a815e21f0c52024e3"><div class="ttname"><a href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">Core::Window::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00042">Window.cpp:42</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_abd889864b76a33fcdfed8488e1de7c37"><div class="ttname"><a href="classCore_1_1Window.html#abd889864b76a33fcdfed8488e1de7c37">Core::Window::ShouldClose</a></div><div class="ttdeci">bool ShouldClose() const</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00062">Window.cpp:62</a></div></div>
-<div class="ttc" id="aclassCore_1_1Window_html_ac1910a3828ecf2a9dc682e5d2a1baa95"><div class="ttname"><a href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">Core::Window::m_Handle</a></div><div class="ttdeci">GLFWwindow * m_Handle</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00040">Window.h:40</a></div></div>
-<div class="ttc" id="anamespaceCore_html"><div class="ttname"><a href="namespaceCore.html">Core</a></div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00014">Application.h:15</a></div></div>
-<div class="ttc" id="astructCore_1_1WindowSpecification_html"><div class="ttname"><a href="structCore_1_1WindowSpecification.html">Core::WindowSpecification</a></div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00011">Window.h:12</a></div></div>
-<div class="ttc" id="astructCore_1_1WindowSpecification_html_a247df0d9e510b48771525b9c4fe7d698"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#a247df0d9e510b48771525b9c4fe7d698">Core::WindowSpecification::Width</a></div><div class="ttdeci">uint32_t Width</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00014">Window.h:14</a></div></div>
-<div class="ttc" id="astructCore_1_1WindowSpecification_html_a277607057f3142d98ffe3b73c3d062b3"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#a277607057f3142d98ffe3b73c3d062b3">Core::WindowSpecification::VSync</a></div><div class="ttdeci">bool VSync</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00017">Window.h:17</a></div></div>
-<div class="ttc" id="astructCore_1_1WindowSpecification_html_a5174968a0a355f5cd83b16ebc543d7ed"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#a5174968a0a355f5cd83b16ebc543d7ed">Core::WindowSpecification::Title</a></div><div class="ttdeci">std::string Title</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00013">Window.h:13</a></div></div>
-<div class="ttc" id="astructCore_1_1WindowSpecification_html_ac31cb2fec7390c24848dcb6a504788f2"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#ac31cb2fec7390c24848dcb6a504788f2">Core::WindowSpecification::Height</a></div><div class="ttdeci">uint32_t Height</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00015">Window.h:15</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_a15a5757f30d9af37cf4ef3f41cddb4d1"><div class="ttname"><a href="classCore_1_1Window.html#a15a5757f30d9af37cf4ef3f41cddb4d1">Core::Window::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00052">Window.cpp:52</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_a2ac97d0baf6dbde85f4ae15258e389c9"><div class="ttname"><a href="classCore_1_1Window.html#a2ac97d0baf6dbde85f4ae15258e389c9">Core::Window::Window</a></div><div class="ttdeci">Window(const WindowSpecification &amp;specification=WindowSpecification())</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00013">Window.cpp:13</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_a55bb4d8e1f155bb75413cf19eaf1e47d"><div class="ttname"><a href="classCore_1_1Window.html#a55bb4d8e1f155bb75413cf19eaf1e47d">Core::Window::GetFramebufferSize</a></div><div class="ttdeci">BaseType::Vec2 GetFramebufferSize()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00057">Window.cpp:57</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_a7d1bd6bdbdc2b56177eb6b147f039dd4"><div class="ttname"><a href="classCore_1_1Window.html#a7d1bd6bdbdc2b56177eb6b147f039dd4">Core::Window::m_Specification</a></div><div class="ttdeci">WindowSpecification m_Specification</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00039">Window.h:39</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_a922e2e28e9873adbd05617c560d39925"><div class="ttname"><a href="classCore_1_1Window.html#a922e2e28e9873adbd05617c560d39925">Core::Window::~Window</a></div><div class="ttdeci">~Window()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00017">Window.cpp:17</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_aa48621fd6337bc95bfe0a390b7aebfa2"><div class="ttname"><a href="classCore_1_1Window.html#aa48621fd6337bc95bfe0a390b7aebfa2">Core::Window::Create</a></div><div class="ttdeci">void Create()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00022">Window.cpp:22</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_abb448f26098fb61a815e21f0c52024e3"><div class="ttname"><a href="classCore_1_1Window.html#abb448f26098fb61a815e21f0c52024e3">Core::Window::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00044">Window.cpp:44</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_abd889864b76a33fcdfed8488e1de7c37"><div class="ttname"><a href="classCore_1_1Window.html#abd889864b76a33fcdfed8488e1de7c37">Core::Window::ShouldClose</a></div><div class="ttdeci">bool ShouldClose() const</div><div class="ttdef"><b>Definition</b> <a href="Window_8cpp_source.html#l00064">Window.cpp:64</a></div></div>
+<div class="ttc" id="aclassCore_1_1Window_html_ac1910a3828ecf2a9dc682e5d2a1baa95"><div class="ttname"><a href="classCore_1_1Window.html#ac1910a3828ecf2a9dc682e5d2a1baa95">Core::Window::m_Handle</a></div><div class="ttdeci">GLFWwindow * m_Handle</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00041">Window.h:41</a></div></div>
+<div class="ttc" id="anamespaceCore_1_1BaseType_html_aa254ecd93b2ff29ddc3fc1eef5599c0b"><div class="ttname"><a href="namespaceCore_1_1BaseType.html#aa254ecd93b2ff29ddc3fc1eef5599c0b">Core::BaseType::Vec2</a></div><div class="ttdeci">glm::vec2 Vec2</div><div class="ttdef"><b>Definition</b> <a href="BaseType_8h_source.html#l00021">BaseType.h:21</a></div></div>
+<div class="ttc" id="anamespaceCore_html"><div class="ttname"><a href="namespaceCore.html">Core</a></div><div class="ttdef"><b>Definition</b> <a href="Application_8h_source.html#l00013">Application.h:14</a></div></div>
+<div class="ttc" id="astructCore_1_1WindowSpecification_html"><div class="ttname"><a href="structCore_1_1WindowSpecification.html">Core::WindowSpecification</a></div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00012">Window.h:13</a></div></div>
+<div class="ttc" id="astructCore_1_1WindowSpecification_html_a247df0d9e510b48771525b9c4fe7d698"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#a247df0d9e510b48771525b9c4fe7d698">Core::WindowSpecification::Width</a></div><div class="ttdeci">uint32_t Width</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00015">Window.h:15</a></div></div>
+<div class="ttc" id="astructCore_1_1WindowSpecification_html_a277607057f3142d98ffe3b73c3d062b3"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#a277607057f3142d98ffe3b73c3d062b3">Core::WindowSpecification::VSync</a></div><div class="ttdeci">bool VSync</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00018">Window.h:18</a></div></div>
+<div class="ttc" id="astructCore_1_1WindowSpecification_html_a5174968a0a355f5cd83b16ebc543d7ed"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#a5174968a0a355f5cd83b16ebc543d7ed">Core::WindowSpecification::Title</a></div><div class="ttdeci">std::string Title</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00014">Window.h:14</a></div></div>
+<div class="ttc" id="astructCore_1_1WindowSpecification_html_ac31cb2fec7390c24848dcb6a504788f2"><div class="ttname"><a href="structCore_1_1WindowSpecification.html#ac31cb2fec7390c24848dcb6a504788f2">Core::WindowSpecification::Height</a></div><div class="ttdeci">uint32_t Height</div><div class="ttdef"><b>Definition</b> <a href="Window_8h_source.html#l00016">Window.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
