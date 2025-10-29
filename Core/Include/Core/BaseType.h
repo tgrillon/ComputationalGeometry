@@ -34,7 +34,7 @@ using Quat = glm::quat;
 
 namespace std
 {
-/// Hash function for Vec2 to be used in unordered containers.
+/// @brief Hash function for Vec2 to be used in unordered containers.
 template<>
 struct hash<Core::BaseType::Vec2>
 {
@@ -46,7 +46,7 @@ struct hash<Core::BaseType::Vec2>
 	}
 };
 
-/// Hash function for Vec3 to be used in unordered containers.
+/// @brief Hash function for Vec3 to be used in unordered containers.
 template<>
 struct hash<Core::BaseType::Vec3>
 {
@@ -59,3 +59,12 @@ struct hash<Core::BaseType::Vec3>
 	}
 };
 } // namespace std
+
+namespace HashHelper
+{
+template<typename T>
+struct EnumStructHash
+{
+	bool operator()(T t) const { return static_cast<size_t>(t); }
+};
+} // namespace HashHelper
