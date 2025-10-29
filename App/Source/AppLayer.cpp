@@ -10,12 +10,14 @@
 
 #include <glm/glm.hpp>
 
+using namespace Core::BaseType;
+
 namespace Application
 {
 AppLayer::AppLayer()
 {
 	// Create shaders
-	m_Shader = Renderer::CreateGraphicsShader("Data/Shaders/Vertex.glsl", "Data/Shaders/Fragment.glsl");
+	m_Shader = Renderer::CreateGraphicsShader("Data/Shaders/BaseVertex.glsl", "Data/Shaders/BaseFragment.glsl");
 
 	// Create geometry
 	glCreateVertexArrays(1, &m_VertexArray);
@@ -23,8 +25,8 @@ AppLayer::AppLayer()
 
 	struct Vertex
 	{
-		glm::vec2 Position;
-		glm::vec2 TexCoord;
+		Vec2 Position;
+		Vec2 TexCoord;
 	};
 
 	Vertex vertices[] = {
@@ -51,7 +53,6 @@ AppLayer::AppLayer()
 	glVertexArrayAttribBinding(m_VertexArray, 1, 0);
 
 	// Print various OpenGL informations to stdout
-
 	Info(
 		"{} {}",
 		reinterpret_cast<const char*>(glGetString(GL_VENDOR)),

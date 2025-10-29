@@ -19,6 +19,7 @@ namespace Core
 
 using namespace BaseType;
 
+/// @brief Static singleton instance of the application.
 static Application* s_Application = nullptr;
 
 static void GLFWErrorCallback(int error, const char* description)
@@ -94,7 +95,8 @@ void Application::Run()
 	{
 		glfwPollEvents();
 
-		if(m_Window->ShouldClose())
+		GLFWwindow* window = GetWindow();
+		if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS || m_Window->ShouldClose())
 		{
 			Stop();
 			break;
